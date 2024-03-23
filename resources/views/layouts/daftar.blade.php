@@ -19,7 +19,7 @@
 
                 {{-- <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign up</p> --}}
 
-                <form class="mx-1 mx-md-4 mt-0">
+                <form class="mx-1 mx-md-4 mt-0" method="POST" action="/dashboard">
                     {{-- nama lengkap --}}
                   <div class="d-flex flex-row align-items-center mb-2">
                     <i class="fas fa-user fa-lg me-3 fa-fw"></i>
@@ -82,11 +82,11 @@
                       I agree all statements in <a href="#!">Terms of service</a>
                     </label>
                   </div> --}}
-                </form>
+                {{-- </form> --}}
                 {{-- Bagian Kanan --}}
               </div>
-              <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1 mt-lg-1">
-                <form class="mx-1 mx-md-4 mt-lg-5">
+              <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1 mt-lg-5">
+                {{-- <form class="mx-1 mx-md-4 mt-lg-5"> --}}
                 {{-- email --}}
                   <div class="d-flex flex-row align-items-center mb-2">
                     <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
@@ -107,9 +107,9 @@
                     <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
                     <div class="form-outline flex-fill mb-0">
                     <label class="form-label font-weight-bold fs-1 me-lg-5" for="button-register">Daftar</label>
-                    <a href="/login" id="button-register" type="button" class=" btn btn-sm border-0 col-2 mb-2">
+                    <button id="button-register" type="submit" class=" btn btn-sm border-0 col-2 mb-2">
                         <img src="{{asset('images/arrow.png')}}" alt="daftar" class=" ">
-                    </a>
+                    </button>
                     {{-- <button type="button" class="btn btn-primary btn-lg">Register</button> --}}
                   </div>
                 </form>
