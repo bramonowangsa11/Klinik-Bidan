@@ -107,7 +107,7 @@
                     <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
                     <div class="form-outline flex-fill mb-0">
                     <label class="form-label font-weight-bold fs-1 me-lg-5" for="button-register">Daftar</label>
-                    <a href="/login" id="button-register" type="button" class=" btn btn-sm border-0 col-2 mb-2">
+                    <a href="/daftar" id="button-register" type="button" class=" btn btn-sm border-0 col-2 mb-2">
                         <img src="{{asset('images/arrow.png')}}" alt="daftar" class=" ">
                     </a>
                     {{-- <button type="button" class="btn btn-primary btn-lg">Register</button> --}}
