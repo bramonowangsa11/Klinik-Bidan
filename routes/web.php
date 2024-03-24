@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PasienController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,4 +20,5 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('layouts.daftar');
 });
+Route::post('/daftar', [PasienController::class, 'store'])->name('daftar.store');
 
