@@ -1,7 +1,7 @@
 @extends('layouts.bootstrap')
 @section('content')
-<section class="vh-100" style="background:url({{asset('images/group3.jpg')}}); background-repeat:no-repeat; background-size: cover; background-attachment: scroll;">
-  <div class="container h-100">
+<section class="masthead" style="background:url({{asset('images/group3.jpg')}})">
+  <div class="container vh-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col-lg-10 col-xl-9 ">
         {{-- card --}}

@@ -3,12 +3,11 @@
     background-repeat: no-repeat;
     background-attachment: fixed;
     min-height: 100vh;
-    /* position: relative; */
+    position: relative;
 }
 
 @media (max-width: 768px) {
     .masthead {
         min-height: 120vh;
-        background-attachment: scroll;
     }
 }
