@@ -13,7 +13,7 @@
           <div class="card-body p-md-1 "> 
             <div class="row">
               <div class="col-md-4 col-lg-4 col-xl-4 order-1 order-lg-1">
-                <form class="mx-1 mx-md-4 mt-0 mb-lg-5 border-1" method="POST" action="/login">
+                <form class="mx-1 mx-md-4 mt-0 mb-lg-5 border-1" method="POST" action="/dashboard">
                   @csrf
                     
                 {{-- Bagian Kanan --}}
@@ -41,7 +41,7 @@
                     <div class="form-outline flex-fill mb-0">
                     <label class="form-label font-weight-bold fs-1 me-lg-5" for="button-register">Masuk</label>
                     <button id="button-register" type="submit" class=" btn btn-sm border-0 col-2 mb-2">
-                        <img src="{{asset('images/arrow.png')}}" alt="daftar" class=" ">
+                        <img src="{{asset('images/arrow.png')}}" alt="login" class=" ">
                     </button>
                     {{-- link daftar dan lupa password --}}
                     <div>

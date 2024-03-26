@@ -23,5 +23,5 @@ Route::get('/', function () {
 Route::get('/login', function () {
     return view('layouts.login');
 });
-Route::post('/daftar', [PasienController::class, 'store'])->name('daftar.store');
+Route::post('/login', [PasienController::class, 'store'])->name('daftar.store');
 
