@@ -20,5 +20,8 @@ use App\Http\Controllers\PasienController;
 Route::get('/', function () {
     return view('layouts.daftar');
 });
+Route::get('/login', function () {
+    return view('layouts.login');
+});
 Route::post('/daftar', [PasienController::class, 'store'])->name('daftar.store');
 
