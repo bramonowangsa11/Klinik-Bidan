@@ -7,18 +7,18 @@
         {{-- card --}}
         <div class=" card small text-black h-75" style="border-radius: 25px; background-color:rgb(229, 228, 228)">
             <div class="col d-flex h-75">
-                <img src="{{asset('images/Group 1.png')}}" class="card-img img-fluid" alt="..." style="width: 25%; height:100%; margin-right:49%; border-radius:25px">
-                <img src="{{asset('images/Group 2.png')}}" class="card-img img-fluid" alt="..." style="width: 25%; height:50%; border-radius:25px; margin-left:9px">
+                <img src="{{asset('images/Group 1.png')}}" class="card-img img-fluid" alt="..." style="width: 25%; height:50%; margin-right:49%; border-radius:25px">
+                <img src="{{asset('images/Group 2.png')}}" class="card-img img-fluid" alt="..." style="width: 25%; height:100%; border-radius:25px; margin-left:9px">
             </div>
           <div class="card-body p-md-1 "> 
             <div class="row">
-              <div class="col-md-4 col-lg-4 col-xl-4 order-1 order-lg-1">
+              <div class="col-md-4 col-lg-4 col-xl-4 order-2 order-lg-1">
                 <form class="mx-1 mx-md-4 mt-0 mb-lg-5 border-1" method="POST" action="/dashboard">
                   @csrf
                     
                 {{-- Bagian Kanan --}}
               </div>
-              <div class="col-md-10 col-lg-6 col-xl-4 order-1 order-lg-1 mt-0 mb-20 border-black rounded border p-2">
+              <div class="col-md-10 col-lg-6 col-xl-4 order-2 order-lg-1 mt-0 mb-20 border-black rounded border p-2">
                 {{-- <form class="mx-1 mx-md-4 mt-lg-5"> --}}
                 {{-- email --}}
                   <div class="d-flex flex-row align-items-center mb-2">
