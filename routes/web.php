@@ -1,7 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\PasienController;
+use App\Http\Controllers\SessionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,11 +19,22 @@ use App\Http\Controllers\PasienController;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
-Route::get('/', function () {
-    return view('layouts.daftar');
+
+Route::middleware(['guest'])->group(function(){
+    Route::get('/', function () {
+        return view('layouts.login');
+    });
+    Route::get('/daftar', function () {
+        return view('layouts.daftar');
+    });
+    Route::post('/daftar', [PasienController::class, 'store'])->name('daftar.store'); 
+    Route::post('/login',[SessionController::class,'login']);
 });
-Route::get('/login', function () {
-    return view('layouts.login');
+Route::middleware(['auth'])->group(function () {
+    Route::get('/pasien',[PasienController::class,'index'])->middleware('userAkses:pasien');
+    Route::get('/admin',[AdminController::class,'index'])->middleware('userAkses:admin');
+    Route::get('/logout',[SessionController::class,'logout']);
 });
-Route::post('/login', [PasienController::class, 'store'])->name('daftar.store');
+
+
 

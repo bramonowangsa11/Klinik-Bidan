@@ -13,7 +13,7 @@
           <div class="card-body p-md-1 "> 
             <div class="row">
               <div class="col-md-4 col-lg-4 col-xl-4 order-2 order-lg-1">
-                <form class="mx-1 mx-md-4 mt-0 mb-lg-5 border-1" method="POST" action="/dashboard">
+                <form class="mx-1 mx-md-4 mt-0 mb-lg-5 border-1" method="POST" action="/login">
                   @csrf
                     
                 {{-- Bagian Kanan --}}

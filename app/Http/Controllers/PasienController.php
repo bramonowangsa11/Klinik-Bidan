@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Pasien;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 
@@ -61,6 +62,11 @@ class PasienController extends Controller
 
         
         Session::flash('success', 'Pasien berhasil didaftarkan');
-        return redirect()->back();
+        return redirect('/');
+    }
+
+    public function index(){
+        $user = auth()->user();
+        return view('layouts/dashboard',compact('user'));
     }
 }
