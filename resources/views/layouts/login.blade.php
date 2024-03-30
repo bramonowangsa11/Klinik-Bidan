@@ -54,17 +54,6 @@
                         {{ Session::get('success') }}
                     </div>
                 @endif
-                @if($errors->any())
-                  <div class="alert alert-danger">
-                    <ul>  
-                      @foreach($errors->all() as $error)
-                        <li>
-                          {{ $error }}
-                        </li>
-                      @endforeach
-                    </ul>
-                  </div>
-                @endif
                 <!-- akhir alert -->
                     {{-- <button type="button" class="btn btn-primary btn-lg">Register</button> --}}
                   </div>

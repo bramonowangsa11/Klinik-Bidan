@@ -29,6 +29,9 @@ class SessionController extends Controller
                 return redirect('/admin');
             }
         }
+        else {
+            return redirect()->back()->with('error', 'Username atau password salah');
+        }
     }
 
     public function logout(){
