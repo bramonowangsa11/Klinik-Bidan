@@ -67,6 +67,6 @@ class PasienController extends Controller
 
     public function index(){
         $user = auth()->user();
-        return view('layouts/dashboard',compact('user'));
+        return view('layouts/users/dashboard',compact('user'));
     }
 }

@@ -111,6 +111,10 @@
                     <button id="button-register" type="submit" class=" btn btn-sm border-0 col-2 mb-2">
                         <img src="{{asset('images/arrow.png')}}" alt="daftar" class=" ">
                     </button>
+                    <div>
+                      <a class="text-black" style="font-weight:bold">sudah punya akun?</a>
+                      <a class="" style="font-weight:bold" href="/">Login</a>
+                    </div>
                     <!-- pesan eror dan sukses -->
                 @if(Session::has('success'))
                     <div class="alert alert-success">
