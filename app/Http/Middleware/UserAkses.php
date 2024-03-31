@@ -19,7 +19,7 @@ class UserAkses
             return $next($request);
         }
         else{
-            return response()->json('Anda tidak berhak mengakses halaman ini.');
+            return redirect()->back()->with('error', 'Anda tidak berhak mengakses halaman tersebut');
         }
     }
 }

@@ -25,6 +25,11 @@
                         {{ Session::get('success') }}
                     </div>
                 @endif
+                @if(session('error'))
+                    <div class="alert alert-danger">
+                        {{ session('error') }}
+                    </div>
+                @endif
                 <!-- akhir alert -->
                 {{-- <form class="mx-1 mx-md-4 mt-lg-5"> --}}
                 {{-- email --}}
