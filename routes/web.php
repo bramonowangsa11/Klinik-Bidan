@@ -24,6 +24,10 @@ Route::middleware(['guest'])->group(function(){
     Route::get('/', function () {
         return view('layouts.login');
     });
+    // routes tes dashboar admin
+    // Route::get('/dashboard-admin', function () {
+    //     return view('layouts.admin.dashboard-admin');
+    // });
     Route::get('/daftar', function () {
         return view('layouts.daftar');
     });
@@ -35,6 +39,24 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/admin',[AdminController::class,'index'])->middleware('userAkses:admin');
     Route::get('/logout',[SessionController::class,'logout']);
 });
+
+// routes dashboard admin
+Route::get('/dashboard-admin', function () {
+    return view('layouts.admin.dashboard-admin');
+});
+Route::get('/table-imunisasi2', function () {
+    return view('layouts.admin.table-imunisasi2');
+});
+Route::get('/table-imunisasi', function () {
+    return view('layouts.admin.table-imunisasi');
+});
+Route::get('/detail-table', function () {
+    return view('layouts.admin.detail-table-imunisasi');
+});
+Route::get('/input-table', function () {
+    return view('layouts.admin.input-table-imunisasi');
+});
+
 
 
 
