@@ -4,7 +4,7 @@
 <div class="row w-full vh-100">
 {{-- sidebar --}}
 <div class="col-md-3">
-    <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark vh-100" style="width: 280px;">
+    <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-secondary vh-100" style="width: 280px;">
     <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
       <svg class="bi pe-none me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
       <span class="fs-4">Hi, Admin</span>
@@ -12,7 +12,7 @@
     <hr>
     <ul class="nav nav-pills flex-column mb-auto">
       <li class="nav-item">
-        <a href="/detail-table" class="nav-link active" aria-current="page">
+        <a href="/admin" class="nav-link active" aria-current="page">
           <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#home"></use></svg>
           Home
         </a>
@@ -234,13 +234,21 @@
             </div>
             
             <div class=" mb-3">
-              <button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ubahModal">Ubah</button>
+              <div class="row">
+                <div class="col-md-3">
+                  <button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ubahModal">Ubah</button>
     </form>
-              <form action="{{ route('imunisasi.destroy', $imunisasi->id) }}" method="POST">
+                </div>
+                <div class="col-md-3">
+                  <form action="{{ route('imunisasi.destroy', $imunisasi->id) }}" method="POST">
                 @csrf
                 @method('DELETE')
-                <button type="submit" class="btn btn-danger mt-2">Delete</button>
+                <button type="submit" class="btn btn-danger">Delete</button>
               </form>
+                </div>
+              </div>
+              
+              
               {{-- <button type="button" class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#ubahModal">Detail</button> --}}
             </div>
         </div>
