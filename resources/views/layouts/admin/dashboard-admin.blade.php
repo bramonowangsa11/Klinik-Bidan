@@ -88,7 +88,11 @@
           <td>{{$imunisasi->tgl_lahir}}</td>
           <td>{{$imunisasi->alamat}}</td>
           <td><a href=""></a></td>
-          <td><button type="button" class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#detailModal">Detail</button></td>
+          <td>
+            <a href="/detail-table">
+              <button type="button" class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#detailModal">Detail</button>
+            </a>
+          </td>
         </tr>
         
         
@@ -121,151 +125,7 @@
   {{-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#detailModal">Lihat Detail</button> --}}
 </div>
 
-<!-- Modal Details-->
-<div class="modal fade" id="detailModal" tabindex="-1" aria-labelledby="detailModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="detailModalLabel">Detail Data</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <!-- Isi detail data disini -->
-        <div class="mb-3">
-          <label for="inputN0" class="form-label">No</label>
-          <input type="text" class="form-control" id="inputNo" readonly value="1">
-        </div>
-        <div class="mb-3">
-          <label for="inputTanggal" class="form-label">Tanggal</label>
-          <input type="text" class="form-control" id="inputTanggal" readonly value="10/03/2024">
-        </div>
-        <div class="mb-3">
-          <label for="inputNamaAnak" class="form-label">Nama Anak</label>
-          <input type="text" class="form-control" id="inputNamaAnak" readonly value="Doley">
-        </div>
-        <div class="mb-3">
-          <label for="inputNIK" class="form-label">NIK</label>
-          <input type="number" class="form-control" id="inputNIK" readonly value="3403101108020005">
-        </div>
-        <div class="mb-3">
-          <label for="inputNamaOrtu" class="form-label">Nama Orang Tua</label>
-          <input type="text" class="form-control" id="inputNamaOrtu" readonly value="Wahyu">
-        </div>
-        <div class="mb-3">
-          <label for="inputTglLahir" class="form-label">Tanggal Lahir</label>
-          <input type="text" class="form-control" id="inputTglLahir" readonly value="11/04/2024">
-        </div>
-        <div class="mb-3">
-          <label for="inputAlamat" class="form-label">Alamat</label>
-          <input type="text" class="form-control" id="inputAlamat" readonly value="Sanggrahan">
-        </div>
-        <div class="mb-3">
-          <label for="inputBeratBadan" class="form-label">Berat Badan</label>
-          <input type="number" class="form-control" id="inputBeratBadan" readonly value="20">
-        </div>
-        <div class="mb-3">
-          <label for="inputPanjangBadan" class="form-label">Panjang Badan</label>
-          <input type="number" class="form-control" id="inputPanjangBadan" readonly value="150">
-        </div>
-        <div class="mb-3">
-          <label for="inputHBO" class="form-label">HBO</label>
-          <input type="checkbox" class="form-check-input" checked id="inputHBO" disabled>
-        </div>
-        <div class="mb-3">
-          <label for="inputBCG" class="form-label">BCG</label>
-          <input type="checkbox" class="form-check-input" checked id="inputBCG" disabled>
-        </div>
-        <div class="mb-3">
-          <label for="inputPenta" class="form-label">Penta</label>
-          <input type="number" class="form-control" id="inputPenta" readonly value="1">
-        </div>
-        <div class="mb-3">
-          <label for="inputTPV" class="form-label">TPV</label>
-          <input type="number" class="form-control" id="inputTPV" readonly value="2">
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ubahModal">Ubah</button>
-        <button type="button" class="btn btn-danger" >Delete</button>
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-      </div>
-    </div>
-  </div>
-</div>
-{{-- end modal details --}}
 
-
-<!-- Modal ubah-->
-<div class="modal fade" id="ubahModal" tabindex="-1" aria-labelledby="ubahModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="ubahModalLabel">Ubah Data</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <!-- Isi detail data disini -->
-        <div class="mb-3">
-          <label for="inputN0" class="form-label">No</label>
-          <input type="text" class="form-control" id="inputNo" value="1">
-        </div>
-        <div class="mb-3">
-          <label for="inputTanggal" class="form-label">Tanggal</label>
-          <input type="date" class="form-control" id="inputTanggal" value="10/03/2024">
-        </div>
-        <div class="mb-3">
-          <label for="inputNamaAnak" class="form-label">Nama Anak</label>
-          <input type="text" class="form-control" id="inputNamaAnak" value="Doley">
-        </div>
-        <div class="mb-3">
-          <label for="inputNIK" class="form-label">NIK</label>
-          <input type="number" class="form-control" id="inputNIK" value="3403101108020005">
-        </div>
-        <div class="mb-3">
-          <label for="inputNamaOrtu" class="form-label">Nama Orang Tua</label>
-          <input type="text" class="form-control" id="inputNamaOrtu" value="Wahyu">
-        </div>
-        <div class="mb-3">
-          <label for="inputTglLahir" class="form-label">Tanggal Lahir</label>
-          <input type="date" class="form-control" id="inputTglLahir" value="11/04/2024">
-        </div>
-        <div class="mb-3">
-          <label for="inputAlamat" class="form-label">Alamat</label>
-          <input type="text" class="form-control" id="inputAlamat" value="Sanggrahan">
-        </div>
-        <div class="mb-3">
-          <label for="inputBeratBadan" class="form-label">Berat Badan</label>
-          <input type="number" class="form-control" id="inputBeratBadan" value="20">
-        </div>
-        <div class="mb-3">
-          <label for="inputPanjangBadan" class="form-label">Panjang Badan</label>
-          <input type="number" class="form-control" id="inputPanjangBadan" value="150">
-        </div>
-        <div class="mb-3">
-          <label for="inputHBO" class="form-label">HBO</label>
-          <input type="checkbox" class="form-check-input" checked id="inputHBO" value="true">
-        </div>
-        <div class="mb-3">
-          <label for="inputBCG" class="form-label">BCG</label>
-          <input type="checkbox" class="form-check-input" checked id="inputBCG" value="true">
-        </div>
-        <div class="mb-3">
-          <label for="inputPenta" class="form-label">Penta</label>
-          <input type="number" class="form-control" id="inputPenta" value="1">
-        </div>
-        <div class="mb-3">
-          <label for="inputTPV" class="form-label">TPV</label>
-          <input type="number" class="form-control" id="inputTPV" value="2">
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-success" data-bs-dismiss="modal">Simpan</button>
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-      </div>
-    </div>
-  </div>
-</div>
-{{-- end modal ubah --}}
 
 
 

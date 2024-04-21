@@ -57,6 +57,9 @@ Route::get('/table-imunisasi', function () {
 Route::get('/detail-table', function () {
     return view('layouts.admin.detail-table-imunisasi');
 });
+Route::get('/test', function () {
+    return view('layouts.admin.test-modal');
+});
 
 
 
