@@ -66,6 +66,22 @@
         <div class=" mt-3">
             <h1>Input Data</h1>
         </div>
+        @if(Session::has('success'))
+                    <div class="alert alert-success">
+                        {{ Session::get('success') }}
+                    </div>
+                @endif
+                @if($errors->any())
+                  <div class="alert alert-danger">
+                    <ul>  
+                      @foreach($errors->all() as $error)
+                        <li>
+                          {{ $error }}
+                        </li>
+                      @endforeach
+                    </ul>
+                  </div>
+                @endif
         <div class="col-md-4">
             <form class=" mt-5" method="POST" action="/input-table">
                 @csrf
@@ -199,22 +215,7 @@
             </div>
                 <button type="submit" class="btn btn-primary mt-2">Submit</button>
             </form>
-            @if(Session::has('success'))
-                    <div class="alert alert-success">
-                        {{ Session::get('success') }}
-                    </div>
-                @endif
-                @if($errors->any())
-                  <div class="alert alert-danger">
-                    <ul>  
-                      @foreach($errors->all() as $error)
-                        <li>
-                          {{ $error }}
-                        </li>
-                      @endforeach
-                    </ul>
-                  </div>
-                @endif
+            
     </div>
         </div>
     

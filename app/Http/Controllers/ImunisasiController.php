@@ -91,24 +91,17 @@ class ImunisasiController extends Controller
 
     public function destroy($id)
     {
-        $imunisasi = Imunisasi::find($id);
-
-        if (!$imunisasi) {
-            return response()->json(['message' => 'Data not found'], 404);
-        }
-
+        $imunisasi = Imunisasi::findOrFail($id);
         $imunisasi->delete();
-
-        return response()->json(['message' => 'Data deleted successfully'], 200);
+        Session::flash('success', 'data berhasil dihapus');
+        return redirect('/admin');
     }
 
     public function update(Request $request, $id)
     {
-        $imunisasi = Imunisasi::find($id);
+        $imunisasi = Imunisasi::findOrFail($id);
 
-        if (!$imunisasi) {
-            return response()->json(['message' => 'Data not found'], 404);
-        }
+        
 
         $validatedData = $request->validate([
             'nama_anak' => 'required|string|max:255',
@@ -127,10 +120,47 @@ class ImunisasiController extends Controller
             'MK' => 'required|boolean',
             'booster' => 'required|in:PENTA,MK',
             'tanggal' => 'required|date',
+        ],[
+            'nama_anak.required' => 'Nama anak harus diisi.',
+            'nama_anak.string' => 'Nama anak harus berupa teks.',
+            'nama_anak.max' => 'Nama anak maksimal :max karakter.',
+            'nik_anak.required' => 'NIK anak harus diisi.',
+            'nik_anak.numeric' => 'NIK anak harus berupa angka.',
+            'nik_anak.digits' => 'NIK harus terdiri dari 16 digit.',
+            'nama_orangtua.required' => 'Nama orang tua harus diisi.',
+            'nama_orangtua.string' => 'Nama orang tua harus berupa teks.',
+            'nama_orangtua.max' => 'Nama orang tua maksimal :max karakter.',
+            'tgl_lahir.required' => 'Tanggal lahir harus diisi.',
+            'tgl_lahir.date' => 'Tanggal lahir harus berupa tanggal.',
+            'alamat.required' => 'Alamat harus diisi.',
+            'alamat.string' => 'Alamat harus berupa teks.',
+            'alamat.max' => 'Alamat maksimal :max karakter.',
+            'berat_badan.required' => 'Berat badan harus diisi.',
+            'berat_badan.numeric' => 'Berat badan harus berupa angka.',
+            'panjang_badan.required' => 'Panjang badan harus diisi.',
+            'panjang_badan.numeric' => 'Panjang badan harus berupa angka.',
+            'HBO.required' => 'Kolom HBO harus diisi.',
+            'HBO.boolean' => 'Kolom HBO harus berupa benar atau salah.',
+            'BCG.required' => 'Kolom BCG harus diisi.',
+            'BCG.boolean' => 'Kolom BCG harus berupa benar atau salah.',
+            'PENTA.required' => 'Kolom PENTA harus diisi.',
+            'PENTA.in' => 'Kolom PENTA harus memiliki nilai 0, 1, 2, atau 3.',
+            'IPV.required' => 'Kolom IPV harus diisi.',
+            'IPV.in' => 'Kolom IPV harus memiliki nilai 0, 1, 2, atau 3.',
+            'PCV.required' => 'Kolom PCV harus diisi.',
+            'PCV.in' => 'Kolom PCV harus memiliki nilai 0, 1, 2, atau 3.',
+            'ROTA_VIRUS.required' => 'Kolom ROTA VIRUS harus diisi.',
+            'ROTA_VIRUS.in' => 'Kolom ROTA VIRUS harus memiliki nilai 0, 1, 2, atau 3.',
+            'MK.required' => 'Kolom MK harus diisi.',
+            'MK.boolean' => 'Kolom MK harus berupa benar atau salah.',
+            'booster.required' => 'Kolom Booster harus diisi.',
+            'booster.in' => 'Kolom Booster harus memiliki nilai PENTA atau MK.',
+            'tanggal.required' => 'Tanggal harus diisi.',
+            
         ]);
 
         $imunisasi->update($validatedData);
-
-        return response()->json(['message' => 'Data updated successfully', 'data' => $imunisasi], 200);
+        Session::flash('success', 'data berhasil diupdate');
+        return redirect()->back();
     }
 }

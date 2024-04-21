@@ -53,7 +53,7 @@
         <li><a class="dropdown-item" href="#">Settings</a></li>
         <li><a class="dropdown-item" href="#">Profile</a></li>
         <li><hr class="dropdown-divider"></li>
-        <li><a class="dropdown-item" href="#">Sign out</a></li>
+        <li><a class="dropdown-item" href="/logout">Sign out</a></li>
       </ul>
     </div>
   </div>
@@ -62,6 +62,11 @@
 <div class="col-md-9 bg-primary">
     <div>
         <h1>Table Content</h1>
+        @if(Session::has('success'))
+                    <div class="alert alert-success">
+                        {{ Session::get('success') }}
+                    </div>
+                @endif
     </div>
     <div class="container bg-black">
         <table class="table">
@@ -78,19 +83,18 @@
       </tr>
     </thead>
     <tbody>
-      @foreach ($imunisasis as $imunisasi)
+      @foreach ($imunisasis as $key=> $imunisasi)
         <tr>
-          <td>{{$imunisasi->id}}</td>
+          <td>{{$key+1}}</td>
           <td>{{$imunisasi->tanggal}}</td>
           <td>{{$imunisasi->nama_anak}}</td>
           <td>{{$imunisasi->nik_anak}}</td>
           <td>{{$imunisasi->nama_orangtua}}</td>
           <td>{{$imunisasi->tgl_lahir}}</td>
           <td>{{$imunisasi->alamat}}</td>
-          <td><a href=""></a></td>
           <td>
-            <a href="/detail-table">
-              <button type="button" class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#detailModal">Detail</button>
+            <a href="{{ route('imunisasi.show', ['id' => $imunisasi->id]) }}">
+              <button type="button" class="btn btn-info btn-sm" >Detail</button>
             </a>
           </td>
         </tr>

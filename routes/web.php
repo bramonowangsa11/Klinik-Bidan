@@ -41,6 +41,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/input-table',[ImunisasiController::class,'inputImunisasi'])->middleware('userAkses:admin');
     Route::post('/input-table',[ImunisasiController::class,'store'])->middleware('userAkses:admin');
     Route::get('/imunisasi/{id}', [ImunisasiController::class,'showid'])->name('imunisasi.show')->middleware('userAkses:admin');
+    Route::delete('/imunisasi/{id}', [ImunisasiController::class,'destroy'])->name('imunisasi.destroy')->middleware('userAkses:admin');
+    Route::put('/imunisasi/{id}', [ImunisasiController::class,'update'])->name('imunisasi.update')->middleware('userAkses:admin');
     Route::get('/logout',[SessionController::class,'logout']);
 });
 
