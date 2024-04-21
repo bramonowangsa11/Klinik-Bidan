@@ -78,111 +78,28 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>1</td>
-        <td>12-10-24</td>
-        <td>Doe</td>
-        <td>john@example.com</td>
-        <td>12</td>
-        <td>wahyu</td>
-        <td>Sanggrahan</td>
-        <td><button type="button" class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#detailModal">Detail</button></td>
-      </tr>
-      <tr>
-        <td>2</td>
-        <td>12-10-24</td>
-        <td>Moe</td>
-        <td>mary@example.com</td>
-        <td>12</td>
-        <td>wahyu</td>
-        <td>Sanggrahan</td>
-        <td><button type="button" class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#detailModal">Detail</button></td>
-      </tr>
-      <tr>
-        <td>3</td>
-        <td>12-10-24</td>
-        <td>Dooley</td>
-        <td>july@example.com</td>
-        <td>12</td>
-        <td>wahyu</td>
-        <td>Sanggrahan</td>
-        <td><button type="button" class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#detailModal">Detail</button></td>
-      </tr>
-      <tr>
-        <td>4</td>
-        <td>12-10-24</td>
-        <td>Dooley</td>
-        <td>july@example.com</td>
-        <td>12</td>
-        <td>wahyu</td>
-        <td>Sanggrahan</td>
-       <td><button type="button" class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#detailModal">Detail</button></td>
-      </tr>
-      <tr>
-        <td>5</td>
-        <td>12-10-24</td>
-        <td>Dooley</td>
-        <td>july@example.com</td>
-        <td>12</td>
-        <td>wahyu</td>
-        <td>Sanggrahan</td>
-       <td><button type="button" class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#detailModal">Detail</button></td>
-      </tr>
-      <tr>
-        <td>6</td>
-        <td>12-10-24</td>
-        <td>Dooley</td>
-        <td>july@example.com</td>
-        <td>12</td>
-        <td>wahyu</td>
-        <td>Sanggrahan</td>
-        <td><button type="button" class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#detailModal">Detail</button></td>
-      </tr>
-      <tr>
-        <td>7</td>
-        <td>12-10-24</td>
-        <td>Dooley</td>
-        <td>july@example.com</td>
-        <td>12</td>
-        <td>wahyu</td>
-        <td>Sanggrahan</td>
-        <td><button type="button" class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#detailModal">Detail</button></td>
-      </tr>
-      <tr>
-        <td>8</td>
-        <td>12-10-24</td>
-        <td>Dooley</td>
-        <td>july@example.com</td>
-        <td>12</td>
-        <td>wahyu</td>
-        <td>Sanggrahan</td>
-        <td><button type="button" class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#detailModal">Detail</button></td>
-      </tr>
-      <tr>
-        <td>9</td>
-        <td>12-10-24</td>
-        <td>Dooley</td>
-        <td>july@example.com</td>
-        <td>12</td>
-        <td>wahyu</td>
-        <td>Sanggrahan</td>
-        <td><button type="button" class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#detailModal">Detail</button></td>
-      </tr>
-      <tr>
-        <td>10</td>
-        <td>12-10-24</td>
-        <td>Dooley</td>
-        <td>july@example.com</td>
-        <td>12</td>
-        <td>wahyu</td>
-        <td>Sanggrahan</td>
-        <td><button type="button" class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#detailModal">Detail</button></td>
-        {{-- <td><button type="button" class="btn btn-info btn-sm">Details</button></td> --}}
-      </tr>
+      @foreach ($imunisasis as $imunisasi)
+        <tr>
+          <td>{{$imunisasi->id}}</td>
+          <td>{{$imunisasi->tanggal}}</td>
+          <td>{{$imunisasi->nama_anak}}</td>
+          <td>{{$imunisasi->nik_anak}}</td>
+          <td>{{$imunisasi->nama_orangtua}}</td>
+          <td>{{$imunisasi->tgl_lahir}}</td>
+          <td>{{$imunisasi->alamat}}</td>
+          <td><a href=""></a></td>
+          <td><button type="button" class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#detailModal">Detail</button></td>
+        </tr>
+        
+        
+      @endforeach
+      
+      
     </tbody>
   </table>
+  {{ $imunisasis->links() }}
   <!-- Pagination -->
-  <nav aria-label="Page navigation">
+  {{-- <nav aria-label="Page navigation">
     <ul class="pagination">
       <li class="page-item disabled">
         <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
@@ -196,7 +113,7 @@
         <a class="page-link" href="#">Next</a>
       </li>
     </ul>
-  </nav>
+  </nav> --}}
 
 
   {{-- modal --}}

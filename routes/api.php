@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PasienController;
+use App\Http\Controllers\ImunisasiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,3 +20,8 @@ use App\Http\Controllers\PasienController;
 //     return $request->user();
 // });
 Route::post('/daftar', [PasienController::class, 'store']);
+Route::post('/imunisasi',[ImunisasiController::class,'store']);
+Route::get('/imunisasi',[ImunisasiController::class,'index']);
+Route::get('/imunisasi/{id}',[ImunisasiController::class,'showid']);
+Route::delete('/imunisasi/{id}',[ImunisasiController::class,'destroy']);
+Route::put('/imunisasi/{id}',[ImunisasiController::class,'update']);

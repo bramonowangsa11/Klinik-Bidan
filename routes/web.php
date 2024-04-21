@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\PasienController;
 use App\Http\Controllers\SessionController;
+use App\Http\Controllers\ImunisasiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,7 +37,10 @@ Route::middleware(['guest'])->group(function(){
 });
 Route::middleware(['auth'])->group(function () {
     Route::get('/pasien',[PasienController::class,'index'])->middleware('userAkses:pasien');
-    Route::get('/admin',[AdminController::class,'index'])->middleware('userAkses:admin');
+    Route::get('/admin',[ImunisasiController::class,'index'])->middleware('userAkses:admin');
+    Route::get('/input-table',[ImunisasiController::class,'inputImunisasi'])->middleware('userAkses:admin');
+    Route::post('/input-table',[ImunisasiController::class,'store'])->middleware('userAkses:admin');
+    Route::get('/imunisasi/{id}', [ImunisasiController::class,'showid'])->name('imunisasi.show')->middleware('userAkses:admin');
     Route::get('/logout',[SessionController::class,'logout']);
 });
 
@@ -53,9 +57,7 @@ Route::get('/table-imunisasi', function () {
 Route::get('/detail-table', function () {
     return view('layouts.admin.detail-table-imunisasi');
 });
-Route::get('/input-table', function () {
-    return view('layouts.admin.input-table-imunisasi');
-});
+
 
 
 
