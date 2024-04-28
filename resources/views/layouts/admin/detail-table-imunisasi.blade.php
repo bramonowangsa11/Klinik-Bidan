@@ -236,7 +236,7 @@
             <div class=" mb-3">
               <div class="row">
                 <div class="col-md-3">
-                  <button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ubahModal">Ubah</button>
+                  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ubahModal">Ubah</button>
     </form>
                 </div>
                 <div class="col-md-3">
@@ -380,7 +380,7 @@
                 <input type="time" class="form-control" id="inputTPV">
             </div>
             <div>
-              <button type="button" class="btn btn-success" data-bs-dismiss="modal">Simpan</button>
+              <button type="submit" class="btn btn-success" data-bs-dismiss="modal">Simpan</button>
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
             </div>
           </div>

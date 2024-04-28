@@ -12,26 +12,27 @@
         <hr>
         <ul class="nav nav-pills flex-column mb-auto">
           <li class="nav-item">
-            <a href="/admin" class="nav-link active" aria-current="page">
+            <a href="/admin" class="nav-link text-white" aria-current="page">
               <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#home"></use></svg>
               Imunisasi
             </a>
           </li>
           <li>
-            <a href="/ibu-hamil" class="nav-link text-white">
+            <a href="/ibu-hamil" class="nav-link text-white active">
               <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
               Ibu Hamil
             </a>
           </li>
           <li>
-            <a href="#" class="nav-link text-white dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown">
+            <a href="/input-table" class="nav-link text-white dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown">
               <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#table"></use></svg>
               input Data
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="/input-table">Imunisasi</a>
+                <a class="dropdown-item" href="/admin">Imunisasi</a>
                 <a class="dropdown-item" href="/input-bumil">Ibu Hamil</a>
                 <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Submenu 3</a>
             </div>
           </li>
           <li>
@@ -75,7 +76,6 @@
                       </div>
                   @endif
       </div>
-      
       <div class=" col-md-4">
         <form class="form-inline my-2 my-lg-0">
           <div class="row mt-2">
@@ -86,13 +86,11 @@
               <button class="btn btn-dark my-2 my-sm-0" type="submit">Search</button>
             </div>
           </div>
-            
-            
           </form>
       </div>
       <div class="col-md-2">
-        <a href="/input-table">
-        <button type="button"  class="btn btn-success btn-sm">tambah</button>
+        <a href="/input-bumil">
+        <button type="button" class="btn btn-success btn-sm">tambah</button>
         </a>
       </div>
       </div>
@@ -101,17 +99,19 @@
             <thead>
               <tr>
                 <th>No</th>
-                <th>Tanggal</th>
-                <th>Nama Anak</th>
-                <th>NIK</th>
-                <th>Nama Orang Tua</th>
-                <th>Tanggal Lahir</th>
-                <th>ALamat</th>
+                <th>Tanggal Pemeriksaan</th>
+                <th>Nama Ibu</th>
+                <th>Nama Suami</th>
+                <th>NIK Ibu</th>
+                <th>NIK Suami</th>
+                <th>NO KK</th>
+                
+                <th>Alamat</th>
                 <th>Action</th>
               </tr>
             </thead>
             <tbody>
-              @foreach ($imunisasis as $key=> $imunisasi)
+              {{-- @foreach ($imunisasis as $key=> $imunisasi)
                 <tr>
                   <td>{{$key+1}}</td>
                   <td>{{$imunisasi->tanggal}}</td>
@@ -126,10 +126,27 @@
                     </a>
                   </td>
                 </tr>
-              @endforeach
+              @endforeach --}}
+              <tr>
+                <td>1</td>
+                <td>12/12/2024</td>
+                <td>Sutinah</td>
+                <td>Suyanto</td>
+                <td>34031011080001</td>
+                <td>34031011080002</td>
+                <td>34031011080003</td>
+
+                <td>Gunungkidul</td>
+             
+                <td>
+                    <a href="/detail-bumil">
+                      <button type="button" class="btn btn-info btn-sm" >Detail</button>
+                    </a>
+                  </td>
+              </tr>
             </tbody>
           </table>
-          {{ $imunisasis->links() }}
+          {{-- {{ $imunisasis->links() }} --}}
       </div>
   </div>
 {{-- end --}}

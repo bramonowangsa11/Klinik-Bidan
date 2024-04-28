@@ -62,6 +62,19 @@ Route::get('/detail-table', function () {
 Route::get('/test', function () {
     return view('layouts.admin.test-modal');
 });
+Route::get('/test', function () {
+    return view('layouts.admin.test-modal');
+});
+Route::get('/ibu-hamil', function () {
+    return view('layouts.admin.bumil-table-data');
+});
+Route::get('/input-bumil', function () {
+    return view('layouts.admin.bumil-input-data');
+});
+Route::get('/detail-bumil', function () {
+    return view('layouts.admin.detail-bumil');
+});
+
 
 
 

@@ -26,11 +26,17 @@
             </a>
         </li>
         <li>
-            <a href="/input-table" class="nav-link text-white active">
-            <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#table"></use></svg>
-            Input Data
-            </a>
-        </li>
+                    <a href="/input-table" class="nav-link text-white dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown">
+                    <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#table"></use></svg>
+                    input Data
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="/input-table">Imunisasi</a>
+                        <a class="dropdown-item" href="/input-bumil">Ibu Hamil</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Submenu 3</a>
+                    </div>
+                </li>
         <li>
             <a href="#" class="nav-link text-white">
             <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#grid"></use></svg>
@@ -64,7 +70,7 @@
 <div class="col-md-9">
     <div class="row">
         <div class=" mt-3">
-            <h1>Input Data</h1>
+            <h1>Input Data Imunisasi</h1>
         </div>
         @if(Session::has('success'))
                     <div class="alert alert-success">
