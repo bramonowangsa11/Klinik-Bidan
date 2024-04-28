@@ -12,6 +12,16 @@ class ImunisasiController extends Controller
     public function inputImunisasi(){
         return view('layouts.admin.input-table-imunisasi');
     }
+    public function search(Request $request){
+        $imunisasis = Imunisasi::where('nama_anak','like','%'.$request->input('keyword').'%')
+                ->paginate(10);
+        if($imunisasis->isEmpty()){
+            return redirect('/admin')->with('errors',"data tidak  ditemukan");
+        }
+        else{
+            return view('layouts/admin/dashboard-admin',compact('imunisasis'));
+        }
+    }
     public function index(){
         $imunisasis = Imunisasi::paginate(10);
         

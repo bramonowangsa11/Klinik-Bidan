@@ -25,3 +25,4 @@ Route::get('/imunisasi',[ImunisasiController::class,'index']);
 Route::get('/imunisasi/{id}',[ImunisasiController::class,'showid']);
 Route::delete('/imunisasi/{id}',[ImunisasiController::class,'destroy']);
 Route::put('/imunisasi/{id}',[ImunisasiController::class,'update']);
+Route::get('/search',[ImunisasiController::class,'search']);

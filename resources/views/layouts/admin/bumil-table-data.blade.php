@@ -74,18 +74,27 @@
                       <div class="alert alert-success">
                           {{ Session::get('success') }}
                       </div>
-                  @endif
+          @endif
+          @if(session('errors'))
+              <div class="alert alert-danger">
+                  {{ session('errors') }}
+              </div>
+          @endif
+
       </div>
       <div class=" col-md-4">
-        <form class="form-inline my-2 my-lg-0">
+        <form class="form-inline my-2 my-lg-0" action="{{route('bumil.search')}}" method="POST">
+          @csrf
           <div class="row mt-2">
             <div class="col-md-9">
-              <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+              <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="keyword">
             </div>
             <div class="col-md-3">
               <button class="btn btn-dark my-2 my-sm-0" type="submit">Search</button>
             </div>
           </div>
+            
+            
           </form>
       </div>
       <div class="col-md-2">
@@ -111,6 +120,25 @@
               </tr>
             </thead>
             <tbody>
+              @foreach ($ancs as $key=> $anc)
+                <tr>
+                  <td>{{$key+1}}</td>
+                  <td>{{$anc->tgl_pemeriksaan}}</td>
+                  <td>{{$anc->nama_ibu}}</td>
+                  <td>{{$anc->nama_suami}}</td>
+                  <td>{{$anc->nik_ibu}}</td>
+                  <td>{{$anc->nik_suami}}</td>
+                  <td>{{$anc->tgl_pemeriksaan}}</td>
+
+                  <td>{{$anc->alamat}}</td>
+              
+                  <td>
+                      <a href="{{route('bumil.showid',['id'=>$anc->id])}}">
+                        <button type="button" class="btn btn-info btn-sm" >Detail</button>
+                      </a>
+                    </td>
+                </tr>
+              @endforeach
               {{-- @foreach ($imunisasis as $key=> $imunisasi)
                 <tr>
                   <td>{{$key+1}}</td>
@@ -127,26 +155,10 @@
                   </td>
                 </tr>
               @endforeach --}}
-              <tr>
-                <td>1</td>
-                <td>12/12/2024</td>
-                <td>Sutinah</td>
-                <td>Suyanto</td>
-                <td>34031011080001</td>
-                <td>34031011080002</td>
-                <td>34031011080003</td>
-
-                <td>Gunungkidul</td>
-             
-                <td>
-                    <a href="/detail-bumil">
-                      <button type="button" class="btn btn-info btn-sm" >Detail</button>
-                    </a>
-                  </td>
-              </tr>
+              
             </tbody>
           </table>
-          {{-- {{ $imunisasis->links() }} --}}
+          {{ $ancs->links() }}
       </div>
   </div>
 {{-- end --}}

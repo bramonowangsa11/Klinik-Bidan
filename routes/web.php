@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AncController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\PasienController;
 use App\Http\Controllers\SessionController;
@@ -43,7 +44,12 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/imunisasi/{id}', [ImunisasiController::class,'showid'])->name('imunisasi.show')->middleware('userAkses:admin');
     Route::delete('/imunisasi/{id}', [ImunisasiController::class,'destroy'])->name('imunisasi.destroy')->middleware('userAkses:admin');
     Route::put('/imunisasi/{id}', [ImunisasiController::class,'update'])->name('imunisasi.update')->middleware('userAkses:admin');
+    Route::post('imunisasi/search',[ImunisasiController::class,'search'])->name('imunisasi.search')->middleware('userAkses:admin');
+    Route::delete('/bumil/{id}',[AncController::class,'destroy'])->name('bumil.delete')->middleware('userAkses:admin');
     Route::get('/logout',[SessionController::class,'logout']);
+    Route::post('/input-bumil',[AncController::class,'store'])->name('bumil.store');
+    Route::put('/bumil/{id}',[AncController::class,'update'])->name('bumil.update');
+    Route::post('bumil/search',[AncController::class,'search'])->name('bumil.search');
 });
 
 // routes dashboard admin
@@ -65,15 +71,11 @@ Route::get('/test', function () {
 Route::get('/test', function () {
     return view('layouts.admin.test-modal');
 });
-Route::get('/ibu-hamil', function () {
-    return view('layouts.admin.bumil-table-data');
-});
+Route::get('/ibu-hamil',[AncController::class,'index']);
 Route::get('/input-bumil', function () {
     return view('layouts.admin.bumil-input-data');
 });
-Route::get('/detail-bumil', function () {
-    return view('layouts.admin.detail-bumil');
-});
+Route::get('/detail-bumil/{id}',[AncController::class,'showid'])->name('bumil.showid');
 
 
 

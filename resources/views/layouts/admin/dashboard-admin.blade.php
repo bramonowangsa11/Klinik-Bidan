@@ -73,14 +73,20 @@
                       <div class="alert alert-success">
                           {{ Session::get('success') }}
                       </div>
-                  @endif
+          @endif
+          @if(session('errors'))
+              <div class="alert alert-danger">
+                  {{ session('errors') }}
+              </div>
+          @endif
       </div>
       
       <div class=" col-md-4">
-        <form class="form-inline my-2 my-lg-0">
+        <form class="form-inline my-2 my-lg-0" action="{{route('imunisasi.search')}}" method="POST">
+          @csrf
           <div class="row mt-2">
             <div class="col-md-9">
-              <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+              <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="keyword">
             </div>
             <div class="col-md-3">
               <button class="btn btn-dark my-2 my-sm-0" type="submit">Search</button>
