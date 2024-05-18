@@ -68,48 +68,45 @@
     {{-- content --}}
     <div class="container col-md-9 ">
         <h1>RESERVASI</h1>
+        @if(Session::has('success'))
+                      <div class="alert alert-success">
+                          {{ Session::get('success') }}
+                      </div>
+        @endif
+        @if(session('errors'))
+              <div class="alert alert-danger">
+                  {{ session('errors') }}
+              </div>
+        @endif
         <div class="row d-flex justify-content-center align-items-center">
             <div class="col-md-5  align-items-center">
-                <form action="">
+                <form action="reservasi" method="POST">
+                    @csrf
                     <div class="mb-3">
                         <label for="tglReservasi" class="form-label">Tanggal Reservasi</label>
-                        <input type="date" class="form-control" id="tglReservasi" placeholder="dd/mm/yyyy" disabled>
+                        <input type="date" class="form-control" id="tglReservasi" placeholder="dd/mm/yyyy" name="tgl_reservasi" value="{{$tgl}}" readonly>
                     </div>
                     <div class="mb-3">
                         <label for="Sesi" class="form-label">Sesi Ke-</label>
-                        <select class="form-select" id="Sesi" aria-label="Default select example">
-                            <option selected>Sesi</option>
-                            <option value="1">Sesi 1</option>
-                            <option value="2">Sesi 2</option>
-                            <option value="3">Sesi 3</option>
-                            <option value="4">Sesi 4</option>
-                            <option value="5">Sesi 5</option>
-                            <option value="6">Sesi 6</option>
-                            <option value="7">Sesi 7</option>
-                            <option value="8">Sesi 8</option>
-                            <option value="9">Sesi 9</option>
-                            <option value="10">Sesi 10</option>
-                            <option value="11">Sesi 11</option>
-                            <option value="12">Sesi 12</option>
-                            <option value="13">Sesi 13</option>
-                            <option value="14">Sesi 14</option>
-
+                        <select class="form-select" id="Sesi" aria-label="Default select example" name="sesi">
+                            @foreach($availableSessions as $session)
+                                <option name='sesi' value="{{ $session }}">Sesi {{ $session }}</option>
+                            @endforeach
                         </select>
                     </div>
                     <div class="mb-3">
                         <label for="layanan" class="form-label">Jenis Layanan</label>
-                        <select class="form-select" id="layanan" aria-label="Default select example">
-                            <option selected>Layanan</option>
-                            <option value="1">Imunisasi</option>
-                            <option value="2">Ibu Hamil</option>
-                            <option value="3">KB</option>
+                        <select class="form-select" id="layanan" aria-label="Default select example" name="layanan">
+                            <option name="layanan" value="Imunisasi">Imunisasi</option>
+                            <option name="layanan" value="Bumil">Ibu Hamil</option>
+                            <option name="layanan" value="KB">KB</option>
                         </select>
                     </div>
                     
 
                     <div class="mb-3">
                         <label for="keterangan" class="form-label">Keterangan</label>
-                        <textarea class="form-control" id="keterangan" rows="3"></textarea>
+                        <textarea class="form-control" id="keterangan" name="keterangan" rows="3"></textarea>
                     </div>
                     <button class="btn btn-success" type="submit">Reservasi</button>
                 </form>

@@ -89,7 +89,7 @@
                   </div>
                 @endif
         <div class="col-md-4">
-            <form class=" mt-5" method="POST" action="/input-table">
+            <form class=" mt-5" method="POST" action="/imunisasi">
                 @csrf
             {{-- kiri --}}
                 <div class="">

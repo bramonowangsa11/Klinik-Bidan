@@ -2,11 +2,12 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AncController;
+use App\Http\Controllers\SeatController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\PasienController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\ImunisasiController;
-use App\Http\Controllers\SeatController;
+use App\Http\Controllers\ReservasiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,6 +40,8 @@ Route::middleware(['guest'])->group(function(){
 });
 Route::middleware(['auth'])->group(function () {
     Route::get('/pasien',[PasienController::class,'index'])->middleware('userAkses:pasien');
+    Route::get('/reservasi',[ReservasiController::class,'sesibyDate'])->middleware('userAkses:pasien');
+    Route::post('/reservasi',[ReservasiController::class,'store'])->middleware('userAkses:pasien');
     Route::get('/admin',[ImunisasiController::class,'index'])->middleware('userAkses:admin');
     Route::get('/input-table',[ImunisasiController::class,'inputImunisasi'])->middleware('userAkses:admin');
     Route::post('/imunisasi',[ImunisasiController::class,'store'])->middleware('userAkses:admin');
@@ -84,9 +87,9 @@ Route::get('/seats', [SeatController::class, 'index']);
 Route::post('/submit-seats', [SeatController::class, 'submitSeats'])->name('submitSeats');
 
 //routes reservasi 2
-Route::get('/reservasi2', function () {
-    return view('layouts.users.user-reservasi2');
-});
+// Route::get('/reservasi2', function () {
+//     return view('layouts.users.user-reservasi2');
+// });
 
 
 
