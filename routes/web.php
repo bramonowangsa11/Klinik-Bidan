@@ -6,6 +6,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\PasienController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\ImunisasiController;
+use App\Http\Controllers\SeatController;
 
 /*
 |--------------------------------------------------------------------------
@@ -76,6 +77,18 @@ Route::get('/input-bumil', function () {
     return view('layouts.admin.bumil-input-data');
 });
 Route::get('/detail-bumil/{id}',[AncController::class,'showid'])->name('bumil.showid');
+
+// routes/web.php
+
+Route::get('/seats', [SeatController::class, 'index']);
+Route::post('/submit-seats', [SeatController::class, 'submitSeats'])->name('submitSeats');
+
+//routes reservasi 2
+Route::get('/reservasi2', function () {
+    return view('layouts.users.user-reservasi2');
+});
+
+
 
 
 
