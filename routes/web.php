@@ -40,16 +40,17 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/pasien',[PasienController::class,'index'])->middleware('userAkses:pasien');
     Route::get('/admin',[ImunisasiController::class,'index'])->middleware('userAkses:admin');
     Route::get('/input-table',[ImunisasiController::class,'inputImunisasi'])->middleware('userAkses:admin');
-    Route::post('/input-table',[ImunisasiController::class,'store'])->middleware('userAkses:admin');
+    Route::post('/imunisasi',[ImunisasiController::class,'store'])->middleware('userAkses:admin');
     Route::get('/imunisasi/{id}', [ImunisasiController::class,'showid'])->name('imunisasi.show')->middleware('userAkses:admin');
     Route::delete('/imunisasi/{id}', [ImunisasiController::class,'destroy'])->name('imunisasi.destroy')->middleware('userAkses:admin');
     Route::put('/imunisasi/{id}', [ImunisasiController::class,'update'])->name('imunisasi.update')->middleware('userAkses:admin');
     Route::post('imunisasi/search',[ImunisasiController::class,'search'])->name('imunisasi.search')->middleware('userAkses:admin');
     Route::delete('/bumil/{id}',[AncController::class,'destroy'])->name('bumil.delete')->middleware('userAkses:admin');
     Route::get('/logout',[SessionController::class,'logout']);
-    Route::post('/input-bumil',[AncController::class,'store'])->name('bumil.store');
-    Route::put('/bumil/{id}',[AncController::class,'update'])->name('bumil.update');
-    Route::post('bumil/search',[AncController::class,'search'])->name('bumil.search');
+    Route::post('/input-bumil',[AncController::class,'store'])->name('bumil.store')->middleware('userAkses:admin');
+    Route::put('/bumil/{id}',[AncController::class,'update'])->name('bumil.update')->middleware('userAkses:admin');
+    Route::post('bumil/search',[AncController::class,'search'])->name('bumil.search')->middleware('userAkses:admin');
+    Route::get('/ibu-hamil',[AncController::class,'index'])->middleware('userAkses:admin');
 });
 
 // routes dashboard admin
@@ -71,7 +72,6 @@ Route::get('/test', function () {
 Route::get('/test', function () {
     return view('layouts.admin.test-modal');
 });
-Route::get('/ibu-hamil',[AncController::class,'index']);
 Route::get('/input-bumil', function () {
     return view('layouts.admin.bumil-input-data');
 });
