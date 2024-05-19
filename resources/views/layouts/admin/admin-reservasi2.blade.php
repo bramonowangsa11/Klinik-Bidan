@@ -7,7 +7,7 @@
         <div class="d-flex flex-column p-3 text-bg-secondary vh-100" style="width: 280px;">
             <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
             <svg class="bi pe-none me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
-            <span class="fs-4">Hi, {{ $user->name }}</span>
+            <span class="fs-4">Hi, Admin</span>
             </a>
             <hr>
                 <ul class="nav nav-pills flex-column mb-auto">
@@ -18,9 +18,9 @@
                     </a>
                 </li>
                 <li>
-                    <a href="/lihat-reservasi-user" class="nav-link text-white">
+                    <a href="/ibu-hamil" class="nav-link text-white">
                     <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
-                    Cek Reservasi
+                    Ibu Hamil
                     </a>
                 </li>
                 <li>
@@ -66,27 +66,49 @@
     </div>
     {{-- sidebar end --}}
     {{-- content --}}
-    <div class="container col-md-9">
+    <div class="container col-md-9 ">
         <h1>RESERVASI</h1>
         @if(Session::has('success'))
                       <div class="alert alert-success">
                           {{ Session::get('success') }}
                       </div>
-          @endif
-          @if(session('errors'))
+        @endif
+        @if(session('errors'))
               <div class="alert alert-danger">
                   {{ session('errors') }}
               </div>
-          @endif
+        @endif
         <div class="row d-flex justify-content-center align-items-center">
-            <div class="col-md-5 align-items-center">
-                <form action="/reservasi" method="GET">
+            <div class="col-md-5  align-items-center">
+                <form action="/admin-reservasi" method="POST">
                     @csrf
                     <div class="mb-3">
                         <label for="tglReservasi" class="form-label">Tanggal Reservasi</label>
-                        <input type="date" class="form-control" id="tglReservasi" placeholder="dd/mm/yyyy" name='tgl_reservasi'>
+                        <input type="date" class="form-control" id="tglReservasi" placeholder="dd/mm/yyyy" name="tgl_reservasi" value="{{$tgl}}" readonly>
                     </div>
-                    <button class="btn btn-primary" type="submit">Submit</button>
+                    <div class="mb-3">
+                        <label for="Sesi" class="form-label">Sesi Ke-</label>
+                        <select class="form-select" id="Sesi" aria-label="Default select example" name="sesi">
+                            @foreach($availableSessions as $session)
+                                <option name='sesi' value="{{ $session }}">Sesi {{ $session }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="layanan" class="form-label">Jenis Layanan</label>
+                        <select class="form-select" id="layanan" aria-label="Default select example" name="layanan">
+                            <option name="layanan" value="Imunisasi">Imunisasi</option>
+                            <option name="layanan" value="Bumil">Ibu Hamil</option>
+                            <option name="layanan" value="KB">KB</option>
+                        </select>
+                    </div>
+                    
+
+                    <div class="mb-3">
+                        <label for="keterangan" class="form-label">Keterangan</label>
+                        <textarea class="form-control" id="keterangan" name="keterangan" rows="3"></textarea>
+                    </div>
+                    <button class="btn btn-success" type="submit">Reservasi</button>
                 </form>
             </div>
 

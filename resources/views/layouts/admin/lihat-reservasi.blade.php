@@ -68,7 +68,7 @@
   <div class="col-md-9 vh-100">
     <div class="row col-md-12">
       <div class=" col-md-7 mt-2">
-          <h1>TABEL IMUNISASI</h1>
+          <h1>Daftar Reservasi</h1>
           @if(Session::has('success'))
                       <div class="alert alert-success">
                           {{ Session::get('success') }}
@@ -97,7 +97,7 @@
           </form>
       </div>
       <div class="col-md-2">
-        <a href="/input-table">
+        <a href="/admin-reservasi">
         <button type="button"  class="btn btn-success btn-sm">tambah</button>
         </a>
       </div>
@@ -107,17 +107,25 @@
             <thead>
               <tr>
                 <th>No</th>
+                <th>Nama</th>
                 <th>Tanggal</th>
-                <th>Nama Anak</th>
-                <th>NIK</th>
-                <th>Nama Orang Tua</th>
-                <th>Tanggal Lahir</th>
-                <th>ALamat</th>
+                <th>Sesi</th>
+                <th>Jenis Layanan</th>
+                <th>Keterangan</th>
                 <th>Action</th>
               </tr>
             </thead>
             <tbody>
-              @foreach ($imunisasis as $key=> $imunisasi)
+                <tr>
+                    <td>1</td>
+                    <td>Agus</td>
+                    <td>12-12-2024</td>
+                    <td>Sesi 1</td>
+                    <td>Imunisasi</td>
+                    <td>Pemberian Vitamin</td>
+                    
+                
+              {{-- @foreach ($imunisasis as $key=> $imunisasi)
                 <tr>
                   <td>{{$key+1}}</td>
                   <td>{{$imunisasi->tanggal}}</td>
@@ -126,16 +134,18 @@
                   <td>{{$imunisasi->nama_orangtua}}</td>
                   <td>{{$imunisasi->tgl_lahir}}</td>
                   <td>{{$imunisasi->alamat}}</td>
-                  <td>
-                    <a href="{{ route('imunisasi.show', ['id' => $imunisasi->id]) }}">
-                      <button type="button" class="btn btn-info btn-sm" >Detail</button>
-                    </a>
+                  <td> --}}
+                    
+                        <td>
+                            <a href="">
+                            <button type="button" class="btn btn-danger btn-sm" >Delete</button>
+                            </a>
                   </td>
                 </tr>
-              @endforeach
+              {{-- @endforeach --}}
             </tbody>
           </table>
-          {{ $imunisasis->links() }}
+         
       </div>
   </div>
 {{-- end --}}

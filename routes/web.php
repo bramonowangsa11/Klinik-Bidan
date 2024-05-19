@@ -90,6 +90,18 @@ Route::post('/submit-seats', [SeatController::class, 'submitSeats'])->name('subm
 // Route::get('/reservasi2', function () {
 //     return view('layouts.users.user-reservasi2');
 // });
+Route::get('/daftar-reservasi', function () {
+    return view('layouts.admin.lihat-reservasi');
+});
+Route::get('/admin-reservasi', function () {
+    return view('layouts.admin.admin-reservasi');
+});
+Route::get('/reservasi-admin', function () {
+    return view('layouts.admin.admin-reservasi2');
+});
+Route::get('/lihat-reservasi-user', function () {
+    return view('layouts.users.lihat-reservasi-user');
+});
 
 
 

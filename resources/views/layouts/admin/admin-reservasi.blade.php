@@ -7,7 +7,7 @@
         <div class="d-flex flex-column p-3 text-bg-secondary vh-100" style="width: 280px;">
             <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
             <svg class="bi pe-none me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
-            <span class="fs-4">Hi, {{ $user->name }}</span>
+            <span class="fs-4">Hi, Admin</span>
             </a>
             <hr>
                 <ul class="nav nav-pills flex-column mb-auto">
@@ -18,9 +18,9 @@
                     </a>
                 </li>
                 <li>
-                    <a href="/lihat-reservasi-user" class="nav-link text-white">
+                    <a href="/ibu-hamil" class="nav-link text-white">
                     <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
-                    Cek Reservasi
+                    Ibu Hamil
                     </a>
                 </li>
                 <li>
@@ -36,9 +36,9 @@
                     </div>
                 </li>
                 <li>
-                    <a href="#" class="nav-link text-white">
+                    <a href="/daftar-reservasi" class="nav-link text-white">
                     <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#grid"></use></svg>
-                    Products
+                    Daftar Reservasi
                     </a>
                 </li>
                 <li>
@@ -80,12 +80,13 @@
           @endif
         <div class="row d-flex justify-content-center align-items-center">
             <div class="col-md-5 align-items-center">
-                <form action="/reservasi" method="GET">
+                <form action="/reservasi-admin" method="GET">
                     @csrf
                     <div class="mb-3">
                         <label for="tglReservasi" class="form-label">Tanggal Reservasi</label>
                         <input type="date" class="form-control" id="tglReservasi" placeholder="dd/mm/yyyy" name='tgl_reservasi'>
                     </div>
+                    
                     <button class="btn btn-primary" type="submit">Submit</button>
                 </form>
             </div>
