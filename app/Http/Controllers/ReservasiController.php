@@ -29,20 +29,15 @@ class ReservasiController extends Controller
         } 
     }
     public function index(){
-        $reservasis = Reservasi::paginate(10);
-        if($reservasis->isEmpty()){
-            return response()->json([
-                'success' => false,
-                'messages' => 'data kosong',
-            ],404);
+        if(Auth::user()->role == "admin"){
+            $reservasis = Reservasi::with('user')->paginate(10);
+            return view('layouts.admin.lihat-reservasi',compact('reservasis'));
         }
         else{
-            return response()->json([
-                'success' => true,
-                'messages' => 'ok',
-                'data' => $reservasis,
-            ],200);
+            $id_user = Auth::user()->id;
+            $reservasis = Reservasi::with('user')->where('user_id',$id_user)->paginate(10);
         }
+        return view('layouts.users.lihat-reservasi-user',compact('reservasis'));
     }
 
     public function store(Request $request){
@@ -74,15 +69,100 @@ class ReservasiController extends Controller
             $validated_data['user_id'] = Auth::user()->id;
             $reservasis = Reservasi::create($validated_data);
             Session::flash('success', 'reservasi berhasil didaftarkan');
-            return redirect('/pasien');
+            if(Auth::user()->role=='pasien'){
+                return redirect('/pasien');
+            }
+            else{
+                return redirect('/daftar-reservasi');
+            }
+            
         }
     }
 
     public function destroy($id){
-        $reservasi = Reservasi::findOrfail($id);
-        $reservasi->delete();
-        Session::flash('success','data berhasil dihapus');
-        return redirect('/ibu-hamil');
+        if(Auth::user()->role == "pasien"){
+            $reservasis = Reservasi::findOrfail($id);
+            $tgl = $reservasis["tgl_reservasi"];
+            $sesi = $reservasis["sesi"];
+            switch ($sesi){
+                case 1:{
+                    $jam = '06:00';
+                    break;
+                }
+                case 2:{
+                    $jam = '06:30';
+                    break;
+                }
+                case 3:{
+                    $jam = '07:00';
+                    break;
+                }
+                case 4:{
+                    $jam = '07:30';
+                    break;
+                }
+                case 5:{
+                    $jam = '08:00';
+                    break;
+                }
+                case 6:{
+                    $jam = '08:30';
+                    break;
+                }
+                case 7:{
+                    $jam = '16:00';
+                    break;
+                }
+                case 8:{
+                    $jam = '16:30';
+                    break;
+                }
+                case 9:{
+                    $jam = '17:00';
+                    break;
+                }
+                case 10:{
+                    $jam = '17:30';
+                    break;
+                }
+                case 11:{
+                    $jam = '18:00';
+                    break;
+                }
+                case 12:{
+                    $jam = '18:30';
+                    break;
+                }
+                case 13:{
+                    $jam = '19:00';
+                    break;
+                }
+                case 14:{
+                    $jam = '19:30';
+                    break;
+                }
+            }
+            $tgl_jam = $tgl.' '.$jam;
+            $waktu_reservasi = Carbon::createFromFormat('Y-m-d H:i', $tgl_jam,'Asia/Jakarta');
+            $now = Carbon::now('Asia/Jakarta');
+            $perbedaanJam = $waktu_reservasi->diffInHours($now);
+            if($perbedaanJam<3){
+                return redirect()->back()->with('errors','pembatalan reservasi hanya dapat dilakukan 3 jam sebelum waktu reservasi');
+            }
+            else{
+                $reservasis->delete();
+                Session::flash('success','data berhasil dihapus');
+                return redirect()->back();
+            }
+        }
+        else{
+            $reservasi = Reservasi::findOrfail($id);
+            $reservasi->delete();
+            Session::flash('success','data berhasil dihapus');
+            return redirect()->back();
+        }
+        
+        
     }
 
     public function update(Request $request, $id){

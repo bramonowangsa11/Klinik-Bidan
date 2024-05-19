@@ -116,13 +116,16 @@
               </tr>
             </thead>
             <tbody>
+              @foreach ($reservasis as $key=> $reservasi)
+                
+              
                 <tr>
-                    <td>1</td>
-                    <td>Agus</td>
-                    <td>12-12-2024</td>
-                    <td>Sesi 1</td>
-                    <td>Imunisasi</td>
-                    <td>Pemberian Vitamin</td>
+                    <td>{{$key+1}}</td>
+                    <td>{{$reservasi->user->name}}</td>
+                    <td>{{$reservasi->tgl_reservasi}}</td>
+                    <td>{{$reservasi->sesi}}</td>
+                    <td>{{$reservasi->layanan}}</td>
+                    <td>{{$reservasi->keterangan}}</td>
                     
                 
               {{-- @foreach ($imunisasis as $key=> $imunisasi)
@@ -137,15 +140,17 @@
                   <td> --}}
                     
                         <td>
-                            <a href="">
-                            <button type="button" class="btn btn-danger btn-sm" >Delete</button>
-                            </a>
+                          <form action="{{route('reservasi.delete',$reservasi->id)}}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger btn-sm" >Delete</button>
+                          </form>
                   </td>
                 </tr>
-              {{-- @endforeach --}}
+              @endforeach
             </tbody>
           </table>
-         
+          {{ $reservasis->links() }}
       </div>
   </div>
 {{-- end --}}
