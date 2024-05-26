@@ -75,7 +75,7 @@
         @endif
         <div class="row d-flex justify-content-center align-items-center">
             <div class="col-md-5  align-items-center">
-                <form action="/admin-reservasi" method="POST">
+                <form action="/reservasi" method="POST">
                     @csrf
                     <div class="mb-3">
                         <label for="tglReservasi" class="form-label">Tanggal Reservasi</label>

@@ -39,9 +39,17 @@ Route::middleware(['guest'])->group(function(){
     Route::post('/login',[SessionController::class,'login']);
 });
 Route::middleware(['auth'])->group(function () {
+    Route::get('/lihat-reservasi-user',[ReservasiController::class,'index'])->middleware('userAkses:pasien');
+    Route::get('daftar-reservasi',[ReservasiController::class,'index'])->middleware('userAkses:admin');
+    Route::get('/admin-reservasi', function () {
+        return view('layouts.admin.admin-reservasi');
+    })->middleware('userAkses:admin');
+    Route::get('reservasi-admin',[AdminController::class,'sesiByDate'])->middleware('userAkses:admin');
+    Route::delete('reservasi/{id}',[ReservasiController::class,'destroy'])->name('reservasi.delete');
+
     Route::get('/pasien',[PasienController::class,'index'])->middleware('userAkses:pasien');
     Route::get('/reservasi',[ReservasiController::class,'sesibyDate'])->middleware('userAkses:pasien');
-    Route::post('/reservasi',[ReservasiController::class,'store'])->middleware('userAkses:pasien');
+    Route::post('/reservasi',[ReservasiController::class,'store']);
     Route::get('/admin',[ImunisasiController::class,'index'])->middleware('userAkses:admin');
     Route::get('/input-table',[ImunisasiController::class,'inputImunisasi'])->middleware('userAkses:admin');
     Route::post('/imunisasi',[ImunisasiController::class,'store'])->middleware('userAkses:admin');
@@ -90,18 +98,16 @@ Route::post('/submit-seats', [SeatController::class, 'submitSeats'])->name('subm
 // Route::get('/reservasi2', function () {
 //     return view('layouts.users.user-reservasi2');
 // });
-Route::get('/daftar-reservasi', function () {
-    return view('layouts.admin.lihat-reservasi');
-});
-Route::get('/admin-reservasi', function () {
-    return view('layouts.admin.admin-reservasi');
-});
-Route::get('/reservasi-admin', function () {
-    return view('layouts.admin.admin-reservasi2');
-});
-Route::get('/lihat-reservasi-user', function () {
-    return view('layouts.users.lihat-reservasi-user');
-});
+// Route::get('/daftar-reservasi', function () {
+//     return view('layouts.admin.lihat-reservasi');
+// });
+
+// Route::get('/reservasi-admin', function () {
+//     return view('layouts.admin.admin-reservasi2');
+// });
+// Route::get('/lihat-reservasi-user', function () {
+//     return view('layouts.users.lihat-reservasi-user');
+// });
 
 
 

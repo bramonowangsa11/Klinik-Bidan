@@ -12,15 +12,15 @@
         <hr>
         <ul class="nav nav-pills flex-column mb-auto">
           <li class="nav-item">
-            <a href="/admin" class="nav-link text-white" aria-current="page">
+            <a href="/pasien" class="nav-link active" aria-current="page">
               <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#home"></use></svg>
-              Imunisasi
+              Reservasi
             </a>
           </li>
           <li>
-            <a href="/ibu-hamil" class="nav-link text-white">
+            <a href="/lihat-reservasi-user" class="nav-link text-white">
               <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
-              Ibu Hamil
+              Cek Reservasi
             </a>
           </li>
           <li>
@@ -35,12 +35,17 @@
             </div>
           </li>
           <li>
-            <a href="/daftar-reservasi" class="nav-link text-white active">
+            <a href="/daftar-reservasi" class="nav-link text-white">
               <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#grid"></use></svg>
               Daftar Reservasi
             </a>
           </li>
-          
+          <li>
+            <a href="#" class="nav-link text-white">
+              <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
+              Customers
+            </a>
+          </li>
         </ul>
         <hr>
         <div class="dropdown">
@@ -92,7 +97,7 @@
           </form>
       </div>
       <div class="col-md-2">
-        <a href="/admin-reservasi">
+        <a href="/reservasi">
         <button type="button"  class="btn btn-success btn-sm">tambah</button>
         </a>
       </div>
@@ -111,27 +116,39 @@
               </tr>
             </thead>
             <tbody>
-            @foreach ($reservasis as $key=> $reservasi)
+              @foreach ($reservasis as $key=> $reservasi)
                 
               
-              <tr>
+                <tr>
+                    <td>{{$key+1}}</td>
+                    <td>{{$reservasi->user->name}}</td>
+                    <td>{{$reservasi->tgl_reservasi}}</td>
+                    <td>{{$reservasi->sesi}}</td>
+                    <td>{{$reservasi->layanan}}</td>
+                    <td>{{$reservasi->keterangan}}</td>
+                    
+                
+              {{-- @foreach ($imunisasis as $key=> $imunisasi)
+                <tr>
                   <td>{{$key+1}}</td>
-                  <td>{{$reservasi->user->name}}</td>
-                  <td>{{$reservasi->tgl_reservasi}}</td>
-                  <td>{{$reservasi->sesi}}</td>
-                  <td>{{$reservasi->layanan}}</td>
-                  <td>{{$reservasi->keterangan}}</td>
-                  
-                      <td>
-                        <form action="{{route('reservasi.delete',$reservasi->id)}}" method="POST">
-                          @csrf
-                          @method('DELETE')
-                          <button type="submit" class="btn btn-danger btn-sm" >Delete</button>
-                        </form>
-                            
-                </td>
-              </tr>
-            @endforeach
+                  <td>{{$imunisasi->tanggal}}</td>
+                  <td>{{$imunisasi->nama_anak}}</td>
+                  <td>{{$imunisasi->nik_anak}}</td>
+                  <td>{{$imunisasi->nama_orangtua}}</td>
+                  <td>{{$imunisasi->tgl_lahir}}</td>
+                  <td>{{$imunisasi->alamat}}</td>
+                  <td> --}}
+                    
+                        <td>
+                          <form action="{{route('reservasi.delete',$reservasi->id)}}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger btn-sm" >Delete</button>
+                          </form>
+                        
+                  </td>
+                </tr>
+              @endforeach
             </tbody>
           </table>
           {{ $reservasis->links() }}
