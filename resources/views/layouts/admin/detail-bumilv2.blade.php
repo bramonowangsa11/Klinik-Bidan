@@ -82,6 +82,56 @@
                 @endif
         </div>
         <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    {{-- biodata --}}
+                    <div class="">
+                        <h6>Tanggal Pemeriksaan</h6>
+                        <h6>Buku KIA</h6>
+                        <h6>Nama Ibu</h6>
+                        <h6>NIK Ibu</h6>
+                        <h6>Tanggal Lahir Ibu</h6>
+                        <h6>Umur Ibu</h6>
+                        <h6>Pendidikan Ibu</h6>
+                        <h6>Pekerjaan Ibu</h6>
+                        
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="">
+                        <h6>: {{$ancs->tgl_pemeriksaan}}</h6>
+                        <h6>: Ada</h6>
+                        <h6>: {{$ancs->nama_ibu}}</h6>
+                        <h6>: {{$ancs->nik_ibu}}</h6>
+                        <h6>: {{$ancs->tgl_lahir_ibu}}</h6>
+                        <h6>: 26</h6>
+                        <h6>: {{$ancs->pddk_ibu}}</h6>
+                        <h6>: Petani</h6>
+                    </div>
+
+                </div>
+                <div class="col-md-2">
+                    <div>
+                        
+                        <h6>Nama Suami</h6>
+                        <h6>NIK Suami</h6>
+                        <h6>No KK</h6>
+                        <h6>Alamat</h6>
+                    </div>
+
+                </div>
+                <div class="col-md-4">
+                    
+                        <h6>: Yanto</h6>
+                        <h6>: {{$ancs->nik_suami}}</h6>
+                        <h6>: 3403101108020000</h6>
+                        <h6>: {{$ancs->alamat}}</h6>
+
+                </div>
+
+            
+            
+            </div>
             <div class="row justify-content-center">
                 <div class="col-md-12">
                 <div class="card">
@@ -98,116 +148,64 @@
                         </li>
                     </ul>
                     </div>
+                    
                     <div class="card-body">
                     <div class="tab-content" id="myTabContent">
                         <!-- Halaman 1 -->
                         <div class="tab-pane fade show active" id="page1" role="tabpanel" aria-labelledby="page1-tab">
-                        <div class="row">
-                                <div class="col-md-4">
-                                        <div class="mb-2 form-outline border-0 border-bottom border-dark">
-                                            <label for="inputTanggalPemeriksaan" class="form-label">Tanggal Pemeriksaan</label>
-                                            <input type="date" class="form-control" id="inputTanggalPemeriksaan" disabled name="tanggalPemeriksaan" value="{{$ancs->tgl_pemeriksaan}}">
-                                            {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
-                                        </div>
-                                        <div class="mb-0">
-                                        <label for="inputREG" class="form-label">REG</label>
-                                        <input type="text" class="form-control" id="inputREG" disabled name="tanggalPemeriksaan" value="{{$ancs->alamat}}">
-                                        {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
-                                        </div>
-                                        <div class="mb-0">
-                                        <label for="inputBukuKIA" class="form-label">Buku KIA</label>
-                                        <input type="checkbox" class="form-check-input" id="inputBukuKIA" name="buku_kia" value='1' checked disabled>
-                                        <input type="hidden" name="buku_kia" value="0">
-                                        </div>
-                                        <div class="mb-3 form-outline border-0 border-bottom border-dark">
-                                            <label for="inputNamaIbu" class="form-label">Nama Ibu</label>
-                                            <input type="text" class="form-control" id="inputNamaIbu" aria-describedby="" value="{{$ancs->nama_ibu}}" name="nama_ibu" disabled>
-                                            {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
-                                        </div>
-                                        <div class="mb-3 form-outline border-0 border-bottom border-dark">
-                                            <label for="inputNamaSuami" class="form-label">Nama Suami</label>
-                                            <input type="text" class="form-control" id="inputNamaSuami" aria-describedby="" value="{{$ancs->nama_suami}}" name="nama_suami" disabled>
-                                            {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
-                                        </div>
-                                        <div class="mb-3 form-outline border-0 border-bottom border-dark">
-                                            <label for="inputNIK_ibu" class="form-label">NIK Ibu</label>
-                                            <input type="text" class="form-control" id="inputNIK_ibu" aria-describedby="" value="{{$ancs->nik_ibu}}" name="nik_ibu" disabled>
-                                            {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
-                                        </div>
-                                        <div class="mb-3 form-outline border-0 border-bottom border-dark">
-                                            <label for="inputNIK_suami" class="form-label">NIK Suami</label>
-                                            <input type="text" class="form-control" id="inputNIK_suami" aria-describedby="" value="{{$ancs->nik_suami}}" name="nik_suami" disabled>
-                                            {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
-                                        </div>
+                        <div class="">
+                                <div class="col-md-5">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Paritas</th>
+                                                <th>Spasing</th>
+                                                <th>P4K/Rencana Kelahiran</th>
+                                                <th>HPHT</th>
+                                                <th>HPL</th>
+                                                <th>Umur Kehamilan (Minggu)</th>
+                                                <th>Anamesa Kehamilan</th>
+                                                <th>Tinggi Badan</th>
+                                                <th>LILA</th>
+                                                <th>Berat Badan</th>
+                                                <th>TFU</th>
+                                                
+                                            </tr>
+
+                                            
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>{{$ancs->paritas}}</td>
+                                                <td>{{$ancs->parsing}}</td>
+                                                <td>{{$ancs->p4k}}</td>
+                                                <td>{{$ancs->HPPT}}</td>
+                                                <td>{{$ancs->HPL}}</td>
+                                                <td>{{$ancs->umur_kehamilan}}</td>
+                                                <td>{{$ancs->anamnesa}}</td>
+                                                <td>{{$ancs->TB}}</td>
+                                                <td>{{$ancs->LILA}}</td>
+                                                <td>{{$ancs->BB}}</td>
+                                                <td>{{$ancs->TFU}}</td>
+                                                
+                                            </tr>
+                                        </tbody>
+                                        
+
+                                        
+                                    </table>
+                                        
                                         
                                         
                                     
                                 </div>
                                 <div class="col-md-4">
-                                    <div class="mb-3 form-outline border-0 border-bottom border-dark">
-                                            <label for="inputNoKK" class="form-label">NO KK</label>
-                                            <input type="text" class="form-control" id="inputNoKK" aria-describedby="" value="3403101108020000" disabled name="noKK">
-                                            {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
-                                        </div>
-                                        <div class="mb-3 form-outline border-0 border-bottom border-dark">
-                                            <label for="inputTgl_lahir_ibu" class="form-label">Tanggal Lahir Ibu / Suami</label>
-                                            <input type="date" class="form-control" id="inputTgl_lahir-ibu" aria-describedby="" value="{{$ancs->tgl_lahir_ibu}}" name="tgl_lahir_ibu" disabled>
-                                            {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
-                                        </div>
-                                    <div class="mb-3 form-outline border-0 border-bottom border-dark">
-                                            <label for="inputUmur" class="form-label">Umur Ibu / Suami</label>
-                                            <input type="text" class="form-control" id="inputUmur" aria-describedby="" value="26" name="umur" disabled>
-                                            {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
-                                        </div>
-                                    <div class="mb-3 form-outline border-0 border-bottom border-dark ">
-                                        <label for="input_pendidikan" class="form-label">Pendidikan Ibu / Suami</label>
-                                        <input  type="text" class="form-control" id="input_pendidikan" aria-describedby="" name="pendidikan" value="{{$ancs->pddk_ibu}}" disabled>
-                                        {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
-                                    </div>
-                                    <div class="mb-3 form-outline border-0 border-bottom border-dark">
-                                        <label for="input_pekerjaan" class="form-label">Pekerjaan Ibu / Suami</label>
-                                        <input type="text" class="form-control" id="input_pekerjaan" aria-describedby="" name="pekerjaan" value="Petani" disabled>
-                                        {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
-                                    </div>
-                                    <div class="mb-3 form-outline border-0 border-bottom border-dark">
-                                        <label for="inputAlamat" class="form-label">Alamat</label>
-                                        <input type="text" class="form-control" id="inputAlamat" aria-describedby="" name="alamat" value="{{$ancs->alamat}}" disabled>
-                                        {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
-                                    </div>
+                                    
                                     
                                     
                                 </div>
                                 <div class="col-md-4">
-                                    <div class="mb-3 form-outline border-0 border-bottom border-dark">
-                                        <label for="input_noHP" class="form-label">No HP / BPJS</label>
-                                        <input type="text" class="form-control" id="input_noHP" aria-describedby="" name="noHP" value="{{$ancs->no_hp}}" disabled>
-                                        {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
-                                    </div>
-                                    <div class="mb-3 form-outline border-0 border-bottom border-dark">
-                                        <label for="inputParitas" class="form-label">Paritas</label>
-                                        <input type="text" class="form-control" id="inputParitas" aria-describedby="" name="paritas" value="{{$ancs->paritas}}" disabled>
-                                        {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
-                                    </div>
-                                    <div class="mb-3 form-outline border-0 border-bottom border-dark">
-                                        <label for="inputSpasing" class="form-label">Spasing</label>
-                                        <input type="text" class="form-control" id="inputSpasing" aria-describedby="" name="spasing" value="{{$ancs->parsing}}" disabled>
-                                        {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="inputP4K" class="form-label">P4K/Rencana Kelahiran</label>
-                                        <input type="checkbox" class="form-check-input" id="inputP4K" name="P4K" value='{{$ancs->p4k?'checked':''}}'  disabled>
-                                        <input type="hidden" name="HBO" value="0">
-                                        </div>
-                                    <div class="mb-3 form-outline border-0 border-bottom border-dark">
-                                        <label for="inputHPHT" class="form-label">HPHT</label>
-                                        <input type="date" class="form-control" id="inputHPHT" aria-describedby="" name="HPHT" value="{{$ancs->HPPT}}" disabled>
-                                            {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
-                                    </div>
-                                    <div class="mb-3 form-outline border-0 border-bottom border-dark">
-                                        <label for="inputHPL" class="form-label">HPL</label>
-                                        <input type="date" class="form-control" id="inputHPL" aria-describedby="" name="HPL" value="{{$ancs->HPL}}" disabled>
-                                            {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
-                                    </div>
+                                    
                                     
                                     
                                     <a class="btn btn-primary next-btn" data-toggle="tab" href="#page2" aria-selected="false">Next</a>

@@ -7,45 +7,22 @@
       <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-secondary" style="width: 280px; height:128vh">
         <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
           <svg class="bi pe-none me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
-          <span class="fs-4">Hi, Admin</span>
+          <span class="fs-4">Hi, User</span>
         </a>
         <hr>
         <ul class="nav nav-pills flex-column mb-auto">
           <li class="nav-item">
-            <a href="/pasien" class="nav-link active" aria-current="page">
+            <a href="/pasien" class="nav-link text-white" aria-current="page">
               <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#home"></use></svg>
               Reservasi
             </a>
           </li>
           <li>
-            <a href="/lihat-reservasi-user" class="nav-link text-white">
+            <a href="/lihat-reservasi-user" class="nav-link text-white active">
               <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
               Cek Reservasi
             </a>
-          </li>
-          <li>
-            <a href="#" class="nav-link text-white dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown">
-              <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#table"></use></svg>
-              input Data
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="/input-table">Imunisasi</a>
-                <a class="dropdown-item" href="/input-bumil">Ibu Hamil</a>
-                <div class="dropdown-divider"></div>
-            </div>
-          </li>
-          <li>
-            <a href="/daftar-reservasi" class="nav-link text-white">
-              <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#grid"></use></svg>
-              Daftar Reservasi
-            </a>
-          </li>
-          <li>
-            <a href="#" class="nav-link text-white">
-              <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
-              Customers
-            </a>
-          </li>
+          
         </ul>
         <hr>
         <div class="dropdown">

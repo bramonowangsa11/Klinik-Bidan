@@ -12,7 +12,7 @@
         <hr>
         <ul class="nav nav-pills flex-column mb-auto">
           <li class="nav-item">
-            <a href="/admin" class="nav-link active" aria-current="page">
+            <a href="/admin" class="nav-link text-white" aria-current="page">
               <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#home"></use></svg>
               Imunisasi
             </a>
@@ -35,17 +35,12 @@
             </div>
           </li>
           <li>
-            <a href="/daftar-reservasi" class="nav-link text-white">
+            <a href="/daftar-reservasi" class="nav-link text-white active">
               <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#grid"></use></svg>
               Daftar Reservasi
             </a>
           </li>
-          <li>
-            <a href="#" class="nav-link text-white">
-              <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
-              Customers
-            </a>
-          </li>
+          
         </ul>
         <hr>
         <div class="dropdown">

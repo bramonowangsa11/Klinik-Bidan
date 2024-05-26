@@ -29,30 +29,23 @@
               input Data
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="/admin">Imunisasi</a>
+                <a class="dropdown-item" href="/input-table">Imunisasi</a>
                 <a class="dropdown-item" href="/input-bumil">Ibu Hamil</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Submenu 3</a>
             </div>
           </li>
           <li>
-            <a href="#" class="nav-link text-white">
+            <a href="/daftar-reservasi" class="nav-link text-white">
               <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#grid"></use></svg>
-              Products
+              Daftar Reservasi
             </a>
           </li>
-          <li>
-            <a href="#" class="nav-link text-white">
-              <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
-              Customers
-            </a>
-          </li>
+          
         </ul>
         <hr>
         <div class="dropdown">
           <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
             <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
-            <strong>mdo</strong>
+            <strong>Admin</strong>
           </a>
           <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
             <li><a class="dropdown-item" href="#">New project...</a></li>

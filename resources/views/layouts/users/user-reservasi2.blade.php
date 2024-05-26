@@ -18,35 +18,12 @@
                     </a>
                 </li>
                 <li>
-                    <a href="/ibu-hamil" class="nav-link text-white">
+                    <a href="/lihat-reservasi-user" class="nav-link text-white">
                     <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
-                    Ibu Hamil
+                    Cek Reservasi
                     </a>
                 </li>
-                <li>
-                    <a href="/input-table" class="nav-link text-white dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown">
-                    <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#table"></use></svg>
-                    input Data
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="/input-table">Imunisasi</a>
-                        <a class="dropdown-item" href="/input-bumil">Ibu Hamil</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Submenu 3</a>
-                    </div>
-                </li>
-                <li>
-                    <a href="#" class="nav-link text-white">
-                    <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#grid"></use></svg>
-                    Products
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="nav-link text-white">
-                    <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
-                    Customers
-                    </a>
-                </li>
+                
                 </ul>
             <hr>
             <div class="dropdown">
@@ -59,7 +36,7 @@
                 <li><a class="dropdown-item" href="#">Settings</a></li>
                 <li><a class="dropdown-item" href="#">Profile</a></li>
                 <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">Sign out</a></li>
+                <li><a class="dropdown-item" href="/logout">Sign out</a></li>
             </ul>
             </div>
         </div>
@@ -68,6 +45,7 @@
     {{-- content --}}
     <div class="container col-md-9 ">
         <h1>RESERVASI</h1>
+        
         @if(Session::has('success'))
                       <div class="alert alert-success">
                           {{ Session::get('success') }}
@@ -79,7 +57,9 @@
               </div>
         @endif
         <div class="row d-flex justify-content-center align-items-center">
-            <div class="col-md-5  align-items-center">
+            
+            
+            <div class="col-md-4 align-items-center ">
                 <form action="reservasi" method="POST">
                     @csrf
                     <div class="mb-3">
@@ -111,8 +91,26 @@
                     <button class="btn btn-success" type="submit">Reservasi</button>
                 </form>
             </div>
+            <div class="col-md-3 small ms-lg-5 mt-lg-5">
+            Keterangan :
+            <p>Sesi 1   | Pukul 06.00-06.30</p>
+            <p>Sesi 2   | Pukul 06.30-07.00</p>
+            <p>Sesi 3   | Pukul 07.00-07.30</p>
+            <p>Sesi 4   | Pukul 07.30-08.00</p>
+            <p>Sesi 5   | Pukul 08.00-08.30</p>
+            <p>Sesi 6   | Pukul 08.30-09.00</p>
+            <p>Sesi 7   | Pukul 16.00-16.30</p>
+            <p>Sesi 8   | Pukul 16.30-17.00</p>
+            <p>Sesi 9   | Pukul 17.00-17.30</p>
+            <p>Sesi 10  | Pukul 17.30-18.00</p>
+            <p>Sesi 11  | Pukul 18.00-18.30</p>
+            <p>Sesi 12  | Pukul 18.30-19.00</p>
+            <p>Sesi 13  | Pukul 19.00-19.30</p>
+            <p>Sesi 14  | Pukul 19.30-20.00</p>
+        </div>
 
         </div>
+        
 
     </div>
 </div>

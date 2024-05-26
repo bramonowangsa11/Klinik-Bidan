@@ -85,161 +85,74 @@
       <div class="container">
       <div class="row">
         {{-- kiri --}}
-        <div class="col-md-4">
-          
-          
-          <div class="mb-3 form-outline border-0 border-bottom border-dark">
-                        <label for="inputTanggal" class="form-label">Tanggal</label>
-                        <input type="date" class="form-control" id="inputTanggal" value="{{$imunisasi->tanggal}}" aria-describedby="" name="tanggal">
-                        {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
-                    </div>
-                    <div class="mb-3 form-outline border-0 border-bottom border-dark">
-                        <label for="inputNamaAnak" class="form-label">Nama Anak</label>
-                        <input type="text" class="form-control" id="inputNamaAnak" value="{{$imunisasi->nama_anak}}" aria-describedby="" name="nama_anak">
-                        {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
-                    </div>
-                    <div class="mb-3 form-outline border-0 border-bottom border-dark">
-                        <label for="inputNIK" class="form-label">NIK</label>
-                        <input type="text" class="form-control" id="inputNIK" value="{{$imunisasi->nik_anak}}" aria-describedby="" name="nik_anak">
-                        {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
-                    </div>
-                    <div class="mb-3 form-outline border-0 border-bottom border-dark">
-                        <label for="inputNamaOrtu" class="form-label">Nama Orang Tua</label>
-                        <input type="text" class="form-control" id="inputNamaOrtu" value="{{$imunisasi->nama_orangtua}}" aria-describedby="" name="nama_orangtua">
-                        {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
-                    </div>
-                    <div class="mb-3 form-outline border-0 border-bottom border-dark">
-                        <label for="inputTanggalLhr" class="form-label">Tanggal Lahir</label>
-                        <input type="date" class="form-control" id="inputTanggalLhr" value="{{$imunisasi->tgl_lahir}}" aria-describedby=""name="tgl_lahir">
-                        {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
-                    </div>
-                    <div class="mb-3 form-outline border-0 border-bottom border-dark">
-                        <label for="inputAlamat" class="form-label">Alamat</label>
-                        <input type="text" class="form-control" id="inputAlamat" value="{{$imunisasi->alamat}}" aria-describedby="" name="alamat">
-                        {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
-                    </div>
-
+        <div class="col-md-3 mt-lg-5">
+            {{-- biodata --}}
+            <h5>Tanggal</h5>
+            <h5>Nama Anak</h5>
+            <h5>NIK</h5>
+            <h5>Nama Orang Tua</h5>
+            <h5>Tanggal Lahir</h5>
+            <h5>Alamat</h5>
+            
+            {{-- isi biodata --}}
 
         </div>
         {{-- tengah --}}
-        <div class="col-md-4">
-          <div class="mb-3 form-outline border-0 border-bottom border-dark ">
-                <label for="inputBeratBadan" class="form-label">Berat Badan</label>
-                <input  type="text" class="form-control" id="inputBeratBadan" value="{{$imunisasi->berat_badan}}" aria-describedby="" name="berat_badan">
-                {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
-            </div>
-            <div class="mb-4 form-outline border-0 border-bottom border-dark">
-                <label for="inputPanjangBadan" class="form-label">Panjang Badan</label>
-                <input type="text" class="form-control" id="inputPanjangBadan" value="{{$imunisasi->panjang_badan}}" aria-describedby="" name="panjang_badan">
-                {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
-            </div>
-            <div class="mb-3">
-                <label for="inputBCG" class="form-label">HBO</label>
-                <div>
-                    <input type="checkbox" class="form-check-input" id="inputBCG" value="1" name="HBO" {{$imunisasi->HBO=='1'? 'checked':''}}>
-                    <label for="inputBCG" class="form-label">1</label>
-                    <input type="checkbox" class="form-check-input" id="inputBCG" value="2" name="HBO" {{$imunisasi->HBO=='2'? 'checked':''}}>
-                    <label for="inputBCG" class="form-label">2</label>
-                    <input type="checkbox" class="form-check-input" id="inputBCG" value="3" name="HBO" {{$imunisasi->HBO=='3'? 'checked':''}}>
-                    <label for="inputBCG" class="form-label">3</label>
-                    <input type="hidden" name="HBO" value="0">
-                </div>
-                {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
-            </div>
-            <div class="mb-3">
-                <label for="inputBCG" class="form-label">BCG</label>
-                <div>
-                    <input type="checkbox" class="form-check-input" id="inputBCG" name="BCG" value="1" {{$imunisasi->BCG=='1'? 'checked':''}}>
-                    <label for="inputBCG" class="form-label">1</label>
-                    <input type="checkbox" class="form-check-input" id="inputBCG" name="BCG" value="2" {{$imunisasi->BCG=='2'? 'checked':''}}>
-                    <label for="inputBCG" class="form-label">2</label>
-                    <input type="checkbox" class="form-check-input" id="inputBCG" name="BCG" value="3" {{$imunisasi->BCG=='3'? 'checked':''}}>
-                    <label for="inputBCG" class="form-label">3</label>
-                    <input type="hidden" name="BCG" value="0">
-                </div>
-                {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
-            </div>
-
-            <div class="mb-3">
-              <label for="inputBCG" class="form-label">PENTA</label>
-              <div>
-                  <input type="checkbox" class="form-check-input" id="inputBCG" name="PENTA" value="1" {{$imunisasi->PENTA=='1'? 'checked':''}}>
-                  <label for="inputBCG" class="form-label">1</label>
-                  <input type="checkbox" class="form-check-input" id="inputBCG" name="PENTA" value="2" {{$imunisasi->PENTA=='2'? 'checked':''}}>
-                  <label for="inputBCG" class="form-label">2</label>
-                  <input type="checkbox" class="form-check-input" id="inputBCG" name="PENTA" value="3" {{$imunisasi->PENTA=='3'? 'checked':''}}>
-                  <label for="inputBCG" class="form-label">3</label>
-                  <input type="hidden" name="PENTA" value="0">
-              </div>
-              {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
-          </div>
-          <div class="mb-3">
-            <label for="inputBCG" class="form-label">IPV</label>
-            <div>
-                <input type="checkbox" class="form-check-input" id="inputIPV" name="IPV" value="1" {{$imunisasi->IPV=='1'? 'checked':''}}>
-                <label for="inputIPV" class="form-label">1</label>
-                <input type="checkbox" class="form-check-input" id="inputIPV" name="IPV" value="2" {{$imunisasi->IPV=='2'? 'checked':''}}>
-                <label for="inputIPV" class="form-label">2</label>
-                <input type="checkbox" class="form-check-input" id="inputIPV"  name="IPV" value="3" {{$imunisasi->IPV=='3'? 'checked':''}}>
-                <label for="inputBCG" class="form-label">3</label>
-                <input type="hidden" name="IPV" value="0">
-            </div>
-            {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
-        </div>
+        <div class="col-md-9 mt-lg-5">
+          <h5>: {{$imunisasi->tanggal}}</h5>
+          <h5>: {{$imunisasi->nama_anak}}</h5>
+          <h5>: {{$imunisasi->nik_anak}}</h5>
+          <h5>: {{$imunisasi->nama_orangtua}}</h5>
+          <h5>: {{$imunisasi->tgl_lahir}}</h5>
+          <h5>: {{$imunisasi->alamat}}</h5>
+           
             
 
 
         </div>
         {{-- kanan --}}
-        <div class="col-md-4">
-          <div class="mb-3">
-            <label for="inputBCG" class="form-label">PCV</label>
-            <div>
-                <input type="checkbox" class="form-check-input" id="inputBCG" name="PCV" value="1" {{$imunisasi->PCV=='1'? 'checked':''}}>
-                <label for="inputBCG" class="form-label">1</label>
-                <input type="checkbox" class="form-check-input" id="inputBCG" name="PCV" value="2" {{$imunisasi->PCV=='2'? 'checked':''}}>
-                <label for="inputBCG" class="form-label">2</label>
-                <input type="checkbox" class="form-check-input" id="inputBCG" name="PCV" value="3" {{$imunisasi->PCV=='3'? 'checked':''}}>
-                <label for="inputBCG" class="form-label">3</label>
-                <input type="hidden" name="PCV" value="0">
-            </div>
-            {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
-        </div>
-            <div class="mb-3">
-                <label for="inputBCG" class="form-label">Rota Virus</label>
-                <div>
-                    <input type="checkbox" class="form-check-input" id="inputBCG" name="ROTA_VIRUS" value="1" {{$imunisasi->ROTA_VIRUS=='1'? 'checked':''}}>
-                    <label for="inputBCG" class="form-label">1</label>
-                    <input type="checkbox" class="form-check-input" id="inputBCG" name="ROTA_VIRUS" value="2" {{$imunisasi->ROTA_VIRUS=='2'? 'checked':''}}>
-                    <label for="inputBCG" class="form-label">2</label>
-                    <input type="checkbox" class="form-check-input" id="inputBCG" name="ROTA_VIRUS" value="3" {{$imunisasi->ROTA_VIRUS=='3'? 'checked':''}}>
-                    <label for="inputBCG" class="form-label">3</label>
-                    <input type="hidden" name="ROTA_VIRUS" value="0">
-                </div>
-                {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
-            </div>
-            <div class="mb-3">
-                <label for="inputTPV" class="form-label">MK</label>
-                <input type="checkbox" class="form-check-input" name="MK" id="inputTPV" {{$imunisasi->MK?'checked':''}}>
-                <input type="hidden" name="MK" value="0">
-            </div>
-            <div class="mb-3">
-                <label for="inputTPV" class="form-label">Booster</label>
-                <div>
-                    <input type="checkbox" class="form-check-input" name="booster" id="inputTPV" value="PENTA"  {{$imunisasi->booster=='PENTA'? 'checked':''}}>
-                    <label for="inputTPV" class="form-label">Penta</label>
-                    <input type="checkbox" class="form-check-input" name="booster" id="inputTPV" value="MK" {{$imunisasi->booster=='MK'? 'checked':''}}>
-                    <label for="inputTPV" class="form-label">MK</label>
-                </div>
-            </div>
+        <div class="col-md-9">
+            <table class="table border-black border-2 table-bordered">
+                <thead>
+                    <tr>
+                        <th>Berat Badan</th>
+                        <th>Tinggi Badan</th>
+                        <th>HBO</th>
+                        <th>BCG</th>
+                        <th>Penta</th>
+                        <th>IPV</th>
+                        <th>PCV</th>
+                        <th>Rota Virus</th>
+                        <th>MK</th>
+                        <th>Booster</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{$imunisasi->berat_badan}}</td>
+                        <td>{{$imunisasi->panjang_badan}}</td>
+                        <td>{{$imunisasi->HBO}}</td>
+                        <td>{{$imunisasi->BCG}}</td>
+                        <td>{{$imunisasi->PENTA}}</td>
+                        <td>{{$imunisasi->IPV}}</td>
+                        <td>{{$imunisasi->PCV}}</td>
+                        <td>{{$imunisasi->ROTA_VIRUS}}</td>
+                        <td>{{$imunisasi->MK}}</td>
+                        <td>{{$imunisasi->booster}}</td>
+
+                    </tr>
+                </tbody>
+            </table>
+        
+            
             
             <div class=" mb-3">
               <div class="row">
-                <div class="col-md-3">
+                <div class="col-md-1">
                   <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ubahModal">Ubah</button>
-    </form>
+                </form>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-1 ms-4">
                   <form action="{{ route('imunisasi.destroy', $imunisasi->id) }}" method="POST">
                 @csrf
                 @method('DELETE')
