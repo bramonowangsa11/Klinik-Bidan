@@ -19,7 +19,7 @@ return new class extends Migration
             $table->date("ttl");
             $table->string("no_telp");
             $table->enum("jenis_kelamin",['Laki-Laki','Perempuan']);
-            $table->unsignedBigInteger("user_id");
+            $table->unsignedBigInteger("user_id")->nullable();
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });

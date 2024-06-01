@@ -74,7 +74,7 @@
           </form>
       </div>
       <div class="col-md-2">
-        <a href="/reservasi">
+        <a href="/pasien">
         <button type="button"  class="btn btn-success btn-sm">tambah</button>
         </a>
       </div>

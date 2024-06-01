@@ -1,0 +1,80 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\Pasien;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
+
+class UserController extends Controller
+{
+    public function daftar(Request $request){
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:8',
+            'nik' => 'required|unique:pasiens,nik|numeric|digits:16 ',
+            'alamat' => 'required|string',
+            'ttl' => 'required|date',
+            'no_telp' => 'required|string|numeric',
+            'jenis_kelamin' => 'required|in:Laki-Laki,Perempuan',
+
+        ],[
+            'name.required' => 'Nama wajib diisi.',
+            'email.required'=>'Email wajib diisi',
+            'email.unique'=>'Email sudah terdaftar',
+            'nik.numeric' => 'Format NIK harus berupa angka.',
+            'no_telp.numeric'=> 'Format nomor telpon harus berupa angka',
+            'nik.digits' => 'NIK harus terdiri dari 16 digit.',
+            'password.required'=>'Password wajib diisi',
+            'nik.required' => 'NIK wajib diisi.',
+            'nik.unique' => 'NIK sudah terdaftar.',
+            'name.required' => 'Nama wajib diisi.',
+            'name.string' => 'Nama harus berupa teks.',
+            'alamat.required' => 'Alamat wajib diisi.',
+            'alamat.string' => 'Alamat harus berupa teks.',
+            'ttl.required' => 'Tanggal lahir wajib diisi.',
+            'ttl.date' => 'Format tanggal lahir tidak valid.',
+            'no_telp.required' => 'Nomor telepon wajib diisi.',
+            'no_telp.string' => 'Nomor telepon harus berupa teks.',
+            'jenis_kelamin.required' => 'Jenis kelamin wajib diisi.',
+        ]);
+
+        $data = Pasien::where('nik',$validatedData['nik'])->get();
+        if($data->isEmpty()){
+            $user = User::create([
+                'name' => $validatedData['name'],
+                'email' => $validatedData['email'],
+                'password' => Hash::make($validatedData['password']),
+            ]);
+        
+            // Buat data pasien
+            $pasien = Pasien::create([
+                'name' => $validatedData['name'],
+                'nik' => $validatedData['nik'],
+                'alamat' => $validatedData['alamat'],
+                'ttl' => $validatedData['ttl'],
+                'no_telp' => $validatedData['no_telp'],
+                'jenis_kelamin' => $validatedData['jenis_kelamin'],
+                'user_id' => $user->id,
+            ]);
+            Session::flash('success', 'Pasien berhasil didaftarkan');
+        }
+        else{
+            if($data->user_id == null){
+                $user = User::create([
+                    'name' => $validatedData['name'],
+                    'email' => $validatedData['email'],
+                    'password' => Hash::make($validatedData['password']),
+                ]);
+                $pasien = Pasien::find($data->id);
+                $pasien->user_id = $user->id;
+                $pasien->save();
+                Session::flash('success', 'user berhasil didaftarkan');
+            }
+            else{
+                return redirect()->back()->with('errors','nik yang anda masukkan telah terdaftar sebagai user');
+            }
+        }
+    }
+}

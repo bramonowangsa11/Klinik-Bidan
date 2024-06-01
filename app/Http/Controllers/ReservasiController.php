@@ -10,6 +10,17 @@ use Illuminate\Support\Facades\Session;
 
 class ReservasiController extends Controller
 {   
+    public function todayReservation(){
+        $now = Carbon::now()->toDateString();
+        $reservasis = Reservasi::where('tgl_reservasi',$now)->paginate(10);
+        if($reservasis->isEmpty()){
+            Session::flash('errors','tidak terdapat reservasi pada hari ini');
+            return view('layouts.admin.lihat-reservasi',compact('reservasis'));
+        }
+        else{
+            return view('layouts.admin.lihat-reservasi',compact('reservasis'));
+        }
+    }
     public function sesibyDate(Request $request){
         $tgl = $request['tgl_reservasi'];
         $tgl_reservasi = Carbon::parse($tgl);
@@ -36,8 +47,9 @@ class ReservasiController extends Controller
         else{
             $id_user = Auth::user()->id;
             $reservasis = Reservasi::with('user')->where('user_id',$id_user)->paginate(10);
+            return view('layouts.users.lihat-reservasi-user',compact('reservasis'));
         }
-        return view('layouts.users.lihat-reservasi-user',compact('reservasis'));
+        
     }
 
     public function store(Request $request){
@@ -165,49 +177,6 @@ class ReservasiController extends Controller
         
     }
 
-    public function update(Request $request, $id){
-        $validated_data = $request->validate([
-            'tgl_reservasi' => 'required|date',
-            'sesi' => 'required|in:1,2,3,4,5,6,7,8,9,10,11,12,14',
-            'layanan' => 'required|in:Bumil,KB,Imunisasi',
-            'keterangan' => 'required|string|max:255',
-        ],[
-            'tgl_reservasi.required' => 'Tanggal reservasi wajib diisi.',
-            'tgl_reservasi.date' => 'Tanggal reservasi harus dalam format tanggal yang valid.',
-            'sesi.required' => 'Sesi wajib dipilih.',
-            'sesi.in' => 'Sesi yang dipilih tidak valid.',
-            'layanan.required' => 'Layanan wajib dipilih.',
-            'layanan.in' => 'Layanan yang dipilih tidak valid.',
-            'keterangan.required' => 'Keterangan wajib diisi.',
-            'keterangan.string' => 'Keterangan harus berupa teks.',
-            'keterangan.max' => 'Keterangan tidak boleh lebih dari 255 karakter.',
-        ]);
-        $tgl = $validated_data['tgl_reservasi'];
-        $sesi = $validated_data['sesi'];
-        $reservasiSama = Reservasi::where('tgl_reservasi',$tgl)
-            ->where('sesi',$sesi)
-            ->exists(); 
-        if($reservasiSama){
-            return response()->json([
-                'success'=> false,
-                'messages'=>'sudah terdapat reservasi pada sesi dan tanggal tersebut'
-            ],404);
-        }
-        else{
-            $validated_data['user_id'] = $reservasi['user_id'];
-            $reservasi->update($validated_data);
-            
-            return response()->json([
-                'success'=> true,
-                'messages'=>'data berhasil tersimpan'
-            ],200);
-        }
-        
-    }
-
-    public function showid($id){
-        $reservasi = Reservasi::findOrfail($id);
-    }
-
+    
 
 }

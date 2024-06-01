@@ -94,6 +94,8 @@ Route::get('/detail-bumil/{id}',[AncController::class,'showid'])->name('bumil.sh
 Route::get('/seats', [SeatController::class, 'index']);
 Route::post('/submit-seats', [SeatController::class, 'submitSeats'])->name('submitSeats');
 
+Route::post('/search-pasien',[PasienController::class,'findBynik'])->name('findBynik');
+
 //routes reservasi 2
 // Route::get('/reservasi2', function () {
 //     return view('layouts.users.user-reservasi2');
