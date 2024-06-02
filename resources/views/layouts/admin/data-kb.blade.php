@@ -145,31 +145,31 @@
               <tr>
                 <th>No</th>
                 <th>Tanggal</th>
-                <th>Nama Anak</th>
-                <th>NIK</th>
-                <th>Nama Orang Tua</th>
-                <th>Tanggal Lahir</th>
+                <th>Nama Istri</th>
+                <th>NIK Istri</th>
+                <th>Nama Suami</th>
+                <th>Nik Suami</th>
                 <th>ALamat</th>
                 <th>Action</th>
               </tr>
             </thead>
             <tbody>
-              {{-- @foreach ($imunisasis as $key=> $imunisasi)
+              @foreach ($kbs as $key=> $kb)
                 <tr>
                   <td>{{$key+1}}</td>
-                  <td>{{$imunisasi->tanggal}}</td>
-                  <td>{{$imunisasi->nama_anak}}</td>
-                  <td>{{$imunisasi->nik_anak}}</td>
-                  <td>{{$imunisasi->nama_orangtua}}</td>
-                  <td>{{$imunisasi->tgl_lahir}}</td>
-                  <td>{{$imunisasi->alamat}}</td>
+                  <td>{{$kb->tgl_kb}}</td>
+                  <td>{{$kb->Ibu->name}}</td>
+                  <td>{{$kb->Ibu->nik}}</td>
+                  <td>{{$kb->Suami->name}}</td>
+                  <td>{{$kb->Suami->nik}}</td>
+                  <td>{{$kb->Suami->alamat}}</td>
                   <td>
-                    <a href="{{ route('imunisasi.show', ['id' => $imunisasi->id]) }}">
+                    <a href="{{ route('kb.showByid', ['id' => $kb->id]) }}">
                       <button type="button" class="btn btn-info btn-sm" >Detail</button>
                     </a>
                   </td>
                 </tr>
-              @endforeach --}}
+              @endforeach
             </tbody>
           </table>
           {{-- {{ $imunisasis->links() }} --}}

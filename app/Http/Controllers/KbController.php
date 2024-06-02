@@ -10,14 +10,8 @@ class KbController extends Controller
 {
     public function index(){
         $kbs = Kb::with(['Ibu','Suami'])->paginate(10);
-        if($kbs->isEmpty()){
-            return view('',compact('kbs'));
-        }
+        return view('layouts.admin.data-kb',compact('kbs'));    
     }
-    public function dataKb(){
-        return view('layouts.admin.data-kb');
-    }
-
     public function store(Request $request){
         $validatedData = $request->validate([
             'tgl_kb' => 'required|date',
@@ -102,12 +96,12 @@ class KbController extends Controller
     }
 
     public function showByid($id){
-        $kb = Kb::with(['Ibu','Suami'])->where('id',$id)->get();
-        if($kb->isEmpty()){
+        $kb = Kb::with(['Ibu','Suami'])->find($id);
+        if(is_null($kb)){
             return redirect()->back()->with('errors','data tidak ditemukan');
         }
         else{
-            return redirect('/data-kb',compact('kb'));
+            return view('layouts.admin.detail-kb',compact('kb'));
         }
     }
 
@@ -201,14 +195,14 @@ class KbController extends Controller
             'id_ibu.required' => 'ID ibu harus diisi.',
             'id_ibu.exists' => 'ID ibu harus ada dalam tabel users.',
         ]);
-        $kb = find($id);
-        if($kb->isEmpty()){
+        $kb = Kb::find($id);
+        if(is_null($kb)){
             return redirect()->back()->with('errors','data tidak ditemukan');
         }
         else{
             $kb->update($validatedData);
             Session::flash('success','data kb berhasil diupdate');
-            return view('');
+            return redirect('/data-kb');
         }
     }
     public function search(Request $request){

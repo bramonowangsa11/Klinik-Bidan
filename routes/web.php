@@ -72,7 +72,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/search-nik',[PasienController::class,'findBynik'])->middleware('userAkses:admin');
     Route::get('/form-input-kb',[KbController::class,'formKb'])->middleware('userAkses:admin');
     Route::post('/kb',[KbController::class,'store'])->middleware('userAkses:admin')->name('kb.store');
-    Route::get('/data-kb',[KbController::class,'dataKb'])->middleware('userAkses:admin');   
+    Route::get('/data-kb',[KbController::class,'index'])->middleware('userAkses:admin');   
+    Route::get('/kb/{id}',[KbController::class,'showByid'])->middleware('userAkses:admin')->name('kb.showByid');
+    Route::put('/kb/{id}',[KbController::class,'update'])->middleware('userAkses:admin')->name('kb.update');
 });
 
 // routes dashboard admin

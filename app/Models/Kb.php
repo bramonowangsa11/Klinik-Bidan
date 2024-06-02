@@ -2,17 +2,18 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Pasien;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Kb extends Model
 {
     use HasFactory;
     public function Suami(){
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(Pasien::class,'id_suami');
     }
     public function Ibu(){
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(Pasien::class,'id_ibu');
     }
     protected $fillable = [
         'tgl_kb',

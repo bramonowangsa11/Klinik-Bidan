@@ -93,7 +93,7 @@
         <div class="col-md-9">
     <div>
         <h1>Detail Tabel</h1>
-        {{-- @if(Session::has('success'))
+        @if(Session::has('success'))
                     <div class="alert alert-success">
                         {{ Session::get('success') }}
                     </div>
@@ -108,21 +108,18 @@
                     @endforeach
                   </ul>
                 </div>
-        @endif --}}
+        @endif
     </div>
-    <form action="" method="POST">
-      @csrf
-      @method('PUT')
       <div class="container">
       <div class="row">
         {{-- kiri --}}
         <div class="col-md-3 mt-lg-5">
             {{-- biodata --}}
-            <h5>Tanggal</h5>
-            <h5>Nama Anak</h5>
-            <h5>NIK Ibu</h5>
-            <h5>Nama Ibu</h5>
-            <h5>Nama Suami</h5>
+            <h5>Tanggal : {{$kb->tgl_kb}}</h5>
+            <h5>Nama Istri : {{$kb->Ibu->name}}</h5>
+            <h5>NIK Ibu : {{$kb->Ibu->nik}}</h5>
+            <h5>Nama Suami : {{$kb->Suami->name}}</h5>
+            <h5>Nik Suami : {{$kb->SUami->nik}}</h5>
             <h5>Umur Ibu</h5>
             <h5>Alamat</h5>
             
@@ -167,16 +164,22 @@
                 </thead>
                 <tbody>
                     <tr>
-                        {{-- <td>{{$imunisasi->berat_badan}}</td>
-                        <td>{{$imunisasi->panjang_badan}}</td>
-                        <td>{{$imunisasi->HBO}}</td>
-                        <td>{{$imunisasi->BCG}}</td>
-                        <td>{{$imunisasi->PENTA}}</td>
-                        <td>{{$imunisasi->IPV}}</td>
-                        <td>{{$imunisasi->PCV}}</td>
-                        <td>{{$imunisasi->ROTA_VIRUS}}</td>
-                        <td>{{$imunisasi->MK}}</td>
-                        <td>{{$imunisasi->booster}}</td> --}}
+                        <td>{{$kb->jmlh_anak}}</td>
+                        <td>{{$kb->umur_anak_terkecil}}</td>
+                        <td>{{$kb->jaminan}}</td>
+                        <td>{{$kb->alki}}</td>
+                        <td>{{$kb->pasca_plasenta}}</td>
+                        <td>{{$kb->pasca_salin}}</td>
+                        <td>{{$kb->do}}</td>
+                        <td>{{$kb->gc_dari}}</td>
+                        <td>{{$kb->metode_kb}}</td>
+                        <td>{{$kb->berat_badan}}</td>
+                        <td>{{$kb->tinggi_badan}}</td>
+                        <td>{{$kb->tensi}}</td>
+                        <td>{{$kb->lila}}</td>
+                        <td>{{$kb->tgl_kembali}}</td>
+                        <td>{{$kb->inform_consent}}</td>
+                        <td>{{$kb->keterangan}}</td>
 
                     </tr>
                 </tbody>
@@ -219,143 +222,149 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <div class="row">
-          {{-- kiri --}}
-          <div class="col-md-3">
-            <div class="mb-3 form-outline border-0 border-bottom border-dark">
-                        <label for="tanggal-kb" class="form-label">Tanggal KB</label>
-                        <input type="date" class="form-control" id="tangal-kb" aria-describedby="" name="tanggal-kb">
-                        {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
-                    </div>
-                    <div class="mb-3 form-outline border-0 border-bottom border-dark" id="nikform">
-                        <label for="nikIbu" class="form-label">NIK Ibu</label>
-                        <input type="text" class="form-control" id="nikIbu" aria-describedby="" name="nikIbu">
-                        {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
-                    </div>
-                    <div class="mb-3 form-outline border-0 border-bottom border-dark" id="result">
-                        <label for="namaIbu" class="form-label">Nama Ibu</label>
-                        <input type="text" class="form-control" id="namaIbu" aria-describedby="" name="namaIbu">
-                        {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
-                    </div>
-                    <div class="mb-3 form-outline border-0 border-bottom border-dark" id="result">
-                        <label for="namaSuami" class="form-label">Nama Suami</label>
-                        <input type="text" class="form-control" id="namaSuami" aria-describedby="" name="namaSuami">
-                        {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
-                    </div>
-                    
-                    <div class="mb-3 form-outline border-0 border-bottom border-dark" id="result">
-                        <label for="umurIbu" class="form-label">Umur Ibu</label>
-                        <input type="number" class="form-control" id="umurIbu" aria-describedby="" name="umurIbu">
-                        {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
-                    </div>
-                    <div class="mb-3 form-outline border-0 border-bottom border-dark">
-                        <label for="jumlah-anak" class="form-label">Jumlah Anak</label>
-                        <input type="number" class="form-control" id="jumlah-anak" aria-describedby="" name="jumlah-anak">
-                        {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
-                    </div>
-          </div>
-          {{-- tengah --}}
-          <div class="col-md-3">
-            <div class="mb-3 form-outline border-0 border-bottom border-dark">
-                <label for="umur-anak-terkecil" class="form-label">Umur Anak Terkecil</label>
-                <input type="number" class="form-control" id="umur-anak-terkecil" aria-describedby="" name="umur-anak-terkecil">
-                        {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
+        <form action="{{route('kb.update',$kb->id)}}" method="POST">
+          @csrf
+          @method('PUT')
+          <div class="row">
+            {{-- kiri --}}
+            <div class="col-md-3">
+              <div class="mb-3 form-outline border-0 border-bottom border-dark">
+                          <label for="tanggal-kb" class="form-label">Tanggal KB</label>
+                          <input type="date" class="form-control" id="tangal-kb" aria-describedby="" name="tgl_kb" value="{{$kb->tgl_kb}}">
+                          {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
+                      </div>
+                      <div class="mb-3 form-outline border-0 border-bottom border-dark" id="nikform">
+                          <label for="nikIbu" class="form-label">NIK Ibu</label>
+                          <input type="text" class="form-control" id="nikIbu" aria-describedby=""  value="{{$kb->Ibu->nik}}" readonly >
+                          {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
+                      </div>
+                      <div class="mb-3 form-outline border-0 border-bottom border-dark" id="result">
+                          <label for="namaIbu" class="form-label">Nama Ibu</label>
+                          <input type="text" class="form-control" id="namaIbu" aria-describedby=""  value="{{$kb->Ibu->name}}" readonly>
+                          {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
+                      </div>
+                      <div class="mb-3 form-outline border-0 border-bottom border-dark" id="result">
+                          <label for="namaSuami" class="form-label">Nama Suami</label>
+                          <input type="text" class="form-control" id="namaSuami" aria-describedby=""  value="{{$kb->Suami->name}}" readonly>
+                          {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
+                      </div>
+                      
+                      <div class="mb-3 form-outline border-0 border-bottom border-dark" id="result">
+                          <label for="umurIbu" class="form-label">NIK Suami</label>
+                          <input type="number" class="form-control" id="umurIbu" aria-describedby=""  value="{{$kb->Suami->nik}}" readonly>
+                          {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
+                      </div>
+                      <div class="mb-3 form-outline border-0 border-bottom border-dark">
+                          <label for="jumlah-anak" class="form-label">Jumlah Anak</label>
+                          <input type="number" class="form-control" id="jumlah-anak" aria-describedby="" name="jmlh_anak" value="{{$kb->jmlh_anak}}">
+                          {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
+                      </div>
             </div>
-            <div class="mb-3 form-outline border-0 border-bottom border-dark">
-                <label for="jaminan" class="form-label">Jaminan</label>
-                <input type="text" class="form-control" id="jaminan" aria-describedby="" name="jaminan">
-                        {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
+            {{-- tengah --}}
+            <div class="col-md-3">
+              <div class="mb-3 form-outline border-0 border-bottom border-dark">
+                  <label for="umur-anak-terkecil" class="form-label">Umur Anak Terkecil</label>
+                  <input type="number" class="form-control" id="umur-anak-terkecil" aria-describedby="" name="umur_anak_terkecil" value="{{$kb->umur_anak_terkecil}}">
+                          {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else./div> --}}
+              </div>
+              <div class="mb-3 form-outline border-0 border-bottom border-dark">
+                  <label for="jaminan" class="form-label">Jaminan</label>
+                  <input type="text" class="form-control" id="jaminan" aria-describedby="" name="jaminan" value="{{$kb->jaminan}}">
+                          {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
+              </div>
+              <div class="mb-3 form-outline border-0 border-bottom border-dark">
+                  <label for="alki" class="form-label">Alki</label>
+                  <input type="text" class="form-control" id="alki" aria-describedby="" name="alki" value="{{$kb->alki}}">
+                          {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
+              </div>
+              <div class="mb-3 form-outline border-0 border-bottom border-dark">
+                  <label for="pasca-plasenta" class="form-label">Pasca Plasenta</label>
+                  <input type="text" class="form-control" id="pasca-plasenta" aria-describedby="" name="pasca_plasenta" value="{{$kb->pasca_plasenta}}">
+                          {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
+              </div>
+              <div class="mb-3 form-outline border-0 border-bottom border-dark ">
+                  <label for="pasca-salin" class="form-label">Pasca Salin</label>
+                  <input  type="text" class="form-control" id="pasca-salin" aria-describedby="" name="pasca_salin" value="{{$kb->pasca_salin}}">
+                  {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
+              </div>
+              <div class="mb-3 form-outline border-0 border-bottom border-dark">
+                  <label for="do" class="form-label">DO</label>
+                  <input type="text" class="form-control" id="do" aria-describedby="" name="do" value="{{$kb->do}}">
+                  {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
+              </div>
             </div>
-            <div class="mb-3 form-outline border-0 border-bottom border-dark">
-                <label for="alki" class="form-label">Alki</label>
-                <input type="date" class="form-control" id="alki" aria-describedby="" name="alki">
-                        {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
+            <div class="col-md-3">
+              <div class="mb-3 form-outline border-0 border-bottom border-dark">
+                  <label for="gc-dari" class="form-label">gc dari</label>
+                  <input type="text" class="form-control" id="gc-dari" aria-describedby="" name="gc_dari" value="{{$kb->gc_dari}}">
+                  {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
+              </div>
+              
+              <div class="mb-4">
+                  <label for="metode-kb" class="form-label">metode kb</label>
+                  <div>
+                      <input type="checkbox" class="form-check-input" id="metode-kb" name="metode_kb" value="IUD" {{$kb->metode_kb=='IUD'? 'checked':''}}>
+                      <label for="metode-kb" class="form-label">IUD</label>
+                      <input type="checkbox" class="form-check-input" id="metode-kb" name="metode_kb" value="STK" {{$kb->metode_kb=='STK'? 'checked':''}}>
+                      <label for="metode-kb" class="form-label">STK</label>
+                      <input type="checkbox" class="form-check-input" id="metode-kb" name="metode_kb" value="PIL" {{$kb->metode_kb=='PIL'? 'checked':''}}>
+                      <label for="metode-kb" class="form-label">PIL</label>
+                      <input type="checkbox" class="form-check-input" id="metode-kb" name="metode_kb" value="CO" {{$kb->metode_kb=='CO'? 'checked':''}}>
+                      <label for="metode-kb" class="form-label">CO</label>
+                      <input type="hidden" name="PENTA" value="0">
+                  </div>
+                  {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
+              </div>
+              <div class="mb-3 form-outline border-0 border-bottom border-dark">
+                  <label for="beratBadan" class="form-label">Berat Badan</label>
+                  <input type="number" class="form-control" id="beratBadan" aria-describedby="" name="berat_badan" value="{{$kb->berat_badan}}">
+                          {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
+              </div>
+              <div class="mb-3 form-outline border-0 border-bottom border-dark">
+                  <label for="tinggiBadan" class="form-label">tinggi Badan</label>
+                  <input type="number" class="form-control" id="tinggiBadan" aria-describedby="" name="tinggi_badan" value="{{$kb->tinggi_badan}}">
+                          {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
+              </div>
+              <div class="mb-3 form-outline border-0 border-bottom border-dark">
+                  <label for="tensi" class="form-label">Tensi</label>
+                  <input type="number" class="form-control" id="tensi" aria-describedby="" name="tensi" value="{{$kb->tensi}}">
+                          {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
+              </div>
+              <div class="mb-3 form-outline border-0 border-bottom border-dark">
+                  <label for="lila" class="form-label">Lila</label>
+                  <input type="number" class="form-control" id="lila" aria-describedby="" name="lila" value="{{$kb->lila}}">
+                          {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
+              </div>
             </div>
-            <div class="mb-3 form-outline border-0 border-bottom border-dark">
-                <label for="pasca-plasenta" class="form-label">Pasca Plasenta</label>
-                <input type="text" class="form-control" id="pasca-plasenta" aria-describedby="" name="pasca-plasenta">
-                        {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
-            </div>
-            <div class="mb-3 form-outline border-0 border-bottom border-dark ">
-                <label for="pasca-salin" class="form-label">Pasca Salin</label>
-                <input  type="text" class="form-control" id="pasca-salin" aria-describedby="" name="pasca-salin">
-                {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
-            </div>
-            <div class="mb-3 form-outline border-0 border-bottom border-dark">
-                <label for="do" class="form-label">DO</label>
-                <input type="text" class="form-control" id="do" aria-describedby="" name="do">
-                {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
-            </div>
-          </div>
-          <div class="col-md-3">
-            <div class="mb-3 form-outline border-0 border-bottom border-dark">
-                <label for="gc-dari" class="form-label">gc dari</label>
-                <input type="text" class="form-control" id="gc-dari" aria-describedby="" name="gc-dari">
-                {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
-            </div>
-            
-            <div class="mb-4">
-                <label for="metode-kb" class="form-label">metode kb</label>
-                <div>
-                    <input type="checkbox" class="form-check-input" id="metode-kb" name="PENTA" value="1">
-                    <label for="metode-kb" class="form-label">IUD</label>
-                    <input type="checkbox" class="form-check-input" id="metode-kb" name="PENTA" value="2">
-                    <label for="metode-kb" class="form-label">STK</label>
-                    <input type="checkbox" class="form-check-input" id="metode-kb" name="PENTA" value="3">
-                    <label for="metode-kb" class="form-label">PIL</label>
-                    <input type="checkbox" class="form-check-input" id="metode-kb" name="PENTA" value="3">
-                    <label for="metode-kb" class="form-label">CO</label>
-                    <input type="hidden" name="PENTA" value="0">
-                </div>
-                {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
-            </div>
-            <div class="mb-3 form-outline border-0 border-bottom border-dark">
-                <label for="beratBadan" class="form-label">Berat Badan</label>
-                <input type="number" class="form-control" id="beratBadan" aria-describedby="" name="beratBadan">
-                        {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
-            </div>
-            <div class="mb-3 form-outline border-0 border-bottom border-dark">
-                <label for="tinggiBadan" class="form-label">tinggi Badan</label>
-                <input type="number" class="form-control" id="tinggiBadan" aria-describedby="" name="tinggiBadan">
-                        {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
-            </div>
-            <div class="mb-3 form-outline border-0 border-bottom border-dark">
-                <label for="tensi" class="form-label">Tensi</label>
-                <input type="number" class="form-control" id="tensi" aria-describedby="" name="tensi">
-                        {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
-            </div>
-            <div class="mb-3 form-outline border-0 border-bottom border-dark">
-                <label for="lila" class="form-label">Lila</label>
-                <input type="number" class="form-control" id="lila" aria-describedby="" name="lila">
-                        {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
-            </div>
-          </div>
-          {{-- kanan --}}
-          <div class="col-md-3">
+            {{-- kanan --}}
+            <div class="col-md-3">
             <div class="mb-3 form-outline border-0 border-bottom border-dark">
                 <label for="tanggal-kembali" class="form-label">Tanggal Kembali</label>
-                <input type="date" class="form-control" id="tanggal-kembali" aria-describedby="" name="tanggal-kembali">
+                <input type="date" class="form-control" id="tanggal-kembali" aria-describedby="" name="tgl_kembali" value="{{$kb->tgl_kembali}}">
                         {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
             </div>
             <div class="mb-3 form-outline border-0 border-bottom border-dark">
                 <label for="kegagalan" class="form-label">Kegagalan</label>
-                <input type="text" class="form-control" id="kegagalan" aria-describedby="" name="kegagalan">
+                <input type="text" class="form-control" id="kegagalan" aria-describedby="" name="kegagalan" value="{{$kb->kegagalan}}">
                         {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
             </div>
             <div class="mb-3 form-outline border-0 border-bottom border-dark">
                 <label for="inform-consent" class="form-label">Inform Consent</label>
-                <input type="text" class="form-control" id="inform-consent" aria-describedby="" name="inform-consent">
+                <input type="text" class="form-control" id="inform-consent" aria-describedby="" name="inform_consent" value="{{$kb->inform_consent}}">
                         {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
             </div>
             <div class="mb-3 form-outline border-0 border-bottom border-dark">
                 <label for="keterangan" class="form-label">Keterangan</label>
-                <input type="text" class="form-control" id="keterangan" aria-describedby="" name="keterangan">
+                <input type="text" class="form-control" id="keterangan" aria-describedby="" name="keterangan" value="{{$kb->keterangan}}">
                         {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
             </div>
+            <input type="text" class="form-control" id="keterangan" aria-describedby="" name="id_suami" value="{{$kb->id_suami}}" hidden>
+            <input type="text" class="form-control" id="keterangan" aria-describedby="" name="id_ibu" value="{{$kb->id_ibu}}" hidden>
             <div>
               <button type="submit" class="btn btn-success" data-bs-dismiss="modal">Simpan</button>
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
             </div>
+        </form>
           </div>
 
         </div>
