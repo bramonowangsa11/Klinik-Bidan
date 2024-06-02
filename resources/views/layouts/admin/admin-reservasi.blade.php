@@ -24,7 +24,19 @@
                     </a>
                 </li>
                 <li>
-                    <a href="/input-table" class="nav-link text-white dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown">
+                    <a href="/data-kb" class="nav-link text-white">
+                    <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
+                    KB
+                    </a>
+                </li>
+                <li>
+                    <a href="/data-pasien" class="nav-link text-white">
+                    <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
+                    Daftar Pasien
+                    </a>
+                </li>
+                <li>
+                    <a href="/input-table" class="nav-link text-white dropdown-toggle active" id="navbarDropdown" data-bs-toggle="dropdown">
                     <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#table"></use></svg>
                     input Data
                     </a>
@@ -32,7 +44,6 @@
                         <a class="dropdown-item" href="/input-table">Imunisasi</a>
                         <a class="dropdown-item" href="/input-bumil">Ibu Hamil</a>
                         <a class="dropdown-item" href="/input-kb">KB</a>
-                        
                     </div>
                 </li>
                 <li>
