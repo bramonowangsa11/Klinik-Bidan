@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Kb;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class KbController extends Controller
 {
@@ -11,6 +13,9 @@ class KbController extends Controller
         if($kbs->isEmpty()){
             return view('',compact('kbs'));
         }
+    }
+    public function dataKb(){
+        return view('layouts.admin.data-kb');
     }
 
     public function store(Request $request){
@@ -93,7 +98,7 @@ class KbController extends Controller
         ]);
         $kb = Kb::create($validatedData);
         Session::flash('success','data kb berhasil disimpan');
-        return view(''); 
+        return redirect('/data-kb'); 
     }
 
     public function showByid($id){
@@ -102,7 +107,7 @@ class KbController extends Controller
             return redirect()->back()->with('errors','data tidak ditemukan');
         }
         else{
-            return view('',compact('kb'));
+            return redirect('/data-kb',compact('kb'));
         }
     }
 
@@ -219,5 +224,11 @@ class KbController extends Controller
             })
             ->get();
         return view('',compact('kbs'));
+    }
+    public function inputNik(){
+        return view('layouts.admin.daftar-pasien');
+    }
+    public function formKb(){
+        return view('layouts.admin.kb');
     }
 }

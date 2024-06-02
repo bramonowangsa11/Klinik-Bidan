@@ -106,23 +106,40 @@ class PasienController extends Controller
             'jenis_kelamin' => $validatedData['jenis_kelamin'],
             'user_id' => null,
         ]);  
+        Session::flash('success','data pasien berhasil disimpan');
+        return redirect()->back();
     }
 
-    public function findBynik(Request $request){
-        $validatedData = $request->validate([
-            'nik'=> 'required','numeric','digits:16'
-        ],[
-            'nik.required' => 'nik wajib diisi',
-            'nik.numeric' => 'nik harus terdiri dari angka',
-            'nik.digits' => 'nik harus terdiri dari 16 digit',
-        ]);
+        public function findBynik(Request $request){
+            $validatedData = $request->validate([
+                'nik_ibu'=> 'required','numeric','digits:16',
+                'nik_suami'=> 'required','numeric','digits:16'
+            ],[
+                'nik_suami.required' => 'nik_suami wajib diisi',
+                'nik_suami.numeric' => 'nik_suami harus terdiri dari angka',
+                'nik_suami.digits' => 'nik_suami harus terdiri dari 16 digit',
+                'nik_ibu.required' => 'nik_ibu wajib diisi',
+                'nik_ibu.numeric' => 'nik_ibu harus terdiri dari angka',
+                'nik_ibu.digits' => 'nik_ibu harus terdiri dari 16 digit',
+            ]);
 
-        $pasien = Pasien::where('nik',$validatedData['nik'])->first();
-        if($pasien->isEmpty()){
-            return response()->json(['message'=>'pasien tidak ditemukan'],404);
-        }
-        else{
-            return response()->json($pasien);
-        }
+            $ibu = Pasien::where('nik',$validatedData['nik_ibu'])->first();
+            $suami = Pasien::where('nik',$validatedData['nik_suami'])->first();
+            if(is_null($ibu) && is_null($suami)){
+                return redirect()->back()->with('errors','data nik ibu dan nik suami tidak ditemukan');
+            }
+            elseif(is_null($ibu)){
+                return redirect()->back()->with('errors','data nik ibu tidak ditemukan');
+            }
+            elseif(is_null($suami)){
+                return redirect()->back()->with('errors','data nik suami tidak ditemukan');
+            }
+            else{
+                return view('layouts.admin.kb',compact('ibu','suami'));
+            }
+    }
+
+    public function tambahPasien(){
+        return view('layouts.admin.tambah-pasien');
     }
 }

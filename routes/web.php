@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\KbController;
 use App\Http\Controllers\AncController;
 use App\Http\Controllers\SeatController;
 use App\Http\Controllers\AdminController;
@@ -63,6 +64,15 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/bumil/{id}',[AncController::class,'update'])->name('bumil.update')->middleware('userAkses:admin');
     Route::post('bumil/search',[AncController::class,'search'])->name('bumil.search')->middleware('userAkses:admin');
     Route::get('/ibu-hamil',[AncController::class,'index'])->middleware('userAkses:admin');
+
+
+    Route::get('/tambah-pasien',[PasienController::class,'tambahPasien'])->middleware('userAkses:admin');
+    Route::post('/pasien',[PasienController::class,'daftar'])->middleware('userAkses:admin')->name('pasien.store');
+    Route::get('/input-kb',[KbController::class,'inputNik'])->middleware('userAkses:admin');
+    Route::get('/search-nik',[PasienController::class,'findBynik'])->middleware('userAkses:admin');
+    Route::get('/form-input-kb',[KbController::class,'formKb'])->middleware('userAkses:admin');
+    Route::post('/kb',[KbController::class,'store'])->middleware('userAkses:admin')->name('kb.store');
+    Route::get('/data-kb',[KbController::class,'dataKb'])->middleware('userAkses:admin');   
 });
 
 // routes dashboard admin
@@ -110,12 +120,12 @@ Route::post('/search-pasien',[PasienController::class,'findBynik'])->name('findB
 // Route::get('/lihat-reservasi-user', function () {
 //     return view('layouts.users.lihat-reservasi-user');
 // });
-Route::get('/tambah-pasien', function () {
-    return view('layouts.admin.tambah-pasien');
-});
-Route::get('/input-kb', function () {
-    return view('layouts.admin.kb');
-});
+// Route::get('/tambah-pasien', function () {
+//     return view('layouts.admin.tambah-pasien');
+// });
+// Route::get('/input-kb', function () {
+//     return view('layouts.admin.kb');
+// });
 Route::get('/ceknik', function () {
     return view('layouts.admin.testajax');
 });
@@ -125,9 +135,9 @@ Route::get('/detail-kb', function () {
 Route::get('/daftar-pasien', function () {
     return view('layouts.admin.daftar-pasien');
 });
-Route::get('/data-kb', function () {
-    return view('layouts.admin.data-kb');
-});
+// Route::get('/data-kb', function () {
+//     return view('layouts.admin.data-kb');
+// });
 
 
 

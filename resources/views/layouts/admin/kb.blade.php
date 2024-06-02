@@ -112,39 +112,39 @@
                   </div>
                 @endif
         <div class="col-md-3">
-            <form class=" mt-2" method="POST" action="/kb">
+            <form class=" mt-2" method="POST" action="{{route('kb.store')}}">
                 @csrf
             {{-- kiri --}}
                 <div class="">
                     <div class="mb-3 form-outline border-0 border-bottom border-dark">
                         <label for="tanggal-kb" class="form-label">Tanggal KB</label>
-                        <input type="date" class="form-control" id="tangal-kb" aria-describedby="" name="tanggal-kb">
+                        <input type="date" class="form-control" id="tangal-kb" aria-describedby="" name="tgl_kb">
                         {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
                     </div>
                     <div class="mb-3 form-outline border-0 border-bottom border-dark" id="nikform">
                         <label for="nikIbu" class="form-label">NIK Ibu</label>
-                        <input type="text" class="form-control" id="nikIbu" aria-describedby="" name="nikIbu">
+                        <input type="text" class="form-control" id="nikIbu" aria-describedby=""  value="{{$ibu->nik}}" readonly>
                         {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
                     </div>
                     <div class="mb-3 form-outline border-0 border-bottom border-dark" id="result">
                         <label for="namaIbu" class="form-label">Nama Ibu</label>
-                        <input type="text" class="form-control" id="namaIbu" aria-describedby="" name="namaIbu">
+                        <input type="text" class="form-control" id="namaIbu" aria-describedby=""  value="{{$ibu->name}}" readonly>
                         {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
                     </div>
                     <div class="mb-3 form-outline border-0 border-bottom border-dark" id="result">
-                        <label for="namaSuami" class="form-label">Nama Suami</label>
-                        <input type="text" class="form-control" id="namaSuami" aria-describedby="" name="namaSuami">
+                        <label for="nikSuami" class="form-label">NIK Suami</label>
+                        <input type="text" class="form-control" id="nikSuami" aria-describedby=""  value="{{$suami->nik}}" readonly>
                         {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
                     </div>
                     
                     <div class="mb-3 form-outline border-0 border-bottom border-dark" id="result">
-                        <label for="umurIbu" class="form-label">Umur Ibu</label>
-                        <input type="number" class="form-control" id="umurIbu" aria-describedby="" name="umurIbu">
+                        <label for="namaSuami" class="form-label">Nama Suami</label>
+                        <input type="text" class="form-control" id="namaSuami" aria-describedby=""  value="{{$suami->name}}" readonly>
                         {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
                     </div>
                     <div class="mb-3 form-outline border-0 border-bottom border-dark">
                         <label for="jumlah-anak" class="form-label">Jumlah Anak</label>
-                        <input type="number" class="form-control" id="jumlah-anak" aria-describedby="" name="jumlah-anak">
+                        <input type="number" class="form-control" id="jumlah-anak" aria-describedby="" name="jmlh_anak">
                         {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
                     </div>
                     
@@ -155,7 +155,7 @@
         <div class="col-md-3 mt-2">
             <div class="mb-3 form-outline border-0 border-bottom border-dark">
                 <label for="umur-anak-terkecil" class="form-label">Umur Anak Terkecil</label>
-                <input type="number" class="form-control" id="umur-anak-terkecil" aria-describedby="" name="umur-anak-terkecil">
+                <input type="number" class="form-control" id="umur-anak-terkecil" aria-describedby="" name="umur_anak_terkecil">
                         {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
             </div>
             <div class="mb-3 form-outline border-0 border-bottom border-dark">
@@ -165,17 +165,17 @@
             </div>
             <div class="mb-3 form-outline border-0 border-bottom border-dark">
                 <label for="alki" class="form-label">Alki</label>
-                <input type="date" class="form-control" id="alki" aria-describedby="" name="alki">
+                <input type="text" class="form-control" id="alki" aria-describedby="" name="alki">
                         {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
             </div>
             <div class="mb-3 form-outline border-0 border-bottom border-dark">
                 <label for="pasca-plasenta" class="form-label">Pasca Plasenta</label>
-                <input type="text" class="form-control" id="pasca-plasenta" aria-describedby="" name="pasca-plasenta">
+                <input type="text" class="form-control" id="pasca-plasenta" aria-describedby="" name="pasca_plasenta">
                         {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
             </div>
             <div class="mb-3 form-outline border-0 border-bottom border-dark ">
                 <label for="pasca-salin" class="form-label">Pasca Salin</label>
-                <input  type="text" class="form-control" id="pasca-salin" aria-describedby="" name="pasca-salin">
+                <input  type="text" class="form-control" id="pasca-salin" aria-describedby="" name="pasca_salin">
                 {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
             </div>
             <div class="mb-3 form-outline border-0 border-bottom border-dark">
@@ -191,20 +191,20 @@
         <div class="col-md-3 mt-2">
             <div class="mb-3 form-outline border-0 border-bottom border-dark">
                 <label for="gc-dari" class="form-label">gc dari</label>
-                <input type="text" class="form-control" id="gc-dari" aria-describedby="" name="gc-dari">
+                <input type="text" class="form-control" id="gc-dari" aria-describedby="" name="gc_dari">
                 {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
             </div>
             
             <div class="mb-4">
                 <label for="metode-kb" class="form-label">metode kb</label>
                 <div>
-                    <input type="checkbox" class="form-check-input" id="metode-kb" name="PENTA" value="1">
+                    <input type="checkbox" class="form-check-input" id="metode-kb" name="metode_kb" value="IUD">
                     <label for="metode-kb" class="form-label">IUD</label>
-                    <input type="checkbox" class="form-check-input" id="metode-kb" name="PENTA" value="2">
+                    <input type="checkbox" class="form-check-input" id="metode-kb" name="metode_kb" value="STK">
                     <label for="metode-kb" class="form-label">STK</label>
-                    <input type="checkbox" class="form-check-input" id="metode-kb" name="PENTA" value="3">
+                    <input type="checkbox" class="form-check-input" id="metode-kb" name="metode_kb" value="PIL">
                     <label for="metode-kb" class="form-label">PIL</label>
-                    <input type="checkbox" class="form-check-input" id="metode-kb" name="PENTA" value="3">
+                    <input type="checkbox" class="form-check-input" id="metode-kb" name="metode_kb" value="CO">
                     <label for="metode-kb" class="form-label">CO</label>
                     <input type="hidden" name="PENTA" value="0">
                 </div>
@@ -212,17 +212,17 @@
             </div>
             <div class="mb-3 form-outline border-0 border-bottom border-dark">
                 <label for="beratBadan" class="form-label">Berat Badan</label>
-                <input type="number" class="form-control" id="beratBadan" aria-describedby="" name="beratBadan">
+                <input type="number" class="form-control" id="beratBadan" aria-describedby="" name="berat_badan">
                         {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
             </div>
             <div class="mb-3 form-outline border-0 border-bottom border-dark">
                 <label for="tinggiBadan" class="form-label">tinggi Badan</label>
-                <input type="number" class="form-control" id="tinggiBadan" aria-describedby="" name="tinggiBadan">
+                <input type="number" class="form-control" id="tinggiBadan" aria-describedby="" name="tinggi_badan">
                         {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
             </div>
             <div class="mb-3 form-outline border-0 border-bottom border-dark">
                 <label for="tensi" class="form-label">Tensi</label>
-                <input type="number" class="form-control" id="tensi" aria-describedby="" name="tensi">
+                <input type="text" class="form-control" id="tensi" aria-describedby="" name="tensi">
                         {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
             </div>
             <div class="mb-3 form-outline border-0 border-bottom border-dark">
@@ -237,7 +237,7 @@
     <div class="col-md-3 mt-2">
          <div class="mb-3 form-outline border-0 border-bottom border-dark">
                 <label for="tanggal-kembali" class="form-label">Tanggal Kembali</label>
-                <input type="date" class="form-control" id="tanggal-kembali" aria-describedby="" name="tanggal-kembali">
+                <input type="date" class="form-control" id="tanggal-kembali" aria-describedby="" name="tgl_kembali">
                         {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
             </div>
             <div class="mb-3 form-outline border-0 border-bottom border-dark">
@@ -247,7 +247,7 @@
             </div>
             <div class="mb-3 form-outline border-0 border-bottom border-dark">
                 <label for="inform-consent" class="form-label">Inform Consent</label>
-                <input type="text" class="form-control" id="inform-consent" aria-describedby="" name="inform-consent">
+                <input type="text" class="form-control" id="inform-consent" aria-describedby="" name="inform_consent">
                         {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
             </div>
             <div class="mb-3 form-outline border-0 border-bottom border-dark">
@@ -255,38 +255,15 @@
                 <input type="text" class="form-control" id="keterangan" aria-describedby="" name="keterangan">
                         {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
             </div>
+            <input type="text" class="form-control" id="keterangan" aria-describedby="" name="id_ibu" value="{{$ibu->id}}" hidden>
+            <input type="text" class="form-control" id="keterangan" aria-describedby="" name="id_suami" value="{{$suami->id}}" hidden>
             <button type="submit" class="btn btn-primary mb-md-3 position-relative mt-auto mb">Submit</button>
             </form>
     </div>
         </div>
     
     </div>
-   
-    <script>
-        $(document).ready(function() {
-            $('#nikIbu').on('keyup', function() {
-                var query = $(this).val();
-                $.ajax({
-                    url: "{{ route('findBynik') }}",
-                    type: "POST",
-                    data: {'query': query},
-                    success: function(data) {
-                        $('#namaIbu').empty();
-                        if (data.length > 0) {
-                            data.forEach(function(item) {
-                                $('#namaIbu').append('<li>' + item.name + '</li>'); // Ganti 'name' dengan atribut yang sesuai
-                            });
-                        } else {
-                            $('#namaIbu').append('<li>No results found</li>');
-                        }
-                    },
-                    error: function(xhr, status, error) {
-                        console.error(error);
-                    }
-                });
-            });
-        });
-    </script>
+
 
 
     
