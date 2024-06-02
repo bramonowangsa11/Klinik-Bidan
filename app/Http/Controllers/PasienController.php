@@ -73,6 +73,7 @@ class PasienController extends Controller
         $pasiens = Pasien::paginate(10);
         return view('layouts.admin.data-pasien',compact('pasiens'));
     }
+    
 
     public function daftar(Request $request){
         $validatedData = $request->validate([
