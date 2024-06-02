@@ -69,6 +69,10 @@ class PasienController extends Controller
         $user = auth()->user();
         return view('layouts.users.user-reservasi',compact('user'));
     }
+    public function listPasien(){
+        $pasiens = Pasien::paginate(10);
+        return view('layouts.admin.data-pasien',compact('pasiens'));
+    }
 
     public function daftar(Request $request){
         $validatedData = $request->validate([

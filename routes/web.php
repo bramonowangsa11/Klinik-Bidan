@@ -75,6 +75,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/data-kb',[KbController::class,'index'])->middleware('userAkses:admin');   
     Route::get('/kb/{id}',[KbController::class,'showByid'])->middleware('userAkses:admin')->name('kb.showByid');
     Route::put('/kb/{id}',[KbController::class,'update'])->middleware('userAkses:admin')->name('kb.update');
+    Route::delete('/kb/{id}',[KbController::class,'destroy'])->name('kb.destroy')->middleware('userAkses:admin');
+    Route::get('/data-pasien',[PasienController::class,'listPasien'])->name('pasien.list')->middleware('userAkses:admin');
 });
 
 // routes dashboard admin
@@ -137,9 +139,9 @@ Route::get('/detail-kb', function () {
 Route::get('/daftar-pasien', function () {
     return view('layouts.admin.daftar-pasien');
 });
-Route::get('/data-pasien', function () {
-    return view('layouts.admin.data-pasien');
-});
+// Route::get('/data-pasien', function () {
+//     return view('layouts.admin.data-pasien');
+// });
 // Route::get('/kb', function () {
 //     return view('layouts.admin.kb');
 // });

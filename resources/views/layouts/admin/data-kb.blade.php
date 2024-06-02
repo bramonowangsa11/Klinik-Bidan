@@ -145,7 +145,7 @@
           </form>
       </div>
       <div class="col-md-2">
-        <a href="/input-table">
+        <a href="/input-kb">
         <button type="button"  class="btn btn-success btn-sm">tambah</button>
         </a>
       </div>

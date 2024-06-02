@@ -107,13 +107,13 @@ class KbController extends Controller
 
     public function destroy($id){
         $kb = Kb::find($id);
-        if($kb->isEmpty()){
+        if(is_null($kb)){
             return redirect()->back()->with('errors','data tidak ditemukan');
         }
         else{
             $kb->delete();
             Session::flash('success','data kb berhasil dihapus');
-            return view('');
+            return redirect('/data-kb');
         }
     }
 

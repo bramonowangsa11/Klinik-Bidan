@@ -206,7 +206,7 @@
                 </form>
                 </div>
                 <div class="col-md-1 ms-4">
-                  <form action="" method="POST">
+                  <form action="{{route('kb.destroy',$kb->id)}}" method="POST">
                 @csrf
                 @method('DELETE')
                 <button type="submit" class="btn btn-danger">Hapus</button>

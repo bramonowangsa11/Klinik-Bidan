@@ -158,25 +158,24 @@
               </tr>
             </thead>
             <tbody>
-              {{-- @foreach ($imunisasis as $key=> $imunisasi)
+              @foreach ($pasiens as $key=> $pasien)
                 <tr>
                   <td>{{$key+1}}</td>
-                  <td>{{$imunisasi->tanggal}}</td>
-                  <td>{{$imunisasi->nama_anak}}</td>
-                  <td>{{$imunisasi->nik_anak}}</td>
-                  <td>{{$imunisasi->nama_orangtua}}</td>
-                  <td>{{$imunisasi->tgl_lahir}}</td>
-                  <td>{{$imunisasi->alamat}}</td>
-                  <td>
-                    <a href="{{ route('imunisasi.show', ['id' => $imunisasi->id]) }}">
+                  <td>{{$pasien->name}}</td>
+                  <td>{{$pasien->ttl}}</td>
+                  <td>{{$pasien->alamat}}</td>
+                  <td>{{$pasien->no_telp}}</td>
+                  <td>{{$pasien->jenis_kelamin}}</td>
+                  {{-- <td>
+                    <a href="{{ route('pasien.show', ['id' => $pasien->id]) }}">
                       <button type="button" class="btn btn-info btn-sm" >Detail</button>
                     </a>
-                  </td>
+                  </td> --}}
                 </tr>
-              @endforeach --}}
+              @endforeach
             </tbody>
           </table>
-          {{-- {{ $imunisasis->links() }} --}}
+          {{ $pasiens->links() }}
       </div>
   </div>
     
