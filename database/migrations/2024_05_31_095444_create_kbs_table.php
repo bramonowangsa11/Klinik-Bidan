@@ -33,8 +33,8 @@ return new class extends Migration
             $table->string('keterangan');
             $table->unsignedBigInteger('id_suami');
             $table->unsignedBigInteger('id_ibu');
-            $table->foreign('id_suami')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('id_ibu')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('id_suami')->references('id')->on('pasiens')->onDelete('cascade');
+            $table->foreign('id_ibu')->references('id')->on('pasiens')->onDelete('cascade');
             $table->timestamps();
         });
     }
