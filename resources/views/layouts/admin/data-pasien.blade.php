@@ -1,13 +1,62 @@
 @extends('layouts.bootstrap')
 @section('content')
 {{-- start --}}
-<div class="container bg-secondary min-vh-100 min-vw-100 p-0 m-0">
+<div class="container min-vh-100 min-vw-100 p-0 m-0">
   <nav class="navbar navbar-dark bg-dark d-md-none m-0">
     <a class="navbar-brand" href="#">Dashboard</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                    <a href="/admin" class="nav-link text-white" aria-current="page">
+                    <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#home"></use></svg>
+                    Imunisasi
+                    </a>
+                </li>
+                <li>
+                    <a href="/ibu-hamil" class="nav-link text-white">
+                    <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
+                    Ibu Hamil
+                    </a>
+                </li>
+                <li>
+                    <a href="/data-kb" class="nav-link text-white">
+                    <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
+                    KB
+                    </a>
+                </li>
+                <li>
+                    <a href="/input-table" class="nav-link text-white dropdown-toggle active" id="navbarDropdown" data-bs-toggle="dropdown">
+                    <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#table"></use></svg>
+                    input Data
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="/input-table">Imunisasi</a>
+                        <a class="dropdown-item" href="/input-bumil">Ibu Hamil</a>
+                        <a class="dropdown-item" href="/input-kb">KB</a>
+                        
+                    </div>
+                </li>
+                <li>
+                    <a href="/daftar-reservasi" class="nav-link text-white">
+                    <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#grid"></use></svg>
+                    Daftar Reservasi
+                    </a>
+                </li>
+                <li>
+                    <a href="/daftar-pasien" class="nav-link text-white">
+                    <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#grid"></use></svg>
+                    Tambah Pasien
+                    </a>
+                </li>
+        </ul>
+    </div>
+</nav>
+<div class="d-flex">
+    <div class="sidebar p-3 flex-shrink-0 d-none d-md-block bg-dark m-0 vh-100">
+        <h4 class="text-white">Dashboard</h4>
         <ul class="nav flex-column">
             <li class="nav-item">
                     <a href="/admin" class="nav-link text-white" aria-current="page">
@@ -58,105 +107,78 @@
                 </li>
         </ul>
     </div>
-</nav>
-<div class="d-flex">
-    <div class="sidebar p-3 flex-shrink-0 d-none d-md-block bg-dark m-0 vh-100">
-        <h4 class="text-white">Dashboard</h4>
-        <ul class="nav flex-column">
-            <li class="nav-item">
-                    <a href="/admin" class="nav-link text-white" aria-current="page">
-                    <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#home"></use></svg>
-                    Imunisasi
-                    </a>
-                </li>
-                <li>
-                    <a href="/ibu-hamil" class="nav-link text-white">
-                    <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
-                    Ibu Hamil
-                    </a>
-                </li>
-                <li>
-                    <a href="/detail-kb" class="nav-link text-white">
-                    <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
-                    KB
-                    </a>
-                </li>
-                <li>
-                    <a href="/data-pasien" class="nav-link text-white">
-                    <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
-                    Daftar Pasien
-                    </a>
-                </li>
-                <li>
-                    <a href="/input-table" class="nav-link text-white dropdown-toggle active" id="navbarDropdown" data-bs-toggle="dropdown">
-                    <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#table"></use></svg>
-                    input Data
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="/input-table">Imunisasi</a>
-                        <a class="dropdown-item" href="/input-bumil">Ibu Hamil</a>
-                        <a class="dropdown-item" href="/input-kb">KB</a>
-                    </div>
-                </li>
-                <li>
-                    <a href="/daftar-reservasi" class="nav-link text-white">
-                    <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#grid"></use></svg>
-                    Daftar Reservasi
-                    </a>
-                </li>
-                <li>
-                    <a href="/daftar-pasien" class="nav-link text-white">
-                    <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#grid"></use></svg>
-                    Tambah Pasien
-                    </a>
-                </li>
-        </ul>
-    </div>
     {{-- isi konten nya disini --}}
     <div class="content flex-grow-1 p-3">
-        <div class="col-md-12">
-    <div class="row d-flex justify-content-center align-items-center">
-        <div class=" mt-3 d-flex justify-content-center align-items-center">
-            <h1 class=" fw-bold">Pendaftaran Pasien</h1>
-        </div>
-        @if(Session::has('success'))
-                    <div class="alert alert-success">
-                        {{ Session::get('success') }}
-                    </div>
-                @endif
-        @if(session('errors'))
-            <div class="alert alert-danger">
-                {{ session('errors') }}
+        <div class="row col-md-12">
+      <div class=" col-md-7 mt-2">
+          <h1 class=" fw-bold">Data Pasien</h1>
+          @if(Session::has('success'))
+                      <div class="alert alert-success">
+                          {{ Session::get('success') }}
+                      </div>
+          @endif
+          @if(session('errors'))
+              <div class="alert alert-danger">
+                  {{ session('errors') }}
+              </div>
+          @endif
+      </div>
+      
+      <div class=" col-md-4">
+        <form class="form-inline my-2 my-lg-0" action="{{route('imunisasi.search')}}" method="POST">
+          @csrf
+          <div class="row mt-2">
+            <div class="col-md-9">
+              <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="keyword">
             </div>
-        @endif
-        <div class="col-md-3 justify-content-center align-items-center d-flex">
-            <form class=" mt-2" method="GET" action="/search-nik">
-                @csrf
-            {{-- kiri --}}
-                <div class="">
-                    
-                    <div class="mb-3 form-outline border-0 border-bottom border-dark" id="nikform">
-                        <label for="nikIbu" class="form-label">NIK Ibu</label>
-                        <input type="text" class="form-control" id="nikIbu" aria-describedby="" name="nik_ibu">
-                        {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
-                    </div>
-                    <div class="mb-3 form-outline border-0 border-bottom border-dark" id="result">
-                        <label for="nikSuami" class="form-label">NIK Suami</label>
-                        <input type="text" class="form-control" id="nikSuami" aria-describedby="" name="nik_suami">
-                        {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
-                    </div>
-                    <button  type="submit" class="btn btn-success mb-md-3">Tambah</button>
-                    <a href="/tambah-pasien" type="button" class="btn btn-primary mb-md-3 position-relative mt-auto mb">Daftar</a>
-            </form>
-                    
-                    
-                </div>
-            {{-- </form> --}}
-        </div>
-    
+            <div class="col-md-3">
+              <button class="btn btn-dark my-2 my-sm-0" type="submit">Search</button>
+            </div>
+          </div>
             
-    
-        </div>
+            
+          </form>
+      </div>
+      <div class="col-md-2">
+        <a href="/daftar-pasien">
+        <button type="button"  class="btn btn-success btn-sm">tambah</button>
+        </a>
+      </div>
+      </div>
+      <div class="container">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>NIK</th>
+                <th>Nama</th>
+                <th>Tanggal Lahir</th>
+                <th>Alamat</th>
+                <th>No Telepon</th>
+                <th>Jenis Kelamin</th>
+              </tr>
+            </thead>
+            <tbody>
+              {{-- @foreach ($imunisasis as $key=> $imunisasi)
+                <tr>
+                  <td>{{$key+1}}</td>
+                  <td>{{$imunisasi->tanggal}}</td>
+                  <td>{{$imunisasi->nama_anak}}</td>
+                  <td>{{$imunisasi->nik_anak}}</td>
+                  <td>{{$imunisasi->nama_orangtua}}</td>
+                  <td>{{$imunisasi->tgl_lahir}}</td>
+                  <td>{{$imunisasi->alamat}}</td>
+                  <td>
+                    <a href="{{ route('imunisasi.show', ['id' => $imunisasi->id]) }}">
+                      <button type="button" class="btn btn-info btn-sm" >Detail</button>
+                    </a>
+                  </td>
+                </tr>
+              @endforeach --}}
+            </tbody>
+          </table>
+          {{-- {{ $imunisasis->links() }} --}}
+      </div>
+  </div>
     
     </div>
    

@@ -135,6 +135,12 @@ Route::get('/detail-kb', function () {
 Route::get('/daftar-pasien', function () {
     return view('layouts.admin.daftar-pasien');
 });
+Route::get('/data-pasien', function () {
+    return view('layouts.admin.data-pasien');
+});
+// Route::get('/kb', function () {
+//     return view('layouts.admin.kb');
+// });
 // Route::get('/data-kb', function () {
 //     return view('layouts.admin.data-kb');
 // });
