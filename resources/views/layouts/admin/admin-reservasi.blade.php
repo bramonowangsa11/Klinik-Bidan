@@ -31,8 +31,8 @@
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="/input-table">Imunisasi</a>
                         <a class="dropdown-item" href="/input-bumil">Ibu Hamil</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Submenu 3</a>
+                        <a class="dropdown-item" href="/input-kb">KB</a>
+                        
                     </div>
                 </li>
                 <li>

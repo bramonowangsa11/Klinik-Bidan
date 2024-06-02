@@ -110,7 +110,18 @@ Route::post('/search-pasien',[PasienController::class,'findBynik'])->name('findB
 // Route::get('/lihat-reservasi-user', function () {
 //     return view('layouts.users.lihat-reservasi-user');
 // });
-
+Route::get('/tambah-pasien', function () {
+    return view('layouts.admin.tambah-pasien');
+});
+Route::get('/input-kb', function () {
+    return view('layouts.admin.kb');
+});
+Route::get('/ceknik', function () {
+    return view('layouts.admin.testajax');
+});
+Route::get('/detail-kb', function () {
+    return view('layouts.admin.detail-kb');
+});
 
 
 
