@@ -122,8 +122,12 @@ Route::get('/ceknik', function () {
 Route::get('/detail-kb', function () {
     return view('layouts.admin.detail-kb');
 });
-
-
+Route::get('/daftar-pasien', function () {
+    return view('layouts.admin.daftar-pasien');
+});
+Route::get('/data-kb', function () {
+    return view('layouts.admin.data-kb');
+});
 
 
 

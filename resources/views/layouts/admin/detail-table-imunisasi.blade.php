@@ -31,6 +31,7 @@
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="/input-table">Imunisasi</a>
                         <a class="dropdown-item" href="/input-bumil">Ibu Hamil</a>
+                        <a class="dropdown-item" href="/input-kb">KB</a>
                     </div>
       </li>
       <li>
@@ -39,7 +40,12 @@
           Daftar Reservasi
         </a>
       </li>
-      
+      <li>
+                    <a href="/daftar-pasien" class="nav-link text-white">
+                    <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#grid"></use></svg>
+                    Tambah Pasien
+                    </a>
+                </li>
     </ul>
     <hr>
     <div class="dropdown">

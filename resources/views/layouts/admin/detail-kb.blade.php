@@ -1,8 +1,8 @@
 @extends('layouts.bootstrap')
 @section('content')
 {{-- start --}}
-<div class="container bg-secondary min-vh-100 min-vw-100">
-  <nav class="navbar navbar-dark bg-dark d-md-none ms-0">
+<div class="container bg-secondary min-vh-100 min-vw-100 m-0 p-0">
+  <nav class="navbar navbar-dark bg-dark d-md-none m-0">
     <a class="navbar-brand" href="#">Dashboard</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -29,7 +29,7 @@
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="/input-table">Imunisasi</a>
                         <a class="dropdown-item" href="/input-bumil">Ibu Hamil</a>
-                        
+                        <a class="dropdown-item" href="/input-kb">KB</a>
                     </div>
                 </li>
                 <li>
@@ -58,6 +58,12 @@
                     </a>
                 </li>
                 <li>
+                    <a href="/data-kb" class="nav-link text-white">
+                    <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
+                    KB
+                    </a>
+                </li>
+                <li>
                     <a href="/input-table" class="nav-link text-white dropdown-toggle active" id="navbarDropdown" data-bs-toggle="dropdown">
                     <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#table"></use></svg>
                     input Data
@@ -65,13 +71,19 @@
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="/input-table">Imunisasi</a>
                         <a class="dropdown-item" href="/input-bumil">Ibu Hamil</a>
-                        
+                        <a class="dropdown-item" href="/input-kb">KB</a>
                     </div>
                 </li>
                 <li>
                     <a href="/daftar-reservasi" class="nav-link text-white">
                     <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#grid"></use></svg>
                     Daftar Reservasi
+                    </a>
+                </li>
+                <li>
+                    <a href="/daftar-pasien" class="nav-link text-white">
+                    <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#grid"></use></svg>
+                    Tambah Pasien
                     </a>
                 </li>
         </ul>
@@ -131,7 +143,7 @@
 
         </div>
         {{-- kanan --}}
-        <div class="col-md-9">
+        <div class="col-md-9 flex-column">
             <table class="table border-black border-2 table-bordered tab">
                 <thead class=" bg-secondary">
                     <tr class=" bg-secondary">

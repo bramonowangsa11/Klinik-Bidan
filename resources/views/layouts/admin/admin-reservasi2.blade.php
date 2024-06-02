@@ -41,7 +41,12 @@
                     Daftar Reservasi
                     </a>
                 </li>
-                
+                <li>
+                    <a href="/daftar-pasien" class="nav-link text-white">
+                    <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#grid"></use></svg>
+                    Tambah Pasien
+                    </a>
+                </li>
                 </ul>
             <hr>
             <div class="dropdown">
