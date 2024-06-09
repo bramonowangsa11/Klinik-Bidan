@@ -70,7 +70,7 @@ class PasienController extends Controller
         return view('layouts.users.user-reservasi',compact('user'));
     }
     public function listPasien(){
-        $pasiens = Pasien::paginate(10);
+        $pasiens = Pasien::paginate(5);
         return view('layouts.admin.data-pasien',compact('pasiens'));
     }
     
