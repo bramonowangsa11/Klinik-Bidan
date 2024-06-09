@@ -208,7 +208,7 @@ class KbController extends Controller
     public function search(Request $request){
         $searchTerm = $request->input('keyword');
 
-        $kbs = Kb::with([['Ibu','Suami']])->whereHas('Ibu', function($query) use ($searchTerm) {
+        $kbs = Kb::with(['Ibu','Suami'])->whereHas('Ibu', function($query) use ($searchTerm) {
                 $query->where('name', 'like', '%' . $searchTerm . '%')
                       ->orWhere('nik', 'like', '%' . $searchTerm . '%');
             })
@@ -224,5 +224,11 @@ class KbController extends Controller
     }
     public function formKb(){
         return view('layouts.admin.kb');
+    }
+
+    public function laporanKb($year,$month){
+        $kbs = Kb::with(['Suami','Ibu'])->whereYear('tgl_kb',$year)
+            ->whreMonth('tgl_kb',$month)->get();
+        return view('',compact('kbs'));
     }
 }

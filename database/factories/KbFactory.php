@@ -39,7 +39,7 @@ class KbFactory extends Factory
             'inform_consent' => $this->faker->word,
             'keterangan' => $this->faker->sentence,
             'id_suami' => $id_suami,
-            'id_ibu' => $id_suami,
+            'id_ibu' => $id_ibu,
         ];
     }
 }

@@ -36,7 +36,7 @@ class testrplController extends Controller
             ],422);
         }
         else{
-            return $response()->json($request,400);
+            return response()->json(['data'=>$validator],400);
         }
     }
 }

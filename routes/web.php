@@ -77,6 +77,7 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/kb/{id}',[KbController::class,'update'])->middleware('userAkses:admin')->name('kb.update');
     Route::delete('/kb/{id}',[KbController::class,'destroy'])->name('kb.destroy')->middleware('userAkses:admin');
     Route::get('/data-pasien',[PasienController::class,'listPasien'])->name('pasien.list')->middleware('userAkses:admin');
+    Route::get('/pasien/{id}',[PasienController::class,''])->name('pasien.show')->middleware('userAkses:admin');
 });
 
 // routes dashboard admin

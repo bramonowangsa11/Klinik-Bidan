@@ -23,7 +23,7 @@ class testRPL extends TestCase
         $faker = Faker::create();
         $requestData = [
             'name' => $faker->name,
-            'telephone' => $faker->phoneNumber,
+            'telephone' => '081247278448',
             'email'=> $faker->email
         ];
         $controller = new testrplController();

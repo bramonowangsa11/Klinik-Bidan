@@ -29,4 +29,8 @@ class AdminController extends Controller
             return redirect()->back()->with('errors', 'reservasi hanya bisa dilakukan maks h-1 dari tanggal reservasi');
         } 
     }
+
+    public function dashboard(){
+        
+    }
 }

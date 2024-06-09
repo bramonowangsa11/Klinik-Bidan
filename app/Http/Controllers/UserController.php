@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Pasien;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
 class UserController extends Controller
@@ -76,5 +78,37 @@ class UserController extends Controller
                 return redirect()->back()->with('errors','nik yang anda masukkan telah terdaftar sebagai user');
             }
         }
+    }
+
+    public function updateProfil(Request $request){
+        $validate_data = $request->validate(['name' => 'required|string|max:255',
+        'alamat' => 'required|string',
+        'ttl' => 'required|date',
+        'no_telp' => 'required|string|numeric',
+        'jenis_kelamin' => 'required|in:Laki-Laki,Perempuan',
+
+    ],[
+        'name.required' => 'Nama wajib diisi.',
+        'no_telp.numeric'=> 'Format nomor telpon harus berupa angka',
+        'name.required' => 'Nama wajib diisi.',
+        'name.string' => 'Nama harus berupa teks.',
+        'alamat.required' => 'Alamat wajib diisi.',
+        'alamat.string' => 'Alamat harus berupa teks.',
+        'ttl.required' => 'Tanggal lahir wajib diisi.',
+        'ttl.date' => 'Format tanggal lahir tidak valid.',
+        'no_telp.required' => 'Nomor telepon wajib diisi.',
+        'no_telp.string' => 'Nomor telepon harus berupa teks.',
+        'jenis_kelamin.required' => 'Jenis kelamin wajib diisi.',
+    ]);
+
+        $user_id = Auth::user()->id;
+        $pasien = pasien::where('user_id',$user_id)->firstOrFail();
+        $pasien->update([
+            'name' => $validate_data['name'],
+            'no_telp' => $validate_data['no_telp'],
+            'alamat' => $validate_data['alamat'],
+            'ttl' => $validate_data['ttl'],
+            'jenis_kelamin' => $validate_data['jenis_kelamin'],
+        ]);
     }
 }
