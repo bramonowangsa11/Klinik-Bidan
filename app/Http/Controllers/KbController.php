@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Session;
 class KbController extends Controller
 {
     public function index(){
-        $kbs = Kb::with(['Ibu','Suami'])->paginate(10);
+        $kbs = Kb::with(['Ibu','Suami'])->paginate(5);
         return view('layouts.admin.data-kb',compact('kbs'));    
     }
     public function store(Request $request){

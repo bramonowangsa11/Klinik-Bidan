@@ -139,6 +139,9 @@ Route::get('/detail-kb', function () {
 Route::get('/daftar-pasien', function () {
     return view('layouts.admin.daftar-pasien');
 });
+Route::get('/testing', function () {
+    return view('layouts.testing');
+});
 // Route::get('/data-pasien', function () {
 //     return view('layouts.admin.data-pasien');
 // });
