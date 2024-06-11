@@ -14,7 +14,7 @@ class ImunisasiController extends Controller
     }
     public function search(Request $request){
         $imunisasis = Imunisasi::where('nama_anak','like','%'.$request->input('keyword').'%')
-                ->paginate(10);
+                ->paginate(5);
         if($imunisasis->isEmpty()){
             return redirect('/admin')->with('errors',"data tidak  ditemukan");
         }
@@ -23,7 +23,7 @@ class ImunisasiController extends Controller
         }
     }
     public function index(){
-        $imunisasis = Imunisasi::paginate(10);
+        $imunisasis = Imunisasi::paginate(5);
         
         // return response()->json(['data' => $imunisasi], 200);
         return view('layouts/admin/dashboard-admin',compact('imunisasis'));
@@ -168,6 +168,14 @@ class ImunisasiController extends Controller
             'tanggal.required' => 'Tanggal harus diisi.',
             
         ]);
+        $imunisasi = Imunisasi::find($id);
+        // if (is_null($imunisasi)) {
+        //     return redirect()->back()->with('errors', 'data tidak ditemukan');
+        // } else {
+        //     $imunisasi->update($validatedData);
+        //     Session::flash('success', 'data kb berhasil diupdate');
+        //     return redirect('/admin');
+        // }
 
         $imunisasi->update($validatedData);
         Session::flash('success', 'data berhasil diupdate');

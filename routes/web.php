@@ -143,6 +143,17 @@ Route::get('/daftar-pasien', function () {
 Route::get('/testing', function () {
     return view('layouts.testing');
 });
+
+Route::get('/daftar-imunisasi', function () {
+    return view('layouts.admin.daftar-imunisasi');
+});
+Route::get('/daftar-bumil', function () {
+    return view('layouts.admin.daftar-bumil');
+});
+
+Route::get('/dashboard', function () {
+    return view('layouts.admin.admin-dashboard');
+});
 // Route::get('/data-pasien', function () {
 //     return view('layouts.admin.data-pasien');
 // });
@@ -152,8 +163,3 @@ Route::get('/testing', function () {
 // Route::get('/data-kb', function () {
 //     return view('layouts.admin.data-kb');
 // });
-
-
-
-
-

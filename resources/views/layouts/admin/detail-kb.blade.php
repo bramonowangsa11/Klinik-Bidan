@@ -3,7 +3,7 @@
     {{-- start --}}
     <div class="container min-vh-100 p-0 m-0 min-vw-100">
         {{-- nvbar --}}
-        <nav class="navbar navbar-expand-lg navbar-dark p-2 d-md-none m-0 min-vw-100 bg-dark" style="width: 48vh">
+        <nav class="navbar navbar-expand-lg navbar-dark p-2 d-md-none m-0 min-vw-100 bg-dark" style="width: 47vh">
             <a class="navbar-brand" href="#">Dashboard</a>
             <button class="navbar-toggler mr-2" type="button" data-toggle="collapse" data-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -143,7 +143,7 @@
             {{-- isi konten nya disini --}}
             <div class="content flex-grow-1 p-2 col-7">
                 {{-- bagian kb dan search --}}
-                <div class="row col-md-12">
+                <div class="row col-md-12 ms-0">
                     {{-- alert --}}
                     <div class=" col-md-7 mt-2 col-6">
                         <h1 class=" fw-bold">Data KB</h1>
@@ -185,7 +185,7 @@
                 </div>
                 {{-- end --}}
                 {{-- bagian data --}}
-                <div class="row col-md-12 mt-2">
+                <div class="row col-md-12 col-12 ms-0 mt-2">
                     {{-- Atas --}}
                     <div class="row p-0 ms-1">
                         <div class="row mb-2">

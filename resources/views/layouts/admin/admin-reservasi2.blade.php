@@ -36,7 +36,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="/input-table" class="nav-link text-white dropdown-toggle active" id="navbarDropdown" data-bs-toggle="dropdown">
+                    <a href="/input-table" class="nav-link text-white dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown">
                     <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#table"></use></svg>
                     input Data
                     </a>
