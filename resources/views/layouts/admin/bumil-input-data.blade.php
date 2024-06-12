@@ -382,16 +382,16 @@
                                                 <input type="hidden" name="HDK" value="0">
                                                 <label for="inputKomplikasi" class="form-label">HDK</label>
                                                 <input type="hidden" name="ABORTUS" value="0">
-                                                <input type="checkbox" class="form-check-input" id="inputAbortus" name="ABORTUS" value="1">
+                                                <input type="checkbox" class="form-check-input" id="inputAbortus" name="ABORTUS" value="2">
                                                 <label for="inputKomplikasi" class="form-label">Abortus</label>
                                                 <input type="hidden" name="PERDARAHAN" value="0">
-                                                <input type="checkbox" class="form-check-input" id="inputPerdarahan"  name="PERDARAHAN" value="1">
+                                                <input type="checkbox" class="form-check-input" id="inputPerdarahan"  name="PERDARAHAN" value="3">
                                                 <label for="inputBCG" class="form-label">Perdarahan</label>
                                                 <input type="hidden" name="INFEKSI" value="0">
-                                                <input type="checkbox" class="form-check-input" id="inputInveksi"  name="INFEKSI" value="1">
+                                                <input type="checkbox" class="form-check-input" id="inputInveksi"  name="INFEKSI" value="4">
                                                 <label for="inputBCG" class="form-label">Infeksi</label>
                                                 <input type="hidden" name="KPD" value="0">
-                                                <input type="checkbox" class="form-check-input" id="inputKPD"  name="KPD" value="1">
+                                                <input type="checkbox" class="form-check-input" id="inputKPD"  name="KPD" value="5">
                                                 <label for="inputBCG" class="form-label">KPD</label>
                    
                                                 

@@ -47,7 +47,7 @@ class anc extends Model
         'TBJ',
         'HB','Protein_urine','GOLDAR','HBSAG',
         'IMS','HIV','HDK','ABORTUS','PERDARAHAN','INFEKSI','KPD','LAIN_LAIN',
-        'PRESENTASI',
+        'KOMPLIKASI',
         'trisemester1',
         'trisemester2',
         'trisemester3',

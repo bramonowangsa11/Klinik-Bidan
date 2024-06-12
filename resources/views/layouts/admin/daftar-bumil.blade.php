@@ -117,7 +117,7 @@
         <div class="col-md-12">
     <div class="row d-flex justify-content-center align-items-center">
         <div class=" mt-3 d-flex justify-content-center align-items-center">
-            <h1 class=" fw-bold">Pendaftaran Pasien</h1>
+            <h1 class=" fw-bold">Daftar Ibu Hamil</h1>
         </div>
         @if(Session::has('success'))
                     <div class="alert alert-success">
@@ -146,7 +146,7 @@
                         {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
                     </div>
                     <button  type="submit" class="btn btn-success mb-md-3">Tambah</button>
-                    <a href="/tambah-pasien" type="button" class="btn btn-primary mb-md-3 position-relative mt-auto mb">Daftar</a>
+                    <a href="/input-bumil" type="button" class="btn btn-primary mb-md-3 position-relative mt-auto mb">Daftar</a>
             </form>
                     
                     

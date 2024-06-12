@@ -1,422 +1,467 @@
 @extends('layouts.bootstrap')
 @section('content')
-{{-- start --}}
-<div class="row w-full vh-100">
-{{-- sidebar --}}
-<div class="col-md-3">
-    <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-secondary vh-100" style="width: 280px;">
-    <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-      <svg class="bi pe-none me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
-      <span class="fs-4">Hi, Admin</span>
-    </a>
-    <hr>
-    <ul class="nav nav-pills flex-column mb-auto">
-      <li class="nav-item">
-        <a href="/admin" class="nav-link text-white active" aria-current="page">
-          <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#home"></use></svg>
-          Imunisasi
-        </a>
-      </li>
-      <li>
-        <a href="/ibu-hamil" class="nav-link text-white">
-          <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
-          Ibu Hamil
-        </a>
-      </li>
-      <li>
-                    <a href="/data-kb" class="nav-link text-white">
-                    <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
-                    KB
-                    </a>
-                </li>
-      <li>
-                    <a href="/data-pasien" class="nav-link text-white">
-                    <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
-                    Daftar Pasien
-                    </a>
-                </li>
-                <li>
-                    <a href="/input-table" class="nav-link text-white dropdown-toggle active" id="navbarDropdown" data-bs-toggle="dropdown">
-                    <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#table"></use></svg>
-                    input Data
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="/input-table">Imunisasi</a>
-                        <a class="dropdown-item" href="/input-bumil">Ibu Hamil</a>
-                        <a class="dropdown-item" href="/input-kb">KB</a>
+    {{-- start --}}
+    <div class="container min-vh-100 p-0 m-0 min-vw-100">
+        {{-- nvbar --}}
+        <nav class="navbar navbar-expand-lg navbar-dark p-2 d-md-none m-0 min-vw-100 bg-dark" style="width: 47vh">
+            <a class="navbar-brand" href="#">Dashboard</a>
+            <button class="navbar-toggler mr-2" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a href="/admin" class="nav-link text-white" aria-current="page">
+                            <svg class="bi pe-none me-2" width="16" height="16">
+                                <use xlink:href="#home"></use>
+                            </svg>
+                            Imunisasi
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/ibu-hamil" class="nav-link text-white">
+                            <svg class="bi pe-none me-2" width="16" height="16">
+                                <use xlink:href="#speedometer2"></use>
+                            </svg>
+                            Ibu Hamil
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/data-kb" class="nav-link text-white">
+                            <svg class="bi pe-none me-2" width="16" height="16">
+                                <use xlink:href="#speedometer2"></use>
+                            </svg>
+                            KB
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/input-table" class="nav-link text-white dropdown-toggle active" id="navbarDropdown"
+                            data-bs-toggle="dropdown">
+                            <svg class="bi pe-none me-2" width="16" height="16">
+                                <use xlink:href="#table"></use>
+                            </svg>
+                            input Data
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="/input-table">Imunisasi</a>
+                            <a class="dropdown-item" href="/input-bumil">Ibu Hamil</a>
+                            <a class="dropdown-item" href="/input-kb">KB</a>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="/daftar-reservasi" class="nav-link text-white">
+                            <svg class="bi pe-none me-2" width="16" height="16">
+                                <use xlink:href="#grid"></use>
+                            </svg>
+                            Daftar Reservasi
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/daftar-pasien" class="nav-link text-white">
+                            <svg class="bi pe-none me-2" width="16" height="16">
+                                <use xlink:href="#grid"></use>
+                            </svg>
+                            Tambah Pasien
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+        </nav>
+        {{-- end navbar --}}
+        <div class="d-flex">
+            {{-- dashboard --}}
+            <div class="sidebar p-3 flex-shrink-0 d-none d-md-block bg-dark m-0 vh-100">
+                <h4 class="text-white">Dashboard</h4>
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a href="/admin" class="nav-link text-white" aria-current="page">
+                            <svg class="bi pe-none me-2" width="16" height="16">
+                                <use xlink:href="#home"></use>
+                            </svg>
+                            Imunisasi
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/ibu-hamil" class="nav-link text-white">
+                            <svg class="bi pe-none me-2" width="16" height="16">
+                                <use xlink:href="#speedometer2"></use>
+                            </svg>
+                            Ibu Hamil
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/data-kb" class="nav-link text-white">
+                            <svg class="bi pe-none me-2" width="16" height="16">
+                                <use xlink:href="#speedometer2"></use>
+                            </svg>
+                            KB
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/data-pasien" class="nav-link text-white">
+                            <svg class="bi pe-none me-2" width="16" height="16">
+                                <use xlink:href="#speedometer2"></use>
+                            </svg>
+                            Daftar Pasien
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/input-table" class="nav-link text-white dropdown-toggle active" id="navbarDropdown"
+                            data-bs-toggle="dropdown">
+                            <svg class="bi pe-none me-2" width="16" height="16">
+                                <use xlink:href="#table"></use>
+                            </svg>
+                            input Data
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="/input-table">Imunisasi</a>
+                            <a class="dropdown-item" href="/input-bumil">Ibu Hamil</a>
+                            <a class="dropdown-item" href="/input-kb">KB</a>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="/daftar-reservasi" class="nav-link text-white">
+                            <svg class="bi pe-none me-2" width="16" height="16">
+                                <use xlink:href="#grid"></use>
+                            </svg>
+                            Daftar Reservasi
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/daftar-pasien" class="nav-link text-white">
+                            <svg class="bi pe-none me-2" width="16" height="16">
+                                <use xlink:href="#grid"></use>
+                            </svg>
+                            Tambah Pasien
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            {{-- end dashboard --}}
+            {{-- isi konten nya disini --}}
+            <div class="content flex-grow-1 p-2 col-7">
+                {{-- bagian kb dan search --}}
+                <div class="row col-md-12 ms-0">
+                    {{-- alert --}}
+                    <div class=" col-md-7 mt-2 col-6">
+                        <h1 class=" fw-bold">Data Imunisasi</h1>
+                        @if (Session::has('success'))
+                            <div class="alert alert-success">
+                                {{ Session::get('success') }}
+                            </div>
+                        @endif
+                        @if (session('errors'))
+                            <div class="alert alert-danger">
+                                {{ session('errors') }}
+                            </div>
+                        @endif
                     </div>
-                </li>
-      <li>
-        <a href="/daftar-reservasi" class="nav-link text-white">
-          <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#grid"></use></svg>
-          Daftar Reservasi
-        </a>
-      </li>
-      <li>
-                    <a href="/daftar-pasien" class="nav-link text-white">
-                    <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#grid"></use></svg>
-                    Tambah Pasien
-                    </a>
-                </li>
-    </ul>
-    <hr>
-    <div class="dropdown">
-      <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-        <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
-        <strong>Admin</strong>
-      </a>
-      <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
-        <li><a class="dropdown-item" href="#">New project...</a></li>
-        <li><a class="dropdown-item" href="#">Settings</a></li>
-        <li><a class="dropdown-item" href="#">Profile</a></li>
-        <li><hr class="dropdown-divider"></li>
-        <li><a class="dropdown-item" href="/logout">Sign out</a></li>
-      </ul>
-    </div>
-  </div>
-</div>
-{{-- end side bar --}}
-{{-- content --}}
-<div class="col-md-9">
-    <div>
-        <h1>Detail Tabel</h1>
-        @if(Session::has('success'))
-                    <div class="alert alert-success">
-                        {{ Session::get('success') }}
+                    {{-- end alert --}}
+                    {{-- search --}}
+                    <div class=" col-md-4">
+                        <form class="form-inline my-2 my-lg-0" action="{{ route('imunisasi.search') }}" method="POST">
+                            @csrf
+                            <div class="row mt-2">
+                                <div class="col-md-9 col-7">
+                                    <input class="form-control mr-sm-2" type="search" placeholder="Search"
+                                        aria-label="Search" name="keyword">
+                                </div>
+                                <div class="col-md-3">
+                                    <button class="btn btn-dark my-2 my-sm-0" type="submit">Search</button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
-                @endif
-        @if($errors->any())
-                <div class="alert alert-danger">
-                  <ul>  
-                    @foreach($errors->all() as $error)
-                      <li>
-                        {{ $error }}
-                      </li>
-                    @endforeach
-                  </ul>
-                </div>
-        @endif
-    </div>
-    <form action="{{ route('imunisasi.update', $imunisasi->id) }}" method="POST">
-      @csrf
-      @method('PUT')
-      <div class="container">
-      <div class="row">
-        {{-- kiri --}}
-        <div class="col-md-4">
-          
-          
-          <div class="mb-3 form-outline border-0 border-bottom border-dark">
-                        <label for="inputTanggal" class="form-label">Tanggal</label>
-                        <input type="date" class="form-control" id="inputTanggal" value="{{$imunisasi->tanggal}}" aria-describedby="" name="tanggal">
-                        {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
+                    {{-- end search --}}
+                    {{-- tambah --}}
+                    <div class="col-md-2 col-2">
+                        <a href="/input-kb">
+                            <button type="button" class="btn btn-success btn-sm">tambah</button>
+                        </a>
                     </div>
-                    <div class="mb-3 form-outline border-0 border-bottom border-dark">
-                        <label for="inputNamaAnak" class="form-label">Nama Anak</label>
-                        <input type="text" class="form-control" id="inputNamaAnak" value="{{$imunisasi->nama_anak}}" aria-describedby="" name="nama_anak">
-                        {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
+                    {{-- end tambah --}}
+                </div>
+                {{-- end --}}
+                {{-- bagian data --}}
+                <div class="row col-md-12 col-12 ms-0 mt-2">
+                    {{-- Atas --}}
+                    <div class="row p-0 ms-1">
+                        <div class="row mb-2">
+                            <div class="col-4 col-md-2 font-weight-bold">Tanggal</div>
+                            <div class="col-8 col-md-8">: {{ $imunisasi->tanggal }}</div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-4 col-md-2 font-weight-bold">Nama Anak</div>
+                            <div class="col-8 col-md-8">: {{ $imunisasi->nama_anak }}</div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-4 col-md-2 font-weight-bold">NIK</div>
+                            <div class="col-8 col-md-8">: {{ $imunisasi->nik_anak }}</div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-4 col-md-2 font-weight-bold">Nama Orang Tua</div>
+                            <div class="col-8 col-md-8">: {{ $imunisasi->nama_orangtua }}</div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-4 col-md-2 font-weight-bold">Tanggal Lahir</div>
+                            <div class="col-8 col-md-8">: {{ $imunisasi->tgl_lahir }}</div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-4 col-md-2 font-weight-bold">Alamat</div>
+                            <div class="col-8 col-md-8">: {{ $imunisasi->alamat }}</div>
+                        </div>
+                        {{-- nama datanya --}}
                     </div>
-                    <div class="mb-3 form-outline border-0 border-bottom border-dark">
-                        <label for="inputNIK" class="form-label">NIK</label>
-                        <input type="text" class="form-control" id="inputNIK" value="{{$imunisasi->nik_anak}}" aria-describedby="" name="nik_anak">
-                        {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
+                    {{-- end atas --}}
+                    {{-- bawah --}}
+                    <div class="col-md-12 ms-0">
+                        <div class="overflow-x-scroll">
+                            <table class="table border-black border-2 table-bordered table-responsive table-striped">
+                                <thead class="table-dark">
+                                    <tr>
+                                        <th>Berat Badan</th>
+                                        <th>Tinggi Badan</th>
+                                        <th>HBO</th>
+                                        <th>BCG</th>
+                                        <th>Penta</th>
+                                        <th>IPV</th>
+                                        <th>PCV</th>
+                                        <th>Rota Virus</th>
+                                        <th>MK</th>
+                                        <th>Booster</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>{{ $imunisasi->berat_badan }}</td>
+                                        <td>{{ $imunisasi->panjang_badan }}</td>
+                                        <td>{{ $imunisasi->HBO }}</td>
+                                        <td>{{ $imunisasi->BCG }}</td>
+                                        <td>{{ $imunisasi->PENTA }}</td>
+                                        <td>{{ $imunisasi->IPV }}</td>
+                                        <td>{{ $imunisasi->PCV }}</td>
+                                        <td>{{ $imunisasi->ROTA_VIRUS }}</td>
+                                        <td>{{ $imunisasi->MK }}</td>
+                                        <td>{{ $imunisasi->booster }}</td>
+
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
-                    <div class="mb-3 form-outline border-0 border-bottom border-dark">
-                        <label for="inputNamaOrtu" class="form-label">Nama Orang Tua</label>
-                        <input type="text" class="form-control" id="inputNamaOrtu" value="{{$imunisasi->nama_orangtua}}" aria-describedby="" name="nama_orangtua">
-                        {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
+                    {{-- end bawah --}}
+                    <div class=" mb-3 mt-3 col-md-6">
+                        <div class="row">
+                            <div class="col-md-2 col-2">
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                    data-bs-target="#ubahModal">Ubah</button>
+                                </form>
+                            </div>
+                            <div class="col-md-2 col-3">
+                                <form action="{{ route('imunisasi.destroy', $imunisasi->id) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger">Hapus</button>
+                                </form>
+                            </div>
+                        </div>
                     </div>
-                    <div class="mb-3 form-outline border-0 border-bottom border-dark">
-                        <label for="inputTanggalLhr" class="form-label">Tanggal Lahir</label>
-                        <input type="date" class="form-control" id="inputTanggalLhr" value="{{$imunisasi->tgl_lahir}}" aria-describedby=""name="tgl_lahir">
-                        {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
+                    {{-- end konten --}}
+                    <!-- Modal ubah-->
+                    <div class="modal fade" id="ubahModal" tabindex="-1" aria-labelledby="ubahModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-lg">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="ubahModalLabel">Ubah Data</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <form action="{{ route('imunisasi.update', $imunisasi->id) }}" method="POST">
+                                        @csrf
+                                        @method('PUT')
+                                        <div class="row">
+                                            {{-- kiri --}}
+                                            <div class="col-md-4">
+                                                <div class="mb-3">
+                                                    <label for="inputTanggal" class="form-label">Tanggal</label>
+                                                    <input type="text" class="form-control" name="tanggal"
+                                                        id="inputTanggal" value="{{ $imunisasi->tanggal }}">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="inputNamaAnak" class="form-label">Nama Anak</label>
+                                                    <input type="text" class="form-control" name="nama_anak"
+                                                        id="inputNamaAnak" value="{{ $imunisasi->nama_anak }}">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="inputNIK" class="form-label">NIK</label>
+                                                    <input type="number" class="form-control" name="nik_anak"
+                                                        id="inputNIK" value="{{ $imunisasi->nik_anak }}">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="inputNamaOrtu" class="form-label">Nama Orang Tua</label>
+                                                    <input type="text" class="form-control" name="nama_orangtua"
+                                                        id="inputNamaOrtu" value="{{ $imunisasi->nama_orangtua }}">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="inputTglLahir" class="form-label">Tanggal Lahir</label>
+                                                    <input type="text" class="form-control" name="tgl_lahir"
+                                                        id="inputTglLahir" value="{{ $imunisasi->tgl_lahir }}">
+                                                </div>
+                                            </div>
+                                            {{-- tengah --}}
+                                            <div class="col-md-4">
+                                                <div class="mb-3">
+                                                    <label for="inputAlamat" class="form-label">Alamat</label>
+                                                    <input type="text" class="form-control" name="alamat"
+                                                        id="inputAlamat" value="{{ $imunisasi->alamat }}">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="inputBeratBadan" class="form-label">Berat Badan</label>
+                                                    <input type="number" class="form-control" name="berat_badan"
+                                                        id="inputBeratBadan" value="{{ $imunisasi->berat_badan }}">
+                                                </div>
+                                                <div class="mb-4">
+                                                    <label for="inputPanjangBadan" class="form-label">Panjang
+                                                        Badan</label>
+                                                    <input type="number" class="form-control" name="panjang_badan"
+                                                        id="inputPanjangBadan" value="{{ $imunisasi->panjang_badan }}">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="inputBCG" class="form-label">HBO</label>
+                                                    <div>
+                                                        <input type="checkbox" class="form-check-input" name="HBO"
+                                                            id="inputBCG"
+                                                            value="1"{{ $imunisasi->HBO == '1' ? 'checked' : '' }}>
+                                                        <label for="inputBCG" class="form-label">1</label>
+                                                        
+                                                    </div>
+                                                    {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="inputBCG" class="form-label">BCG</label>
+                                                    <div>
+                                                        <input type="checkbox" class="form-check-input" name="BCG"
+                                                            id="inputBCG"
+                                                            value="1"{{ $imunisasi->BCG == '1' ? 'checked' : '' }}>
+                                                        <label for="inputBCG" class="form-label">1</label>
+
+                                                    </div>
+                                                    {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="inputPenta" class="form-label">Penta</label>
+                                                    <div>
+                                                        <input type="checkbox" class="form-check-input" name="PENTA"
+                                                            id="inputBCG"
+                                                            value="1"{{ $imunisasi->PENTA == '1' ? 'checked' : '' }}>
+                                                        <label for="inputBCG" class="form-label">1</label>
+                                                        <input type="checkbox" class="form-check-input" name="PENTA"
+                                                            id="inputBCG"
+                                                            value="2"{{ $imunisasi->PENTA == '2' ? 'checked' : '' }}>
+                                                        <label for="inputBCG" class="form-label">2</label>
+                                                        <input type="checkbox" class="form-check-input" name="PENTA"
+                                                            id="inputBCG"
+                                                            value="3"{{ $imunisasi->PENTA == '3' ? 'checked' : '' }}>
+                                                        <label for="inputBCG" class="form-label">3</label>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            {{-- kanan --}}
+                                            <div class="col-md-4">
+                                                <div class="mb-3">
+                                                    <label for="inputTPV" class="form-label">IPV</label>
+                                                    <div>
+                                                        <input type="checkbox" class="form-check-input" name="IPV"
+                                                            id="inputBCG"
+                                                            value="1"{{ $imunisasi->IPV == '1' ? 'checked' : '' }}>
+                                                        <label for="inputBCG" class="form-label">1</label>
+                                                        <input type="checkbox" class="form-check-input" name="IPV"
+                                                            id="inputBCG"
+                                                            value="2"{{ $imunisasi->IPV == '2' ? 'checked' : '' }}>
+                                                        <label for="inputBCG" class="form-label">2</label>
+                                                        <input type="checkbox" class="form-check-input" name="IPV"
+                                                            id="inputBCG"
+                                                            value="3"{{ $imunisasi->IPV == '3' ? 'checked' : '' }}>
+                                                        <label for="inputBCG" class="form-label">3</label>
+                                                    </div>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="inputPCV" class="form-label">PCV</label>
+                                                    <div>
+                                                        <input type="checkbox" class="form-check-input" name="PCV"
+                                                            id="inputBCG"
+                                                            value="1"{{ $imunisasi->PCV == '1' ? 'checked' : '' }}>
+                                                        <label for="inputBCG" class="form-label">1</label>
+                                                        <input type="checkbox" class="form-check-input" name="PCV"
+                                                            id="inputBCG"
+                                                            value="2"{{ $imunisasi->PCV == '2' ? 'checked' : '' }}>
+                                                        <label for="inputBCG" class="form-label">2</label>
+                                                        <input type="checkbox" class="form-check-input" name="PCV"
+                                                            id="inputBCG"
+                                                            value="3"{{ $imunisasi->PCV == '3' ? 'checked' : '' }}>
+                                                        <label for="inputBCG" class="form-label">3</label>
+                                                    </div>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="inputBCG" class="form-label">Rota Virus</label>
+                                                    <div>
+                                                        <input type="checkbox" class="form-check-input" name="ROTA_VIRUS"
+                                                            id="inputBCG"
+                                                            value="1"{{ $imunisasi->ROTA_VIRUS == '1' ? 'checked' : '' }}>
+                                                        <label for="inputBCG" class="form-label">1</label>
+                                                        <input type="checkbox" class="form-check-input" name="ROTA_VIRUS"
+                                                            id="inputBCG"
+                                                            value="2"{{ $imunisasi->ROTA_VIRUS == '2' ? 'checked' : '' }}>
+                                                        <label for="inputBCG" class="form-label">2</label>
+                                                        <input type="checkbox" class="form-check-input" name="ROTA_VIRUS"
+                                                            id="inputBCG"
+                                                            value="3"{{ $imunisasi->ROTA_VIRUS == '3' ? 'checked' : '' }}>
+                                                        <label for="inputBCG" class="form-label">3</label>
+                                                    </div>
+                                                    {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="inputTPV" class="form-label">MK</label>
+                                                    <input type="checkbox" class="form-check-input" name="MK"
+                                                        id="inputTPV"
+                                                        value="1"{{ $imunisasi->MK == '1' ? 'checked' : '' }}>
+                                                </div>
+                                                <div class="mb-2">
+                                                    <label for="inputTPV" class="form-label">Booster</label>
+                                                    <div>
+                                                        <input type="checkbox" class="form-check-input" name="booster"
+                                                            id="inputTPV"
+                                                            value="PENTA"{{ $imunisasi->booster == 'PENTA' ? 'checked' : '' }}>
+                                                        <label for="inputTPV" class="form-label">Penta</label>
+                                                        <input type="checkbox" class="form-check-input" name="booster"
+                                                            id="inputTPV"
+                                                            value="MK"{{ $imunisasi->booster == 'MK' ? 'checked' : '' }}>
+                                                        <label for="inputTPV" class="form-label">MK</label>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <button type="submit" class="btn btn-success"
+                                                        data-bs-dismiss="modal">Simpan</button>
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-bs-dismiss="modal">Tutup</button>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </form>
+                                    <!-- Isi detail data disini -->
+
+
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="mb-3 form-outline border-0 border-bottom border-dark">
-                        <label for="inputAlamat" class="form-label">Alamat</label>
-                        <input type="text" class="form-control" id="inputAlamat" value="{{$imunisasi->alamat}}" aria-describedby="" name="alamat">
-                        {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
-                    </div>
-
-
-        </div>
-        {{-- tengah --}}
-        <div class="col-md-4">
-          <div class="mb-3 form-outline border-0 border-bottom border-dark ">
-                <label for="inputBeratBadan" class="form-label">Berat Badan</label>
-                <input  type="text" class="form-control" id="inputBeratBadan" value="{{$imunisasi->berat_badan}}" aria-describedby="" name="berat_badan">
-                {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
-            </div>
-            <div class="mb-4 form-outline border-0 border-bottom border-dark">
-                <label for="inputPanjangBadan" class="form-label">Panjang Badan</label>
-                <input type="text" class="form-control" id="inputPanjangBadan" value="{{$imunisasi->panjang_badan}}" aria-describedby="" name="panjang_badan">
-                {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
-            </div>
-            <div class="mb-3">
-                <label for="inputBCG" class="form-label">HBO</label>
-                <div>
-                    <input type="checkbox" class="form-check-input" id="inputBCG" value="1" name="HBO" {{$imunisasi->HBO=='1'? 'checked':''}}>
-                    <label for="inputBCG" class="form-label">1</label>
-                    <input type="checkbox" class="form-check-input" id="inputBCG" value="2" name="HBO" {{$imunisasi->HBO=='2'? 'checked':''}}>
-                    <label for="inputBCG" class="form-label">2</label>
-                    <input type="checkbox" class="form-check-input" id="inputBCG" value="3" name="HBO" {{$imunisasi->HBO=='3'? 'checked':''}}>
-                    <label for="inputBCG" class="form-label">3</label>
-                    <input type="hidden" name="HBO" value="0">
-                </div>
-                {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
-            </div>
-            <div class="mb-3">
-                <label for="inputBCG" class="form-label">BCG</label>
-                <div>
-                    <input type="checkbox" class="form-check-input" id="inputBCG" name="BCG" value="1" {{$imunisasi->BCG=='1'? 'checked':''}}>
-                    <label for="inputBCG" class="form-label">1</label>
-                    <input type="checkbox" class="form-check-input" id="inputBCG" name="BCG" value="2" {{$imunisasi->BCG=='2'? 'checked':''}}>
-                    <label for="inputBCG" class="form-label">2</label>
-                    <input type="checkbox" class="form-check-input" id="inputBCG" name="BCG" value="3" {{$imunisasi->BCG=='3'? 'checked':''}}>
-                    <label for="inputBCG" class="form-label">3</label>
-                    <input type="hidden" name="BCG" value="0">
-                </div>
-                {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
-            </div>
-
-            <div class="mb-3">
-              <label for="inputBCG" class="form-label">PENTA</label>
-              <div>
-                  <input type="checkbox" class="form-check-input" id="inputBCG" name="PENTA" value="1" {{$imunisasi->PENTA=='1'? 'checked':''}}>
-                  <label for="inputBCG" class="form-label">1</label>
-                  <input type="checkbox" class="form-check-input" id="inputBCG" name="PENTA" value="2" {{$imunisasi->PENTA=='2'? 'checked':''}}>
-                  <label for="inputBCG" class="form-label">2</label>
-                  <input type="checkbox" class="form-check-input" id="inputBCG" name="PENTA" value="3" {{$imunisasi->PENTA=='3'? 'checked':''}}>
-                  <label for="inputBCG" class="form-label">3</label>
-                  <input type="hidden" name="PENTA" value="0">
-              </div>
-              {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
-          </div>
-          <div class="mb-3">
-            <label for="inputBCG" class="form-label">IPV</label>
-            <div>
-                <input type="checkbox" class="form-check-input" id="inputIPV" name="IPV" value="1" {{$imunisasi->IPV=='1'? 'checked':''}}>
-                <label for="inputIPV" class="form-label">1</label>
-                <input type="checkbox" class="form-check-input" id="inputIPV" name="IPV" value="2" {{$imunisasi->IPV=='2'? 'checked':''}}>
-                <label for="inputIPV" class="form-label">2</label>
-                <input type="checkbox" class="form-check-input" id="inputIPV"  name="IPV" value="3" {{$imunisasi->IPV=='3'? 'checked':''}}>
-                <label for="inputBCG" class="form-label">3</label>
-                <input type="hidden" name="IPV" value="0">
-            </div>
-            {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
-        </div>
-            
-
-
-        </div>
-        {{-- kanan --}}
-        <div class="col-md-4">
-          <div class="mb-3">
-            <label for="inputBCG" class="form-label">PCV</label>
-            <div>
-                <input type="checkbox" class="form-check-input" id="inputBCG" name="PCV" value="1" {{$imunisasi->PCV=='1'? 'checked':''}}>
-                <label for="inputBCG" class="form-label">1</label>
-                <input type="checkbox" class="form-check-input" id="inputBCG" name="PCV" value="2" {{$imunisasi->PCV=='2'? 'checked':''}}>
-                <label for="inputBCG" class="form-label">2</label>
-                <input type="checkbox" class="form-check-input" id="inputBCG" name="PCV" value="3" {{$imunisasi->PCV=='3'? 'checked':''}}>
-                <label for="inputBCG" class="form-label">3</label>
-                <input type="hidden" name="PCV" value="0">
-            </div>
-            {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
-        </div>
-            <div class="mb-3">
-                <label for="inputBCG" class="form-label">Rota Virus</label>
-                <div>
-                    <input type="checkbox" class="form-check-input" id="inputBCG" name="ROTA_VIRUS" value="1" {{$imunisasi->ROTA_VIRUS=='1'? 'checked':''}}>
-                    <label for="inputBCG" class="form-label">1</label>
-                    <input type="checkbox" class="form-check-input" id="inputBCG" name="ROTA_VIRUS" value="2" {{$imunisasi->ROTA_VIRUS=='2'? 'checked':''}}>
-                    <label for="inputBCG" class="form-label">2</label>
-                    <input type="checkbox" class="form-check-input" id="inputBCG" name="ROTA_VIRUS" value="3" {{$imunisasi->ROTA_VIRUS=='3'? 'checked':''}}>
-                    <label for="inputBCG" class="form-label">3</label>
-                    <input type="hidden" name="ROTA_VIRUS" value="0">
-                </div>
-                {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
-            </div>
-            <div class="mb-3">
-                <label for="inputTPV" class="form-label">MK</label>
-                <input type="checkbox" class="form-check-input" name="MK" id="inputTPV" {{$imunisasi->MK?'checked':''}}>
-                <input type="hidden" name="MK" value="0">
-            </div>
-            <div class="mb-3">
-                <label for="inputTPV" class="form-label">Booster</label>
-                <div>
-                    <input type="checkbox" class="form-check-input" name="booster" id="inputTPV" value="PENTA"  {{$imunisasi->booster=='PENTA'? 'checked':''}}>
-                    <label for="inputTPV" class="form-label">Penta</label>
-                    <input type="checkbox" class="form-check-input" name="booster" id="inputTPV" value="MK" {{$imunisasi->booster=='MK'? 'checked':''}}>
-                    <label for="inputTPV" class="form-label">MK</label>
+                    {{-- end modal ubah --}}
                 </div>
             </div>
-            
-            <div class=" mb-3">
-              <div class="row">
-                <div class="col-md-3">
-                  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ubahModal">Ubah</button>
-    </form>
-                </div>
-                <div class="col-md-3">
-                  <form action="{{ route('imunisasi.destroy', $imunisasi->id) }}" method="POST">
-                @csrf
-                @method('DELETE')
-                <button type="submit" class="btn btn-danger">Delete</button>
-              </form>
-                </div>
-              </div>
-              
-              
-              {{-- <button type="button" class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#ubahModal">Detail</button> --}}
-            </div>
-        </div>
-      </div>
-
-
-    
-      {{-- modal --}}
-
-
-<!-- Modal ubah-->
-<div class="modal fade" id="ubahModal" tabindex="-1" aria-labelledby="ubahModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="ubahModalLabel">Ubah Data</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <div class="row">
-          {{-- kiri --}}
-          <div class="col-md-4">
-            <div class="mb-3">
-          <label for="inputN0" class="form-label">No</label>
-          <input type="text" class="form-control" id="inputNo" readonly value="1">
-        </div>
-        <div class="mb-3">
-          <label for="inputTanggal" class="form-label">Tanggal</label>
-          <input type="text" class="form-control" id="inputTanggal" readonly value="10/03/2024">
-        </div>
-        <div class="mb-3">
-          <label for="inputNamaAnak" class="form-label">Nama Anak</label>
-          <input type="text" class="form-control" id="inputNamaAnak" readonly value="Doley">
-        </div>
-        <div class="mb-3">
-          <label for="inputNIK" class="form-label">NIK</label>
-          <input type="number" class="form-control" id="inputNIK" readonly value="3403101108020005">
-        </div>
-        <div class="mb-3">
-          <label for="inputNamaOrtu" class="form-label">Nama Orang Tua</label>
-          <input type="text" class="form-control" id="inputNamaOrtu" readonly value="Wahyu">
-        </div>
-        <div class="mb-3">
-          <label for="inputTglLahir" class="form-label">Tanggal Lahir</label>
-          <input type="text" class="form-control" id="inputTglLahir" readonly value="11/04/2024">
-        </div>
-          </div>
-          {{-- tengah --}}
-          <div class="col-md-4">
-            <div class="mb-3">
-          <label for="inputAlamat" class="form-label">Alamat</label>
-          <input type="text" class="form-control" id="inputAlamat" readonly value="Sanggrahan">
-        </div>
-        <div class="mb-3">
-          <label for="inputBeratBadan" class="form-label">Berat Badan</label>
-          <input type="number" class="form-control" id="inputBeratBadan" readonly value="20">
-        </div>
-        <div class="mb-4">
-          <label for="inputPanjangBadan" class="form-label">Panjang Badan</label>
-          <input type="number" class="form-control" id="inputPanjangBadan" readonly value="150">
-        </div>
-        <div class="mb-3">
-                <label for="inputBCG" class="form-label">HBO</label>
-                <div>
-                    <input type="checkbox" class="form-check-input" id="inputBCG" value="1">
-                    <label for="inputBCG" class="form-label">1</label>
-                    <input type="checkbox" class="form-check-input" id="inputBCG" value="2">
-                    <label for="inputBCG" class="form-label">2</label>
-                    <input type="checkbox" class="form-check-input" id="inputBCG" value="3">
-                    <label for="inputBCG" class="form-label">3</label>
-                </div>
-                {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
-            </div>
-            <div class="mb-3">
-                <label for="inputBCG" class="form-label">BCG</label>
-                <div>
-                    <input type="checkbox" class="form-check-input" id="inputBCG" value="1">
-                    <label for="inputBCG" class="form-label">1</label>
-                    <input type="checkbox" class="form-check-input" id="inputBCG" value="2">
-                    <label for="inputBCG" class="form-label">2</label>
-                    <input type="checkbox" class="form-check-input" id="inputBCG" value="3">
-                    <label for="inputBCG" class="form-label">3</label>
-                </div>
-                {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
-            </div>
-        <div class="mb-3">
-          <label for="inputPenta" class="form-label">Penta</label>
-          <input type="number" class="form-control" id="inputPenta" readonly value="1">
-        </div>
-
-          </div>
-          {{-- kanan --}}
-          <div class="col-md-4">
-            <div class="mb-3">
-          <label for="inputTPV" class="form-label">TPV</label>
-          <input type="number" class="form-control" id="inputTPV" readonly value="2">
-        </div>
-            <div class="mb-3 form-outline border-0 border-bottom border-dark">
-                <label for="inputTPV" class="form-label">PCV</label>
-                <input type="text" class="form-control" id="inputTPV">
-            </div>
-            <div class="mb-3">
-                <label for="inputBCG" class="form-label">Rota Virus</label>
-                <div>
-                    <input type="checkbox" class="form-check-input" id="inputBCG" value="1">
-                    <label for="inputBCG" class="form-label">1</label>
-                    <input type="checkbox" class="form-check-input" id="inputBCG" value="2">
-                    <label for="inputBCG" class="form-label">2</label>
-                    <input type="checkbox" class="form-check-input" id="inputBCG" value="3">
-                    <label for="inputBCG" class="form-label">3</label>
-                </div>
-                {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
-            </div>
-            <div class="mb-3">
-                <label for="inputTPV" class="form-label">MK</label>
-                <input type="checkbox" class="form-check-input" id="inputTPV">
-            </div>
-            <div class="mb-2">
-                <label for="inputTPV" class="form-label">Booster</label>
-                <div>
-                    <input type="checkbox" class="form-check-input" id="inputTPV">
-                    <label for="inputTPV" class="form-label">Penta</label>
-                    <input type="checkbox" class="form-check-input" id="inputTPV">
-                    <label for="inputTPV" class="form-label">MK</label>
-                </div>
-            </div>
-            <div class="mb-3">
-                <label for="inputTPV" class="form-label">Time Stamp</label>
-                <input type="time" class="form-control" id="inputTPV">
-            </div>
-            <div>
-              <button type="submit" class="btn btn-success" data-bs-dismiss="modal">Simpan</button>
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-            </div>
-          </div>
-
-        </div>
-        <!-- Isi detail data disini -->
-        
-        
-      </div>
-    </div>
-  </div>
-</div>
-{{-- end modal ubah --}}
-
-
-
-
-    </div>
-</div>
-{{-- end --}}
-</div>
+            {{-- end --}}

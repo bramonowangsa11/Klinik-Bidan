@@ -17,7 +17,7 @@ class Imunisasi extends Model
         'alamat',
         'berat_badan',
         'panjang_badan',
-        'HBO','BCG','PENTA','IPV','ROTA_VIRUS',
+        'HBO','BCG','PENTA','PCV','IPV','ROTA_VIRUS',
         'MK','booster'
     ];
 }

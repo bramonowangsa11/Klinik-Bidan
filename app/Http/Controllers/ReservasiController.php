@@ -41,7 +41,7 @@ class ReservasiController extends Controller
     }
     public function index(){
         if(Auth::user()->role == "admin"){
-            $reservasis = Reservasi::with('user')->paginate(10);
+            $reservasis = Reservasi::with('user')->paginate(5);
             return view('layouts.admin.lihat-reservasi',compact('reservasis'));
         }
         else{

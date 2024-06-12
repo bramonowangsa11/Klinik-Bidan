@@ -138,82 +138,55 @@
             </div>
             {{-- isi konten nya disini --}}
             <div class="content flex-grow-1 p-2" style="width: 47vh">
-                {{-- bagian kb dan search --}}
-                <div class="row col-md-12 col-11 ms-0">
-                    <div class=" col-md-7 mt-2">
-                        <h1 class=" fw-bold">Data KB</h1>
-                        @if (Session::has('success'))
-                            <div class="alert alert-success">
-                                {{ Session::get('success') }}
-                            </div>
-                        @endif
-                        @if (session('errors'))
-                            <div class="alert alert-danger">
-                                {{ session('errors') }}
-                            </div>
-                        @endif
-                    </div>
-                    <div class=" col-md-4">
-                        <form class="form-inline my-2 my-lg-0" action="{{ route('imunisasi.search') }}" method="POST">
-                            @csrf
-                            <div class="row mt-2">
-                                <div class="col-md-9">
-                                    <input class="form-control mr-sm-2" type="search" placeholder="Search"
-                                        aria-label="Search" name="keyword">
-                                </div>
-                                <div class="col-md-3">
-                                    <button class="btn btn-dark my-2 my-sm-0" type="submit">Search</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="col-md-2">
-                        <a href="/input-kb">
-                            <button type="button" class="btn btn-success btn-sm">tambah</button>
-                        </a>
-                    </div>
-                </div>
                 {{-- bagian tabel --}}
-                <div class="row col-md-12 col-12 mt-2 ms-0">
-                    <div class="overflow-x-scroll mb-2">
-                        <table class="table table-responsive table-sm table-bordered table-striped">
-                            <thead class="table-dark">
-                                <tr>
-                                    <th>No</th>
-                                    <th>Tanggal</th>
-                                    <th>Nama Istri</th>
-                                    <th>NIK Istri</th>
-                                    <th>Nama Suami</th>
-                                    <th>Nik Suami</th>
-                                    <th>ALamat</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($kbs as $key => $kb)
-                                    <tr>
-                                        <td>{{ $key + 1 }}</td>
-                                        <td>{{ $kb->tgl_kb }}</td>
-                                        <td>{{ $kb->Ibu->name }}</td>
-                                        <td>{{ $kb->Ibu->nik }}</td>
-                                        <td>{{ $kb->Suami->name }}</td>
-                                        <td>{{ $kb->Suami->nik }}</td>
-                                        <td>{{ $kb->Suami->alamat }}</td>
-                                        <td>
-                                            <a href="{{ route('kb.showByid', ['id' => $kb->id]) }}">
-                                                <button type="button" class="btn btn-info btn-sm">Detail</button>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+                <div class="row col-md-12 col-12 ms-0 mt-2">
+                    <div class="container mt-5">
+                        <h1>Dashboard</h1>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="card card-custom mb-4 bg-primary rounded-4">
+                                    <div class="card-body text-white">
+                                        <h5 class="card-title">Reservasi</h5>
+                                        <p class="card-text">Jumlah Reservasi Hari Ini</p>
+                                        <h2>8,450</h2>
+                                        <a href="#" class="text-white">Go somewhere ></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card card-custom mb-4 bg-info rounded-4">
+                                    <div class="card-body text-white">
+                                        <h5 class="card-title">Pasien</h5>
+                                        <p class="card-text">Jumlah Pasien Terdaftar</p>
+                                        <h2>1,230</h2>
+                                        <a href="#" class="text-white">Go somewhere ></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card card-custom mb-4 rounded-4" style="background-color: #FFAC1C">
+                                    <div class="card-body text-white">
+                                        <h5 class="card-title">Pengguna</h5>
+                                        <p class="card-text">Jumah Pengguna Bulan Ini</p>
+                                        <h2>$12,500</h2>
+                                        <a href="#" class="text-white">Go somewhere ></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card card-custom mb-4 bg-success rounded-4">
+                                    <div class="card-body text-white">
+                                        <h5 class="card-title">Data</h5>
+                                        <p class="card-text">Jumah Data Bulan Ini</p>
+                                        <h2>$12,500</h2>
+                                        <a href="#" class="text-white">Go somewhere ></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-
-                    {{ $kbs->links() }}
                 </div>
+                {{-- end konten --}}
             </div>
-            {{-- end konten --}}
         </div>
-    </div>
-    {{-- end --}}
+        {{-- end --}}
