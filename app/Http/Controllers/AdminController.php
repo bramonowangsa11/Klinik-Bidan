@@ -31,6 +31,24 @@ class AdminController extends Controller
     }
 
     public function dashboard(){
-        
+        $now =Carbon::now();
+        $hari = $now->day;
+        $bulan = $now->month;
+        $tahun = $now->years;
+
+        $kb_thismonth = Kb::whereYear('tgl_kb',$tahun)->whereMonth('tgl_kb',$bulan)->count();
+        $bumil_thismonth = Imunisasi::whereYear('tanggal',$tahun)->whereMonth('tanggal',$bulan)->count();
+        $anc_thismonth = anc::whereYear('tanggal_pemeriksaan',$tahun)
+            ->whereMonth('tanggal_pemeriksaan',$bulan)->count();
+        $today_reservation = Reservation::whereYear('tgl_reservasi',$tahun)
+            ->whereMonth('tgl_reservasi',$bulan)->count();
+        $count_user = User::count();
+        $count_pasien = Pasien::count();
+        return view('',compact('kb_thismonth',
+                                'bumil_thismonth',
+                                'anc_thismont',
+                                'today_reservation',
+                                'count_user',
+                                'count_pasien'));
     }
 }
