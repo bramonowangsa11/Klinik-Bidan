@@ -154,6 +154,15 @@ Route::get('/daftar-bumil', function () {
 Route::get('/dashboard', function () {
     return view('layouts.admin.admin-dashboard');
 });
+Route::get('/cetak-imunisasi', function () {
+    return view('layouts.admin.cetak-imunisasi');
+});
+Route::get('/cetak-kb', function () {
+    return view('layouts.admin.cetak-kb');
+});
+Route::get('/cetak-bumil', function () {
+    return view('layouts.admin.cetak-bumil');
+});
 // Route::get('/data-pasien', function () {
 //     return view('layouts.admin.data-pasien');
 // });

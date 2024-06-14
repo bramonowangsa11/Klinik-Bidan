@@ -146,40 +146,60 @@
                             <div class="col-md-3">
                                 <div class="card card-custom mb-4 bg-primary rounded-4">
                                     <div class="card-body text-white">
-                                        <h5 class="card-title">Reservasi</h5>
+                                        <h5 class="card-title fw-bold">Reservasi</h5>
                                         <p class="card-text">Jumlah Reservasi Hari Ini</p>
-                                        <h2>8,450</h2>
-                                        <a href="#" class="text-white">Go somewhere ></a>
+                                        <h2 class=" fw-bold">$12,500</h2>
+                                        <a href="#" class="text-white">More Info ></a>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-3">
-                                <div class="card card-custom mb-4 bg-info rounded-4">
+                                <div class="card card-custom mb-4 rounded-4" style="background-color: #44C95C">
                                     <div class="card-body text-white">
-                                        <h5 class="card-title">Pasien</h5>
+                                        <h5 class="card-title fw-bold">Pasien</h5>
                                         <p class="card-text">Jumlah Pasien Terdaftar</p>
-                                        <h2>1,230</h2>
-                                        <a href="#" class="text-white">Go somewhere ></a>
+                                        <h2 class=" fw-bold">$12,500</h2>
+                                        <a href="#" class="text-white">More Info ></a>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 <div class="card card-custom mb-4 rounded-4" style="background-color: #FFAC1C">
                                     <div class="card-body text-white">
-                                        <h5 class="card-title">Pengguna</h5>
-                                        <p class="card-text">Jumah Pengguna Bulan Ini</p>
-                                        <h2>$12,500</h2>
-                                        <a href="#" class="text-white">Go somewhere ></a>
+                                        <h5 class="card-title fw-bold">Pasien</h5>
+                                        <p class="card-text">Jumah Pasien Bulan Ini</p>
+                                        <h2 class=" fw-bold">$12,500</h2>
+                                        <a href="#" class="text-white">More Info ></a>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-3">
-                                <div class="card card-custom mb-4 bg-success rounded-4">
+                                <div class="card card-custom mb-4 rounded-4" style="background-color: #949d16">
                                     <div class="card-body text-white">
-                                        <h5 class="card-title">Data</h5>
-                                        <p class="card-text">Jumah Data Bulan Ini</p>
-                                        <h2>$12,500</h2>
-                                        <a href="#" class="text-white">Go somewhere ></a>
+                                        <h5 class="card-title fw-bold">Imunisasi</h5>
+                                        <p class="card-text">Jumah Data Imunisasi Bulan Ini</p>
+                                        <h2 class=" fw-bold">$12,500</h2>
+                                        <a href="/cetak-imunisasi" class="text-white">More Info ></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card card-custom mb-4 rounded-4" style="background-color: #c51a23">
+                                    <div class="card-body text-white">
+                                        <h5 class="card-title fw-bold">Ibu Hamil</h5>
+                                        <p class="card-text">Jumah Data Ibu Hamil Bulan Ini</p>
+                                        <h2 class=" fw-bold">$12,500</h2>
+                                        <a href="/cetak-bumil" class="text-white">More Info ></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card card-custom mb-4 rounded-4" style="background-color: #0eb59c">
+                                    <div class="card-body text-white">
+                                        <h5 class="card-title fw-bold">KB</h5>
+                                        <p class="card-text">Jumah Data KB Bulan Ini</p>
+                                        <h2 class=" fw-bold">$12,500</h2>
+                                        <a href="/cetak-kb" class="text-white">More Info ></a>
                                     </div>
                                 </div>
                             </div>
