@@ -73,7 +73,7 @@
                 <h4 class="text-white">Dashboard</h4>
                 <ul class="nav flex-column">
                     <li class="nav-item">
-                        <a href="/admin" class="nav-link text-white" aria-current="page">
+                        <a href="/admin" class="nav-link text-white active" aria-current="page">
                             <svg class="bi pe-none me-2" width="16" height="16">
                                 <use xlink:href="#home"></use>
                             </svg>
@@ -134,7 +134,17 @@
                             Tambah Pasien
                         </a>
                     </li>
+                    <li>
+                        <a href="/logout" class="nav-link">
+                            <svg class="bi pe-none me-2" width="16" height="16">
+                                <use xlink:href="#grid"></use>
+                            </svg>
+                            Logout</a>
+                    </li>
+
                 </ul>
+
+
             </div>
             {{-- isi konten nya disini --}}
             <div class="content flex-grow-1 p-2" style="width: 47vh">

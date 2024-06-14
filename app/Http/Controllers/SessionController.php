@@ -26,7 +26,7 @@ class SessionController extends Controller
                 return redirect('/pasien');
             }
             elseif(Auth::user()->role == 'admin'){
-                return redirect('/admin');
+                return redirect('/dashboard');
             }
         }
         else {

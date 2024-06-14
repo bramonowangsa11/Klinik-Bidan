@@ -296,7 +296,7 @@
 
                         {{-- Kanan --}}
                         <div class="col-md-3 mt-2">
-                            <div class="mb-3">
+                            <div class="mb-4">
                                 <label for="inputBCG" class="form-label">Rota Virus</label>
                                 <div>
                                     <input type="text" class="form-check-input" name="ROTA_VIRUS"
