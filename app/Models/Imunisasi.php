@@ -8,16 +8,18 @@ use Illuminate\Database\Eloquent\Model;
 class Imunisasi extends Model
 {
     use HasFactory;
-
+    public function Ortu(){
+        return $this->belongsTo(Pasien::class,'id_ortu');
+    }
+    public function Anak(){
+        return $this->belongsTo(Pasien::class,'id_anak');
+    }
     protected $fillable = [
-        'nama_anak',
-        'nik_anak',
-        'nama_orangtua',
         'tgl_lahir',
         'alamat',
         'berat_badan',
         'panjang_badan',
-        'HBO','BCG','PENTA','PCV','IPV','ROTA_VIRUS',
-        'MK','booster'
+        'HBO','BCG','PENTA','IPV','ROTA_VIRUS','PCV','tanggal',
+        'MK','booster','kipi','vaksin','id_anak','id_ortu'
     ];
 }

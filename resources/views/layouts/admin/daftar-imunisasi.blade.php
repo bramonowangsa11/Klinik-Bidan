@@ -130,19 +130,19 @@
             </div>
         @endif
         <div class="col-md-3 justify-content-center align-items-center d-flex">
-            <form class=" mt-2" method="GET" action="/search-nik">
+            <form class=" mt-2" method="GET" action="/imunisasi-nik">
                 @csrf
             {{-- kiri --}}
                 <div class="">
                     
                     <div class="mb-3 form-outline border-0 border-bottom border-dark" id="nikform">
-                        <label for="nikIbu" class="form-label">NIK Ibu</label>
-                        <input type="text" class="form-control" id="nikIbu" aria-describedby="" name="nik_ibu">
+                        <label for="nikIbu" class="form-label">NIK ORANG TUA </label>
+                        <input type="text" class="form-control" id="nikIbu" aria-describedby="" name="nik_ortu">
                         {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
                     </div>
                     <div class="mb-3 form-outline border-0 border-bottom border-dark" id="result">
-                        <label for="nikSuami" class="form-label">NIK Suami</label>
-                        <input type="text" class="form-control" id="nikSuami" aria-describedby="" name="nik_suami">
+                        <label for="nikSuami" class="form-label">NIK ANAK</label>
+                        <input type="text" class="form-control" id="nik_anak" aria-describedby="" name="nik_anak">
                         {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
                     </div>
                     <button  type="submit" class="btn btn-success mb-md-3">Tambah</button>

@@ -19,7 +19,7 @@ class CobaImunisasi extends Model
         'alamat',
         'berat_badan',
         'panjang_badan',
-        'HBO','BCG','PENTA','IPV','ROTA_VIRUS',
-        'MK','booster',
+        'HBO','BCG','PENTA','IPV','ROTA_VIRUS','PCV','tanggal',
+        'MK','booster','kipi','vaksin','id_anak','id_ortu'
     ];
 }

@@ -1,6 +1,4 @@
-@extends('layouts.bootstrap')
-@section('content')
-    {{-- start --}}
+<div>
     <div class="container min-vh-100 p-0 m-0 min-vw-100">
         <nav class="navbar navbar-expand-lg navbar-dark p-2 d-md-none m-0 min-vw-100 bg-dark" style="width: 47vh">
             <a class="navbar-brand" href="#">Dashboard</a>
@@ -113,7 +111,7 @@
                             input Data
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="/daftar-imunisasi">Imunisasi</a>
+                            <a class="dropdown-item" href="/input-table">Imunisasi</a>
                             <a class="dropdown-item" href="/input-bumil">Ibu Hamil</a>
                             <a class="dropdown-item" href="/input-kb">KB</a>
                         </div>
@@ -154,18 +152,13 @@
                         @endif
                     </div>
                     <div class=" col-md-4">
-                        <form class="form-inline my-2 my-lg-0" action="{{ route('imunisasi.search') }}" method="POST">
-                            @csrf
+
                             <div class="row mt-2">
                                 <div class="col-md-9">
-                                    <input class="form-control mr-sm-2" type="search" placeholder="Search"
-                                        aria-label="Search" name="keyword">
-                                </div>
-                                <div class="col-md-3">
-                                    <button class="btn btn-dark my-2 my-sm-0" type="submit">Search</button>
+                                    <input class="form-control mr-sm-2" type="search" wire:model="name" wire:keydown="res" placeholder="Search"
+                                        aria-label="Search" name="name">
                                 </div>
                             </div>
-                        </form>
                     </div>
                     <div class="col-md-2">
                         <a href="/daftar-imunisasi">
@@ -190,17 +183,17 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($imunisasis as $key => $imunisasi)
+                                @foreach ($imunisasi as $key => $imun)
                                     <tr>
                                         <td>{{ $key + 1 }}</td>
-                                        <td>{{ $imunisasi->tanggal }}</td>
-                                        <td>{{ $imunisasi->Anak->name}}</td>
-                                        <td>{{ $imunisasi->Anak->nik }}</td>
-                                        <td>{{ $imunisasi->Ortu->name }}</td>
-                                        <td>{{ $imunisasi->Anak->ttl }}</td>
-                                        <td>{{ $imunisasi->Ortu->alamat }}</td>
+                                        <td>{{ $imun->tanggal }}</td>
+                                        <td>{{ $imun->Anak->name}}</td>
+                                        <td>{{ $imun->Anak->nik }}</td>
+                                        <td>{{ $imun->Ortu->name }}</td>
+                                        <td>{{ $imun->Anak->ttl }}</td>
+                                        <td>{{ $imun->Ortu->alamat }}</td>
                                         <td>
-                                            <a href="{{ route('imunisasi.show', ['id' => $imunisasi->id]) }}">
+                                            <a href="{{ route('imunisasi.show', ['id' => $imun->id]) }}">
                                                 <button type="button" class="btn btn-info btn-sm">Detail</button>
                                             </a>
                                         </td>
@@ -210,11 +203,11 @@
                         </table>
                     </div>
 
-                    {{ $imunisasis->links() }}
+                    {{ $imunisasi->links() }}
 
                 </div>
             </div>
             {{-- end konten --}}
         </div>
     </div>
-    {{-- end --}}
+</div>

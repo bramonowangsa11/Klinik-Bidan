@@ -194,23 +194,23 @@
                         </div>
                         <div class="row mb-2">
                             <div class="col-4 col-md-2 font-weight-bold">Nama Anak</div>
-                            <div class="col-8 col-md-8">: {{ $imunisasi->nama_anak }}</div>
+                            <div class="col-8 col-md-8">: {{ $imunisasi->Anak->name }}</div>
                         </div>
                         <div class="row mb-2">
                             <div class="col-4 col-md-2 font-weight-bold">NIK</div>
-                            <div class="col-8 col-md-8">: {{ $imunisasi->nik_anak }}</div>
+                            <div class="col-8 col-md-8">: {{ $imunisasi->Anak->nik }}</div>
                         </div>
                         <div class="row mb-2">
                             <div class="col-4 col-md-2 font-weight-bold">Nama Orang Tua</div>
-                            <div class="col-8 col-md-8">: {{ $imunisasi->nama_orangtua }}</div>
+                            <div class="col-8 col-md-8">: {{ $imunisasi->Ortu->name }}</div>
                         </div>
                         <div class="row mb-2">
                             <div class="col-4 col-md-2 font-weight-bold">Tanggal Lahir</div>
-                            <div class="col-8 col-md-8">: {{ $imunisasi->tgl_lahir }}</div>
+                            <div class="col-8 col-md-8">: {{ $imunisasi->Anak->ttl }}</div>
                         </div>
                         <div class="row mb-2">
                             <div class="col-4 col-md-2 font-weight-bold">Alamat</div>
-                            <div class="col-8 col-md-8">: {{ $imunisasi->alamat }}</div>
+                            <div class="col-8 col-md-8">: {{ $imunisasi->Ortu->alamat }}</div>
                         </div>
                         {{-- nama datanya --}}
                     </div>
@@ -294,22 +294,22 @@
                                                 <div class="mb-3">
                                                     <label for="inputNamaAnak" class="form-label">Nama Anak</label>
                                                     <input type="text" class="form-control" name="nama_anak"
-                                                        id="inputNamaAnak" value="{{ $imunisasi->nama_anak }}">
+                                                        id="inputNamaAnak" value="{{ $imunisasi->Anak->name }}">
                                                 </div>
                                                 <div class="mb-3">
                                                     <label for="inputNIK" class="form-label">NIK</label>
                                                     <input type="number" class="form-control" name="nik_anak"
-                                                        id="inputNIK" value="{{ $imunisasi->nik_anak }}">
+                                                        id="inputNIK" value="{{ $imunisasi->Anak->nik }}">
                                                 </div>
                                                 <div class="mb-3">
                                                     <label for="inputNamaOrtu" class="form-label">Nama Orang Tua</label>
                                                     <input type="text" class="form-control" name="nama_orangtua"
-                                                        id="inputNamaOrtu" value="{{ $imunisasi->nama_orangtua }}">
+                                                        id="inputNamaOrtu" value="{{ $imunisasi->Ortu->name }}">
                                                 </div>
                                                 <div class="mb-3">
                                                     <label for="inputTglLahir" class="form-label">Tanggal Lahir</label>
                                                     <input type="text" class="form-control" name="tgl_lahir"
-                                                        id="inputTglLahir" value="{{ $imunisasi->tgl_lahir }}">
+                                                        id="inputTglLahir" value="{{ $imunisasi->Anak->ttl }}">
                                                 </div>
                                             </div>
                                             {{-- tengah --}}
@@ -317,7 +317,7 @@
                                                 <div class="mb-3">
                                                     <label for="inputAlamat" class="form-label">Alamat</label>
                                                     <input type="text" class="form-control" name="alamat"
-                                                        id="inputAlamat" value="{{ $imunisasi->alamat }}">
+                                                        id="inputAlamat" value="{{ $imunisasi->Ortu->alamat }}">
                                                 </div>
                                                 <div class="mb-3">
                                                     <label for="inputBeratBadan" class="form-label">Berat Badan</label>
@@ -330,9 +330,21 @@
                                                     <input type="number" class="form-control" name="panjang_badan"
                                                         id="inputPanjangBadan" value="{{ $imunisasi->panjang_badan }}">
                                                 </div>
+                                                <div class="mb-4 form-outline border-0 border-bottom border-dark">
+                                                    <label for="inputPanjangBadan" class="form-label">KIPI</label>
+                                                    <input type="text" class="form-control" id="inputPanjangBadan" aria-describedby="" name="kipi" value="{{$imunisasi->kipi}}">
+                                                    {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
+                                                </div>
+                                                <div class="mb-4 form-outline border-0 border-bottom border-dark">
+                                                    <label for="inputPanjangBadan" class="form-label">Vaksin</label>
+                                                    <input type="text" class="form-control" id="inputPanjangBadan" aria-describedby=""name="vaksin" value="{{$imunisasi->vaksin}}">
+                                                    {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
+                                                </div>
                                                 <div class="mb-3">
                                                     <label for="inputBCG" class="form-label">HBO</label>
                                                     <div>
+                                                        <input type="text" class="form-check-input" name="HBO"
+                                                            id="inputBCG" value="0" hidden>
                                                         <input type="checkbox" class="form-check-input" name="HBO"
                                                             id="inputBCG"
                                                             value="1"{{ $imunisasi->HBO == '1' ? 'checked' : '' }}>
@@ -344,6 +356,8 @@
                                                 <div class="mb-3">
                                                     <label for="inputBCG" class="form-label">BCG</label>
                                                     <div>
+                                                        <input type="text" class="form-check-input" name="BCG"
+                                                            id="inputBCG" value="0" hidden>
                                                         <input type="checkbox" class="form-check-input" name="BCG"
                                                             id="inputBCG"
                                                             value="1"{{ $imunisasi->BCG == '1' ? 'checked' : '' }}>
@@ -355,6 +369,8 @@
                                                 <div class="mb-3">
                                                     <label for="inputPenta" class="form-label">Penta</label>
                                                     <div>
+                                                        <input type="text" class="form-check-input" name="PENTA"
+                                                            id="inputBCG" value="0" hidden>
                                                         <input type="checkbox" class="form-check-input" name="PENTA"
                                                             id="inputBCG"
                                                             value="1"{{ $imunisasi->PENTA == '1' ? 'checked' : '' }}>
@@ -376,6 +392,8 @@
                                                 <div class="mb-3">
                                                     <label for="inputTPV" class="form-label">IPV</label>
                                                     <div>
+                                                        <input type="text" class="form-check-input" name="IPV"
+                                                            id="inputBCG" value="0" hidden>
                                                         <input type="checkbox" class="form-check-input" name="IPV"
                                                             id="inputBCG"
                                                             value="1"{{ $imunisasi->IPV == '1' ? 'checked' : '' }}>
@@ -393,6 +411,8 @@
                                                 <div class="mb-3">
                                                     <label for="inputPCV" class="form-label">PCV</label>
                                                     <div>
+                                                        <input type="text" class="form-check-input" name="PCV"
+                                                            id="inputBCG" value="0" hidden>
                                                         <input type="checkbox" class="form-check-input" name="PCV"
                                                             id="inputBCG"
                                                             value="1"{{ $imunisasi->PCV == '1' ? 'checked' : '' }}>
@@ -410,6 +430,8 @@
                                                 <div class="mb-3">
                                                     <label for="inputBCG" class="form-label">Rota Virus</label>
                                                     <div>
+                                                        <input type="text" class="form-check-input" name="ROTA_VIRUS"
+                                                            id="inputBCG" value="0" hidden>
                                                         <input type="checkbox" class="form-check-input" name="ROTA_VIRUS"
                                                             id="inputBCG"
                                                             value="1"{{ $imunisasi->ROTA_VIRUS == '1' ? 'checked' : '' }}>
@@ -427,6 +449,8 @@
                                                 </div>
                                                 <div class="mb-3">
                                                     <label for="inputTPV" class="form-label">MK</label>
+                                                    <input type="text" class="form-check-input" name="MK"
+                                                            id="inputBCG" value="0" hidden>
                                                     <input type="checkbox" class="form-check-input" name="MK"
                                                         id="inputTPV"
                                                         value="1"{{ $imunisasi->MK == '1' ? 'checked' : '' }}>
@@ -434,6 +458,8 @@
                                                 <div class="mb-2">
                                                     <label for="inputTPV" class="form-label">Booster</label>
                                                     <div>
+                                                        <input type="text" class="form-check-input" name="booster"
+                                                            id="inputBCG" value="0" hidden>
                                                         <input type="checkbox" class="form-check-input" name="booster"
                                                             id="inputTPV"
                                                             value="PENTA"{{ $imunisasi->booster == 'PENTA' ? 'checked' : '' }}>
@@ -442,6 +468,8 @@
                                                             id="inputTPV"
                                                             value="MK"{{ $imunisasi->booster == 'MK' ? 'checked' : '' }}>
                                                         <label for="inputTPV" class="form-label">MK</label>
+                                                        <input type="text" name='id_ortu' hidden value="{{$imunisasi->Ortu->id}}">
+                                                        <input type="text" name='id_anak' hidden value="{{$imunisasi->Anak->id}}">
                                                     </div>
                                                 </div>
                                                 <div>

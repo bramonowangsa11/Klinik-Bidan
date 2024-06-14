@@ -2,8 +2,9 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\CobaImunisasi;
 use Illuminate\Database\Seeder;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class CobaImunisasiSeeder extends Seeder
 {
@@ -12,6 +13,6 @@ class CobaImunisasiSeeder extends Seeder
      */
     public function run(): void
     {
-        Imunisasi::factory()->count(50)->create();
+        CobaImunisasi::factory()->count(50)->create();
     }
 }

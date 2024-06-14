@@ -13,22 +13,23 @@ return new class extends Migration
     {
         Schema::create('imunisasis', function (Blueprint $table) {
             $table->id();
-            $table->date('tanggal')->default(now());;
-            $table->string('nama_anak');
-            $table->string('nik_anak');
-            $table->string('nama_orangtua');
-            $table->date('tgl_lahir');
-            $table->string('alamat');
+            $table->date('tanggal')->default(now());
             $table->double('berat_badan');
             $table->double('panjang_badan');
             $table->boolean('HBO');
             $table->boolean('BCG');
+            $table->string('kipi');
+            $table->string('vaksin');
             $table->enum('PENTA',['0','1','2','3']);
             $table->enum('IPV',['0','1','2','3']);
             $table->enum('PCV',['0','1','2','3']);
             $table->enum('ROTA_VIRUS',['0','1','2','3']);
             $table->boolean('MK');
-            $table->enum('booster',['PENTA','MK']);
+            $table->enum('booster',['PENTA','MK','0']);
+            $table->unsignedBigInteger('id_anak');
+            $table->unsignedBigInteger('id_ortu');
+            $table->foreign('id_anak')->references('id')->on('pasiens')->onDelete('cascade');
+            $table->foreign('id_ortu')->references('id')->on('pasiens')->onDelete('cascade');
             $table->timestamps();
         });
 

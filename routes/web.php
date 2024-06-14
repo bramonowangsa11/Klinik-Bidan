@@ -1,5 +1,6 @@
 <?php
 
+use App\Livewire\imunisasiFilter;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\KbController;
 use App\Http\Controllers\AncController;
@@ -9,6 +10,7 @@ use App\Http\Controllers\PasienController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\ImunisasiController;
 use App\Http\Controllers\ReservasiController;
+use App\Http\Controllers\Imunisasi;
 
 /*
 |--------------------------------------------------------------------------
@@ -53,11 +55,11 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/reservasi',[ReservasiController::class,'store']);
     Route::get('/admin',[ImunisasiController::class,'index'])->middleware('userAkses:admin');
     Route::get('/input-table',[ImunisasiController::class,'inputImunisasi'])->middleware('userAkses:admin');
-    Route::post('/imunisasi',[ImunisasiController::class,'store'])->middleware('userAkses:admin');
-    Route::get('/imunisasi/{id}', [ImunisasiController::class,'showid'])->name('imunisasi.show')->middleware('userAkses:admin');
+    Route::post('/imunisasi',[ImunisasiController::class,'store'])->middleware('userAkses:admin')->name('imunisasi.store');
+    Route::get('/imunisasi/{id}', [ImunisasiController::class,'showByid'])->name('imunisasi.show')->middleware('userAkses:admin');
     Route::delete('/imunisasi/{id}', [ImunisasiController::class,'destroy'])->name('imunisasi.destroy')->middleware('userAkses:admin');
     Route::put('/imunisasi/{id}', [ImunisasiController::class,'update'])->name('imunisasi.update')->middleware('userAkses:admin');
-    Route::post('imunisasi/search',[ImunisasiController::class,'search'])->name('imunisasi.search')->middleware('userAkses:admin');
+    Route::post('imunisasi/ rch',[ImunisasiController::class,'search'])->name('imunisasi.search')->middleware('userAkses:admin');
     Route::delete('/bumil/{id}',[AncController::class,'destroy'])->name('bumil.delete')->middleware('userAkses:admin');
     Route::get('/logout',[SessionController::class,'logout']);
     Route::post('/input-bumil',[AncController::class,'store'])->name('bumil.store')->middleware('userAkses:admin');
@@ -78,6 +80,9 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/kb/{id}',[KbController::class,'destroy'])->name('kb.destroy')->middleware('userAkses:admin');
     Route::get('/data-pasien',[PasienController::class,'listPasien'])->name('pasien.list')->middleware('userAkses:admin');
     Route::get('/pasien/{id}',[PasienController::class,''])->name('pasien.show')->middleware('userAkses:admin');
+
+    Route::get('imunisasi-nik',[ImunisasiController::class,'inputnik']);
+    Route::get('/dashboard',[AdminController::class,'dashboard'])->name('home');
 });
 
 // routes dashboard admin
@@ -110,6 +115,7 @@ Route::get('/seats', [SeatController::class, 'index']);
 Route::post('/submit-seats', [SeatController::class, 'submitSeats'])->name('submitSeats');
 
 Route::post('/search-pasien',[PasienController::class,'findBynik'])->name('findBynik');
+Route::get('/tesw',imunisasiFilter::class)->name('tes');
 
 //routes reservasi 2
 // Route::get('/reservasi2', function () {
@@ -151,9 +157,9 @@ Route::get('/daftar-bumil', function () {
     return view('layouts.admin.daftar-bumil');
 });
 
-Route::get('/dashboard', function () {
-    return view('layouts.admin.admin-dashboard');
-});
+// Route::get('/dashboard', function () {
+//     return view('layouts.admin.admin-dashboard');
+// });
 // Route::get('/data-pasien', function () {
 //     return view('layouts.admin.data-pasien');
 // });

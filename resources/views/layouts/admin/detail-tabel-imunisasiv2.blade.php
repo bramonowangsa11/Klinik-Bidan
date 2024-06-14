@@ -139,11 +139,11 @@
                         {{-- tengah --}}
                         <div class="col-md-9 mt-lg-5">
                             <h5>: {{ $imunisasi->tanggal }}</h5>
-                            <h5>: {{ $imunisasi->nama_anak }}</h5>
-                            <h5>: {{ $imunisasi->nik_anak }}</h5>
-                            <h5>: {{ $imunisasi->nama_orangtua }}</h5>
-                            <h5>: {{ $imunisasi->tgl_lahir }}</h5>
-                            <h5>: {{ $imunisasi->alamat }}</h5>
+                            <h5>: {{ $imunisasi->Anak->name }}</h5>
+                            <h5>: {{ $imunisasi->Anak->nik}}</h5>
+                            <h5>: {{ $imunisasi->Ortu->name}}</h5>
+                            <h5>: {{ $imunisasi->Anak->ttl }}</h5>
+                            <h5>: {{ $imunisasi->Ortu->alamat }}</h5>
 
 
 

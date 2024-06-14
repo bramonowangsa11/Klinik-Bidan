@@ -3,47 +3,47 @@
 namespace App\Http\Controllers;
 
 use Carbon\Carbon;
+use App\Models\Pasien;
 use App\Models\Imunisasi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
 class ImunisasiController extends Controller
 {
-    public function inputImunisasi(){
-        return view('layouts.admin.input-table-imunisasi');
-    }
     public function search(Request $request){
-        $imunisasis = Imunisasi::where('nama_anak','like','%'.$request->input('keyword').'%')
-                ->paginate(5);
+        $validatedData = $request->validate([
+            'keyword'=> 'required',
+        ],['keyword'=>'perlu keyword']);
+    
+        $keyword = $request->input('keyword'); 
+    
+        $imunisasis = Imunisasi::whereHas('Anak', function ($query) use ($keyword) {
+            $query->where('name', 'like', '%' . $keyword . '%');
+        })
+        ->with(['Ortu','Anak']) 
+        ->orderByDesc('tanggal')->paginate(5);
+    
+        if ($imunisasis->isEmpty()) {
+            return view('layouts.admin.dashboard-admin', compact('imunisasis'))
+                ->with('errors', 'Data tidak ditemukan');
+        } else {
+            return view('layouts.admin.dashboard-admin', compact('imunisasis'));
+        }
+    }
+    public function index(){
+        $imunisasis = Imunisasi::with(['Ortu','Anak'])->orderBy('tanggal','desc')->paginate(5);
         if($imunisasis->isEmpty()){
-            return redirect('/admin')->with('errors',"data tidak  ditemukan");
+            return view('layouts/admin/dashboard-admin',compact('imunisasis'))->with('errors','data kosong');
         }
         else{
             return view('layouts/admin/dashboard-admin',compact('imunisasis'));
         }
     }
-    public function index(){
-        $imunisasis = Imunisasi::paginate(5);
-        
-        // return response()->json(['data' => $imunisasi], 200);
-        return view('layouts/admin/dashboard-admin',compact('imunisasis'));
-    }
-    public function showid($id){
-        $imunisasi = Imunisasi::find($id);
 
-        if (!$imunisasi) {
-            abort(404);
-        }
-
-        return view('layouts.admin.detail-table-imunisasi', ['imunisasi' => $imunisasi]);
-    }
     public function store(Request $request){
         $validatedData = $request->validate([
-            'nama_anak' => 'required|string|max:255',
-            'nik_anak' => 'required|string|numeric|digits:16',
-            'nama_orangtua' => 'required|string|max:255',
-            'tgl_lahir' => 'required|date',
-            'alamat' => 'required|string|max:255',
+            'id_anak' => 'required|exists:pasiens,id',
+            'id_ortu' => 'required|exists:pasiens,id',
             'berat_badan' => 'required|numeric',
             'panjang_badan' => 'required|numeric',
             'HBO' => 'required|boolean',
@@ -51,26 +51,19 @@ class ImunisasiController extends Controller
             'PENTA' => 'required|in:0,1,2,3',
             'IPV' => 'required|in:0,1,2,3',
             'PCV' => 'required|in:0,1,2,3',
-            'ROTA_VIRUS' => 'required|in:0,1,2,3',
+            'ROTA_VIRUS' => 'required|in:0,1,2,3',  
             'MK' => 'required|boolean',
-            'booster' => 'required|in:PENTA,MK',
-            'tanggal' => 'required|date'
+            'booster' => 'required|in:PENTA,MK,0',
+            'tanggal' => 'required|date',
+            'kipi' => 'required|string',
+            'vaksin' => 'required|string',
             
         ],[
-            'nama_anak.required' => 'Nama anak harus diisi.',
-            'nama_anak.string' => 'Nama anak harus berupa teks.',
-            'nama_anak.max' => 'Nama anak maksimal :max karakter.',
-            'nik_anak.required' => 'NIK anak harus diisi.',
-            'nik_anak.numeric' => 'NIK anak harus berupa angka.',
-            'nik_anak.digits' => 'NIK harus terdiri dari 16 digit.',
-            'nama_orangtua.required' => 'Nama orang tua harus diisi.',
-            'nama_orangtua.string' => 'Nama orang tua harus berupa teks.',
-            'nama_orangtua.max' => 'Nama orang tua maksimal :max karakter.',
-            'tgl_lahir.required' => 'Tanggal lahir harus diisi.',
-            'tgl_lahir.date' => 'Tanggal lahir harus berupa tanggal.',
-            'alamat.required' => 'Alamat harus diisi.',
-            'alamat.string' => 'Alamat harus berupa teks.',
-            'alamat.max' => 'Alamat maksimal :max karakter.',
+
+            'kipi.required' => 'kipi harus diisi',
+            'kipi.string' => 'kipi harus berupa karakter',
+            'vaksin.required' => 'vaksin harus diisi',
+            'vaksin.string' => 'vaksin harus berupa karakter',
             'berat_badan.required' => 'Berat badan harus diisi.',
             'berat_badan.numeric' => 'Berat badan harus berupa angka.',
             'panjang_badan.required' => 'Panjang badan harus diisi.',
@@ -92,33 +85,71 @@ class ImunisasiController extends Controller
             'booster.required' => 'Kolom Booster harus diisi.',
             'booster.in' => 'Kolom Booster harus memiliki nilai PENTA atau MK.',
             'tanggal.required' => 'Tanggal harus diisi.',
-            
+            'id_anak.required' => 'ID anak harus diisi.',
+            'id_anak.exists' => 'ID anak harus ada dalam tabel pasien.',
+            'id_ortu.required' => 'ID ortu harus diisi.',
+            'id_ortu.exists' => 'ID ortu harus ada dalam tabel pasien.',
         ]);
         $imunisasi = Imunisasi::create($validatedData);
         Session::flash('success', 'Pasien berhasil didaftarkan');
-        return redirect('/input-table');
-    }
-
-    public function destroy($id)
-    {
-        $imunisasi = Imunisasi::findOrFail($id);
-        $imunisasi->delete();
-        Session::flash('success', 'data berhasil dihapus');
         return redirect('/admin');
     }
-
-    public function update(Request $request, $id)
-    {
-        $imunisasi = Imunisasi::findOrFail($id);
-
-        
-
+    public function inputnik(Request $request){
         $validatedData = $request->validate([
-            'nama_anak' => 'required|string|max:255',
-            'nik_anak' => 'required|string|numeric|digits:16',
-            'nama_orangtua' => 'required|string|max:255',
-            'tgl_lahir' => 'required|date',
-            'alamat' => 'required|string|max:255',
+            'nik_ortu'=> 'required','numeric','digits:16',
+            'nik_anak'=> 'required','numeric','digits:16'
+        ],[
+            'nik_anak.required' => 'nik_anak wajib diisi',
+            'nik_anak.numeric' => 'nik_anak harus terdiri dari angka',
+            'nik_anak.digits' => 'nik_anak harus terdiri dari 16 digit',
+            'nik_ortu.required' => 'nik_ortu wajib diisi',
+            'nik_ortu.numeric' => 'nik_ortu harus terdiri dari angka',
+            'nik_ortu.digits' => 'nik_ortu harus terdiri dari 16 digit',
+        ]);
+
+        $ortu = Pasien::where('nik',$validatedData['nik_ortu'])->first();
+        $anak = Pasien::where('nik',$validatedData['nik_anak'])->first();
+        if(is_null($ortu) && is_null($anak)){
+            return redirect()->back()->with('errors','data nik ortu dan nik anak tidak ditemukan');
+        }
+        elseif(is_null($ortu)){
+            return redirect()->back()->with('errors','data nik ortu tidak ditemukan');
+        }
+        elseif(is_null($anak)){
+            return redirect()->back()->with('errors','data nik anak tidak ditemukan');
+        }
+        else{
+            return view('layouts.admin.input-table-imunisasi',compact('ortu','anak'));
+        }
+    }
+
+    public function showByid($id){
+        $imunisasi = Imunisasi::with(['Ortu','Anak'])->find($id);
+        if(is_null($imunisasi)){
+            return redirect()->back()->with('errors','data tidak ditemukan');
+        }
+        else{
+            return view('layouts.admin.detail-table-imunisasi',compact('imunisasi'));
+        }
+    }
+
+    public function destroy($id){
+        $imunisasi = Imunisasi::find($id);
+        if(is_null($imunisasi)){
+            return redirect()->back()->with('errors','data tidak ditemukan');
+        }
+        else{
+            $imunisasi->delete();
+            Session::flash('success','data kb berhasil dihapus');
+            return redirect('/admin');
+        }
+    }
+
+    public function update(Request $request, $id){
+        
+        $validatedData = $request->validate([
+            'id_anak' => 'required|exists:pasiens,id',
+            'id_ortu' => 'required|exists:pasiens,id',
             'berat_badan' => 'required|numeric',
             'panjang_badan' => 'required|numeric',
             'HBO' => 'required|boolean',
@@ -128,23 +159,16 @@ class ImunisasiController extends Controller
             'PCV' => 'required|in:0,1,2,3',
             'ROTA_VIRUS' => 'required|in:0,1,2,3',
             'MK' => 'required|boolean',
-            'booster' => 'required|in:PENTA,MK',
+            'booster' => 'required|in:PENTA,MK,0',
             'tanggal' => 'required|date',
+            'kipi' => 'required|string',
+            'vaksin' => 'required|string',
+            
         ],[
-            'nama_anak.required' => 'Nama anak harus diisi.',
-            'nama_anak.string' => 'Nama anak harus berupa teks.',
-            'nama_anak.max' => 'Nama anak maksimal :max karakter.',
-            'nik_anak.required' => 'NIK anak harus diisi.',
-            'nik_anak.numeric' => 'NIK anak harus berupa angka.',
-            'nik_anak.digits' => 'NIK harus terdiri dari 16 digit.',
-            'nama_orangtua.required' => 'Nama orang tua harus diisi.',
-            'nama_orangtua.string' => 'Nama orang tua harus berupa teks.',
-            'nama_orangtua.max' => 'Nama orang tua maksimal :max karakter.',
-            'tgl_lahir.required' => 'Tanggal lahir harus diisi.',
-            'tgl_lahir.date' => 'Tanggal lahir harus berupa tanggal.',
-            'alamat.required' => 'Alamat harus diisi.',
-            'alamat.string' => 'Alamat harus berupa teks.',
-            'alamat.max' => 'Alamat maksimal :max karakter.',
+            'kipi.required' => 'kipi harus diisi',
+            'kipi.string' => 'kipi harus berupa karakter',
+            'vaksin.required' => 'vaksin harus diisi',
+            'vaksin.string' => 'vaksin harus berupa karakter',
             'berat_badan.required' => 'Berat badan harus diisi.',
             'berat_badan.numeric' => 'Berat badan harus berupa angka.',
             'panjang_badan.required' => 'Panjang badan harus diisi.',
@@ -166,19 +190,25 @@ class ImunisasiController extends Controller
             'booster.required' => 'Kolom Booster harus diisi.',
             'booster.in' => 'Kolom Booster harus memiliki nilai PENTA atau MK.',
             'tanggal.required' => 'Tanggal harus diisi.',
-            
+            'id_anak.required' => 'ID anak harus diisi.',
+            'id_anak.exists' => 'ID anak harus ada dalam tabel pasien.',
+            'id_ortu.required' => 'ID ortu harus diisi.',
+            'id_ortu.exists' => 'ID ortu harus ada dalam tabel pasien.',
         ]);
         $imunisasi = Imunisasi::find($id);
-        // if (is_null($imunisasi)) {
-        //     return redirect()->back()->with('errors', 'data tidak ditemukan');
-        // } else {
-        //     $imunisasi->update($validatedData);
-        //     Session::flash('success', 'data kb berhasil diupdate');
-        //     return redirect('/admin');
-        // }
+        if(is_null($imunisasi)){
+            return redirect()->back()->with('errors','data tidak ditemukan');
+        }
+        else{
+            $imunisasi->update($validatedData);
+            Session::flash('success','data kb berhasil diupdate');
+            return redirect('/admin');
+        }
+    }
 
-        $imunisasi->update($validatedData);
-        Session::flash('success', 'data berhasil diupdate');
-        return redirect()->back();
+    public function laporanImunisasi($year,$month){
+        $imunisasis = Imunisasi::with(['Anak','Ortu'])->whereYear('tgl_kb',$year)
+            ->whreMonth('tgl_kb',$month)->get();
+        return view('',compact('imunisasis'));
     }
 }

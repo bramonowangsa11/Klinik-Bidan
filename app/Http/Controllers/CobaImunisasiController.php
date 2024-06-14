@@ -2,14 +2,35 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Pasien;
 use Illuminate\Http\Request;
 use App\Models\CobaImunisasi;
 use Illuminate\Support\Facades\Session;
 
 class CobaImunisasiController extends Controller
-{
+{   
+    public function search(Request $request){
+        $validatedData = $request->validate([
+            'keyword'=> 'required',
+        ],['keyword'=>'perlu keyword']);
+    
+        $keyword = $request->input('keyword'); 
+    
+        $imunisasis = CobaImunisasi::whereHas('Anak', function ($query) use ($keyword) {
+            $query->where('name', 'like', '%' . $keyword . '%');
+        })
+        ->with(['Ortu','Anak']) 
+        ->orderByDesc('tanggal')->paginate(5);
+    
+        if ($imunisasis->isEmpty()) {
+            return view('layouts.admin.dashboard-admin', compact('imunisasis'))
+                ->with('errors', 'Data tidak ditemukan');
+        } else {
+            return view('layouts.admin.dashboard-admin', compact('imunisasis'));
+        }
+    }
     public function index(){
-        $imunisasis = CobaImunisasi::with(['Ortu','Anak'])->paginate(5);
+        $imunisasis = CobaImunisasi::with(['Ortu','Anak'])->orderBy('tanggal','desc')->paginate(5);
         if($imunisasis->isEmpty()){
             return view('layouts/admin/dashboard-admin',compact('imunisasis'))->with('errors','data kosong');
         }
@@ -29,13 +50,19 @@ class CobaImunisasiController extends Controller
             'PENTA' => 'required|in:0,1,2,3',
             'IPV' => 'required|in:0,1,2,3',
             'PCV' => 'required|in:0,1,2,3',
-            'ROTA_VIRUS' => 'required|in:0,1,2,3',
+            'ROTA_VIRUS' => 'required|in:0,1,2,3',  
             'MK' => 'required|boolean',
             'booster' => 'required|in:PENTA,MK,0',
-            'tanggal' => 'required|date'
+            'tanggal' => 'required|date',
+            'kipi' => 'required|string',
+            'vaksin' => 'required|string',
             
         ],[
 
+            'kipi.required' => 'kipi harus diisi',
+            'kipi.string' => 'kipi harus berupa karakter',
+            'vaksin.required' => 'vaksin harus diisi',
+            'vaksin.string' => 'vaksin harus berupa karakter',
             'berat_badan.required' => 'Berat badan harus diisi.',
             'berat_badan.numeric' => 'Berat badan harus berupa angka.',
             'panjang_badan.required' => 'Panjang badan harus diisi.',
@@ -62,9 +89,9 @@ class CobaImunisasiController extends Controller
             'id_ortu.required' => 'ID ortu harus diisi.',
             'id_ortu.exists' => 'ID ortu harus ada dalam tabel pasien.',
         ]);
-        $imunisasi = Imunisasi::create($validatedData);
+        $imunisasi = CobaImunisasi::create($validatedData);
         Session::flash('success', 'Pasien berhasil didaftarkan');
-        return redirect('/input-table');
+        return redirect('/admin');
     }
     public function inputnik(Request $request){
         $validatedData = $request->validate([
@@ -79,7 +106,7 @@ class CobaImunisasiController extends Controller
             'nik_ortu.digits' => 'nik_ortu harus terdiri dari 16 digit',
         ]);
 
-        $ortu = Pasien::where('nik',$validatedData['nik_orotu'])->first();
+        $ortu = Pasien::where('nik',$validatedData['nik_ortu'])->first();
         $anak = Pasien::where('nik',$validatedData['nik_anak'])->first();
         if(is_null($ortu) && is_null($anak)){
             return redirect()->back()->with('errors','data nik ortu dan nik anak tidak ditemukan');
@@ -91,17 +118,17 @@ class CobaImunisasiController extends Controller
             return redirect()->back()->with('errors','data nik anak tidak ditemukan');
         }
         else{
-            return view('',compact('ortu','anak'));
+            return view('layouts.admin.input-table-imunisasi',compact('ortu','anak'));
         }
     }
 
     public function showByid($id){
-        $imunisasi = Kb::with(['Ortu','Anak'])->find($id);
+        $imunisasi = CobaImunisasi::with(['Ortu','Anak'])->find($id);
         if(is_null($imunisasi)){
             return redirect()->back()->with('errors','data tidak ditemukan');
         }
         else{
-            return view('layouts.admin.detail-imunisasi',compact('imunisasi'));
+            return view('layouts.admin.detail-table-imunisasi',compact('imunisasi'));
         }
     }
 
@@ -113,7 +140,7 @@ class CobaImunisasiController extends Controller
         else{
             $imunisasi->delete();
             Session::flash('success','data kb berhasil dihapus');
-            return redirect('/data-kb');
+            return redirect('/admin');
         }
     }
 
@@ -132,10 +159,15 @@ class CobaImunisasiController extends Controller
             'ROTA_VIRUS' => 'required|in:0,1,2,3',
             'MK' => 'required|boolean',
             'booster' => 'required|in:PENTA,MK,0',
-            'tanggal' => 'required|date'
+            'tanggal' => 'required|date',
+            'kipi' => 'required|string',
+            'vaksin' => 'required|string',
             
         ],[
-
+            'kipi.required' => 'kipi harus diisi',
+            'kipi.string' => 'kipi harus berupa karakter',
+            'vaksin.required' => 'vaksin harus diisi',
+            'vaksin.string' => 'vaksin harus berupa karakter',
             'berat_badan.required' => 'Berat badan harus diisi.',
             'berat_badan.numeric' => 'Berat badan harus berupa angka.',
             'panjang_badan.required' => 'Panjang badan harus diisi.',
@@ -169,7 +201,7 @@ class CobaImunisasiController extends Controller
         else{
             $imunisasi->update($validatedData);
             Session::flash('success','data kb berhasil diupdate');
-            return redirect('/data-kb');
+            return redirect('/admin');
         }
     }
 

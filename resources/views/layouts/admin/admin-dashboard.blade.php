@@ -148,7 +148,7 @@
                                     <div class="card-body text-white">
                                         <h5 class="card-title">Reservasi</h5>
                                         <p class="card-text">Jumlah Reservasi Hari Ini</p>
-                                        <h2>8,450</h2>
+                                        <h2>{{$today_reservation}}</h2>
                                         <a href="#" class="text-white">Go somewhere ></a>
                                     </div>
                                 </div>
@@ -158,7 +158,7 @@
                                     <div class="card-body text-white">
                                         <h5 class="card-title">Pasien</h5>
                                         <p class="card-text">Jumlah Pasien Terdaftar</p>
-                                        <h2>1,230</h2>
+                                        <h2>{{$count_pasien}}</h2>
                                         <a href="#" class="text-white">Go somewhere ></a>
                                     </div>
                                 </div>
@@ -168,7 +168,7 @@
                                     <div class="card-body text-white">
                                         <h5 class="card-title">Pengguna</h5>
                                         <p class="card-text">Jumah Pengguna Bulan Ini</p>
-                                        <h2>$12,500</h2>
+                                        <h2>{{$count_user}}</h2>
                                         <a href="#" class="text-white">Go somewhere ></a>
                                     </div>
                                 </div>

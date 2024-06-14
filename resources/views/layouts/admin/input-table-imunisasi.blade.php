@@ -151,7 +151,7 @@
                             </div>
                         @endif
                         <div class="col-md-3">
-                            <form class=" mt-2" method="POST" action="{{ route('kb.store') }}">
+                            <form class=" mt-2" method="POST" action="{{ route('imunisasi.store') }}">
                                 @csrf
                                 {{-- kiri --}}
                                 <div class="">
@@ -164,31 +164,31 @@
                                     <div class="mb-3 form-outline border-0 border-bottom border-dark">
                                         <label for="inputNamaAnak" class="form-label">Nama Anak</label>
                                         <input type="text" class="form-control" id="inputNamaAnak"
-                                            aria-describedby="" name="nama_anak">
+                                            aria-describedby="" name="nama_anak" value='{{$anak->name}}' readonly>
                                         {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
                                     </div>
                                     <div class="mb-3 form-outline border-0 border-bottom border-dark">
                                         <label for="inputNIK" class="form-label">NIK</label>
                                         <input type="text" class="form-control" id="inputNIK" aria-describedby=""
-                                            name="nik_anak">
+                                            name="nik_anak" value="{{$anak->nik}}" readonly>
                                         {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
                                     </div>
                                     <div class="mb-3 form-outline border-0 border-bottom border-dark">
                                         <label for="inputNamaOrtu" class="form-label">Nama Orang Tua</label>
                                         <input type="text" class="form-control" id="inputNamaOrtu"
-                                            aria-describedby="" name="nama_orangtua">
+                                            aria-describedby="" name="nama_orangtua" value='{{$ortu->name}}' readonly>
                                         {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
                                     </div>
                                     <div class="mb-3 form-outline border-0 border-bottom border-dark">
                                         <label for="inputTanggalLhr" class="form-label">Tanggal Lahir</label>
                                         <input type="date" class="form-control" id="inputTanggalLhr"
-                                            aria-describedby="" name="tgl_lahir">
+                                            aria-describedby="" name="tgl_lahir" value='{{$anak->ttl}}' readonly>
                                         {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
                                     </div>
                                     <div class="mb-3 form-outline border-0 border-bottom border-dark">
                                         <label for="inputAlamat" class="form-label">Alamat</label>
                                         <input type="text" class="form-control" id="inputAlamat" aria-describedby=""
-                                            name="alamat">
+                                            name="alamat" value="{{$ortu->alamat}}" readonly>
                                         {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
                                     </div>
                                 </div>
@@ -209,14 +209,28 @@
                                     name="panjang_badan">
                                 {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
                             </div>
+                            <div class="mb-4 form-outline border-0 border-bottom border-dark">
+                                <label for="inputPanjangBadan" class="form-label">KIPI</label>
+                                <input type="text" class="form-control" id="inputPanjangBadan" aria-describedby="" name="kipi">
+                                {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
+                            </div>
+                            <div class="mb-4 form-outline border-0 border-bottom border-dark">
+                                <label for="inputPanjangBadan" class="form-label">Vaksin</label>
+                                <input type="text" class="form-control" id="inputPanjangBadan" aria-describedby=""name="vaksin">
+                                {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
+                            </div>
                             <div class="mb-2">
                                 <label for="inputHBO" class="form-label">HBO</label>
+                                <input type="text" class="form-check-input" name="HBO"
+                                                            id="inputBCG" value="0" hidden>
                                 <input type="checkbox" class="form-check-input" id="inputHBO" name="HBO"
                                     value='1'>
 
                             </div>
                             <div class="mb-2">
                                 <label for="inputBCG" class="form-label">BCG</label>
+                                <input type="text" class="form-check-input" name="BCG"
+                                                            id="inputBCG" value="0" hidden>
                                 <input type="checkbox" class="form-check-input" id="inputBCG" name="BCG"
                                     value='1'>
 
@@ -224,6 +238,8 @@
                             <div class="mb-4">
                                 <label for="inputPenta" class="form-label">PENTA</label>
                                 <div>
+                                    <input type="text" class="form-check-input" name="PENTA"
+                                                            id="inputBCG" value="0" hidden>
                                     <input type="checkbox" class="form-check-input" id="inputPenta" name="PENTA"
                                         value="1">
                                     <label for="inputPenta" class="form-label">1</label>
@@ -240,6 +256,8 @@
                             <div class="mb-4">
                                 <label for="inputIPV" class="form-label">IPV</label>
                                 <div>
+                                    <input type="text" class="form-check-input" name="IPV"
+                                                            id="inputBCG" value="0" hidden>
                                     <input type="checkbox" class="form-check-input" id="inputIPV" name="IPV"
                                         value="1">
                                     <label for="inputIPV" class="form-label">1</label>
@@ -256,6 +274,8 @@
                             <div class="mb-3">
                                 <label for="inputPCV" class="form-label">PCV</label>
                                 <div>
+                                    <input type="text" class="form-check-input" name="PCV"
+                                                            id="inputBCG" value="0" hidden>
                                     <input type="checkbox" class="form-check-input" id="inputPCV" name="PCV"
                                         value="1">
                                     <label for="inputPCV" class="form-label">1</label>
@@ -279,6 +299,8 @@
                             <div class="mb-3">
                                 <label for="inputBCG" class="form-label">Rota Virus</label>
                                 <div>
+                                    <input type="text" class="form-check-input" name="ROTA_VIRUS"
+                                                            id="inputBCG" value="0" hidden>
                                     <input type="checkbox" class="form-check-input" id="inputBCG" name="ROTA_VIRUS"
                                         value="1">
                                     <label for="inputBCG" class="form-label">1</label>
@@ -294,6 +316,8 @@
                             </div>
                             <div class="mb-3">
                                 <label for="inputTPV" class="form-label">MK</label>
+                                <input type="text" class="form-check-input" name="MK"
+                                                            id="inputBCG" value="0" hidden>
                                 <input type="checkbox" class="form-check-input" id="inputTPV" name="MK"
                                     value='1'>
 
@@ -301,12 +325,16 @@
                             <div class="mb-3">
                                 <label for="inputTPV" class="form-label">Booster</label>
                                 <div>
+                                    <input type="text" class="form-check-input" id="inputTPV" name="booster"
+                                        value="0" hidden>
                                     <input type="checkbox" class="form-check-input" id="inputTPV" name="booster"
                                         value="PENTA">
                                     <label for="inputTPV" class="form-label">Penta</label>
                                     <input type="checkbox" class="form-check-input" id="inputTPV" name="booster"
                                         value="MK">
                                     <label for="inputTPV" class="form-label">MK</label>
+                                    <input type="text" name='id_ortu' hidden value="{{$ortu->id}}">
+                                    <input type="text" name='id_anak' hidden value="{{$anak->id}}">
                                 </div>
                             </div>
                             <button type="submit"

@@ -27,9 +27,9 @@ return new class extends Migration
             $table->boolean('MK');
             $table->enum('booster',['PENTA','MK','0']);
             $table->unsignedBigInteger('id_anak');
-            $table->unsignedBigInteger('id_ibu');
+            $table->unsignedBigInteger('id_ortu');
             $table->foreign('id_anak')->references('id')->on('pasiens')->onDelete('cascade');
-            $table->foreign('id_orangtua')->references('id')->on('pasiens')->onDelete('cascade');
+            $table->foreign('id_ortu')->references('id')->on('pasiens')->onDelete('cascade');
             $table->timestamps();
         });
     }

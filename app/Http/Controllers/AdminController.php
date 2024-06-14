@@ -2,7 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Kb;
 use Carbon\Carbon;
+use App\Models\anc;
+use App\Models\User;
+use App\Models\Pasien;
+use App\Models\Imunisasi;
 use App\Models\Reservasi;
 use Illuminate\Http\Request;
 
@@ -34,19 +39,18 @@ class AdminController extends Controller
         $now =Carbon::now();
         $hari = $now->day;
         $bulan = $now->month;
-        $tahun = $now->years;
+        $tahun = $now->year;
 
         $kb_thismonth = Kb::whereYear('tgl_kb',$tahun)->whereMonth('tgl_kb',$bulan)->count();
         $bumil_thismonth = Imunisasi::whereYear('tanggal',$tahun)->whereMonth('tanggal',$bulan)->count();
-        $anc_thismonth = anc::whereYear('tanggal_pemeriksaan',$tahun)
-            ->whereMonth('tanggal_pemeriksaan',$bulan)->count();
-        $today_reservation = Reservation::whereYear('tgl_reservasi',$tahun)
-            ->whereMonth('tgl_reservasi',$bulan)->count();
+        $anc_thismonth = anc::whereYear('tgl_pemeriksaan',$tahun)
+            ->whereMonth('tgl_pemeriksaan',$bulan)->count();
+        $today_reservation = Reservasi::where('tgl_reservasi',$now)->count();
         $count_user = User::count();
         $count_pasien = Pasien::count();
-        return view('',compact('kb_thismonth',
+        return view('layouts.admin.admin-dashboard',compact('kb_thismonth',
                                 'bumil_thismonth',
-                                'anc_thismont',
+                                'anc_thismonth',
                                 'today_reservation',
                                 'count_user',
                                 'count_pasien'));
