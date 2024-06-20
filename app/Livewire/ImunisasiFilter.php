@@ -5,43 +5,57 @@ namespace App\Livewire;
 use Livewire\Component;
 use Livewire\WithPagination;
 use App\Models\CobaImunisasi;
+use Illuminate\Support\Carbon;
 
 class ImunisasiFilter extends Component
 { 
     use WithPagination;
     public $name = '';
     public $tanggal = '';
+    public $bulan = '';
 
-    protected $queryString = ['name', 'tanggal'];
+    protected $queryString = ['name', 'tanggal','bulan'];
     
-    public function updatingName()
-    {
+    public function updatingName(){
         $this->resetPage();
     }
 
-    public function updatingTanggal()
-    {
+    public function updatingTanggal(){
         $this->resetPage();
     }
+
+    public function updatingBulan(){
+        $this->resetPage();
+    }
+
     public function res(){
-        $this->resetPage();
+        $this->resetPage(); 
     }
 
+    public function filter(){
+        $this->resetPage(); 
+    }
+    
     public function render()
     {
+        $query = CobaImunisasi::with(['anak', 'ortu']);
+
+        if ($this->tanggal) {
+            $query->whereDate('tanggal', $this->tanggal);
+        }
+
+        if ($this->bulan) {
+            $query->whereMonth('tanggal', Carbon::parse($this->bulan)->month)
+            ->whereYear('tanggal', Carbon::parse($this->bulan)->year);
+        }
 
         if ($this->name) {
-            $imunisasi = CobaImunisasi::whereHas('Anak', function ($query) {
+            $query->whereHas('Anak', function ($query) {
                 $query->where('name', 'like', '%' . $this->name . '%');
-            })->paginate(10);
+            });
         }
-        else{
-            $imunisasi = CobaImunisasi::with(['Anak','Ortu'])->paginate(5);
-        }
-
-       
+        $imunisasi = $query->paginate(5);
         
-
         return view('livewire.imunisasi-filter', [
             'imunisasi' => $imunisasi,
         ])->layout('layouts\admin\imunisasi');;

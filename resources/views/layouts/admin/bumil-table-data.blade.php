@@ -168,7 +168,7 @@
                         </form>
                     </div>
                     <div class="col-md-2">
-                        <a href="/input-kb">
+                        <a href="/daftar-bumil">
                             <button type="button" class="btn btn-success btn-sm">tambah</button>
                         </a>
                     </div>
@@ -195,13 +195,13 @@
                                     <tr>
                                         <td>{{ $key + 1 }}</td>
                                         <td>{{ $anc->tgl_pemeriksaan }}</td>
-                                        <td>{{ $anc->nama_ibu }}</td>
-                                        <td>{{ $anc->nama_suami }}</td>
-                                        <td>{{ $anc->nik_ibu }}</td>
-                                        <td>{{ $anc->nik_suami }}</td>
+                                        <td>{{ $anc->Istri->name }}</td>
+                                        <td>{{ $anc->Suami->name }}</td>
+                                        <td>{{ $anc->Istri->nik }}</td>
+                                        <td>{{ $anc->Suami->nik }}</td>
                                         <td>{{ $anc->tgl_pemeriksaan }}</td>
 
-                                        <td>{{ $anc->alamat }}</td>
+                                        <td>{{ $anc->Suami->alamat }}</td>
 
                                         <td>
                                             <a href="{{ route('bumil.showid', ['id' => $anc->id]) }}">

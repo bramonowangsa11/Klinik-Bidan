@@ -17,7 +17,7 @@ class CobaImunisasiController extends Controller
         $keyword = $request->input('keyword'); 
     
         $imunisasis = CobaImunisasi::whereHas('Anak', function ($query) use ($keyword) {
-            $query->where('name', 'like', '%' . $keyword . '%');
+            $query->where('name', 'like', '%' . $keyword .  '%');
         })
         ->with(['Ortu','Anak']) 
         ->orderByDesc('tanggal')->paginate(5);

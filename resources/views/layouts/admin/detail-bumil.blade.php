@@ -199,19 +199,15 @@
                             </div>
                             <div class="row mb-2">
                                 <div class="col-4 col-md-5 font-weight-bold">Nama Ibu</div>
-                                <div class="col-8 col-md-7">: {{ $ancs->nama_ibu }}</div>
+                                <div class="col-8 col-md-7">: {{ $ancs->Istri->name }}</div>
                             </div>
                             <div class="row mb-2">
                                 <div class="col-4 col-md-5 font-weight-bold">NIK Ibu</div>
-                                <div class="col-8 col-md-7">: {{ $ancs->nik_ibu }}</div>
+                                <div class="col-8 col-md-7">: {{ $ancs->Istri->nik }}</div>
                             </div>
                             <div class="row mb-2">
                                 <div class="col-4 col-md-5 font-weight-bold">Tanggal Lahir Ibu</div>
-                                <div class="col-8 col-md-7">: {{ $ancs->tgl_lahir_ibu }}</div>
-                            </div>
-                            <div class="row mb-2">
-                                <div class="col-4 col-md-5 font-weight-bold">Umur Ibu</div>
-                                <div class="col-8 col-md-7">: 21</div>
+                                <div class="col-8 col-md-7">: {{ $ancs->Istri->ttl }}</div>
                             </div>
                         </div>
                         <div class=" col-md-5">
@@ -225,11 +221,11 @@
                             </div>
                             <div class="row mb-2">
                                 <div class="col-4 col-md-5 font-weight-bold">Nama Suami</div>
-                                <div class="col-8 col-md-7">: {{ $ancs->nama_suami }}</div>
+                                <div class="col-8 col-md-7">: {{ $ancs->Suami->name }}</div>
                             </div>
                             <div class="row mb-2">
                                 <div class="col-4 col-md-5 font-weight-bold">NIK Suami</div>
-                                <div class="col-8 col-md-7">: {{ $ancs->nik_suami }}</div>
+                                <div class="col-8 col-md-7">: {{ $ancs->Suami->nik }}</div>
                             </div>
                             <div class="row mb-2">
                                 <div class="col-4 col-md-5 font-weight-bold">NO KK</div>
@@ -237,7 +233,7 @@
                             </div>
                             <div class="row mb-2">
                                 <div class="col-4 col-md-5 font-weight-bold">Alamat</div>
-                                <div class="col-8 col-md-7">: {{ $ancs->alamat }}</div>
+                                <div class="col-8 col-md-7">: {{ $ancs->Suami->alamat }}</div>
                             </div>
                         </div>
 

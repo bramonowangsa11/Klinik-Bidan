@@ -1,16 +1,17 @@
 <?php
 
 use App\Livewire\imunisasiFilter;
+use App\Http\Controllers\Imunisasi;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\KbController;
 use App\Http\Controllers\AncController;
 use App\Http\Controllers\SeatController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\PasienController;
+use App\Http\Controllers\CobaAncController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\ImunisasiController;
 use App\Http\Controllers\ReservasiController;
-use App\Http\Controllers\Imunisasi;
 
 /*
 |--------------------------------------------------------------------------
@@ -60,12 +61,13 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/imunisasi/{id}', [ImunisasiController::class,'destroy'])->name('imunisasi.destroy')->middleware('userAkses:admin');
     Route::put('/imunisasi/{id}', [ImunisasiController::class,'update'])->name('imunisasi.update')->middleware('userAkses:admin');
     Route::post('imunisasi/ rch',[ImunisasiController::class,'search'])->name('imunisasi.search')->middleware('userAkses:admin');
-    Route::delete('/bumil/{id}',[AncController::class,'destroy'])->name('bumil.delete')->middleware('userAkses:admin');
+    Route::delete('/bumil/{id}',[CobaAncController::class,'destroy'])->name('bumil.delete')->middleware('userAkses:admin');
     Route::get('/logout',[SessionController::class,'logout']);
-    Route::post('/input-bumil',[AncController::class,'store'])->name('bumil.store')->middleware('userAkses:admin');
+    Route::post('/input-bumil',[CobaAncController::class,'store'])->name('bumil.store')->middleware('userAkses:admin');
     Route::put('/bumil/{id}',[AncController::class,'update'])->name('bumil.update')->middleware('userAkses:admin');
     Route::post('bumil/search',[AncController::class,'search'])->name('bumil.search')->middleware('userAkses:admin');
-    Route::get('/ibu-hamil',[AncController::class,'index'])->middleware('userAkses:admin');
+    Route::get('/ibu-hamil',[CobaAncController::class,'index'])->middleware('userAkses:admin');
+    Route::get('/bumil',[CobaAncController::class,'inputnik'])->middleware('userAkses:admin')->name('bumil.nik');
 
 
     Route::get('/tambah-pasien',[PasienController::class,'tambahPasien'])->middleware('userAkses:admin');
@@ -105,9 +107,9 @@ Route::get('/test', function () {
     return view('layouts.admin.test-modal');
 });
 Route::get('/input-bumil', function () {
-    return view('layouts.admin.bumil-input-data');
+    return view('layouts.admin.bumil-`input`-data');
 });
-Route::get('/detail-bumil/{id}',[AncController::class,'showid'])->name('bumil.showid');
+Route::get('/detail-bumil/{id}',[CobaAncController::class,'showid'])->name('bumil.showid');
 
 // routes/web.php
 
@@ -157,14 +159,12 @@ Route::get('/daftar-bumil', function () {
     return view('layouts.admin.daftar-bumil');
 });
 
-<<<<<<< HEAD
 // Route::get('/dashboard', function () {
 //     return view('layouts.admin.admin-dashboard');
 // });
-=======
-Route::get('/dashboard', function () {
-    return view('layouts.admin.admin-dashboard');
-});
+// Route::get('/dashboard', function () {
+//     return view('layouts.admin.admin-dashboard');
+// });
 Route::get('/cetak-imunisasi', function () {
     return view('layouts.admin.cetak-imunisasi');
 });
@@ -174,7 +174,6 @@ Route::get('/cetak-kb', function () {
 Route::get('/cetak-bumil', function () {
     return view('layouts.admin.cetak-bumil');
 });
->>>>>>> 2404feecabd45291ca9a1315e77824c22273a69e
 // Route::get('/data-pasien', function () {
 //     return view('layouts.admin.data-pasien');
 // });

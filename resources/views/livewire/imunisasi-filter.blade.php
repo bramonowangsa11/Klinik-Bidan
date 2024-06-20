@@ -155,9 +155,14 @@
 
                             <div class="row mt-2">
                                 <div class="col-md-9">
-                                    <input class="form-control mr-sm-2" type="search" wire:model="name" wire:keydown="res" placeholder="Search"
+                                    <input class="form-control mr-sm-2" type="search" wire:model="name" wire:keydown="filter" placeholder="Search"
                                         aria-label="Search" name="name">
                                 </div>
+                                <div>
+                                    <input type="date" wire:model="tanggal">
+                                    <input type="month" wire:model="bulan">
+                                </div>
+                                <button wire:click="filter">Filter/Search</button>
                             </div>
                     </div>
                     <div class="col-md-2">

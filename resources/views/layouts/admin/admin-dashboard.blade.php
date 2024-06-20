@@ -178,7 +178,7 @@
                                     <div class="card-body text-white">
                                         <h5 class="card-title fw-bold">Imunisasi</h5>
                                         <p class="card-text">Jumah Data Imunisasi Bulan Ini</p>
-                                        <h2 class=" fw-bold">$12,500</h2>
+                                        <h2 class=" fw-bold">{{$imunisasi_thismonth}}</h2>
                                         <a href="/cetak-imunisasi" class="text-white">More Info ></a>
                                     </div>
                                 </div>
@@ -188,7 +188,7 @@
                                     <div class="card-body text-white">
                                         <h5 class="card-title fw-bold">Ibu Hamil</h5>
                                         <p class="card-text">Jumah Data Ibu Hamil Bulan Ini</p>
-                                        <h2 class=" fw-bold">$12,500</h2>
+                                        <h2 class=" fw-bold">{{$bumil_thismonth}}</h2>
                                         <a href="/cetak-bumil" class="text-white">More Info ></a>
                                     </div>
                                 </div>
@@ -198,7 +198,7 @@
                                     <div class="card-body text-white">
                                         <h5 class="card-title fw-bold">KB</h5>
                                         <p class="card-text">Jumah Data KB Bulan Ini</p>
-                                        <h2 class=" fw-bold">$12,500</h2>
+                                        <h2 class=" fw-bold">{{$kb_thismonth}}</h2>
                                         <a href="/cetak-kb" class="text-white">More Info ></a>
                                     </div>
                                 </div>

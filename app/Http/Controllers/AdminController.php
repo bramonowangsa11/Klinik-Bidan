@@ -43,14 +43,14 @@ class AdminController extends Controller
 
         $kb_thismonth = Kb::whereYear('tgl_kb',$tahun)->whereMonth('tgl_kb',$bulan)->count();
         $bumil_thismonth = Imunisasi::whereYear('tanggal',$tahun)->whereMonth('tanggal',$bulan)->count();
-        $anc_thismonth = anc::whereYear('tgl_pemeriksaan',$tahun)
-            ->whereMonth('tgl_pemeriksaan',$bulan)->count();
         $today_reservation = Reservasi::where('tgl_reservasi',$now)->count();
+        $imunisasi_thismonth = Imunisasi::whereYear('tanggal',$tahun)
+        ->whereMonth('tanggal',$bulan)->count();
         $count_user = User::count();
         $count_pasien = Pasien::count();
         return view('layouts.admin.admin-dashboard',compact('kb_thismonth',
                                 'bumil_thismonth',
-                                'anc_thismonth',
+                                'imunisasi_thismonth',
                                 'today_reservation',
                                 'count_user',
                                 'count_pasien'));

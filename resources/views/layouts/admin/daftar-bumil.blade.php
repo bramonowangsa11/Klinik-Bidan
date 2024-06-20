@@ -130,14 +130,14 @@
             </div>
         @endif
         <div class="col-md-3 justify-content-center align-items-center d-flex">
-            <form class=" mt-2" method="GET" action="/search-nik">
+            <form class=" mt-2" method="GET" action="{{route('bumil.nik')}}">
                 @csrf
             {{-- kiri --}}
                 <div class="">
                     
                     <div class="mb-3 form-outline border-0 border-bottom border-dark" id="nikform">
-                        <label for="nikIbu" class="form-label">NIK Ibu</label>
-                        <input type="text" class="form-control" id="nikIbu" aria-describedby="" name="nik_ibu">
+                        <label for="nikIbu" class="form-label">NIK Istri</label>
+                        <input type="text" class="form-control" id="nikIbu" aria-describedby="" name="nik_istri">
                         {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
                     </div>
                     <div class="mb-3 form-outline border-0 border-bottom border-dark" id="result">
