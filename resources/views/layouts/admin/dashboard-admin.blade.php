@@ -3,7 +3,7 @@
     {{-- start --}}
     <div class="container min-vh-100 p-0 m-0 min-vw-100">
         <nav class="navbar navbar-expand-lg navbar-dark p-2 d-md-none m-0 min-vw-100 bg-dark" style="width: 47vh">
-            <a class="navbar-brand" href="#">Dashboard</a>
+            <a class="navbar-brand" href="/dashboard">Dashboard</a>
             <button class="navbar-toggler mr-2" type="button" data-toggle="collapse" data-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -70,7 +70,8 @@
         </nav>
         <div class="d-flex">
             <div class="sidebar p-3 flex-shrink-0 d-none d-md-block bg-dark m-0 vh-100">
-                <h4 class="text-white">Dashboard</h4>
+                {{-- <h4 class="text-white">Dashboard</h4> --}}
+                <a href="/dashboard" class="text-white navbar-brand fw-bold fs-4">Dashboard</a>
                 <ul class="nav flex-column">
                     <li class="nav-item">
                         <a href="/admin" class="nav-link text-white active" aria-current="page">
@@ -183,6 +184,30 @@
                         </a>
                     </div>
                 </div>
+                {{-- filter --}}
+                <div class="row mb-3 mt-2 justify-content-end ms-0">
+                    <div class="col-md-5 ms-4">
+                        <form action="" method="POST">
+                            @csrf
+                            <div class="row g-3 align-items-center">
+                                <div class="col-auto">
+                                    <label for="day">Tanggal</label>
+                                    <input type="date" class="form-select" id="day" name="day" required>
+                                    </input>
+                                </div>
+                                <div class="col-auto">
+                                    <label for="month">Bulan</label>
+                                    <input type="month" class="form-select" id="month" name="month" placeholder="Bulan">
+                                    </input>
+                                </div>
+                                <div class="col-auto mt-auto">
+                                    <button type="submit" class="btn btn-secondary">Filter</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                {{-- end filter --}}
                 {{-- bagian tabel --}}
                 <div class="row col-md-12 col-12 ms-0 mt-2">
                     <div class=" overflow-x-scroll">
@@ -204,7 +229,7 @@
                                     <tr>
                                         <td>{{ $key + 1 }}</td>
                                         <td>{{ $imunisasi->tanggal }}</td>
-                                        <td>{{ $imunisasi->Anak->name}}</td>
+                                        <td>{{ $imunisasi->Anak->name }}</td>
                                         <td>{{ $imunisasi->Anak->nik }}</td>
                                         <td>{{ $imunisasi->Ortu->name }}</td>
                                         <td>{{ $imunisasi->Anak->ttl }}</td>

@@ -17,7 +17,7 @@
                     <h5>Halaman 1</h5>
                     <table class="table table-responsive table-sm table-bordered table-striped border-black">
                         <thead>
-                            @foreach ($imunisasis as $key => $imunisasi)
+                            {{-- @foreach ($imunisasis as $key => $imunisasi) --}}
                                 <tr>
                                     <th>Tanggal</th>
                                     <th>Nama Anak</th>
@@ -27,18 +27,18 @@
                                     <th>ALamat</th>
                                     <th>Berat Badan</th>
                                 </tr>
-                            @endforeach
+                            {{-- @endforeach --}}
                         </thead>
                         <tbody>
                             <tr>
-                                <td>{{ $imunisasi->tanggal }}</td>
+                                {{-- <td>{{ $imunisasi->tanggal }}</td>
                                 <td>{{ $imunisasi->nama_anak }}</td>
                                 <td>{{ $imunisasi->nik_anak }}</td>
                                 <td>{{ $imunisasi->nama_orangtua }}</td>
                                 <td>{{ $imunisasi->tgl_lahir }}</td>
                                 <td>{{ $imunisasi->alamat }}</td>
                                 <td>{{ $imunisasi->berat_badan }}</td>
-                                <td>{{ $imunisasi->tanggal }}</td>
+                                <td>{{ $imunisasi->tanggal }}</td> --}}
                             </tr>
                         </tbody>
 
@@ -52,6 +52,8 @@
                                 <th>Panjang Badan</th>
                                 <th>HBO</th>
                                 <th>BCG</th>
+                                <th>Kipi</th>
+                                <th>Vaksin</th>
                                 <th>Penta</th>
                                 <th>TPV</th>
                                 <th>PCV</th>
@@ -61,11 +63,13 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($imunisasis as $key => $imunisasi)
+                            {{-- @foreach ($imunisasis as $key => $imunisasi)
                                 <tr>
                                     <td>{{ $imunisasi->panjang_badan }}</td>
                                     <td>{{ $imunisasi->HBO }}</td>
                                     <td>{{ $imunisasi->BCG }}</td>
+                                    <td>{{ $imunisasi->kipi }}</td>
+                                    <td>{{ $imunisasi->vaksin }}</td>
                                     <td>{{ $imunisasi->PENTA }}</td>
                                     <td>{{ $imunisasi->IPV }}</td>
                                     <td>{{ $imunisasi->PCV }}</td>
@@ -73,7 +77,7 @@
                                     <td>{{ $imunisasi->MK }}</td>
                                     <td>{{ $imunisasi->booster }}</td>
                                 </tr>
-                            @endforeach
+                            @endforeach --}}
                         </tbody>
 
                     </table>

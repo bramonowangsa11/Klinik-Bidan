@@ -67,7 +67,6 @@ Route::middleware(['auth'])->group(function () {
     Route::post('bumil/search',[AncController::class,'search'])->name('bumil.search')->middleware('userAkses:admin');
     Route::get('/ibu-hamil',[AncController::class,'index'])->middleware('userAkses:admin');
 
-
     Route::get('/tambah-pasien',[PasienController::class,'tambahPasien'])->middleware('userAkses:admin');
     Route::post('/pasien',[PasienController::class,'daftar'])->middleware('userAkses:admin')->name('pasien.store');
     Route::get('/input-kb',[KbController::class,'inputNik'])->middleware('userAkses:admin');
@@ -157,11 +156,11 @@ Route::get('/daftar-bumil', function () {
     return view('layouts.admin.daftar-bumil');
 });
 
-<<<<<<< HEAD
-// Route::get('/dashboard', function () {
-//     return view('layouts.admin.admin-dashboard');
-// });
-=======
+// <<<<<<< HEAD
+Route::get('/dashboard', function () {
+    return view('layouts.admin.admin-dashboard');
+});
+// =======
 Route::get('/dashboard', function () {
     return view('layouts.admin.admin-dashboard');
 });
@@ -174,7 +173,7 @@ Route::get('/cetak-kb', function () {
 Route::get('/cetak-bumil', function () {
     return view('layouts.admin.cetak-bumil');
 });
->>>>>>> 2404feecabd45291ca9a1315e77824c22273a69e
+// >>>>>>> 2404feecabd45291ca9a1315e77824c22273a69e
 // Route::get('/data-pasien', function () {
 //     return view('layouts.admin.data-pasien');
 // });
