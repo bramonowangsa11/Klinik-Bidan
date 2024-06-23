@@ -141,7 +141,7 @@
                 {{-- bagian kb dan search --}}
                 <div class="row col-md-12 col-11 ms-0">
                     <div class=" col-md-7 mt-2">
-                        <h1 class=" fw-bold">Data KB</h1>
+                        <h1 class=" fw-bold">Data Ibu Hamil</h1>
                         @if (Session::has('success'))
                             <div class="alert alert-success">
                                 {{ Session::get('success') }}
@@ -183,8 +183,8 @@
                                     <th>Tanggal Pemeriksaan</th>
                                     <th>Nama Ibu</th>
                                     <th>Nama Suami</th>
-                                    <th>NIK Ibu</th>
-                                    <th>NIK Suami</th>
+                                    <th>NIK Ibu/Suami</th>
+                                    {{-- <th>NIK Suami</th> --}}
                                     <th>NO KK</th>
                                     <th>Alamat</th>
                                     <th>Action</th>
@@ -197,9 +197,16 @@
                                         <td>{{ $anc->tgl_pemeriksaan }}</td>
                                         <td>{{ $anc->nama_ibu }}</td>
                                         <td>{{ $anc->nama_suami }}</td>
-                                        <td>{{ $anc->nik_ibu }}</td>
-                                        <td>{{ $anc->nik_suami }}</td>
-                                        <td>{{ $anc->tgl_pemeriksaan }}</td>
+                                        <td>
+                                            <div class=" border-bottom border-1 border-black">
+                                                {{ $anc->nik_ibu }}
+                                            </div>
+                                            <div>
+                                                {{ $anc->nik_suami }}
+                                            </div>
+                                        </td>
+                                        {{-- <td>{{ $anc->nik_suami }}</td> --}}
+                                        <td>{{ $anc->no_kk }}</td>
 
                                         <td>{{ $anc->alamat }}</td>
 

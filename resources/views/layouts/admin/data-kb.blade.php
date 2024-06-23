@@ -182,9 +182,9 @@
                                     <th>No</th>
                                     <th>Tanggal</th>
                                     <th>Nama Istri</th>
-                                    <th>NIK Istri</th>
+                                    <th>NIK Istri/Suami</th>
                                     <th>Nama Suami</th>
-                                    <th>Nik Suami</th>
+                                    {{-- <th>Nik Suami</th> --}}
                                     <th>ALamat</th>
                                     <th>Action</th>
                                 </tr>
@@ -195,9 +195,16 @@
                                         <td>{{ $key + 1 }}</td>
                                         <td>{{ $kb->tgl_kb }}</td>
                                         <td>{{ $kb->Ibu->name }}</td>
-                                        <td>{{ $kb->Ibu->nik }}</td>
+                                        <td>
+                                            <div class=" border-bottom border-1 border-black">
+                                                {{ $kb->Ibu->nik }}
+                                            </div>
+                                            <div>
+                                                {{ $kb->Suami->nik }}
+                                            </div>
+                                        </td>
                                         <td>{{ $kb->Suami->name }}</td>
-                                        <td>{{ $kb->Suami->nik }}</td>
+                                        {{-- <td>{{ $kb->Suami->nik }}</td> --}}
                                         <td>{{ $kb->Suami->alamat }}</td>
                                         <td>
                                             <a href="{{ route('kb.showByid', ['id' => $kb->id]) }}">

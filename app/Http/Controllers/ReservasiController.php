@@ -12,7 +12,7 @@ class ReservasiController extends Controller
 {   
     public function todayReservation(){
         $now = Carbon::now()->toDateString();
-        $reservasis = Reservasi::where('tgl_reservasi',$now)->paginate(10);
+        $reservasis = Reservasi::where('tgl_reservasi',$now)->paginate(5);
         if($reservasis->isEmpty()){
             Session::flash('errors','tidak terdapat reservasi pada hari ini');
             return view('layouts.admin.lihat-reservasi',compact('reservasis'));
@@ -46,7 +46,7 @@ class ReservasiController extends Controller
         }
         else{
             $id_user = Auth::user()->id;
-            $reservasis = Reservasi::with('user')->where('user_id',$id_user)->paginate(10);
+            $reservasis = Reservasi::with('user')->where('user_id',$id_user)->paginate(5);
             return view('layouts.users.lihat-reservasi-user',compact('reservasis'));
         }
         

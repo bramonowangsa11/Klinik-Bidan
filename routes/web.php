@@ -183,3 +183,6 @@ Route::get('/cetak-bumil', function () {
 // Route::get('/data-kb', function () {
 //     return view('layouts.admin.data-kb');
 // });
+Route::get('/dashboard-user', function () {
+    return view('layouts.users.dashboard-user');
+});

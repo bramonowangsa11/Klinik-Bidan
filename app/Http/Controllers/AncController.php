@@ -111,7 +111,7 @@ class AncController extends Controller
             'nama_ibu' => 'required|string',
             'buku_kia' => 'required|boolean',
             'pekerjaan_ibu' => 'required|string',
-            'pekerjaan_ayah' => 'required|string',
+            'pekerjaan_suami' => 'required|string',
             'no_kk' => 'required|string',
             'nama_suami' => 'required|string',
             'nik_ibu' => 'required|string',
