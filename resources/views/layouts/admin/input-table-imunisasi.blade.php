@@ -200,7 +200,7 @@
                             <div class="mb-3 form-outline border-0 border-bottom border-dark ">
                                 <label for="inputBeratBadan" class="form-label">Berat Badan</label>
                                 <input type="text" class="form-control" id="inputBeratBadan" aria-describedby=""
-                                    name="berat_badan">
+                                    name="berat_badan" value="{{old('berat_badan')}}" >
                                 {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
                             </div>
                             <div class="mb-4 form-outline border-0 border-bottom border-dark">

@@ -101,74 +101,33 @@
             {{-- isi konten nya disini --}}
             <div class="content flex-grow-1 p-2" style="width: 47vh">
                 {{-- bagian tabel --}}
-                <div class="row col-md-12">
-                    <div class=" col-md-7 mt-2">
-                        <h1>Daftar Reservasi</h1>
-                        @if (Session::has('success'))
-                            <div class="alert alert-success">
-                                {{ Session::get('success') }}
-                            </div>
-                        @endif
-                        @if (session('errors'))
-                            <div class="alert alert-danger">
-                                {{ session('errors') }}
-                            </div>
-                        @endif
-                    </div>
-                    <div class=" col-md-4">
-                        <form class="form-inline my-2 my-lg-0" action="{{ route('imunisasi.search') }}" method="POST">
-                            @csrf
-                            <div class="row mt-2">
-                                <div class="col-md-9">
-                                    <input class="form-control mr-sm-2" type="search" placeholder="Search"
-                                        aria-label="Search" name="keyword">
-                                </div>
-                                <div class="col-md-3">
-                                    <button class="btn btn-dark my-2 my-sm-0" type="submit">Search</button>
+                <div class="row col-md-12 col-12 ms-0 mt-2">
+                    <div class="container mt-5">
+                        <h1>Dashboard</h1>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="card card-custom mb-4 bg-primary rounded-4">
+                                    <div class="card-body text-white">
+                                        <h5 class="card-title fw-bold">Reservasi</h5>
+                                        <p class="card-text">Jumlah Reservasi Hari Ini</p>
+                                        {{-- <h2>{{$today_reservation}}</h2> --}}
+                                        <a href="#" class="text-white">Go somewhere ></a>
+                                    </div>
                                 </div>
                             </div>
-                        </form>
-                    </div>
-                    <div class="col-md-2">
-                        <a href="/pasien">
-                            <button type="button" class="btn btn-success btn-sm">tambah</button>
-                        </a>
+                            <div class="col-md-3">
+                                <div class="card card-custom mb-4 rounded-4" style="background-color: #44C95C">
+                                    <div class="card-body text-white">
+                                        <h5 class="card-title fw-bold">Pasien</h5>
+                                        <p class="card-text">Jumlah Pasien Terdaftar</p>
+                                        {{-- <h2>{{$count_pasien}}</h2> --}}
+                                        <a href="#" class="text-white">Go somewhere ></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="container">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>No</th>
-                                <th>Nama</th>
-                                <th>Tanggal</th>
-                                <th>Sesi</th>
-                                <th>Jenis Layanan</th>
-                                <th>Keterangan</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($reservasis as $key => $reservasi)
-                                <tr>
-                                    <td>{{ $key + 1 }}</td>
-                                    <td>{{ $reservasi->user->name }}</td>
-                                    <td>{{ $reservasi->tgl_reservasi }}</td>
-                                    <td>{{ $reservasi->sesi }}</td>
-                                    <td>{{ $reservasi->layanan }}</td>
-                                    <td>{{ $reservasi->keterangan }}</td>
-                                    <td>
-                                        <form action="{{ route('reservasi.delete', $reservasi->id) }}" method="POST">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
-                                        </form>
-                                    </td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                    {{ $reservasis->links() }}
                 {{-- end konten --}}
             </div>
         </div>

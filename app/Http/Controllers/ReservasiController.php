@@ -10,6 +10,20 @@ use Illuminate\Support\Facades\Session;
 
 class ReservasiController extends Controller
 {   
+<<<<<<< HEAD
+=======
+    public function todayReservation(){
+        $now = Carbon::now()->toDateString();
+        $reservasis = Reservasi::where('tgl_reservasi',$now)->paginate(5);
+        if($reservasis->isEmpty()){
+            Session::flash('errors','tidak terdapat reservasi pada hari ini');
+            return view('layouts.admin.lihat-reservasi',compact('reservasis'));
+        }
+        else{
+            return view('layouts.admin.lihat-reservasi',compact('reservasis'));
+        }
+    }
+>>>>>>> 7073fbfef0c460cc0220e61459d64a9524d2506c
     public function sesibyDate(Request $request){
         $tgl = $request['tgl_reservasi'];
         $tgl_reservasi = Carbon::parse($tgl);
@@ -35,7 +49,7 @@ class ReservasiController extends Controller
         }
         else{
             $id_user = Auth::user()->id;
-            $reservasis = Reservasi::with('user')->where('user_id',$id_user)->paginate(10);
+            $reservasis = Reservasi::with('user')->where('user_id',$id_user)->paginate(5);
             return view('layouts.users.lihat-reservasi-user',compact('reservasis'));
         }
         
