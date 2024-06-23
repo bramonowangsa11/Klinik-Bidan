@@ -30,7 +30,19 @@
                             </tr>
                         </thead>
                         <tbody>
-                            
+                            @foreach ($ancs as $key => $anc)
+                                <tr>
+                                    <td>{{ $anc->tgl_pemeriksaan }}</td>
+                                    <td>{{ $anc->buku_kia }}</td>
+                                    <td>{{ $anc->Istri->name }}</td>
+                                    <td>{{ $anc->Istri->nik }}</td>
+                                    <td>{{ $anc->Istri->ttl }}</td>
+                                    <td>{{ $anc->pddk_ibu }}</td>
+                                    <td>{{ $anc->pekerjaan_ibu }}</td>
+                                    <td>{{ $anc->Suami->name }}</td>
+                                    <td>{{ $anc->FE }}</td>
+                                </tr>
+                            @endforeach
                         </tbody>
 
                     </table>
@@ -53,7 +65,19 @@
                             </tr>
                         </thead>
                         <tbody>
-                            
+                            @foreach ($ancs as $key => $anc)
+                                <tr>
+                                    <td>{{ $anc->Suami->nik }}</td>
+                                    <td>{{ $anc->no_kk }}</td>
+                                    <td>{{ $anc->Suami->alamat }}</td>
+                                    <td>{{ $anc->paritas }}</td>
+                                    <td>{{ $anc->parsing }}</td>
+                                    <td>{{ $anc->p4k }}</td>
+                                    <td>{{ $anc->HPPT }}</td>
+                                    <td>{{ $anc->HPL }}</td>
+                                    <td>{{ $anc->umur_kehamilan }}</td>
+                                </tr>
+                            @endforeach
                         </tbody>
 
                     </table>
@@ -77,7 +101,19 @@
 
                         </thead>
                         <tbody>
-                            
+                            @foreach ($ancs as $key => $anc)
+                                <tr>
+                                    <td>{{ $anc->anamnesa }}</td>
+                                    <td>{{ $anc->TB }}</td>
+                                    <td>{{ $anc->LILA }}</td>
+                                    <td>{{ $anc->BB }}</td>
+                                    <td>{{ $anc->TBJ }}</td>
+                                    <td>{{ $anc->TFU }}</td>
+                                    <td>{{ $anc->tensi }}</td>
+                                    <td>{{ $anc->status_TT1_K1 }}</td>
+                                    <td>{{ $anc->FE }}</td>
+                                </tr>
+                            @endforeach
 
                         </tbody>
 
@@ -101,19 +137,19 @@
                             </tr>
                         </thead>
                         <tbody>
-                            {{-- @foreach ($ancs as $key => $anc)
+                            @foreach ($ancs as $key => $anc)
                                 <tr>
-                                    <td>{{ $ancs->BAT_LAIN }}</td>
-                                    <td>{{ $ancs->PRESENTASI }}</td>
-                                    <td>{{ $ancs->DJJ }}</td>
-                                    <td>{{ $ancs->KEPALA_THD_PAP }}</td>
-                                    <td>{{ $ancs->TBJ }}</td>
-                                    <td>{{ $ancs->HB }}</td>
-                                    <td>{{ $ancs->Protein_urine }}</td>
-                                    <td>{{ $ancs->GOLDAR }}</td>
-                                    <td>{{ $ancs->HBSAG }}</td>
+                                    <td>{{ $anc->BAT_LAIN }}</td>
+                                    <td>{{ $anc->PRESENTASI }}</td>
+                                    <td>{{ $anc->DJJ }}</td>
+                                    <td>{{ $anc->KEPALA_THD_PAP }}</td>
+                                    <td>{{ $anc->TBJ }}</td>
+                                    <td>{{ $anc->HB }}</td>
+                                    <td>{{ $anc->Protein_urine }}</td>
+                                    <td>{{ $anc->GOLDAR }}</td>
+                                    <td>{{ $anc->HBSAG }}</td>
                                 </tr>
-                            @endforeach --}}
+                            @endforeach
                         </tbody>
 
                     </table>
@@ -136,19 +172,19 @@
                             </tr>
                         </thead>
                         <tbody>
-                            {{-- @foreach ($ancs as $key => $anc)
+                            @foreach ($ancs as $key => $anc)
                                 <tr>
-                                    <td>{{ $ancs->IMS }}</td>
-                                    <td>{{ $ancs->HIV }}</td>
-                                    <td>{{ $ancs->KOMPLIKASI }}</td>
-                                    <td>{{ $ancs->RUJUK }}</td>
-                                    <td>{{ $ancs->trisemester1 }}</td>
-                                    <td>{{ $ancs->trisemester2 }}</td>
-                                    <td>{{ $ancs->trisemester3 }}</td>
-                                    <td>{{ $ancs->FR }}</td>
-                                    <td>{{ $ancs->keterangan }}</td>
+                                    <td>{{ $anc->IMS }}</td>
+                                    <td>{{ $anc->HIV }}</td>
+                                    <td>{{ $anc->KOMPLIKASI }}</td>
+                                    <td>{{ $anc->RUJUK }}</td>
+                                    <td>{{ $anc->trisemester1 }}</td>
+                                    <td>{{ $anc->trisemester2 }}</td>
+                                    <td>{{ $anc->trisemester3 }}</td>
+                                    <td>{{ $anc->FR }}</td>
+                                    <td>{{ $anc->keterangan }}</td>
                                 </tr>
-                            @endforeach --}}
+                            @endforeach
                         </tbody>
 
                     </table>

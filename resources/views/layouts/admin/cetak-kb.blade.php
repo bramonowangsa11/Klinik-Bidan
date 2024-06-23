@@ -18,7 +18,7 @@
                     <table class="table table-responsive table-sm table-bordered table-striped border-black">
                         <thead>
                             <tr>
-
+                                <th>no</th>
                                 <th>Tanggal</th>
                                 <th>Nama Istri</th>
                                 <th>NIK Istri</th>
@@ -34,6 +34,7 @@
                         <tbody>
                             @foreach ($kbs as $key => $kb)
                                 <tr>
+                                    <td>{{ $key+1 }}</td>
                                     <td>{{ $kb->tgl_kb }}</td>
                                     <td>{{ $kb->Ibu->name }}</td>
                                     <td>{{ $kb->Ibu->nik }}</td>
@@ -56,6 +57,7 @@
                         <thead>
 
                             <tr>
+                                <th>no Salin</th>
                                 <th>Pasca Salin</th>
                                 <th>DO</th>
                                 <th>GC Dari</th>
@@ -73,6 +75,7 @@
                         <tbody>
                             @foreach ($kbs as $key => $kb)
                                 <tr>
+                                    <td>{{ $key+1}}</td>
                                     <td>{{ $kb->pasca_salin }}</td>
                                     <td>{{ $kb->do }}</td>
                                     <td>{{ $kb->gc_dari }}</td>
@@ -83,7 +86,7 @@
                                     <td>{{ $kb->lila }}</td>
                                     <td>{{ $kb->tgl_kembali }}</td>
                                     <td>{{ $kb->inform_consent }}</td>
-                                    <td>{{ $kb->keterangan }}</td>
+                                    <td>{{ $kb->keterangan}}</td>
                                 </tr>
                             @endforeach
                         </tbody>

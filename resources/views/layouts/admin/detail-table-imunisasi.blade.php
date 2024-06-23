@@ -225,6 +225,8 @@
                                         <th>Tinggi Badan</th>
                                         <th>HBO</th>
                                         <th>BCG</th>
+                                        <th>Kipi</th>
+                                        <th>Vaksin</th>
                                         <th>Penta</th>
                                         <th>IPV</th>
                                         <th>PCV</th>
@@ -239,6 +241,8 @@
                                         <td>{{ $imunisasi->panjang_badan }}</td>
                                         <td>{{ $imunisasi->HBO }}</td>
                                         <td>{{ $imunisasi->BCG }}</td>
+                                        <td>{{ $imunisasi->kipi }}</td>
+                                        <td>{{ $imunisasi->vaksin }}</td>
                                         <td>{{ $imunisasi->PENTA }}</td>
                                         <td>{{ $imunisasi->IPV }}</td>
                                         <td>{{ $imunisasi->PCV }}</td>

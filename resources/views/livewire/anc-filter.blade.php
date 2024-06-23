@@ -1,7 +1,4 @@
-@extends('layouts.bootstrap')
-@section('content')
-    {{-- start --}}
-    <div class="container min-vh-100 p-0 m-0 min-vw-100">
+<div class="container min-vh-100 p-0 m-0 min-vw-100">
         <nav class="navbar navbar-expand-lg navbar-dark p-2 d-md-none m-0 min-vw-100 bg-dark" style="width: 47vh">
             <a class="navbar-brand" href="#">Dashboard</a>
             <button class="navbar-toggler mr-2" type="button" data-toggle="collapse" data-target="#navbarNav"
@@ -138,75 +135,86 @@
             </div>
             {{-- isi konten nya disini --}}
             <div class="content flex-grow-1 p-2" style="width: 47vh">
-                {{-- bagian tabel --}}
-                <div class="row col-md-12 col-12 ms-0 mt-2">
-                    <div class="container mt-5">
-                        <h1>Dashboard</h1>
-                        <div class="row">
-                            <div class="col-md-3">
-                                <div class="card card-custom mb-4 bg-primary rounded-4">
-                                    <div class="card-body text-white">
-                                        <h5 class="card-title fw-bold">Reservasi</h5>
-                                        <p class="card-text">Jumlah Reservasi Hari Ini</p>
-                                        <h2>{{$today_reservation}}</h2>
-                                        <a href="/today-reservation" class="text-white">Go somewhere ></a>
-                                    </div>
-                                </div>
+                {{-- bagian kb dan search --}}
+                <div class="row col-md-12 col-11 ms-0">
+                    <div class=" col-md-7 mt-2">
+                        <h1 class=" fw-bold">Data BUMIL</h1>
+                        @if (Session::has('success'))
+                            <div class="alert alert-success">
+                                {{ Session::get('success') }}
                             </div>
-                            <div class="col-md-3">
-                                <div class="card card-custom mb-4 rounded-4" style="background-color: #44C95C">
-                                    <div class="card-body text-white">
-                                        <h5 class="card-title fw-bold">Pasien</h5>
-                                        <p class="card-text">Jumlah Pasien Terdaftar</p>
-                                        <h2>{{$count_pasien}}</h2>
-                                        <a href="/data-pasien" class="text-white">Go somewhere ></a>
-                                    </div>
-                                </div>
+                        @endif
+                        @if (session('errors'))
+                            <div class="alert alert-danger">
+                                {{ session('errors') }}
                             </div>
-                            <div class="col-md-3">
-                                <div class="card card-custom mb-4 rounded-4" style="background-color: #FFAC1C">
-                                    <div class="card-body text-white">
-                                        <h5 class="card-title">Pengguna</h5>
-                                        <p class="card-text">Jumah Pengguna Bulan Ini</p>
-                                        <h2>{{$count_user}}</h2>
-                                        <a href="#" class="text-white">Go somewhere ></a>
-                                    </div>
-                                </div>
+                        @endif
+                    </div>
+                    <div class=" col-md-4">
+
+                        <div class="row mt-2">
+                            <div class="col-md-9">
+                                <input class="form-control mr-sm-2" type="search" wire:model="name" wire:keydown="filter" placeholder="Search"
+                                    aria-label="Search" name="name">
                             </div>
-                            <div class="col-md-3">
-                                <div class="card card-custom mb-4 rounded-4" style="background-color: #949d16">
-                                    <div class="card-body text-white">
-                                        <h5 class="card-title fw-bold">Imunisasi</h5>
-                                        <p class="card-text">Jumah Data Imunisasi Bulan Ini</p>
-                                        <h2 class=" fw-bold">{{$imunisasi_thismonth}}</h2>
-                                        <a href="/cetak-imunisasi" class="text-white">More Info ></a>
-                                    </div>
-                                </div>
+                            <div>
+                                <input type="date" wire:model="tanggal">
+                                <input type="month" wire:model="bulan">
                             </div>
-                            <div class="col-md-3">
-                                <div class="card card-custom mb-4 rounded-4" style="background-color: #c51a23">
-                                    <div class="card-body text-white">
-                                        <h5 class="card-title fw-bold">Ibu Hamil</h5>
-                                        <p class="card-text">Jumah Data Ibu Hamil Bulan Ini</p>
-                                        <h2 class=" fw-bold">{{$bumil_thismonth}}</h2>
-                                        <a href="/cetak-bumil" class="text-white">More Info ></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="card card-custom mb-4 rounded-4" style="background-color: #0eb59c">
-                                    <div class="card-body text-white">
-                                        <h5 class="card-title fw-bold">KB</h5>
-                                        <p class="card-text">Jumah Data KB Bulan Ini</p>
-                                        <h2 class=" fw-bold">{{$kb_thismonth}}</h2>
-                                        <a href="/cetak-kb" class="text-white">More Info ></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <button wire:click="filter">Filter/Search</button>
+                    </div>
+                    <div class="col-md-2">
+                        <a href="/daftar-bumil">
+                            <button type="button" class="btn btn-success btn-sm">tambah</button>
+                        </a>
                     </div>
                 </div>
-                {{-- end konten --}}
+                {{-- bagian tabel --}}
+                <div class="row col-md-12 col-12 mt-2 ms-0">
+                    <div class="overflow-x-scroll mb-2">
+                        <table class="table table-responsive table-sm table-bordered table-striped">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th>No</th>
+                                    <th>Tanggal Pemeriksaan</th>
+                                    <th>Nama Ibu</th>
+                                    <th>Nama Suami</th>
+                                    <th>NIK Ibu</th>
+                                    <th>NIK Suami</th>
+                                    <th>NO KK</th>
+                                    <th>Alamat</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($ancs as $key => $anc)
+                                    <tr>
+                                        <td>{{ $key + 1 }}</td>
+                                        <td>{{ $anc->tgl_pemeriksaan }}</td>
+                                        <td>{{ $anc->Istri->name }}</td>
+                                        <td>{{ $anc->Suami->name }}</td>
+                                        <td>{{ $anc->Istri->nik }}</td>
+                                        <td>{{ $anc->Suami->nik }}</td>
+                                        <td>{{ $anc->tgl_pemeriksaan }}</td>
+
+                                        <td>{{ $anc->Suami->alamat }}</td>
+
+                                        <td>
+                                            <a href="{{ route('bumil.showid', ['id' => $anc->id]) }}">
+                                                <button type="button" class="btn btn-info btn-sm">Detail</button>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                @endforeach
+
+                            </tbody>
+                        </table>
+                    </div>
+
+                    {{ $ancs->links() }}
+                </div>
             </div>
+            {{-- end konten --}}
         </div>
-        {{-- end --}}
+</div>
+

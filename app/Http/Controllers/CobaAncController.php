@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 
+use Carbon\Carbon;
 use App\Models\Pasien;
 use App\Models\CobaAnc;
 use Illuminate\Http\Request;
@@ -139,7 +140,7 @@ class CobaAncController extends Controller
             'nama_ibu' => 'required|string',
             'buku_kia' => 'required|boolean',
             'pekerjaan_ibu' => 'required|string',
-            'pekerjaan_ayah' => 'required|string',
+            'pekerjaan_suami' => 'required|string',
             'no_kk' => 'required|string',
             'nama_suami' => 'required|string',
             'nik_ibu' => 'required|string',
@@ -198,5 +199,16 @@ class CobaAncController extends Controller
         $anc->update($validated_data);
         Session::flash('success','data berhasil diupdate');
         return redirect('/ibu-hamil');
+    }
+
+    public function LaporanBulanan(){
+        $now = Carbon::now('Asia/Jakarta');
+        $tahun = $now->year;
+        $bulan = $now->month;
+        $ancs = CobaAnc::with(['Suami','Istri'])
+        ->whereYear('tgl_pemeriksaan',$tahun)   
+        ->whereMonth('tgl_pemeriksaan',$bulan)
+        ->get();
+        return  view('layouts.admin.cetak-bumil',compact('ancs'));
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Kb;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
@@ -226,9 +227,16 @@ class KbController extends Controller
         return view('layouts.admin.kb');
     }
 
-    public function laporanKb($year,$month){
-        $kbs = Kb::with(['Suami','Ibu'])->whereYear('tgl_kb',$year)
-            ->whreMonth('tgl_kb',$month)->get();
-        return view('',compact('kbs'));
+    
+
+    public function LaporanBulanan(){
+        $now = Carbon::now('Asia/Jakarta');
+        $tahun = $now->year;
+        $bulan = $now->month;
+        $kbs = Kb::with(['Suami','Ibu'])
+        ->whereYear('tgl_kb',$tahun)   
+        ->whereMonth('tgl_kb',$bulan)
+        ->get();
+        return  view('layouts.admin.cetak-kb',compact('kbs'));
     }
 }

@@ -159,7 +159,7 @@
               <tbody>
                 @foreach ($pasiens as $key=> $pasien)
                   <tr>
-                    <td>{{$key+1}}</td>
+                    <td>{{$pasien->nik}}</td>
                     <td>{{$pasien->name}}</td>
                     <td>{{$pasien->ttl}}</td>
                     <td>{{$pasien->alamat}}</td>

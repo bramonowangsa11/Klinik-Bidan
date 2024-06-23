@@ -27,19 +27,20 @@
                                     <th>ALamat</th>
                                     <th>Berat Badan</th>
                                 </tr>
-                            @endforeach
+                            
                         </thead>
                         <tbody>
                             <tr>
                                 <td>{{ $imunisasi->tanggal }}</td>
-                                <td>{{ $imunisasi->nama_anak }}</td>
-                                <td>{{ $imunisasi->nik_anak }}</td>
-                                <td>{{ $imunisasi->nama_orangtua }}</td>
-                                <td>{{ $imunisasi->tgl_lahir }}</td>
-                                <td>{{ $imunisasi->alamat }}</td>
+                                <td>{{ $imunisasi->Anak->name }}</td>
+                                <td>{{ $imunisasi->Anak->nik }}</td>
+                                <td>{{ $imunisasi->Ortu->name }}</td>
+                                <td>{{ $imunisasi->Anak->ttl }}</td>
+                                <td>{{ $imunisasi->Ortu->alamat }}</td>
                                 <td>{{ $imunisasi->berat_badan }}</td>
-                                <td>{{ $imunisasi->tanggal }}</td>
+                            
                             </tr>
+                            @endforeach
                         </tbody>
 
                     </table>
@@ -52,6 +53,8 @@
                                 <th>Panjang Badan</th>
                                 <th>HBO</th>
                                 <th>BCG</th>
+                                <th>Kipi</th>
+                                <th>Vaksin</th>
                                 <th>Penta</th>
                                 <th>TPV</th>
                                 <th>PCV</th>
@@ -66,6 +69,8 @@
                                     <td>{{ $imunisasi->panjang_badan }}</td>
                                     <td>{{ $imunisasi->HBO }}</td>
                                     <td>{{ $imunisasi->BCG }}</td>
+                                    <td>{{ $imunisasi->kipi }}</td>
+                                    <td>{{ $imunisasi->vaksin }}</td>
                                     <td>{{ $imunisasi->PENTA }}</td>
                                     <td>{{ $imunisasi->IPV }}</td>
                                     <td>{{ $imunisasi->PCV }}</td>

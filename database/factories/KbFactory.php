@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use DateTime;
 use App\Models\Pasien;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -19,8 +20,16 @@ class KbFactory extends Factory
     {   
         $id_suami = Pasien::inRandomOrder()->first()->id;
         $id_ibu = Pasien::inRandomOrder()->first()->id;
+
+        $now = new DateTime();
+        $startOfMonth = new DateTime($now->format('Y-m-01'));
+        $endOfMonth = (clone $startOfMonth)->modify('last day of this month');
+        
+        // Generate random date in this month
+        $randomTimestamp = mt_rand($startOfMonth->getTimestamp(), $endOfMonth->getTimestamp());
+        $randomDateThisMonth = date('Y-m-d', $randomTimestamp);
         return [
-            'tgl_kb' => $this->faker->date(),
+            'tgl_kb' => $randomDateThisMonth,
             'jmlh_anak' => $this->faker->numberBetween(0, 10),
             'umur_anak_terkecil' => $this->faker->numberBetween(0, 18),
             'jaminan' => $this->faker->word,
@@ -37,7 +46,7 @@ class KbFactory extends Factory
             'tgl_kembali' => $this->faker->date(),
             'kegagalan' => $this->faker->word,
             'inform_consent' => $this->faker->word,
-            'keterangan' => $this->faker->sentence,
+            'keterangan' => $this->faker->word,
             'id_suami' => $id_suami,
             'id_ibu' => $id_ibu,
         ];

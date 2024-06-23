@@ -1,5 +1,7 @@
 <?php
 
+use App\Livewire\KBFilter;
+use App\Livewire\AncFilter;
 use App\Livewire\imunisasiFilter;
 use App\Http\Controllers\Imunisasi;
 use Illuminate\Support\Facades\Route;
@@ -50,6 +52,7 @@ Route::middleware(['auth'])->group(function () {
     })->middleware('userAkses:admin');
     Route::get('reservasi-admin',[AdminController::class,'sesiByDate'])->middleware('userAkses:admin');
     Route::delete('reservasi/{id}',[ReservasiController::class,'destroy'])->name('reservasi.delete');
+    Route::get('/today-reservation',[ReservasiController::class,'todayReservation']);
 
     Route::get('/pasien',[PasienController::class,'index'])->middleware('userAkses:pasien');
     Route::get('/reservasi',[ReservasiController::class,'sesibyDate'])->middleware('userAkses:pasien');
@@ -85,6 +88,9 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('imunisasi-nik',[ImunisasiController::class,'inputnik']);
     Route::get('/dashboard',[AdminController::class,'dashboard'])->name('home');
+    Route::get('/cetak-imunisasi',[ImunisasiController::class,'LaporanBulanan'])->name('cetak-imunisasi');
+    Route::get('/cetak-bumil',[CobaAncController::class,'LaporanBulanan'])->name('cetak-bumil');
+    Route::get('/cetak-kb',[KbController::class,'LaporanBulanan'])->name('cetak-kb');
 });
 
 // routes dashboard admin
@@ -118,6 +124,9 @@ Route::post('/submit-seats', [SeatController::class, 'submitSeats'])->name('subm
 
 Route::post('/search-pasien',[PasienController::class,'findBynik'])->name('findBynik');
 Route::get('/tesw',imunisasiFilter::class)->name('tes');
+Route::get('/teskb',KBFilter::class)->name('teskb');
+Route::get('/tesanc',AncFilter::class)->name('tesanc');
+
 
 //routes reservasi 2
 // Route::get('/reservasi2', function () {
@@ -165,15 +174,15 @@ Route::get('/daftar-bumil', function () {
 // Route::get('/dashboard', function () {
 //     return view('layouts.admin.admin-dashboard');
 // });
-Route::get('/cetak-imunisasi', function () {
-    return view('layouts.admin.cetak-imunisasi');
-});
-Route::get('/cetak-kb', function () {
-    return view('layouts.admin.cetak-kb');
-});
-Route::get('/cetak-bumil', function () {
-    return view('layouts.admin.cetak-bumil');
-});
+// Route::get('/cetak-imunisasi', function () {
+//     return view('layouts.admin.cetak-imunisasi');
+// });
+// Route::get('/cetak-kb', function () {
+//     return view('layouts.admin.cetak-kb');
+// });
+// Route::get('/cetak-bumil', function () {
+//     return view('layouts.admin.cetak-bumil');
+// });
 // Route::get('/data-pasien', function () {
 //     return view('layouts.admin.data-pasien');
 // });

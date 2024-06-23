@@ -253,6 +253,14 @@
                                 </div>
                                 {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
                             </div>
+                            
+
+
+
+                        </div>
+
+                        {{-- Kanan --}}
+                        <div class="col-md-3 mt-2">
                             <div class="mb-4">
                                 <label for="inputIPV" class="form-label">IPV</label>
                                 <div>
@@ -289,13 +297,6 @@
                                 </div>
                                 {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
                             </div>
-
-
-
-                        </div>
-
-                        {{-- Kanan --}}
-                        <div class="col-md-3 mt-2">
                             <div class="mb-4">
                                 <label for="inputBCG" class="form-label">Rota Virus</label>
                                 <div>

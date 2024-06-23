@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Reservasi;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -22,9 +23,11 @@ class ReservasiFactory extends Factory
         $user_id = User::inRandomOrder()->first()->id;
         $tgl_reservasi = $this->faker->dateTimeBetween('-1 month', '+1 month')->format('Y-m-d');
 
-        $sesi = $this->getUniqueSesi($tgl_reservasi);
+        
+        $now = Carbon::now('Asia/Jakarta');
+        $sesi = $this->getUniqueSesi($now);
         return [
-            'tgl_reservasi' => $tgl_reservasi,
+            'tgl_reservasi' => $now,
             'sesi' => $sesi,
             'layanan' => $this->faker->randomElement(['Bumil', 'KB', 'Imunisasi']),
             'keterangan' => $this->faker->sentence,
@@ -34,14 +37,16 @@ class ReservasiFactory extends Factory
     private function getUniqueSesi($tgl_reservasi)
     {
         $existingSessions = Reservasi::where('tgl_reservasi', $tgl_reservasi)->pluck('sesi')->toArray();
-        $allSessions = ['1','2','3','4','5','6','7','8','9','10','11','12','14'];
+        $allSessions = ['1','2','3','4','5','6','7','8','9','10','11','12','13','14'];
 
         $availableSessions = array_diff($allSessions, $existingSessions);
 
         if (empty($availableSessions)) {
             throw new \Exception("No available sessions for the date: $tgl_reservasi");
         }
-
-        return $this->faker->randomElement($availableSessions);
+        else{
+            return $this->faker->randomElement($availableSessions);
+        }
+        
     }
 }
