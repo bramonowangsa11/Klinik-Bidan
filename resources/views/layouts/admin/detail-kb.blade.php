@@ -470,10 +470,10 @@
                                                     {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
                                                 </div>
                                                 <input type="text" class="form-control" id="keterangan"
-                                                    aria-describedby="" name="id_suami" value="{{ $kb->id_suami }}"
+                                                    aria-describedby="" name="id_suami" value="{{ $kb->id_suami}}"
                                                     hidden>
                                                 <input type="text" class="form-control" id="keterangan"
-                                                    aria-describedby="" name="id_ibu" value="{{ $kb->id_ibu }}"
+                                                    aria-describedby="" name="id_ibu" value="{{ $kb->id_ibu}}"
                                                     hidden>
                                                 <div>
                                                     <button type="submit" class="btn btn-success"
