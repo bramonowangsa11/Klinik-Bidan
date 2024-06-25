@@ -203,3 +203,15 @@ Route::get('/data-pengguna', function () {
 Route::get('/riwayat', function () {
     return view('layouts.users.riwayat-periksa');
 });
+Route::get('/riwayat-imunisasi', function () {
+    return view('layouts.users.riwayat-imunisasi');
+});
+Route::get('/riwayat-kb', function () {
+    return view('layouts.users.riwayat-kb');
+});
+Route::get('/riwayat-ibu-hamil', function () {
+    return view('layouts.users.riwayat-bumil');
+});
+Route::get('/riwayat-pasien', function () {
+    return view('layouts.admin.riwayat-pasien');
+});

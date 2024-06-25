@@ -355,15 +355,63 @@
                                         <div class="overflow-x-scroll">
                                             <table id="tabel-data"
                                                 class="table table-responsive table-sm border-black border-2 table-bordered">
-                                                <thead class="table-dark">
+
+                                                <thead class="thead-dark table-dark">
+                                                    <tr>
+                                                        <th rowspan="2">Golongan Darah</th>
+                                                        <th rowspan="2">HBsAG</th>
+                                                        <th rowspan="2">IMS</th>
+                                                        <th rowspan="2">HIV</th>
+                                                        <th colspan="6" class="text-center">Komplikasi</th>
+                                                        <th rowspan="2">Rujuk Ke</th>
+                                                        <th rowspan="2">Trimester 1</th>
+                                                        <th rowspan="2">Trimester 2</th>
+                                                        <th rowspan="2">Trimester 3</th>
+                                                        <th rowspan="2">FR/R</th>
+                                                        <th rowspan="2">Keterangan</th>
+
+                                                    </tr>
+                                                    <tr>
+                                                        <th>HDK</th>
+                                                        <th>Abortus</th>
+                                                        <th>Perdarahan</th>
+                                                        <th>Infeksi</th>
+                                                        <th>KPD</th>
+                                                        <th>Lain-lain</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>{{ $ancs->GOLDAR }}</td>
+                                                        <td>{{ $ancs->HBSAG }}</td>
+                                                        <td>{{ $ancs->IMS }}</td>
+                                                        <td>{{ $ancs->HIV }}</td>
+                                                        <td>{{ $ancs->HDK }}</td>
+                                                        <td>{{ $ancs->ABORTUS }}</td>
+                                                        <td>{{ $ancs->PERDARAHAN }}</td>
+                                                        <td>{{ $ancs->INFEKSI }}</td>
+                                                        <td>{{ $ancs->KPD }}</td>
+                                                        <td>{{ $ancs->LAIN_LAIN }}</td>
+                                                        <td>{{ $ancs->RUJUK }}</td>
+                                                        <td>{{ $ancs->trisemester1 }}</td>
+                                                        <td>{{ $ancs->trisemester2 }}</td>
+                                                        <td>{{ $ancs->trisemester3 }}</td>
+                                                        <td>{{ $ancs->FR }}</td>
+                                                        <td>{{ $ancs->keterangan }}</td>
+
+                                                    </tr>
+
+                                                    <!-- Tambahkan baris tambahan sesuai kebutuhan -->
+                                                </tbody>
+                                                {{-- <thead class="table-dark">
                                                     <tr class=" bg-secondary">
                                                         <th>Golongan Darah</th>
                                                         <th>HBsAG</th>
                                                         <th>IMS</th>
                                                         <th>HIV</th>
                                                         <th class=" text-center">Komplikasi
-                                                            <table class="text-white table">
-                                                                <thead>
+                                                            <table class="text-white table border-black border-2">
+                                                                <thead class="table-dark">
                                                                     <tr>
                                                                         <th>HDK| </th>
                                                                         <th>Abortus| </th>
@@ -374,6 +422,33 @@
                                                                     </tr>
                                                                 </thead>
                                                             </table>
+                                                            <table
+                                                                class="table border-black border-2 table-bordered position-fixed mt-1 d"
+                                                                style="width:  19vh">
+                                                                <thead class="table-dark d-block">
+                                                                    <tr>
+                                                                        <th>HDK| </th>
+                                                                        <th>Abortus| </th>
+                                                                        <th>Perdarahan| </th>
+                                                                        <th>Infeksi| </th>
+                                                                        <th>KPD|</th>
+                                                                        <th>Lain_lain</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <tr>
+
+                                                                        <td>{{ $ancs->HDK }}</td>
+                                                                        <td>{{ $ancs->ABORTUS }}</td>
+                                                                        <td>{{ $ancs->PERDARAHAN }}</td>
+                                                                        <td>{{ $ancs->INFEKSI }}</td>
+                                                                        <td>{{ $ancs->KPD }}</td>
+                                                                        <td>{{ $ancs->LAIN_LAIN }}</td>
+                                                                        {{-- </div> --}}
+
+                                                {{-- </tr>
+                                                                </tbody>
+                                                            </table>
                                                         </th>
                                                         <th>Rujuk Ke</th>
                                                         <th>Trimester 1</th>
@@ -381,25 +456,31 @@
                                                         <th>Trimester 3</th>
                                                         <th>FR/R</th>
                                                         <th>Keterangan</th>
-                                                    </tr>
-                                                </thead>
+                                                    </tr> --}}
+                                                {{-- </thead> --}}
 
-                                                <tr>
+                                                {{-- <tr>
                                                     <td>{{ $ancs->GOLDAR }}</td>
                                                     <td>{{ $ancs->HBSAG }}</td>
                                                     <td>{{ $ancs->IMS }}</td>
                                                     <td>{{ $ancs->HIV }}</td>
                                                     <td>
-                                                        <table class="table">
+                                                        <table
+                                                            class="table border-black border-2 table-bordered position-absolute mt-0"
+                                                            style="width:  19vh">
+                                                            <thead class="table-dark">
+                                                                <tr>
+                                                                    <th>HDK| </th>
+                                                                    <th>Abortus| </th>
+                                                                    <th>Perdarahan| </th>
+                                                                    <th>Infeksi| </th>
+                                                                    <th>KPD|</th>
+                                                                    <th>Lain_lain</th>
+                                                                </tr>
+                                                            </thead>
                                                             <tbody>
                                                                 <tr>
-                                                                    {{-- <td>1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                                                                    <td>1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                                                                    <td>1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                                                                    <td>1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                                                                    <td>1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                                                                    <td>1</td> --}}
-                                                                    {{-- <div class="row table"> --}}
+
                                                                     <td>{{ $ancs->HDK }}</td>
                                                                     <td>{{ $ancs->ABORTUS }}</td>
                                                                     <td>{{ $ancs->PERDARAHAN }}</td>
@@ -408,7 +489,7 @@
                                                                     <td>{{ $ancs->LAIN_LAIN }}</td>
                                                                     {{-- </div> --}}
 
-                                                                </tr>
+                                                {{-- </tr>
                                                             </tbody>
                                                         </table>
 
@@ -425,7 +506,11 @@
                                                     <td>{{ $ancs->FR }}</td>
                                                     <td>{{ $ancs->keterangan }}</td>
                                                 </tr>
-                                                </tbody>
+                                                </tbody> --}}
+
+
+
+
                                             </table>
                                         </div>
                                     </div>
