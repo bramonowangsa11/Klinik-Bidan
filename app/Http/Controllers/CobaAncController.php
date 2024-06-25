@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Session;
 class CobaAncController extends Controller
 {
     public function search(Request $request){
-        $ancs = anc::where('nama_ibu','like','%'.$request->input('keyword').'%')
+        $ancs = CobaAnc::where('nama_ibu','like','%'.$request->input('keyword').'%')
                 ->orWhere('nama_suami','like','%'.$request->input('keyword').'%')
                 ->paginate(10);
         if($ancs->isEmpty()){
@@ -195,7 +195,7 @@ class CobaAncController extends Controller
             'boolean' => ':attribute harus bernilai benar atau salah.',
             'integer' => ':attribute harus berupa angka.',
         ]);
-        $anc = anc::findOrFail($id);
+        $anc = CobaAnc::findOrFail($id);
         $anc->update($validated_data);
         Session::flash('success','data berhasil diupdate');
         return redirect('/ibu-hamil');

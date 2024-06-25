@@ -200,3 +200,11 @@ Route::get('/daftar-bumil', function () {
 Route::get('/dashboard-user', function () {
     return view('layouts.users.dashboard-user');
 });
+
+Route::get('/data-pengguna', function () {
+    return view('layouts.admin.data-pengguna');
+});
+
+Route::get('/riwayat', function () {
+    return view('layouts.users.riwayat-periksa');
+});

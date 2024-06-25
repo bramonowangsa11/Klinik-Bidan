@@ -209,12 +209,13 @@
                                 <div class="col-4 col-md-5 font-weight-bold">Tanggal Lahir Ibu</div>
                                 <div class="col-8 col-md-7">: {{ $ancs->Istri->ttl }}</div>
                             </div>
-                        </div>
-                        <div class=" col-md-5">
                             <div class="row mb-2">
                                 <div class="col-4 col-md-5 font-weight-bold">Pendidikan Ibu</div>
                                 <div class="col-8 col-md-7">: {{ $ancs->pddk_ibu }}</div>
                             </div>
+                        </div>
+                        <div class=" col-md-5">
+
                             <div class="row mb-2">
                                 <div class="col-4 col-md-5 font-weight-bold">Pekerjaan Ibu</div>
                                 <div class="col-8 col-md-7">: {{ $ancs->pekerjaan_ibu }}</div>
@@ -360,7 +361,20 @@
                                                         <th>HBsAG</th>
                                                         <th>IMS</th>
                                                         <th>HIV</th>
-                                                        <th>Komplikasi</th>
+                                                        <th class=" text-center">Komplikasi
+                                                            <table class="text-white table">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>HDK| </th>
+                                                                        <th>Abortus| </th>
+                                                                        <th>Perdarahan| </th>
+                                                                        <th>Infeksi| </th>
+                                                                        <th>KPD|</th>
+                                                                        <th>Lain_lain</th>
+                                                                    </tr>
+                                                                </thead>
+                                                            </table>
+                                                        </th>
                                                         <th>Rujuk Ke</th>
                                                         <th>Trimester 1</th>
                                                         <th>Trimester 2</th>
@@ -369,20 +383,48 @@
                                                         <th>Keterangan</th>
                                                     </tr>
                                                 </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <td>{{ $ancs->GOLDAR }}</td>
-                                                        <td>{{ $ancs->HBSAG }}</td>
-                                                        <td>{{ $ancs->IMS }}</td>
-                                                        <td>{{ $ancs->HIV }}</td>
-                                                        <td>{{ $ancs->KOMPLIKASI }}</td>
-                                                        <td>{{ $ancs->RUJUK }}</td>
-                                                        <td>{{ $ancs->trisemester1 }}</td>
-                                                        <td>{{ $ancs->trisemester2 }}</td>
-                                                        <td>{{ $ancs->trisemester3 }}</td>
-                                                        <td>{{ $ancs->FR }}</td>
-                                                        <td>{{ $ancs->keterangan }}</td>
-                                                    </tr>
+
+                                                <tr>
+                                                    <td>{{ $ancs->GOLDAR }}</td>
+                                                    <td>{{ $ancs->HBSAG }}</td>
+                                                    <td>{{ $ancs->IMS }}</td>
+                                                    <td>{{ $ancs->HIV }}</td>
+                                                    <td>
+                                                        <table class="table">
+                                                            <tbody>
+                                                                <tr>
+                                                                    {{-- <td>1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                                                    <td>1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                                                    <td>1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                                                    <td>1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                                                    <td>1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                                                    <td>1</td> --}}
+                                                                    {{-- <div class="row table"> --}}
+                                                                    <td>{{ $ancs->HDK }}</td>
+                                                                    <td>{{ $ancs->ABORTUS }}</td>
+                                                                    <td>{{ $ancs->PERDARAHAN }}</td>
+                                                                    <td>{{ $ancs->INFEKSI }}</td>
+                                                                    <td>{{ $ancs->KPD }}</td>
+                                                                    <td>{{ $ancs->LAIN_LAIN }}</td>
+                                                                    {{-- </div> --}}
+
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+
+
+
+
+
+
+                                                    </td>
+                                                    <td>{{ $ancs->RUJUK }}</td>
+                                                    <td>{{ $ancs->trisemester1 }}</td>
+                                                    <td>{{ $ancs->trisemester2 }}</td>
+                                                    <td>{{ $ancs->trisemester3 }}</td>
+                                                    <td>{{ $ancs->FR }}</td>
+                                                    <td>{{ $ancs->keterangan }}</td>
+                                                </tr>
                                                 </tbody>
                                             </table>
                                         </div>

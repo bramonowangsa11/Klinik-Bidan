@@ -6,9 +6,11 @@ use App\Models\Pasien;
 use Illuminate\Http\Request;
 use App\Models\CobaImunisasi;
 use Illuminate\Support\Facades\Session;
+use Livewire\WithPagination;
 
 class CobaImunisasiController extends Controller
-{   
+{
+    use WithPagination;
     public function search(Request $request){
         $validatedData = $request->validate([
             'keyword'=> 'required',

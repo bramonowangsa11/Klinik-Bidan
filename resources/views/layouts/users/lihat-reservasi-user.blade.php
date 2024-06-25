@@ -11,57 +11,35 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="nav flex-column">
                     <li class="nav-item">
-                        <a href="/admin" class="nav-link text-white" aria-current="page">
+                        <a href="/pasien" class="nav-link text-white" aria-current="page">
                             <svg class="bi pe-none me-2" width="16" height="16">
                                 <use xlink:href="#home"></use>
                             </svg>
-                            Imunisasi
+                            Reservasi
                         </a>
                     </li>
                     <li>
-                        <a href="/ibu-hamil" class="nav-link text-white">
+                        <a href="/lihat-reservasi-user" class="nav-link text-white">
                             <svg class="bi pe-none me-2" width="16" height="16">
                                 <use xlink:href="#speedometer2"></use>
                             </svg>
-                            Ibu Hamil
+                            Cek Reservasi
                         </a>
                     </li>
                     <li>
-                        <a href="/data-kb" class="nav-link text-white">
+                        <a href="/riwayat" class="nav-link text-white">
                             <svg class="bi pe-none me-2" width="16" height="16">
                                 <use xlink:href="#speedometer2"></use>
                             </svg>
-                            KB
+                            Riwayat
                         </a>
                     </li>
                     <li>
-                        <a href="/input-table" class="nav-link text-white dropdown-toggle active" id="navbarDropdown"
-                            data-bs-toggle="dropdown">
+                        <a href="/logout" class="nav-link text-white">
                             <svg class="bi pe-none me-2" width="16" height="16">
-                                <use xlink:href="#table"></use>
+                                <use xlink:href="#speedometer2"></use>
                             </svg>
-                            input Data
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="/input-table">Imunisasi</a>
-                            <a class="dropdown-item" href="/input-bumil">Ibu Hamil</a>
-                            <a class="dropdown-item" href="/input-kb">KB</a>
-                        </div>
-                    </li>
-                    <li>
-                        <a href="/daftar-reservasi" class="nav-link text-white">
-                            <svg class="bi pe-none me-2" width="16" height="16">
-                                <use xlink:href="#grid"></use>
-                            </svg>
-                            Daftar Reservasi
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/daftar-pasien" class="nav-link text-white">
-                            <svg class="bi pe-none me-2" width="16" height="16">
-                                <use xlink:href="#grid"></use>
-                            </svg>
-                            Tambah Pasien
+                            Logout
                         </a>
                     </li>
                 </ul>
@@ -86,6 +64,14 @@
                                 <use xlink:href="#speedometer2"></use>
                             </svg>
                             Cek Reservasi
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/riwayat" class="nav-link text-white">
+                            <svg class="bi pe-none me-2" width="16" height="16">
+                                <use xlink:href="#speedometer2"></use>
+                            </svg>
+                            Riwayat
                         </a>
                     </li>
                     <li>
@@ -169,7 +155,7 @@
                         </tbody>
                     </table>
                     {{ $reservasis->links() }}
-                {{-- end konten --}}
+                    {{-- end konten --}}
+                </div>
             </div>
-        </div>
-        {{-- end --}}
+            {{-- end --}}

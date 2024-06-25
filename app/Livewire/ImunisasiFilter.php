@@ -3,13 +3,15 @@
 namespace App\Livewire;
 
 use Livewire\Component;
-use Livewire\WithPagination;
 use App\Models\CobaImunisasi;
 use Illuminate\Support\Carbon;
+use Livewire\WithPagination;
 
 class ImunisasiFilter extends Component
 { 
     use WithPagination;
+    protected $paginationTheme = 'bootstrap';
+    
     public $name = '';
     public $tanggal = '';
     public $bulan = '';
