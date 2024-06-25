@@ -216,7 +216,6 @@
                             </tbody>
                         </table>
                     </div>
-
                     {{ $kbs->links() }}
                 </div>
             </div>

@@ -33,8 +33,8 @@ class KbController extends Controller
             'kegagalan' => 'required|string|max:255',
             'inform_consent' => 'required|string|max:255',
             'keterangan' => 'nullable|string|max:255',
-            'id_suami' => 'required|exists:users,id',
-            'id_ibu' => 'required|exists:users,id',
+            'id_suami' => 'required|exists:pasiens,id',
+            'id_ibu' => 'required|exists:pasiens,id',
         ],[
             'tgl_kb.required' => 'Tanggal KB harus diisi.',
             'tgl_kb.date' => 'Format tanggal KB tidak valid.',
@@ -138,8 +138,8 @@ class KbController extends Controller
             'kegagalan' => 'required|string|max:255',
             'inform_consent' => 'required|string|max:255',
             'keterangan' => 'nullable|string|max:255',
-            'id_suami' => 'required|exists:users,id',
-            'id_ibu' => 'required|exists:users,id',
+            'id_suami' => 'required|exists:pasiens,id',
+            'id_ibu' => 'required|exists:pasiens,id',
         ],[
             'tgl_kb.required' => 'Tanggal KB harus diisi.',
             'tgl_kb.date' => 'Format tanggal KB tidak valid.',

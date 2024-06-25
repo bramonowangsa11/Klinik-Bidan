@@ -158,7 +158,7 @@
                                     <div class="mb-3 form-outline border-0 border-bottom border-dark">
                                         <label for="tanggal-kb" class="form-label">Tanggal KB</label>
                                         <input type="date" class="form-control" id="tangal-kb" aria-describedby=""
-                                            name="tgl_kb">
+                                            name="tgl_kb" value="{{old('tgl_kb')}}">
                                         {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
                                     </div>
                                     <div class="mb-3 form-outline border-0 border-bottom border-dark" id="nikform">
@@ -189,7 +189,7 @@
                                     <div class="mb-3 form-outline border-0 border-bottom border-dark">
                                         <label for="jumlah-anak" class="form-label">Jumlah Anak</label>
                                         <input type="number" class="form-control" id="jumlah-anak" aria-describedby=""
-                                            name="jmlh_anak">
+                                            name="jmlh_anak" value="{{ old('jmlh_anak') }}">
                                         {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
                                     </div>
 
@@ -201,37 +201,37 @@
                             <div class="mb-3 form-outline border-0 border-bottom border-dark">
                                 <label for="umur-anak-terkecil" class="form-label">Umur Anak Terkecil</label>
                                 <input type="number" class="form-control" id="umur-anak-terkecil" aria-describedby=""
-                                    name="umur_anak_terkecil">
+                                    name="umur_anak_terkecil" value="{{ old('umur_anak_terkecil') }}">
                                 {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
                             </div>
                             <div class="mb-3 form-outline border-0 border-bottom border-dark">
                                 <label for="jaminan" class="form-label">Jaminan</label>
                                 <input type="text" class="form-control" id="jaminan" aria-describedby=""
-                                    name="jaminan">
+                                    name="jaminan"value="{{ old('jaminan') }}">
                                 {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
                             </div>
                             <div class="mb-3 form-outline border-0 border-bottom border-dark">
                                 <label for="alki" class="form-label">Alki</label>
                                 <input type="text" class="form-control" id="alki" aria-describedby=""
-                                    name="alki">
+                                    name="alki"value="{{ old('alki') }}">
                                 {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
                             </div>
                             <div class="mb-3 form-outline border-0 border-bottom border-dark">
                                 <label for="pasca-plasenta" class="form-label">Pasca Plasenta</label>
                                 <input type="text" class="form-control" id="pasca-plasenta" aria-describedby=""
-                                    name="pasca_plasenta">
+                                    name="pasca_plasenta"value="{{ old('pasca_plasenta') }}">
                                 {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
                             </div>
                             <div class="mb-3 form-outline border-0 border-bottom border-dark ">
                                 <label for="pasca-salin" class="form-label">Pasca Salin</label>
                                 <input type="text" class="form-control" id="pasca-salin" aria-describedby=""
-                                    name="pasca_salin">
+                                    name="pasca_salin" value="{{ old('pasca_salin') }}">
                                 {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
                             </div>
                             <div class="mb-3 form-outline border-0 border-bottom border-dark">
                                 <label for="do" class="form-label">DO</label>
                                 <input type="text" class="form-control" id="do" aria-describedby=""
-                                    name="do">
+                                    name="do"value="{{ old('do') }}">
                                 {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
                             </div>
 
@@ -243,7 +243,7 @@
                             <div class="mb-3 form-outline border-0 border-bottom border-dark">
                                 <label for="gc-dari" class="form-label">gc dari</label>
                                 <input type="text" class="form-control" id="gc-dari" aria-describedby=""
-                                    name="gc_dari">
+                                    name="gc_dari"value="{{ old('gc_dari') }}">
                                 {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
                             </div>
 
@@ -262,32 +262,32 @@
                                     <input type="checkbox" class="form-check-input" id="metode-kb" name="metode_kb"
                                         value="CO">
                                     <label for="metode-kb" class="form-label">CO</label>
-                                    
+
                                 </div>
                                 {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
                             </div>
                             <div class="mb-3 form-outline border-0 border-bottom border-dark">
                                 <label for="beratBadan" class="form-label">Berat Badan</label>
                                 <input type="number" class="form-control" id="beratBadan" aria-describedby=""
-                                    name="berat_badan">
+                                    name="berat_badan"value="{{ old('berat_badan') }}">
                                 {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
                             </div>
                             <div class="mb-3 form-outline border-0 border-bottom border-dark">
                                 <label for="tinggiBadan" class="form-label">tinggi Badan</label>
                                 <input type="number" class="form-control" id="tinggiBadan" aria-describedby=""
-                                    name="tinggi_badan">
+                                    name="tinggi_badan"value="{{ old('tinggi_badan') }}">
                                 {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
                             </div>
                             <div class="mb-3 form-outline border-0 border-bottom border-dark">
                                 <label for="tensi" class="form-label">Tensi</label>
                                 <input type="text" class="form-control" id="tensi" aria-describedby=""
-                                    name="tensi">
+                                    name="tensi"value="{{ old('tensi') }}">
                                 {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
                             </div>
                             <div class="mb-3 form-outline border-0 border-bottom border-dark">
                                 <label for="lila" class="form-label">Lila</label>
                                 <input type="number" class="form-control" id="lila" aria-describedby=""
-                                    name="lila">
+                                    name="lila"value="{{ old('lila') }}">
                                 {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
                             </div>
 
@@ -298,31 +298,31 @@
                             <div class="mb-3 form-outline border-0 border-bottom border-dark">
                                 <label for="tanggal-kembali" class="form-label">Tanggal Kembali</label>
                                 <input type="date" class="form-control" id="tanggal-kembali" aria-describedby=""
-                                    name="tgl_kembali">
+                                    name="tgl_kembali"value="{{ old('tgl_kembali') }}">
                                 {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
                             </div>
                             <div class="mb-3 form-outline border-0 border-bottom border-dark">
                                 <label for="kegagalan" class="form-label">Kegagalan</label>
                                 <input type="text" class="form-control" id="kegagalan" aria-describedby=""
-                                    name="kegagalan">
+                                    name="kegagalan"value="{{ old('kegagalan') }}">
                                 {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
                             </div>
                             <div class="mb-3 form-outline border-0 border-bottom border-dark">
                                 <label for="inform-consent" class="form-label">Inform Consent</label>
                                 <input type="text" class="form-control" id="inform-consent" aria-describedby=""
-                                    name="inform_consent">
+                                    name="inform_consent"value="{{ old('inform_consent') }}">
                                 {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
                             </div>
                             <div class="mb-3 form-outline border-0 border-bottom border-dark">
                                 <label for="keterangan" class="form-label">Keterangan</label>
                                 <input type="text" class="form-control" id="keterangan" aria-describedby=""
-                                    name="keterangan">
+                                    name="keterangan"value="{{ old('keterangan') }}">
                                 {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
                             </div>
                             <input type="text" class="form-control" id="keterangan" aria-describedby=""
-                                name="id_ibu" value="{{ $ibu->id }}" hidden>
+                                name="id_suami" value="{{ $ibu->id }}" hidden>
                             <input type="text" class="form-control" id="keterangan" aria-describedby=""
-                                name="id_suami" value="{{ $suami->id }}" hidden>
+                                name="id_ibu" value="{{ $suami->id }}" hidden>
                             <button type="submit"
                                 class="btn btn-primary mb-md-3 position-relative mt-auto mb">Submit</button>
                             </form>
