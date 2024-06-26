@@ -169,7 +169,7 @@
                                         <h5 class="card-title">Pengguna</h5>
                                         <p class="card-text">Jumah Pengguna Bulan Ini</p>
                                         <h2>{{$count_user}}</h2>
-                                        <a href="#" class="text-white">Go somewhere ></a>
+                                        <a href="/pengguna-terdaftar" class="text-white">Go somewhere ></a>
                                     </div>
                                 </div>
                             </div>

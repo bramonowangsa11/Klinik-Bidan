@@ -9,8 +9,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Pasien extends Model
 {
     use HasFactory;
-    public function User(){
-        return $this->belongsTo(User::class);
+    public function user(){
+        return $this->belongsTo(User::class,'user_id');
         
     }
     protected $fillable = [

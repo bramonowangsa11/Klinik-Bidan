@@ -46,8 +46,9 @@ Route::middleware(['guest'])->group(function(){
     Route::post('/login',[SessionController::class,'login']);
 });
 Route::middleware(['auth'])->group(function () {
-    Route::get('/tesriwayat',[PasienController::class,'riwayatImunisasi'])->name('riwayat')->middleware('userAkses:pasien');
-
+    Route::get('/riwayat-kb',[PasienController::class,'riwayatKb'])->name('riwayat')->middleware('userAkses:pasien');
+    Route::get('/riwayat-imunisasi',[PasienController::class,'riwayatImunisasi'])->name('riwayat')->middleware('userAkses:pasien');
+    Route::get('/riwayat-anc',[PasienController::class,'riwayatBumil'])->name('riwayat')->middleware('userAkses:pasien');
 
 
     Route::get('/lihat-reservasi-user',[ReservasiController::class,'index'])->middleware('userAkses:pasien');
@@ -96,6 +97,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/cetak-imunisasi',[ImunisasiController::class,'LaporanBulanan'])->name('cetak-imunisasi');
     Route::get('/cetak-bumil',[CobaAncController::class,'LaporanBulanan'])->name('cetak-bumil');
     Route::get('/cetak-kb',[KbController::class,'LaporanBulanan'])->name('cetak-kb');
+
+    Route::get('/pengguna-terdaftar',[UserController::class,'GetUser'])->name('data-pengguna');
 });
 
 // routes dashboard admin
@@ -199,12 +202,4 @@ Route::get('/daftar-bumil', function () {
 // });
 Route::get('/dashboard-user', function () {
     return view('layouts.users.dashboard-user');
-});
-
-Route::get('/data-pengguna', function () {
-    return view('layouts.admin.data-pengguna');
-});
-
-Route::get('/riwayat', function () {
-    return view('layouts.users.riwayat-periksa');
 });

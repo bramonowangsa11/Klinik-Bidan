@@ -117,8 +117,8 @@ class UserController extends Controller
     public function GetUser(){
         $users = User::paginate(5);
         if($users->isEmpty()){
-            return view('')->with('error','data user kosong');
+            return view('layouts.admin.data-pengguna')->with('error','data user kosong');
         }
-        return view('',compact('users'));
+        return view('layouts.admin.data-pengguna',compact('users'));
     }
 }
