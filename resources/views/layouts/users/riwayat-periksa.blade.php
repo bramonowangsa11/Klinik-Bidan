@@ -97,7 +97,7 @@
                                         <h5 class="card-title fw-bold">Imunisasi</h5>
                                         {{-- <p class="card-text">Jumlah Reservasi Hari Ini</p> --}}
                                         {{-- <h2>{{$today_reservation}}</h2> --}}
-                                        <a href="#" class="text-white">Go somewhere ></a>
+                                        <a href="/riwayat-imunisasi" class="text-white">Go somewhere ></a>
                                     </div>
                                 </div>
                             </div>
@@ -107,7 +107,7 @@
                                         <h5 class="card-title fw-bold">Ibu Hamil</h5>
                                         {{-- <p class="card-text">Jumlah Pasien Terdaftar</p> --}}
                                         {{-- <h2>{{$count_pasien}}</h2> --}}
-                                        <a href="#" class="text-white">Go somewhere ></a>
+                                        <a href="/riwayat-ibu-hamil" class="text-white">Go somewhere ></a>
                                     </div>
                                 </div>
                             </div>
@@ -118,7 +118,7 @@
                                         <h5 class="card-title fw-bold">KB</h5>
                                         {{-- <p class="card-text">Jumlah Pasien Terdaftar</p> --}}
                                         {{-- <h2>{{$count_pasien}}</h2> --}}
-                                        <a href="#" class="text-white">Go somewhere ></a>
+                                        <a href="/riwayat-kb" class="text-white">Go somewhere ></a>
                                     </div>
                                 </div>
                             </div>
