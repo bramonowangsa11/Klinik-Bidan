@@ -127,10 +127,10 @@
                                             </div>
                                             <div class="col-md-auto d-block">
                                                 <h4 class="card-title fw-bold text-center">{{Auth::user()->name}}</h4>
-                                                <h6 class=" fw-semibold">@bramonowangsa_</h6>
-                                                <h6 class=" fw-semibold">bramonowangsa11@gmail.com</h6>
-                                                <h6 class=" fw-semibold">11-08-2002</h6>
-                                                <h6 class=" fw-semibold">085156269466</h6>
+                                                <h6 class=" fw-semibold">{{Auth::user()->name}}</h6>
+                                                <h6 class=" fw-semibold">{{Auth::user()->email}}</h6>
+                                                <h6 class=" fw-semibold">{{$user_data->ttl}}</h6>
+                                                <h6 class=" fw-semibold">{{$user_data->no_telp}}</h6>
                                             </div>
                                         </div>
 

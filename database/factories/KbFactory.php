@@ -46,7 +46,7 @@ class KbFactory extends Factory
             'tgl_kembali' => $this->faker->date(),
             'kegagalan' => $this->faker->word,
             'inform_consent' => $this->faker->word,
-            'keterangan' => $this->faker->word,
+            'keterangan' => $this->faker->sentence,
             'id_suami' => $id_suami,
             'id_ibu' => $id_ibu,
         ];

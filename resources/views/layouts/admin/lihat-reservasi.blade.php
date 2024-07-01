@@ -168,7 +168,7 @@
                         </form>
                     </div>
                     <div class="col-md-2">
-                        <a href="/input-kb">
+                        <a href="/admin-reservasi">
                             <button type="button" class="btn btn-success btn-sm">tambah</button>
                         </a>
                     </div>

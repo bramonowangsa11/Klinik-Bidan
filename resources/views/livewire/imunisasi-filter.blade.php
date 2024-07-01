@@ -162,6 +162,7 @@
                             <input type="month" wire:model="bulan">
                         </div>
                         <button wire:click="filter">Filter/Search</button>
+                        <button wire:click="resetFilters">Reset Filter</button>
                     </div>
                     <button id="filterButton" class="btn btn-primary">Show Filter</button>
                 </div>

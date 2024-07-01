@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 
+use PDF;
 use Carbon\Carbon;
 use App\Models\Pasien;
 use App\Models\CobaAnc;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
 class CobaAncController extends Controller
@@ -24,6 +26,9 @@ class CobaAncController extends Controller
     }
     public function showid($id){
         $ancs = CobaAnc::with(['Suami','Istri'])->findOrFail($id);
+        if(Auth::user()->role=="pasien"){
+            return view('layouts.users.detail-bumil',compact('ancs'));
+        }
         return view('layouts.admin.detail-bumil',compact('ancs'));
     }
     public function index(){
@@ -209,6 +214,15 @@ class CobaAncController extends Controller
         ->whereYear('tgl_pemeriksaan',$tahun)   
         ->whereMonth('tgl_pemeriksaan',$bulan)
         ->get();
-        return  view('layouts.admin.cetak-bumil',compact('ancs'));
+        $pdf = PDF::loadview('layouts.admin.cetak-bumil-pdf',['ancs'=>$ancs])->setPaper('a4', 'landscape');;
+        return  $pdf->stream('layouts.admin.cetak-bumil-pdf');
+    }
+
+    public function riwayat($id){
+        $ancs = CobaAnc::with(['Suami','Istri'])->where('id_suami',$id)->orWhere('id_istri',$id)->paginate(5);
+        if($ancs->isEmpty()){
+            return view('layouts.admin.bumil-table-data')->with('error','tidak terdapat riwayat pemeriksaan');
+        }
+        return view('layouts.admin.bumil-table-data',compact('ancs'));
     }
 }

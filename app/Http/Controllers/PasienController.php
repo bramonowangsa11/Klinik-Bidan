@@ -162,7 +162,7 @@ class PasienController extends Controller
         if($kbs->isEmpty()){
             return view('')->with('error','tidak terdapat riwayat pemeriksaan');
         }
-        return view('layouts.admin.data-kb',compact('kbs'));
+        return view('layouts.users.riwayat-kb',compact('kbs'));
     }
 
     public function riwayatImunisasi(){
@@ -188,12 +188,16 @@ class PasienController extends Controller
         $id = $pasien->id;
         $ancs = CobaAnc::with(['Suami','Istri'])->where('id_suami',$id)->orWhere('id_istri',$id)->paginate(5);
         if($ancs->isEmpty()){
-            return view('')->with('error','tidak terdapat riwayat pemeriksaan');
+            return view('layouts.admin.bumil-table-data')->with('error','tidak terdapat riwayat pemeriksaan');
         }
         return view('layouts.admin.bumil-table-data',compact('ancs'));
     }
 
-
-    
+    public function riwayatByid($id){
+        $ancs = CobaAnc::with(['Suami','Istri'])->where('id_suami',$id)->orWhere('id_istri',$id)->get();
+        $imunisasis = Imunisasi::with(['Ortu','Anak'])->where('id_anak',$id)->orWhere('id_ortu',$id)->get();
+        $kbs = Kb::with(['Suami','Ibu'])->where('id_ibu',$id)->orWhere('id_suami',$id)->get(); 
+        return view('layouts.admin.riwayat-pasien',compact('ancs','kbs','imunisasis'));
+    }
 
 }

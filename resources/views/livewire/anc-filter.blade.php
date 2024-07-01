@@ -150,24 +150,28 @@
                             </div>
                         @endif
                     </div>
-                    <div class=" col-md-4">
-
+                    <div class=" col-md-4 bg-danger">
                         <div class="row mt-2">
                             <div class="col-md-9">
-                                <input class="form-control mr-sm-2" type="search" wire:model="name" wire:keydown="filter" placeholder="Search"
-                                    aria-label="Search" name="name">
+                                <input class="form-control mr-sm-2" type="search" wire:model="name"
+                                    wire:keydown="filter" placeholder="Search" aria-label="Search" name="name">
                             </div>
                             <div>
                                 <input type="date" wire:model="tanggal">
                                 <input type="month" wire:model="bulan">
                             </div>
-                        <button wire:click="filter">Filter/Search</button>
+                            <button wire:click="filter">Filter/Search</button>
+                            <button wire:click="resetFilters">Reset Filter</button>
+                        </div>
+                        <button id="filterButton" class="btn btn-primary">Show Filter</button>
                     </div>
                     <div class="col-md-2">
-                        <a href="/daftar-bumil">
+                        <a href="/daftar-imunisasi">
                             <button type="button" class="btn btn-success btn-sm">tambah</button>
                         </a>
+                        
                     </div>
+                    
                 </div>
                 {{-- bagian tabel --}}
                 <div class="row col-md-12 col-12 mt-2 ms-0">
@@ -211,7 +215,7 @@
                         </table>
                     </div>
 
-                    {{ $ancs->links() }}
+                    {{ $ancs->links('vendor.pagination.bootstrap-4')}}
                 </div>
             </div>
             {{-- end konten --}}

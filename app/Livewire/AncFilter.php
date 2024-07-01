@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use Carbon\Carbon;
 use App\Models\CobaAnc;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -34,7 +35,10 @@ class AncFilter extends Component
     public function filter(){
         $this->resetPage(); 
     }
-    
+    public function resetFilters(){
+        $this->reset(['name', 'tanggal', 'bulan']);
+        $this->resetPage();
+    }
     public function render()
     {
         $query = CobaAnc::with(['Suami', 'Istri']);

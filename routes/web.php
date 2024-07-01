@@ -2,6 +2,7 @@
 
 use App\Livewire\KBFilter;
 use App\Livewire\AncFilter;
+use App\Livewire\PasienFilter;
 use App\Livewire\imunisasiFilter;
 use App\Http\Controllers\Imunisasi;
 use Illuminate\Support\Facades\Route;
@@ -46,58 +47,72 @@ Route::middleware(['guest'])->group(function(){
     Route::post('/login',[SessionController::class,'login']);
 });
 Route::middleware(['auth'])->group(function () {
-    Route::get('/riwayat-kb',[PasienController::class,'riwayatKb'])->name('riwayat')->middleware('userAkses:pasien');
-    Route::get('/riwayat-imunisasi',[PasienController::class,'riwayatImunisasi'])->name('riwayat')->middleware('userAkses:pasien');
-    Route::get('/riwayat-anc',[PasienController::class,'riwayatBumil'])->name('riwayat')->middleware('userAkses:pasien');
 
-
-    Route::get('/lihat-reservasi-user',[ReservasiController::class,'index'])->middleware('userAkses:pasien');
-    Route::get('daftar-reservasi',[ReservasiController::class,'index'])->middleware('userAkses:admin');
-    Route::get('/admin-reservasi', function () {
-        return view('layouts.admin.admin-reservasi');
-    })->middleware('userAkses:admin');
-    Route::get('reservasi-admin',[AdminController::class,'sesiByDate'])->middleware('userAkses:admin');
-    Route::delete('reservasi/{id}',[ReservasiController::class,'destroy'])->name('reservasi.delete');
-    Route::get('/today-reservation',[ReservasiController::class,'todayReservation']);
-
-    Route::get('/pasien',[PasienController::class,'index'])->middleware('userAkses:pasien');
-    Route::get('/reservasi',[ReservasiController::class,'sesibyDate'])->middleware('userAkses:pasien');
-    Route::post('/reservasi',[ReservasiController::class,'store']);
-    Route::get('/admin',[ImunisasiController::class,'index'])->middleware('userAkses:admin');
+    // ADMIN IMUNISASI
+    Route::get('/admin',ImunisasiFilter::class)->middleware('userAkses:admin');
     Route::get('/input-table',[ImunisasiController::class,'inputImunisasi'])->middleware('userAkses:admin');
     Route::post('/imunisasi',[ImunisasiController::class,'store'])->middleware('userAkses:admin')->name('imunisasi.store');
-    Route::get('/imunisasi/{id}', [ImunisasiController::class,'showByid'])->name('imunisasi.show')->middleware('userAkses:admin');
+    Route::get('/imunisasi/{id}', [ImunisasiController::class,'showByid'])->name('imunisasi.show');
     Route::delete('/imunisasi/{id}', [ImunisasiController::class,'destroy'])->name('imunisasi.destroy')->middleware('userAkses:admin');
     Route::put('/imunisasi/{id}', [ImunisasiController::class,'update'])->name('imunisasi.update')->middleware('userAkses:admin');
-    Route::post('imunisasi/ rch',[ImunisasiController::class,'search'])->name('imunisasi.search')->middleware('userAkses:admin');
-    Route::delete('/bumil/{id}',[CobaAncController::class,'destroy'])->name('bumil.delete')->middleware('userAkses:admin');
-    Route::get('/logout',[SessionController::class,'logout']);
-    Route::post('/input-bumil',[CobaAncController::class,'store'])->name('bumil.store')->middleware('userAkses:admin');
-    Route::put('/bumil/{id}',[AncController::class,'update'])->name('bumil.update')->middleware('userAkses:admin');
-    Route::post('bumil/search',[AncController::class,'search'])->name('bumil.search')->middleware('userAkses:admin');
-    Route::get('/ibu-hamil',[CobaAncController::class,'index'])->middleware('userAkses:admin');
-    Route::get('/bumil',[CobaAncController::class,'inputnik'])->middleware('userAkses:admin')->name('bumil.nik');
-
-
-    Route::get('/tambah-pasien',[PasienController::class,'tambahPasien'])->middleware('userAkses:admin');
-    Route::post('/pasien',[PasienController::class,'daftar'])->middleware('userAkses:admin')->name('pasien.store');
+    Route::post('imunisasi/search',[ImunisasiController::class,'search'])->name('imunisasi.search')->middleware('userAkses:admin');
+    Route::get('imunisasi-nik',[ImunisasiController::class,'inputnik']);
+    Route::get('/cetak-imunisasi',[ImunisasiController::class,'LaporanBulanan'])->name('cetak-imunisasi');
+    
+    // ADMIN KB
     Route::get('/input-kb',[KbController::class,'inputNik'])->middleware('userAkses:admin');
     Route::get('/search-nik',[PasienController::class,'findBynik'])->middleware('userAkses:admin');
     Route::get('/form-input-kb',[KbController::class,'formKb'])->middleware('userAkses:admin');
     Route::post('/kb',[KbController::class,'store'])->middleware('userAkses:admin')->name('kb.store');
-    Route::get('/data-kb',[KbController::class,'index'])->middleware('userAkses:admin');   
-    Route::get('/kb/{id}',[KbController::class,'showByid'])->middleware('userAkses:admin')->name('kb.showByid');
+    Route::get('/data-kb',KBFilter::class)->middleware('userAkses:admin');   
+    Route::get('/kb/{id}',[KbController::class,'showByid'])->name('kb.showByid');
     Route::put('/kb/{id}',[KbController::class,'update'])->middleware('userAkses:admin')->name('kb.update');
-    Route::delete('/kb/{id}',[KbController::class,'destroy'])->name('kb.destroy')->middleware('userAkses:admin');
-    Route::get('/data-pasien',[PasienController::class,'listPasien'])->name('pasien.list')->middleware('userAkses:admin');
-    Route::get('/pasien/{id}',[PasienController::class,''])->name('pasien.show')->middleware('userAkses:admin');
-
-    Route::get('imunisasi-nik',[ImunisasiController::class,'inputnik']);
-    Route::get('/dashboard',[AdminController::class,'dashboard'])->name('home');
-    Route::get('/cetak-imunisasi',[ImunisasiController::class,'LaporanBulanan'])->name('cetak-imunisasi');
-    Route::get('/cetak-bumil',[CobaAncController::class,'LaporanBulanan'])->name('cetak-bumil');
     Route::get('/cetak-kb',[KbController::class,'LaporanBulanan'])->name('cetak-kb');
+    Route::delete('/kb/{id}',[KbController::class,'destroy'])->name('kb.destroy')->middleware('userAkses:admin');
 
+    // ADMIN BUMIL
+    Route::post('/input-bumil',[CobaAncController::class,'store'])->name('bumil.store')->middleware('userAkses:admin');
+    Route::put('/bumil/{id}',[AncController::class,'update'])->name('bumil.update')->middleware('userAkses:admin');
+    Route::post('bumil/search',[AncController::class,'search'])->name('bumil.search')->middleware('userAkses:admin');
+    Route::get('/ibu-hamil',AncFilter::class)->middleware('userAkses:admin');
+    Route::get('/bumil',[CobaAncController::class,'inputnik'])->middleware('userAkses:admin')->name('bumil.nik');
+    Route::delete('/bumil/{id}',[CobaAncController::class,'destroy'])->name('bumil.delete')->middleware('userAkses:admin');
+    Route::get('/cetak-bumil',[CobaAncController::class,'LaporanBulanan'])->name('cetak-bumil');
+    Route::get('/detail-bumil/{id}',[CobaAncController::class,'showid'])->name('bumil.showid');
+
+    //Admin Reservasi
+    Route::get('/reservasi',[ReservasiController::class,'sesibyDate'])->middleware('userAkses:pasien');
+    Route::post('/reservasi',[ReservasiController::class,'store']);
+    Route::get('/lihat-reservasi-user',[ReservasiController::class,'index'])->middleware('userAkses:pasien');
+    Route::get('daftar-reservasi',[ReservasiController::class,'index'])->middleware('userAkses:admin');
+    Route::get('reservasi-admin',[AdminController::class,'sesiByDate'])->middleware('userAkses:admin');
+    Route::delete('reservasi/{id}',[ReservasiController::class,'destroy'])->name('reservasi.delete');
+    Route::get('/today-reservation',[ReservasiController::class,'todayReservation']);
+    Route::get('/admin-reservasi', function () {
+        return view('layouts.admin.admin-reservasi');
+    })->middleware('userAkses:admin');
+
+    //DATA PASIEN
+    Route::get('/tambah-pasien',[PasienController::class,'tambahPasien'])->middleware('userAkses:admin');
+    Route::post('/pasien',[PasienController::class,'daftar'])->middleware('userAkses:admin')->name('pasien.store');
+    Route::get('/data-pasien',PasienFilter::class)->name('pasien.list')->middleware('userAkses:admin');
+    Route::get('/pasien/{id}',[PasienController::class,''])->name('pasien.show')->middleware('userAkses:admin');
+    
+    //USER KB
+   
+
+
+    Route::get('/dashboard',[AdminController::class,'dashboard'])->name('home');
+    Route::get('/logout',[SessionController::class,'logout']);
+    Route::get('/dashboard-user',[UserController::class,'index'])->name('dashboard.user')->middleware('userAkses:pasien');
+    Route::get('/riwayat-pasien/{id}',[PasienController::class,'riwayatByid'])->name('riwayat-pasien');
+    Route::get('/riwayat-imunisasi/{id}',[ImunisasiController::class,'riwayat'])->name('admin.riwayatImunisasi')->middleware('userAkses:admin');
+    Route::get('/riwayat-anc/{id}',[CobaAncController::class,'riwayat'])->name('admin.riwayatAnc')->middleware('userAkses:admin');
+    Route::get('/riwayat-kb/{id}',[KbController::class,'riwayat'])->name('admin.riwayatKb')->middleware('userAkses:admin');
+    Route::get('/riwayat-kb',[PasienController::class,'riwayatKb'])->name('riwayat')->middleware('userAkses:pasien');
+    Route::get('/riwayat-imunisasi',[PasienController::class,'riwayatImunisasi'])->name('riwayat')->middleware('userAkses:pasien');
+    Route::get('/riwayat-anc',[PasienController::class,'riwayatBumil'])->name('riwayat')->middleware('userAkses:pasien');
+    Route::get('/pasien',[PasienController::class,'index'])->middleware('userAkses:pasien');
     Route::get('/pengguna-terdaftar',[UserController::class,'GetUser'])->name('data-pengguna');
 });
 
@@ -123,7 +138,7 @@ Route::get('/test', function () {
 Route::get('/input-bumil', function () {
     return view('layouts.admin.bumil-`input`-data');
 });
-Route::get('/detail-bumil/{id}',[CobaAncController::class,'showid'])->name('bumil.showid');
+
 
 // routes/web.php
 
@@ -134,7 +149,7 @@ Route::post('/search-pasien',[PasienController::class,'findBynik'])->name('findB
 Route::get('/tesw',imunisasiFilter::class)->name('tes');
 Route::get('/teskb',KBFilter::class)->name('teskb');
 Route::get('/tesanc',AncFilter::class)->name('tesanc');
-
+Route::get('/tespasien',PasienFilter::class)->name('pasien');
 
 //routes reservasi 2
 // Route::get('/reservasi2', function () {
@@ -197,9 +212,9 @@ Route::get('/daftar-bumil', function () {
 // Route::get('/kb', function () {
 //     return view('layouts.admin.kb');
 // });
-// Route::get('/data-kb', function () {
-//     return view('layouts.admin.data-kb');
-// });
-Route::get('/dashboard-user', function () {
-    return view('layouts.users.dashboard-user');
+Route::get('/riwayat-pasien', function () {
+    return view('layouts.admin.riwayat-pasien');
 });
+// Route::get('/dashboard-user', function () {
+//     return view('layouts.users.dashboard-user');
+// });

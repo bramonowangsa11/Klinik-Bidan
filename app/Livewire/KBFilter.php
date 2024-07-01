@@ -62,4 +62,8 @@ class KBFilter extends Component
             'kbs' => $kbs,
         ])->layout('layouts\admin\kb-livewire');;
     }
+    public function resetFilters(){
+        $this->reset(['name', 'tanggal', 'bulan']);
+        $this->resetPage();
+    }
 }

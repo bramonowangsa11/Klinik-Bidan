@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use PDF;
 use Carbon\Carbon;
 use App\Models\Pasien;
 use App\Models\Imunisasi;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
 class ImunisasiController extends Controller
@@ -140,9 +142,12 @@ class ImunisasiController extends Controller
         $imunisasi = Imunisasi::with(['Ortu', 'Anak'])->find($id);
         if (is_null($imunisasi)) {
             return redirect()->back()->with('errors', 'data tidak ditemukan');
-        } else {
-            return view('layouts.admin.detail-table-imunisasi', compact('imunisasi'));
+        } 
+        if(Auth::user()->role=="pasien"){
+            return view('layouts.users.detail-table-imunisasi',compact('imunisasi'));
         }
+        return view('layouts.admin.detail-table-imunisasi', compact('imunisasi'));
+        
     }
 
     public function destroy($id)
@@ -236,6 +241,15 @@ class ImunisasiController extends Controller
         ->whereYear('tanggal',$tahun)
         ->whereMonth('tanggal',$bulan)
         ->get();
-        return  view('layouts.admin.cetak-imunisasi',compact('imunisasis'));
+        $pdf = PDF::loadview('layouts.admin.cetak-imunisasi-pdf',['imunisasis'=>$imunisasis])->setPaper('a4', 'landscape');;
+        return  $pdf->stream('layouts.admin.cetak-imunisasi-pdf');
+    }
+
+    public function riwayat($id){
+        $imunisasis = Imunisasi::with(['Ortu','Anak'])->where('id_anak',$id)->orWhere('id_ortu',$id)->paginate(5);
+        if($imunisasis->isEmpty()){
+            return view('')->with('error','tidak terdapat riwayat pemeriksaan');
+        }
+        return view('layouts.admin.dashboard-admin',compact('imunisasis'));
     }
 }

@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use DateTime;
 use App\Models\Pasien;
 use App\Models\Imunisasi;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -21,8 +22,15 @@ class ImunisasiFactory extends Factory
     {
         $id_ortu = Pasien::inRandomOrder()->first()->id;
         $id_anak = Pasien::inRandomOrder()->first()->id;
+        $now = new DateTime();
+        $startOfMonth = new DateTime($now->format('Y-m-01'));
+        $endOfMonth = (clone $startOfMonth)->modify('last day of this month');
+        
+        // Generate random date in this month
+        $randomTimestamp = mt_rand($startOfMonth->getTimestamp(), $endOfMonth->getTimestamp());
+        $randomDateThisMonth = date('Y-m-d', $randomTimestamp);
         return [
-            'tanggal' => $this->faker->date(),
+            'tanggal' => $randomDateThisMonth,
             'berat_badan' => $this->faker->randomFloat(2, 2, 30),
             'panjang_badan' => $this->faker->randomFloat(2, 30, 80),
             'HBO' => $this->faker->boolean,

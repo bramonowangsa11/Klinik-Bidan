@@ -154,6 +154,7 @@
                   <th>Alamat</th>
                   <th>No Telepon</th>
                   <th>Jenis Kelamin</th>
+                  <th colspan="3">Riwayat</th>
                 </tr>
               </thead>
               <tbody>
@@ -165,6 +166,22 @@
                     <td>{{$pasien->alamat}}</td>
                     <td>{{$pasien->no_telp}}</td>
                     <td>{{$pasien->jenis_kelamin}}</td>
+                    <td>
+                      <a href="{{ route('admin.riwayatImunisasi', ['id' => $pasien->id]) }}">
+                          <button type="button" class="btn btn-info btn-sm">Imunisasi</button>
+                      </a>
+                    </td>
+                    <td>
+                      <a href="{{ route('admin.riwayatAnc', ['id' => $pasien->id]) }}">
+                        <button type="button" class="btn btn-info btn-sm">Bumil</button>
+                      </a>
+                    </td>
+                    <td>
+                      <a href="{{ route('admin.riwayatKb', ['id' => $pasien->id]) }}">
+                        <button type="button" class="btn btn-info btn-sm">KB</button>
+                      </a>
+                    </td>
+
                   </tr>
                 @endforeach
               </tbody>

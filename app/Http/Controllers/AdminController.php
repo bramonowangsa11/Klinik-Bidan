@@ -7,6 +7,7 @@ use Carbon\Carbon;
 use App\Models\anc;
 use App\Models\User;
 use App\Models\Pasien;
+use App\Models\CobaAnc;
 use App\Models\Imunisasi;
 use App\Models\Reservasi;
 use Illuminate\Http\Request;
@@ -42,7 +43,7 @@ class AdminController extends Controller
         $tahun = $now->year;
 
         $kb_thismonth = Kb::whereYear('tgl_kb',$tahun)->whereMonth('tgl_kb',$bulan)->count();
-        $bumil_thismonth = Imunisasi::whereYear('tanggal',$tahun)->whereMonth('tanggal',$bulan)->count();
+        $bumil_thismonth = CobaAnc::whereYear('tgl_pemeriksaan',$tahun)->whereMonth('tgl_pemeriksaan',$bulan)->count();
         $today_reservation = Reservasi::whereDate('tgl_reservasi',$now)->count();
         $imunisasi_thismonth = Imunisasi::whereYear('tanggal',$tahun)
         ->whereMonth('tanggal',$bulan)->count();

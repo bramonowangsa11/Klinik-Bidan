@@ -3,9 +3,10 @@
 namespace App\Livewire;
 
 use Livewire\Component;
+use App\Models\Imunisasi;
+use Livewire\WithPagination;
 use App\Models\CobaImunisasi;
 use Illuminate\Support\Carbon;
-use Livewire\WithPagination;
 
 class ImunisasiFilter extends Component
 { 
@@ -37,10 +38,13 @@ class ImunisasiFilter extends Component
     public function filter(){
         $this->resetPage(); 
     }
-    
+    public function resetFilters(){
+        $this->reset(['name', 'tanggal', 'bulan']);
+        $this->resetPage();
+    }
     public function render()
     {
-        $query = CobaImunisasi::with(['anak', 'ortu']);
+        $query = Imunisasi::with(['anak', 'ortu']);
 
         if ($this->tanggal) {
             $query->whereDate('tanggal', $this->tanggal);

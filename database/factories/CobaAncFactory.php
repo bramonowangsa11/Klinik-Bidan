@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use DateTime;
 use App\Models\Pasien;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -19,10 +20,17 @@ class CobaAncFactory extends Factory
     {   
         $id_suami = Pasien::inRandomOrder()->first()->id;
         $id_istri = Pasien::inRandomOrder()->first()->id;
+        $now = new DateTime();
+        $startOfMonth = new DateTime($now->format('Y-m-01'));
+        $endOfMonth = (clone $startOfMonth)->modify('last day of this month');
+        
+        // Generate random date in this month
+        $randomTimestamp = mt_rand($startOfMonth->getTimestamp(), $endOfMonth->getTimestamp());
+        $randomDateThisMonth = date('Y-m-d', $randomTimestamp);
         return [
             'id_suami' => $id_suami,
             'id_istri' => $id_istri,
-            'tgl_pemeriksaan' => $this->faker->date,
+            'tgl_pemeriksaan' => $randomDateThisMonth,
             'REG' => $this->faker->word,
             'pekerjaan_suami' => 'petani',
             'pekerjaan_ibu' => 'irt',

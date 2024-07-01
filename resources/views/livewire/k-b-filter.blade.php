@@ -163,6 +163,7 @@
                                 <input type="month" wire:model="bulan">
                             </div>
                         <button wire:click="filter">Filter/Search</button>
+                        <button wire:click="resetFilters">Reset Filter</button>
                     </div>
                 </div>
                     <div class="col-md-2">
@@ -208,7 +209,7 @@
                         </table>
                     </div>
 
-                    {{ $kbs->links() }}
+                    {{ $kbs->links('vendor.pagination.bootstrap-4') }}
                 </div>
             </div>
             {{-- end konten --}}

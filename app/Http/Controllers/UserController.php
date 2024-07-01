@@ -121,4 +121,9 @@ class UserController extends Controller
         }
         return view('layouts.admin.data-pengguna',compact('users'));
     }
+    public function index(){
+       $id = Auth::user()->id;
+       $user_data = Pasien::where('user_id',$id)->first();
+       return view('layouts.users.dashboard-user',compact('user_data','id'));
+    }
 }

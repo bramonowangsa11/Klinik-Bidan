@@ -188,13 +188,13 @@
                 <div class="row col-md-12 col-12 ms-0 mt-2">
                     {{-- Atas --}}
                     <div class="row p-0 ms-1">
-                        <div class="row mb-2">
-                            <div class="col-4 col-md-2 font-weight-bold">Tanggal</div>
+                        {{-- <div class="row mb-2">
+                            <div class="col-4 col-md-2 font-weight-bold">Tanggal</div> --}}
                             {{-- <div class="col-8 col-md-8">: {{ $imunisasi->tanggal }}</div> --}}
-                        </div>
+                        {{-- </div> --}}
                         <div class="row mb-2">
                             <div class="col-4 col-md-2 font-weight-bold">Nama Anak</div>
-                            {{-- <div class="col-8 col-md-8">: {{ $imunisasi->Anak->name }}</div> --}}
+                            {{-- <div class="col-8 col-md-8">: {{ $imunisasis->Anak->name }}</div> --}}
                         </div>
                         <div class="row mb-2">
                             <div class="col-4 col-md-2 font-weight-bold">NIK</div>

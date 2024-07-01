@@ -2,13 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use PDF;
 use App\Models\Kb;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
 class KbController extends Controller
 {
+    public function riwayat($id){
+        $kbs = Kb::with(['Suami','Ibu'])->where('id_ibu',$id)->orWhere('id_suami',$id)->paginate(5);
+        if($kbs->isEmpty()){
+            return view('')->with('error','tidak terdapat riwayat pemeriksaan');
+        }
+        return view('layouts.admin.data-kb',compact('kbs'));
+    }
     public function index(){
         $kbs = Kb::with(['Ibu','Suami'])->paginate(5);
         return view('layouts.admin.data-kb',compact('kbs'));    
@@ -100,6 +109,9 @@ class KbController extends Controller
         $kb = Kb::with(['Ibu','Suami'])->find($id);
         if(is_null($kb)){
             return redirect()->back()->with('errors','data tidak ditemukan');
+        }
+        if(Auth::user()->role=="pasien"){
+            return view('layouts.users.detail-kb',compact('kb'));
         }
         
         return view('layouts.admin.detail-kb',compact('kb'));
@@ -237,6 +249,7 @@ class KbController extends Controller
         ->whereYear('tgl_kb',$tahun)   
         ->whereMonth('tgl_kb',$bulan)
         ->get();
-        return  view('layouts.admin.cetak-kb',compact('kbs'));
+        $pdf = PDF::loadview('layouts.admin.cetak-kb-dompdf',['kbs'=>$kbs])->setPaper('a4', 'landscape');;
+        return  $pdf->stream();
     }
 }
