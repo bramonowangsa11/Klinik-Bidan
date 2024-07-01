@@ -134,6 +134,14 @@
                             Tambah Pasien
                         </a>
                     </li>
+                    <li>
+                        <a href="/logout" class="nav-link text-white">
+                            <svg class="bi pe-none me-2" width="16" height="16">
+                                <use xlink:href="#grid"></use>
+                            </svg>
+                            Logout
+                        </a>
+                    </li>
                 </ul>
             </div>
             {{-- isi konten nya disini --}}
@@ -143,63 +151,63 @@
                     <div class="container mt-5">
                         <h1>Dashboard</h1>
                         <div class="row">
-                            <div class="col-md-3">
+                            <div class="col-md-4">
                                 <div class="card card-custom mb-4 bg-primary rounded-4">
                                     <div class="card-body text-white">
                                         <h5 class="card-title fw-bold">Reservasi</h5>
                                         <p class="card-text">Jumlah Reservasi Hari Ini</p>
                                         <h2>{{$today_reservation}}</h2>
-                                        <a href="/today-reservation" class="text-white">Go somewhere ></a>
+                                        <a href="/today-reservation" class="text-white text-decoration-none">Laporan Reservasi ></a>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-4">
                                 <div class="card card-custom mb-4 rounded-4" style="background-color: #44C95C">
                                     <div class="card-body text-white">
                                         <h5 class="card-title fw-bold">Pasien</h5>
                                         <p class="card-text">Jumlah Pasien Terdaftar</p>
                                         <h2>{{$count_pasien}}</h2>
-                                        <a href="/data-pasien" class="text-white">Go somewhere ></a>
+                                        <a href="/data-pasien" class="text-white text-decoration-none">Laporan Pasien></a>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-4">
                                 <div class="card card-custom mb-4 rounded-4" style="background-color: #FFAC1C">
                                     <div class="card-body text-white">
                                         <h5 class="card-title">Pengguna</h5>
-                                        <p class="card-text">Jumah Pengguna Bulan Ini</p>
+                                        <p class="card-text">Jumah Pengguna Terdaftar</p>
                                         <h2>{{$count_user}}</h2>
-                                        <a href="/pengguna-terdaftar" class="text-white">Go somewhere ></a>
+                                        <a href="/pengguna-terdaftar" class="text-white text-decoration-none">Data Pengguna ></a>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-4">
                                 <div class="card card-custom mb-4 rounded-4" style="background-color: #949d16">
                                     <div class="card-body text-white">
                                         <h5 class="card-title fw-bold">Imunisasi</h5>
                                         <p class="card-text">Jumah Data Imunisasi Bulan Ini</p>
                                         <h2 class=" fw-bold">{{$imunisasi_thismonth}}</h2>
-                                        <a href="/cetak-imunisasi" class="text-white">More Info ></a>
+                                        <a href="/cetak-imunisasi" class="text-white text-decoration-none">Data Imunisasi ></a>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-4">
                                 <div class="card card-custom mb-4 rounded-4" style="background-color: #c51a23">
                                     <div class="card-body text-white">
                                         <h5 class="card-title fw-bold">Ibu Hamil</h5>
                                         <p class="card-text">Jumah Data Ibu Hamil Bulan Ini</p>
                                         <h2 class=" fw-bold">{{$bumil_thismonth}}</h2>
-                                        <a href="/cetak-bumil" class="text-white">More Info ></a>
+                                        <a href="/cetak-bumil" class="text-white text-decoration-none">Data Ibu Hamil ></a>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-4">
                                 <div class="card card-custom mb-4 rounded-4" style="background-color: #0eb59c">
                                     <div class="card-body text-white">
                                         <h5 class="card-title fw-bold">KB</h5>
                                         <p class="card-text">Jumah Data KB Bulan Ini</p>
                                         <h2 class=" fw-bold">{{$kb_thismonth}}</h2>
-                                        <a href="/cetak-kb" class="text-white">More Info ></a>
+                                        <a href="/cetak-kb" class="text-white text-decoration-none">Data KB ></a>
                                     </div>
                                 </div>
                             </div>
