@@ -60,6 +60,6 @@ class ImunisasiFilter extends Component
         
         return view('livewire.imunisasi-filter', [
             'imunisasi' => $imunisasi,
-        ])->layout('layouts\admin\imunisasi');;
+        ])->layout('layouts\admin\imunisasi');
     }
 }

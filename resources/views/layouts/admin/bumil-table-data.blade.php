@@ -195,14 +195,14 @@
                                     <tr>
                                         <td>{{ $key + 1 }}</td>
                                         <td>{{ $anc->tgl_pemeriksaan }}</td>
-                                        <td>{{ $anc->istri->name }}</td>
-                                        <td>{{ $anc->suami->name }}</td>
+                                        <td>{{ $anc->Istri->name }}</td>
+                                        <td>{{ $anc->Suami->name }}</td>
                                         <td>
                                             <div class=" border-bottom border-1 border-black">
-                                                {{ $anc->istri->nik }}
+                                                {{ $anc->Istri->nik }}
                                             </div>
                                             <div>
-                                                {{ $anc->suami->nik }}
+                                                {{ $anc->Suami->nik }}
                                             </div>
                                         </td>
                                         {{-- <td>{{ $anc->nik_suami }}</td> --}}

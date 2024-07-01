@@ -126,7 +126,7 @@
                                                 </svg>
                                             </div>
                                             <div class="col-md-auto d-block">
-                                                <h4 class="card-title fw-bold text-center">Bramono</h4>
+                                                <h4 class="card-title fw-bold text-center">{{Auth::user()->name}}</h4>
                                                 <h6 class=" fw-semibold">@bramonowangsa_</h6>
                                                 <h6 class=" fw-semibold">bramonowangsa11@gmail.com</h6>
                                                 <h6 class=" fw-semibold">11-08-2002</h6>
@@ -146,10 +146,32 @@
                                 <div class="card card-custom mb-4 rounded-4"
                                     style="background:url({{ asset('images/mountain.jpg') }}); background-size:cover; filter:blur(0px)">
                                     <div class="card-body text-white">
-                                        <h5 class="card-title fw-bold">Riwayat</h5>
+                                        <h5 class="card-title fw-bold">Riwayat KB</h5>
                                         <p class="card-text">Riwayat Pemeriksaan Terkahir</p>
                                         {{-- <h2>{{$count_pasien}}</h2> --}}
-                                        <a href="#" class="text-white">Go somewhere ></a>
+                                        <a href="/riwayat-kb" class="text-white">Go somewhere ></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <div class="card card-custom mb-4 rounded-4"
+                                    style="background:url({{ asset('images/mountain.jpg') }}); background-size:cover; filter:blur(0px)">
+                                    <div class="card-body text-white">
+                                        <h5 class="card-title fw-bold">Riwayat ANC</h5>
+                                        <p class="card-text">Riwayat Pemeriksaan Terkahir</p>
+                                        {{-- <h2>{{$count_pasien}}</h2> --}}
+                                        <a href="/riwayat-anc" class="text-white">Go somewhere ></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <div class="card card-custom mb-4 rounded-4"
+                                    style="background:url({{ asset('images/mountain.jpg') }}); background-size:cover; filter:blur(0px)">
+                                    <div class="card-body text-white">
+                                        <h5 class="card-title fw-bold">Riwayat Imunisasi</h5>
+                                        <p class="card-text">Riwayat Pemeriksaan Terkahir</p>
+                                        {{-- <h2>{{$count_pasien}}</h2> --}}
+                                        <a href="/riwayat-imunisasi" class="text-white">Go somewhere ></a>
                                     </div>
                                 </div>
                             </div>

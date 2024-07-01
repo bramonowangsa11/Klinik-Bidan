@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\KbController;
 use App\Http\Controllers\AncController;
 use App\Http\Controllers\SeatController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\PasienController;
 use App\Http\Controllers\CobaAncController;
@@ -41,10 +42,15 @@ Route::middleware(['guest'])->group(function(){
     Route::get('/daftar', function () {
         return view('layouts.daftar');
     });
-    Route::post('/daftar', [PasienController::class, 'store'])->name('daftar.store'); 
+    Route::post('/daftar', [UserController::class, 'daftar'])->name('daftar.store'); 
     Route::post('/login',[SessionController::class,'login']);
 });
 Route::middleware(['auth'])->group(function () {
+    Route::get('/riwayat-kb',[PasienController::class,'riwayatKb'])->name('riwayat')->middleware('userAkses:pasien');
+    Route::get('/riwayat-imunisasi',[PasienController::class,'riwayatImunisasi'])->name('riwayat')->middleware('userAkses:pasien');
+    Route::get('/riwayat-anc',[PasienController::class,'riwayatBumil'])->name('riwayat')->middleware('userAkses:pasien');
+
+
     Route::get('/lihat-reservasi-user',[ReservasiController::class,'index'])->middleware('userAkses:pasien');
     Route::get('daftar-reservasi',[ReservasiController::class,'index'])->middleware('userAkses:admin');
     Route::get('/admin-reservasi', function () {
@@ -91,6 +97,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/cetak-imunisasi',[ImunisasiController::class,'LaporanBulanan'])->name('cetak-imunisasi');
     Route::get('/cetak-bumil',[CobaAncController::class,'LaporanBulanan'])->name('cetak-bumil');
     Route::get('/cetak-kb',[KbController::class,'LaporanBulanan'])->name('cetak-kb');
+
+    Route::get('/pengguna-terdaftar',[UserController::class,'GetUser'])->name('data-pengguna');
 });
 
 // routes dashboard admin

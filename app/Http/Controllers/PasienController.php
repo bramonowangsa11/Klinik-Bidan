@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Kb;
 use App\Models\User;
 use App\Models\Pasien;
+use App\Models\CobaAnc;
+use App\Models\Imunisasi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -147,4 +150,50 @@ class PasienController extends Controller
     public function tambahPasien(){
         return view('layouts.admin.tambah-pasien');
     }
+
+    public function riwayatKb(){
+        $id_user = Auth::user()->id;
+        $pasien = Pasien::where('user_id',$id_user)->first();
+        if (!$pasien) {
+            return redirect('/pasien')->with('error', 'Tidak terdapat riwayat pemeriksaan');
+        }
+        $id = $pasien->id;
+        $kbs = Kb::with(['Suami','Ibu'])->where('id_ibu',$id)->orWhere('id_suami',$id)->paginate(5);
+        if($kbs->isEmpty()){
+            return view('')->with('error','tidak terdapat riwayat pemeriksaan');
+        }
+        return view('layouts.admin.data-kb',compact('kbs'));
+    }
+
+    public function riwayatImunisasi(){
+        $id_user = Auth::user()->id;
+        $pasien = Pasien::where('user_id',$id_user)->first();
+        if (!$pasien) {
+            return redirect('/pasien')->with('error', 'Tidak terdapat riwayat pemeriksaan');
+        }
+        $id = $pasien->id;
+        $imunisasis = Imunisasi::with(['Ortu','Anak'])->where('id_anak',$id)->orWhere('id_ortu',$id)->paginate(5);
+        if($imunisasis->isEmpty()){
+            return view('')->with('error','tidak terdapat riwayat pemeriksaan');
+        }
+        return view('layouts.admin.dashboard-admin',compact('imunisasis'));
+    }
+
+    public function riwayatBumil(){
+        $id_user = Auth::user()->id;
+        $pasien = Pasien::where('user_id',$id_user)->first();
+        if (!$pasien) {
+            return redirect('/pasien')->with('error', 'Tidak terdapat riwayat pemeriksaan');
+        }
+        $id = $pasien->id;
+        $ancs = CobaAnc::with(['Suami','Istri'])->where('id_suami',$id)->orWhere('id_istri',$id)->paginate(5);
+        if($ancs->isEmpty()){
+            return view('')->with('error','tidak terdapat riwayat pemeriksaan');
+        }
+        return view('layouts.admin.bumil-table-data',compact('ancs'));
+    }
+
+
+    
+
 }

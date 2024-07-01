@@ -148,30 +148,25 @@
             <table class="table table-responsive table-sm table-bordered table-striped">
               <thead class="table-dark">
                 <tr>
-                  <th>NIK</th>
+                  <th>No</th>
                   <th>Nama</th>
                   <th>Email</th>
-                  <th>Tanggal Lahir</th>
-                  <th>Alamat</th>
-                  <th>No Telepon</th>
-                  <th>Jenis Kelamin</th>
+                  <th>Role</th>
                 </tr>
               </thead>
               <tbody>
-                {{-- @foreach ($pasiens as $key=> $pasien)
+                @foreach ($users as $key=> $user)
                   <tr>
-                    <td>{{$pasien->nik}}</td>
-                    <td>{{$pasien->name}}</td>
-                    <td>{{$pasien->email}}</td>
-                    <td>{{$pasien->ttl}}</td>
-                    <td>{{$pasien->alamat}}</td>
-                    <td>{{$pasien->no_telp}}</td>
-                    <td>{{$pasien->jenis_kelamin}}</td>
+                    <td>{{$key+1  }}</td>
+                    <td>{{$user->name}}</td>
+                    <td>{{$user->email}}</td>
+                    <td>{{$user->role}}</td>
+
                   </tr>
-                @endforeach --}}
+                @endforeach
               </tbody>
             </table>
-            {{-- {{ $pasiens->links() }} --}}
+            {{ $users->links() }}
         </div>
     </div>
     {{-- end konten --}}

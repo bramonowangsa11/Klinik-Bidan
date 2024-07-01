@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Pasien;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 
 class UserController extends Controller
@@ -15,7 +16,7 @@ class UserController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:8',
-            'nik' => 'required|unique:pasiens,nik|numeric|digits:16 ',
+            'nik' => 'required|numeric| ',
             'alamat' => 'required|string',
             'ttl' => 'required|date',
             'no_telp' => 'required|string|numeric',
@@ -42,8 +43,8 @@ class UserController extends Controller
             'jenis_kelamin.required' => 'Jenis kelamin wajib diisi.',
         ]);
 
-        $data = Pasien::where('nik',$validatedData['nik'])->get();
-        if($data->isEmpty()){
+        $data = Pasien::where('nik',$validatedData['nik'])->first();
+        if(is_null($data)){
             $user = User::create([
                 'name' => $validatedData['name'],
                 'email' => $validatedData['email'],
@@ -61,18 +62,20 @@ class UserController extends Controller
                 'user_id' => $user->id,
             ]);
             Session::flash('success', 'Pasien berhasil didaftarkan');
+            return redirect('/');
         }
         else{
-            if($data->user_id == null){
+            if(is_null($data->user_id)){
                 $user = User::create([
                     'name' => $validatedData['name'],
                     'email' => $validatedData['email'],
                     'password' => Hash::make($validatedData['password']),
                 ]);
-                $pasien = Pasien::find($data->id);
-                $pasien->user_id = $user->id;
-                $pasien->save();
+                
+                $data->user_id = $user->id;
+                $data->save();
                 Session::flash('success', 'user berhasil didaftarkan');
+                return redirect('/');
             }
             else{
                 return redirect()->back()->with('errors','nik yang anda masukkan telah terdaftar sebagai user');
@@ -110,5 +113,12 @@ class UserController extends Controller
             'ttl' => $validate_data['ttl'],
             'jenis_kelamin' => $validate_data['jenis_kelamin'],
         ]);
+    }
+    public function GetUser(){
+        $users = User::paginate(5);
+        if($users->isEmpty()){
+            return view('layouts.admin.data-pengguna')->with('error','data user kosong');
+        }
+        return view('layouts.admin.data-pengguna',compact('users'));
     }
 }

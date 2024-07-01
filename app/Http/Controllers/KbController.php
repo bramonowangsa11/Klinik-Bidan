@@ -101,9 +101,9 @@ class KbController extends Controller
         if(is_null($kb)){
             return redirect()->back()->with('errors','data tidak ditemukan');
         }
-        else{
-            return view('layouts.admin.detail-kb',compact('kb'));
-        }
+        
+        return view('layouts.admin.detail-kb',compact('kb'));
+        
     }
 
     public function destroy($id){
@@ -111,11 +111,11 @@ class KbController extends Controller
         if(is_null($kb)){
             return redirect()->back()->with('errors','data tidak ditemukan');
         }
-        else{
-            $kb->delete();
-            Session::flash('success','data kb berhasil dihapus');
-            return redirect('/data-kb');
-        }
+       
+        $kb->delete();
+        Session::flash('success','data kb berhasil dihapus');
+        return redirect('/data-kb');
+        
     }
 
     public function update(Request $request,$id){

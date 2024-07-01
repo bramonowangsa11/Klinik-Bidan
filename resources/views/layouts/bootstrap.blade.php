@@ -6,8 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Klinik Bidan</title>
     @vite(['resources/sass/app.scss','resources/js/app.js'])
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
-    {{-- <link href="resources/css/custom.css" rel="stylesheet"> --}}
+    {{-- <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
+    <link href="resources/css/custom.css" rel="stylesheet"> --}}
         
 </head>
 <body>
