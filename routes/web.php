@@ -215,3 +215,12 @@ Route::get('/riwayat-ibu-hamil', function () {
 Route::get('/riwayat-pasien', function () {
     return view('layouts.admin.riwayat-pasien');
 });
+Route::get('/riwayat-imunisasi-admin', function () {
+    return view('layouts.admin.riwayat-imunisasi-admin');
+});
+Route::get('/riwayat-bumil-admin', function () {
+    return view('layouts.admin.riwayat-bumil-admin');
+});
+Route::get('/riwayat-kb-admin', function () {
+    return view('layouts.admin.riwayat-kb-admin');
+});
