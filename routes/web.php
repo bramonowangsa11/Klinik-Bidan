@@ -212,9 +212,44 @@ Route::get('/daftar-bumil', function () {
 // Route::get('/kb', function () {
 //     return view('layouts.admin.kb');
 // });
-Route::get('/riwayat-pasien', function () {
-    return view('layouts.admin.riwayat-pasien');
-});
+// Route::get('/riwayat-pasien', function () {
+//     return view('layouts.admin.riwayat-pasien');
+// });
 // Route::get('/dashboard-user', function () {
 //     return view('layouts.users.dashboard-user');
+// });
+// Route::get('/data-kb', function () {
+//     return view('layouts.admin.data-kb');
+// });
+// Route::get('/dashboard-user', function () {
+//     return view('layouts.users.dashboard-user');
+// });
+
+// Route::get('/data-pengguna', function () {
+//     return view('layouts.admin.data-pengguna');
+// });
+
+// Route::get('/riwayat', function () {
+//     return view('layouts.users.riwayat-periksa');
+// });
+// Route::get('/riwayat-imunisasi', function () {
+//     return view('layouts.users.riwayat-imunisasi');
+// });
+// Route::get('/riwayat-kb', function () {
+//     return view('layouts.users.riwayat-kb');
+// });
+// Route::get('/riwayat-ibu-hamil', function () {
+//     return view('layouts.users.riwayat-bumil');
+// });
+// Route::get('/riwayat-pasien', function () {
+//     return view('layouts.admin.riwayat-pasien');
+// });
+// Route::get('/riwayat-imunisasi-admin', function () {
+//     return view('layouts.admin.riwayat-imunisasi-admin');
+// });
+// Route::get('/riwayat-bumil-admin', function () {
+//     return view('layouts.admin.riwayat-bumil-admin');
+// });
+// Route::get('/riwayat-kb-admin', function () {
+//     return view('layouts.admin.riwayat-kb-admin');
 // });

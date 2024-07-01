@@ -2,7 +2,8 @@
 @section('content')
     {{-- start --}}
     <div class="container min-vh-100 p-0 m-0 min-vw-100">
-        <nav class="navbar navbar-expand-lg navbar-dark p-2 d-md-none m-0 min-vw-100 bg-dark" style="width: 54vh">
+        {{-- nvbar --}}
+        <nav class="navbar navbar-expand-lg navbar-dark p-2 d-md-none m-0 min-vw-100 bg-dark" style="width: 47vh">
             <a class="navbar-brand" href="#">Dashboard</a>
             <button class="navbar-toggler mr-2" type="button" data-toggle="collapse" data-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -35,7 +36,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="/input-table" class="nav-link text-white dropdown-toggle" id="navbarDropdown"
+                        <a href="/input-table" class="nav-link text-white dropdown-toggle active" id="navbarDropdown"
                             data-bs-toggle="dropdown">
                             <svg class="bi pe-none me-2" width="16" height="16">
                                 <use xlink:href="#table"></use>
@@ -68,7 +69,9 @@
             </div>
 
         </nav>
+        {{-- end navbar --}}
         <div class="d-flex">
+            {{-- dashboard --}}
             <div class="sidebar p-3 flex-shrink-0 d-none d-md-block bg-dark m-0 vh-100">
                 <h4 class="text-white">Dashboard</h4>
                 <ul class="nav flex-column">
@@ -136,12 +139,14 @@
                     </li>
                 </ul>
             </div>
+            {{-- end dashboard --}}
             {{-- isi konten nya disini --}}
-            <div class="content flex-grow-1 p-2">
+            <div class="content flex-grow-1 p-2 col-7">
                 {{-- bagian kb dan search --}}
-                <div class="row col-md-12">
-                    <div class=" col-md-7 mt-2">
-                        <h1 class=" fw-bold">Data Pasien</h1>
+                <div class="row col-md-12 ms-0">
+                    {{-- alert --}}
+                    <div class=" col-md-7 mt-2 col-6">
+                        <h1 class=" fw-bold">Data Imunisasi</h1>
                         @if (Session::has('success'))
                             <div class="alert alert-success">
                                 {{ Session::get('success') }}
@@ -153,11 +158,13 @@
                             </div>
                         @endif
                     </div>
+                    {{-- end alert --}}
+                    {{-- search --}}
                     <div class=" col-md-4">
                         <form class="form-inline my-2 my-lg-0" action="{{ route('imunisasi.search') }}" method="POST">
                             @csrf
                             <div class="row mt-2">
-                                <div class="col-md-9">
+                                <div class="col-md-9 col-7">
                                     <input class="form-control mr-sm-2" type="search" placeholder="Search"
                                         aria-label="Search" name="keyword">
                                 </div>
@@ -167,103 +174,102 @@
                             </div>
                         </form>
                     </div>
-                    <div class="col-md-2">
-                        <a href="/daftar-pasien">
-                            <button type="button" class="btn btn-success btn-sm">tambah</button>
-                        </a>
+                    {{-- end search --}}
+                    {{-- tambah --}}
+                    <div class="col-md-2 col-2">
+                        
                     </div>
+                    {{-- end tambah --}}
                 </div>
-                {{-- bagian tabel --}}
-                <div class="row col-md-12 ms-0 mt-2">
-                    <table class="table table-responsive table-sm table-bordered table-striped">
-                        <thead class="table-dark text-center">
-                            <tr>
-                                <th>NIK</th>
-                                <th>Nama</th>
-                                <th>Tanggal Lahir</th>
-                                <th>Alamat</th>
-                                <th>No Telepon</th>
-                                <th>Jenis Kelamin</th>
-                                <th colspan="3" class="col-md-auto">Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($pasiens as $key => $pasien)
-                                <tr>
-                                    <td>{{ $pasien->nik }}</td>
-                                    <td>{{ $pasien->name }}</td>
-                                    <td>{{ $pasien->ttl }}</td>
-                                    <td>{{ $pasien->alamat }}</td>
-                                    <td>{{ $pasien->no_telp }}</td>
-                                    <td>{{ $pasien->jenis_kelamin }}</td>
-                                    <td>
-                                        <a href="/riwayat-imunisasi-admin" class="btn btn-sm btn-outline-danger col-md-auto ">Imunisasi</a>
-                                    </td>
-                                    <td class="col-md-1">
-                                        <a href="/riwayat-bumil-admin" class="btn btn-sm btn-outline-info col-md-12">Ibu Hamil</a>
-                                    </td>
-                                    <td>
-                                        <a href="/riwayat-kb-admin" class="btn btn-sm btn-outline-primary col-md-auto ">KB</a>
-                                    </td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                    {{ $pasiens->links() }}
-                </div>
-              </div>
-            </form>
-          </div>
-          <div class="col-md-2">
-            <a href="/daftar-pasien">
-            <button type="button"  class="btn btn-success btn-sm">tambah</button>
-            </a>
-          </div>
-        </div>
-        {{-- bagian tabel --}}
-        <div class="row col-md-12 ms-0 mt-2">
-            <table class="table table-responsive table-sm table-bordered table-striped">
-              <thead class="table-dark">
-                <tr>
-                  <th>NIK</th>
-                  <th>Nama</th>
-                  <th>Tanggal Lahir</th>
-                  <th>Alamat</th>
-                  <th>No Telepon</th>
-                  <th>Jenis Kelamin</th>
-                  <th colspan="3">Riwayat</th>
-                </tr>
-              </thead>
-              <tbody>
-                @foreach ($pasiens as $key=> $pasien)
-                  <tr>
-                    <td>{{$pasien->nik}}</td>
-                    <td>{{$pasien->name}}</td>
-                    <td>{{$pasien->ttl}}</td>
-                    <td>{{$pasien->alamat}}</td>
-                    <td>{{$pasien->no_telp}}</td>
-                    <td>{{$pasien->jenis_kelamin}}</td>
-                    <td>
-                      <a href="{{ route('admin.riwayatImunisasi', ['id' => $pasien->id]) }}">
-                          <button type="button" class="btn btn-info btn-sm">Imunisasi</button>
-                      </a>
-                    </td>
-                    <td>
-                      <a href="{{ route('admin.riwayatAnc', ['id' => $pasien->id]) }}">
-                        <button type="button" class="btn btn-info btn-sm">Bumil</button>
-                      </a>
-                    </td>
-                    <td>
-                      <a href="{{ route('admin.riwayatKb', ['id' => $pasien->id]) }}">
-                        <button type="button" class="btn btn-info btn-sm">KB</button>
-                      </a>
-                    </td>
+                {{-- end --}}
+                {{-- bagian data --}}
+                <div class="row col-md-12 col-12 ms-0 mt-2">
+                    {{-- Atas --}}
+                    {{-- <div class="row p-0 ms-1">
+                        <div class="row mb-2">
+                            <div class="col-4 col-md-2 font-weight-bold">Tanggal</div>
+                            <div class="col-8 col-md-8">: {{ $imunisasi->tanggal }}</div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-4 col-md-2 font-weight-bold">Nama Anak</div>
+                            <div class="col-8 col-md-8">: {{ $imunisasi->Anak->name }}</div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-4 col-md-2 font-weight-bold">NIK</div>
+                            <div class="col-8 col-md-8">: {{ $imunisasi->Anak->nik }}</div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-4 col-md-2 font-weight-bold">Nama Orang Tua</div>
+                            <div class="col-8 col-md-8">: {{ $imunisasi->Ortu->name }}</div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-4 col-md-2 font-weight-bold">Tanggal Lahir</div>
+                            <div class="col-8 col-md-8">: {{ $imunisasi->Anak->ttl }}</div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-4 col-md-2 font-weight-bold">Alamat</div>
+                            <div class="col-8 col-md-8">: {{ $imunisasi->Ortu->alamat }}</div>
+                        </div>
+                        {{-- nama datanya --}}
+                    {{-- </div> --}}
+                    {{-- end atas --}}
+                    {{-- bawah --}}
+                    <div class="col-md-12 ms-0">
+                        <div class="overflow-x-scroll">
+                            <table class="table border-black border-2 table-bordered table-responsive table-striped">
+                                <thead class="table-dark">
+                                    <tr>
+                                        <th>Berat Badan</th>
+                                        <th>Tinggi Badan</th>
+                                        <th>HBO</th>
+                                        <th>BCG</th>
+                                        <th>Kipi</th>
+                                        <th>Vaksin</th>
+                                        <th>Penta</th>
+                                        <th>IPV</th>
+                                        <th>PCV</th>
+                                        <th>Rota Virus</th>
+                                        <th>MK</th>
+                                        <th>Booster</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {{-- <tr>
+                                        <td>{{ $imunisasi->berat_badan }}</td>
+                                        <td>{{ $imunisasi->panjang_badan }}</td>
+                                        <td>{{ $imunisasi->HBO }}</td>
+                                        <td>{{ $imunisasi->BCG }}</td>
+                                        <td>{{ $imunisasi->kipi }}</td>
+                                        <td>{{ $imunisasi->vaksin }}</td>
+                                        <td>{{ $imunisasi->PENTA }}</td>
+                                        <td>{{ $imunisasi->IPV }}</td>
+                                        <td>{{ $imunisasi->PCV }}</td>
+                                        <td>{{ $imunisasi->ROTA_VIRUS }}</td>
+                                        <td>{{ $imunisasi->MK }}</td>
+                                        <td>{{ $imunisasi->booster }}</td>
 
-                  </tr>
-                @endforeach
-              </tbody>
-            </table>
-            {{ $pasiens->links() }}
-        </div>
-    </div>
-    {{-- end --}}
+                                    </tr> --}}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    {{-- end bawah --}}
+                    <div class=" mb-3 mt-3 col-md-6">
+                        <div class="row">
+                            <div class="col-md-2 col-2">
+                                
+                                </form>
+                            </div>
+                            <div class="col-md-2 col-3">
+                                {{-- <form action="{{ route('imunisasi.destroy', $imunisasi->id) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger">Hapus</button>
+                                </form> --}}
+                            </div>
+                        </div>
+                    </div>
+                    {{-- end konten --}}
+                </div>
+            </div>
+            {{-- end --}}
