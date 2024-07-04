@@ -23,7 +23,7 @@ class SessionController extends Controller
 
         if(Auth::attempt($info_login)){
             if(Auth::user()->role == 'pasien'){
-                return redirect('/dashboard-user');
+                return redirect('/pasien');
             }
             elseif(Auth::user()->role == 'admin'){
                 return redirect('/dashboard');

@@ -215,9 +215,9 @@ Route::get('/daftar-bumil', function () {
 // Route::get('/riwayat-pasien', function () {
 //     return view('layouts.admin.riwayat-pasien');
 // });
-// Route::get('/dashboard-user', function () {
-//     return view('layouts.users.dashboard-user');
-// });
+Route::get('/dashboard-user', function () {
+    return view('layouts.users.dashboard-user');
+});
 // Route::get('/data-kb', function () {
 //     return view('layouts.admin.data-kb');
 // });
@@ -250,6 +250,6 @@ Route::get('/daftar-bumil', function () {
 // Route::get('/riwayat-bumil-admin', function () {
 //     return view('layouts.admin.riwayat-bumil-admin');
 // });
-// Route::get('/riwayat-kb-admin', function () {
-//     return view('layouts.admin.riwayat-kb-admin');
-// });
+Route::get('/tes2', function () {
+    return view('layouts.login-lagi');
+});

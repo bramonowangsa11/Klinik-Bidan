@@ -1,7 +1,7 @@
 @extends('layouts.bootstrap')
 @section('content')
 <section class="masthead" style="background:url({{asset('images/group3.jpg')}})">
-  <div class="container vh-100">
+  <div class="container vh-100 min-vw-100" style="backdrop-filter: blur(5px); -webkit-backdrop-filter: blur(5px);">
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col-lg-5 col-xl-5 ">
         {{-- card --}}
@@ -57,8 +57,8 @@
                     </button>
                     {{-- link daftar dan lupa password --}}
                     <div>
-                        <a class="me-lg-5 text-black" style="font-weight:bold" href="/lupa-password">Lupa Password?</a>
-                        <a class="text-black" style="margin-left: 25px; font-weight:bold" href="/daftar">Buat Akun</a>
+                        <a class="me-lg-5 text-black text-decoration-none" style="font-weight:bold" href="/lupa-password">Lupa Password?</a>
+                        <a class="text-primary text-decoration-none" style="margin-left: 25px; font-weight:bold;" href="/daftar">Buat Akun</a>
                     </div>
                     
                     {{-- <button type="button" class="btn btn-primary btn-lg">Register</button> --}}

@@ -8,6 +8,8 @@
     @vite(['resources/sass/app.scss','resources/js/app.js'])
     {{-- <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
     <link href="resources/css/custom.css" rel="stylesheet"> --}}
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.5.0/font/bootstrap-icons.min.css" rel="stylesheet">
+
         
 </head>
 <body>
