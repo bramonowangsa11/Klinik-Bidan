@@ -4,6 +4,7 @@ use App\Livewire\KBFilter;
 use App\Livewire\AncFilter;
 use App\Livewire\PasienFilter;
 use App\Livewire\imunisasiFilter;
+use App\Livewire\ReservasiFilter;
 use App\Http\Controllers\Imunisasi;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\KbController;
@@ -16,6 +17,7 @@ use App\Http\Controllers\CobaAncController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\ImunisasiController;
 use App\Http\Controllers\ReservasiController;
+use App\Http\Controllers\CobaReservasiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -71,14 +73,14 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/kb/{id}',[KbController::class,'destroy'])->name('kb.destroy')->middleware('userAkses:admin');
 
     // ADMIN BUMIL
-    Route::post('/input-bumil',[CobaAncController::class,'store'])->name('bumil.store')->middleware('userAkses:admin');
+    Route::post('/input-bumil',[AncController::class,'store'])->name('bumil.store')->middleware('userAkses:admin');
     Route::put('/bumil/{id}',[AncController::class,'update'])->name('bumil.update')->middleware('userAkses:admin');
     Route::post('bumil/search',[AncController::class,'search'])->name('bumil.search')->middleware('userAkses:admin');
     Route::get('/ibu-hamil',AncFilter::class)->middleware('userAkses:admin');
-    Route::get('/bumil',[CobaAncController::class,'inputnik'])->middleware('userAkses:admin')->name('bumil.nik');
-    Route::delete('/bumil/{id}',[CobaAncController::class,'destroy'])->name('bumil.delete')->middleware('userAkses:admin');
-    Route::get('/cetak-bumil',[CobaAncController::class,'LaporanBulanan'])->name('cetak-bumil');
-    Route::get('/detail-bumil/{id}',[CobaAncController::class,'showid'])->name('bumil.showid');
+    Route::get('/bumil',[AncController::class,'inputnik'])->middleware('userAkses:admin')->name('bumil.nik');
+    Route::delete('/bumil/{id}',[AncController::class,'destroy'])->name('bumil.delete')->middleware('userAkses:admin');
+    Route::get('/cetak-bumil',[AncController::class,'LaporanBulanan'])->name('cetak-bumil');
+    Route::get('/detail-bumil/{id}',[AncController::class,'showid'])->name('bumil.showid');
 
     //Admin Reservasi
     Route::get('/reservasi',[ReservasiController::class,'sesibyDate'])->middleware('userAkses:pasien');
@@ -97,7 +99,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/pasien',[PasienController::class,'daftar'])->middleware('userAkses:admin')->name('pasien.store');
     Route::get('/data-pasien',PasienFilter::class)->name('pasien.list')->middleware('userAkses:admin');
     Route::get('/pasien/{id}',[PasienController::class,''])->name('pasien.show')->middleware('userAkses:admin');
-    
+    Route::get('tes1',ReservasiFilter::class)->name('tes1')->middleware('userAkses:admin');
     //USER KB
    
 
@@ -107,7 +109,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard-user',[UserController::class,'index'])->name('dashboard.user')->middleware('userAkses:pasien');
     Route::get('/riwayat-pasien/{id}',[PasienController::class,'riwayatByid'])->name('riwayat-pasien');
     Route::get('/riwayat-imunisasi/{id}',[ImunisasiController::class,'riwayat'])->name('admin.riwayatImunisasi')->middleware('userAkses:admin');
-    Route::get('/riwayat-anc/{id}',[CobaAncController::class,'riwayat'])->name('admin.riwayatAnc')->middleware('userAkses:admin');
+    Route::get('/riwayat-anc/{id}',[AncController::class,'riwayat'])->name('admin.riwayatAnc')->middleware('userAkses:admin');
     Route::get('/riwayat-kb/{id}',[KbController::class,'riwayat'])->name('admin.riwayatKb')->middleware('userAkses:admin');
     Route::get('/riwayat-kb',[PasienController::class,'riwayatKb'])->name('riwayat')->middleware('userAkses:pasien');
     Route::get('/riwayat-imunisasi',[PasienController::class,'riwayatImunisasi'])->name('riwayat')->middleware('userAkses:pasien');

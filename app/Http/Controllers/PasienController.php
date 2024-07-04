@@ -199,5 +199,4 @@ class PasienController extends Controller
         $kbs = Kb::with(['Suami','Ibu'])->where('id_ibu',$id)->orWhere('id_suami',$id)->get(); 
         return view('layouts.admin.riwayat-pasien',compact('ancs','kbs','imunisasis'));
     }
-
 }

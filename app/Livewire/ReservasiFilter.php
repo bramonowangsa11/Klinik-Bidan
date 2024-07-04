@@ -3,13 +3,15 @@
 namespace App\Livewire;
 
 use Carbon\Carbon;
-use App\Models\Anc;
 use Livewire\Component;
+use App\Models\Reservasi;
 use Livewire\WithPagination;
 
-class AncFilter extends Component
+class ReservasiFilter extends Component
 {
     use WithPagination;
+    protected $paginationTheme = 'bootstrap';
+    
     public $name = '';
     public $tanggal = '';
     public $bulan = '';
@@ -41,28 +43,21 @@ class AncFilter extends Component
     }
     public function render()
     {
-        $query = Anc::with(['Suami', 'Istri']);
+        $query = Reservasi::with(['user']);
 
         if ($this->tanggal) {
-            $query->whereDate('tgl_pemeriksaan', $this->tanggal);
+            $query->whereDate('tgl_reservasi', $this->tanggal);
         }
 
         if ($this->bulan) {
-            $query->whereMonth('tgl_pemeriksaan', Carbon::parse($this->bulan)->month)
-            ->whereYear('tgl_pemeriksaan', Carbon::parse($this->bulan)->year);
+            $query->whereMonth('tgl_reservasi', Carbon::parse($this->bulan)->month)
+            ->whereYear('tgl_reservasi', Carbon::parse($this->bulan)->year);
         }
 
-        if ($this->name) {
-            $query->whereHas('Suami', function ($query) {
-                $query->where('name', 'like', '%' . $this->name . '%');
-            })->orWhereHas('Istri', function ($query) {
-                $query->where('name', 'like', '%' . $this->name . '%');
-            });
-        }
-        $ancs = $query->paginate(5);
+        $reservasis = $query->paginate(5);
         
-        return view('livewire.anc-filter', [
-            'ancs' => $ancs,
-        ])->layout('layouts\admin\anc');;
+        return view('livewire.reservasi-filter', [
+            'reservasis' => $reservasis,
+        ])->layout('layouts\admin\reservasi');
     }
 }

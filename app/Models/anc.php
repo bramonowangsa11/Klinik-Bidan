@@ -8,6 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class anc extends Model
 {
     use HasFactory;
+    public function Suami(){
+        return $this->belongsTo(Pasien::class,'id_suami');
+    }
+    public function Istri(){
+        return $this->belongsTo(Pasien::class,'id_istri');
+    }
+    
     protected $fillable = [
         'tgl_pemeriksaan',
         'REG',
@@ -15,16 +22,8 @@ class anc extends Model
         'buku_kia',
         'pekerjaan_ibu',
         'pekerjaan_suami',        
-        'nama_ibu',
-        'nama_suami',
-        'nik_ibu',
-        'nik_suami',
-        'tgl_lahir_ibu',
-        'tgl_lahir_suami',
         'pddk_ibu',
         'pddk_suami',
-        'alamat',
-        'no_hp',
         'paritas',
         'parsing',
         'p4k',
@@ -53,6 +52,6 @@ class anc extends Model
         'trisemester3',
         'FR',
         'RUJUK',
-        'keterangan',
+        'keterangan','id_suami','id_istri'
     ];
 }

@@ -19,16 +19,8 @@ return new class extends Migration
             $table->boolean('buku_kia');
             $table->string('pekerjaan_ibu');
             $table->string('pekerjaan_suami');
-            $table->string('nama_ibu');
-            $table->string('nama_suami');
-            $table->string('nik_ibu');
-            $table->string('nik_suami');
-            $table->date('tgl_lahir_ibu');
-            $table->date('tgl_lahir_suami');
             $table->string('pddk_ibu');
             $table->string('pddk_suami');
-            $table->string('alamat');
-            $table->string('no_hp');
             $table->string('paritas');
             $table->string('parsing');
             $table->boolean('p4k');
@@ -67,6 +59,10 @@ return new class extends Migration
             $table->integer('trisemester3');
             $table->string('FR');
             $table->string('keterangan');
+            $table->unsignedBigInteger('id_suami');
+            $table->unsignedBigInteger('id_istri');
+            $table->foreign('id_suami')->references('id')->on('pasiens')->onDelete('cascade');
+            $table->foreign('id_istri')->references('id')->on('pasiens')->onDelete('cascade');
             $table->timestamps();
         });
     }

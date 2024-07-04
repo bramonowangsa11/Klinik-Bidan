@@ -11,6 +11,7 @@ use App\Models\CobaAnc;
 use App\Models\Imunisasi;
 use App\Models\Reservasi;
 use Illuminate\Http\Request;
+use App\Models\CobaReservasi;
 
 class AdminController extends Controller
 {
@@ -24,7 +25,8 @@ class AdminController extends Controller
         $today = Carbon::now();
         
         if($today->lt($hSebelumReservasi)){
-            $allSessions = range(1, 14);
+            $allSessions = ['06:00', '06:30', '07:00', '07:30', '08:00', '08:30', '16:00', 
+                            '16:30', '17:00', '17:30', '18:00', '18:30', '19:00', '19:30'];
             $selectedSessions = Reservasi::where('tgl_reservasi', $tgl_reservasi)
                 ->pluck('sesi')->toArray();
             $availableSessions = array_diff($allSessions, $selectedSessions);

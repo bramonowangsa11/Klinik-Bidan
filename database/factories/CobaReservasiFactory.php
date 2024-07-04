@@ -2,22 +2,17 @@
 
 namespace Database\Factories;
 
-use Carbon\Carbon;
 use App\Models\User;
-use App\Models\Reservasi;
+use App\Models\CobaReservasi;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Reservasi>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\CobaReservasi>
  */
-class ReservasiFactory extends Factory
+class CobaReservasiFactory extends Factory
 {
-    protected $model = Reservasi::class;
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
+    protected $model = CobaReservasi::class; // Sesuaikan dengan model yang benar
+
     public function definition()
     {
         $user_id = User::inRandomOrder()->first()->id;
@@ -41,7 +36,7 @@ class ReservasiFactory extends Factory
             '17:00','17:30','18:00','18:30','19:00','19:30'];
 
         // Ambil sesi yang sudah digunakan pada tanggal tertentu
-        $existingSessions = Reservasi::whereDate('tgl_reservasi', $tgl_reservasi)->pluck('sesi')->toArray();
+        $existingSessions = CobaReservasi::whereDate('tgl_reservasi', $tgl_reservasi)->pluck('sesi')->toArray();
 
         // Cari sesi yang masih tersedia
         $availableSessions = array_diff($availableSessions, $existingSessions);

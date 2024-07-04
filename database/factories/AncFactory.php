@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use DateTime;
+use App\Models\Pasien;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -16,23 +18,26 @@ class AncFactory extends Factory
      */
     public function definition(): array
     {
+        $id_suami = Pasien::inRandomOrder()->first()->id;
+        $id_istri = Pasien::inRandomOrder()->first()->id;
+        $now = new DateTime();
+        $startOfMonth = new DateTime($now->format('Y-m-01'));
+        $endOfMonth = (clone $startOfMonth)->modify('last day of this month');
+        
+        // Generate random date in this month
+        $randomTimestamp = mt_rand($startOfMonth->getTimestamp(), $endOfMonth->getTimestamp());
+        $randomDateThisMonth = date('Y-m-d', $randomTimestamp);
         return [
-            'tgl_pemeriksaan' => $this->faker->date,
+            'id_suami' => $id_suami,
+            'id_istri' => $id_istri,
+            'tgl_pemeriksaan' => $randomDateThisMonth,
             'REG' => $this->faker->word,
-            'nama_ibu' => $this->faker->name,
-            'nama_suami' => $this->faker->name,
-            'nik_ibu' => $this->faker->randomNumber(9),
-            'nik_suami' => $this->faker->randomNumber(9),
-            'tgl_lahir_ibu' => $this->faker->date,
-            'tgl_lahir_suami' => $this->faker->date,
             'pekerjaan_suami' => 'petani',
             'pekerjaan_ibu' => 'irt',
             'buku_kia' => $this->faker->boolean,
             'no_kk'=> $this->faker->randomNumber(9),
             'pddk_ibu' => $this->faker->randomElement(['SD', 'SMP', 'SMA', 'Diploma', 'Sarjana', 'Magister', 'Doktor']),
             'pddk_suami' => $this->faker->randomElement(['SD', 'SMP', 'SMA', 'Diploma', 'Sarjana', 'Magister', 'Doktor']),
-            'alamat' => $this->faker->address,
-            'no_hp' => $this->faker->phoneNumber,
             'paritas' => $this->faker->randomDigit,
             'parsing' => $this->faker->word,
             'p4k' => $this->faker->boolean,
@@ -71,6 +76,7 @@ class AncFactory extends Factory
             'trisemester3' => $this->faker->randomNumber,
             'FR'=> $this->faker->word,
             'keterangan' => $this->faker->sentence,
+        
         ];
     }
 }

@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('reservasis', function (Blueprint $table) {
+        Schema::create('coba_reservasis', function (Blueprint $table) {
             $table->id();
             $table->date('tgl_reservasi');
-            $table->enum('sesi',[ '06:00','06:30','07:00','07:30','08:00','08:30','16:00','16:30',
-                                '17:00','17:30','18:00','18:30','19:00','19:30']);
+            $table->enum('sesi',['06:00','06:30','07:00','07:30','08:00','08:30','16:00','16:30',
+            '17:00','17:30','18:00','18:30','19:00','19:30']);
             $table->enum('layanan',['Bumil','KB','Imunisasi']);
             $table->string('keterangan');
             $table->unsignedBigInteger("user_id");
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('reservasis');
+        Schema::dropIfExists('coba_reservasis');
     }
 };
