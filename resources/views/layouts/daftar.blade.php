@@ -1,7 +1,7 @@
 @extends('layouts.bootstrap')
 @section('content')
 <section class="masthead" style="background:url({{asset('images/group3.jpg')}})">
-  <div class="container vh-100">
+  <div class="container vh-100 min-vw-100" style="backdrop-filter: blur(5px); -webkit-backdrop-filter: blur(5px);">
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col-lg-10 col-xl-9 ">
         {{-- card --}}
@@ -112,8 +112,8 @@
                         <img src="{{asset('images/arrow.png')}}" alt="daftar" class=" ">
                     </button>
                     <div>
-                      <a class="text-black" style="font-weight:bold">sudah punya akun?</a>
-                      <a class="" style="font-weight:bold" href="/">Login</a>
+                      <a class="text-black text-decoration-none fw-bold">sudah punya akun?</a>
+                      <a class="text-decoration-none fw-bold" href="/">Login</a>
                     </div>
                     <!-- pesan eror dan sukses -->
                 @if(Session::has('success'))

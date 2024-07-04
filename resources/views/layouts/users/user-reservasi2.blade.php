@@ -11,57 +11,35 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="nav flex-column">
                     <li class="nav-item">
-                        <a href="/admin" class="nav-link text-white" aria-current="page">
+                        <a href="/pasien" class="nav-link text-white" aria-current="page">
                             <svg class="bi pe-none me-2" width="16" height="16">
                                 <use xlink:href="#home"></use>
                             </svg>
-                            Imunisasi
+                            Reservasi
                         </a>
                     </li>
                     <li>
-                        <a href="/ibu-hamil" class="nav-link text-white">
+                        <a href="/lihat-reservasi-user" class="nav-link text-white">
                             <svg class="bi pe-none me-2" width="16" height="16">
                                 <use xlink:href="#speedometer2"></use>
                             </svg>
-                            Ibu Hamil
+                            Cek Reservasi
                         </a>
                     </li>
                     <li>
-                        <a href="/data-kb" class="nav-link text-white">
+                        <a href="/riwayat" class="nav-link text-white">
                             <svg class="bi pe-none me-2" width="16" height="16">
                                 <use xlink:href="#speedometer2"></use>
                             </svg>
-                            KB
+                            Riwayat
                         </a>
                     </li>
                     <li>
-                        <a href="/input-table" class="nav-link text-white dropdown-toggle active" id="navbarDropdown"
-                            data-bs-toggle="dropdown">
+                        <a href="/logout" class="nav-link text-primary">
                             <svg class="bi pe-none me-2" width="16" height="16">
-                                <use xlink:href="#table"></use>
+                                <use xlink:href="#speedometer2"></use>
                             </svg>
-                            input Data
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="/input-table">Imunisasi</a>
-                            <a class="dropdown-item" href="/input-bumil">Ibu Hamil</a>
-                            <a class="dropdown-item" href="/input-kb">KB</a>
-                        </div>
-                    </li>
-                    <li>
-                        <a href="/daftar-reservasi" class="nav-link text-white">
-                            <svg class="bi pe-none me-2" width="16" height="16">
-                                <use xlink:href="#grid"></use>
-                            </svg>
-                            Daftar Reservasi
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/daftar-pasien" class="nav-link text-white">
-                            <svg class="bi pe-none me-2" width="16" height="16">
-                                <use xlink:href="#grid"></use>
-                            </svg>
-                            Tambah Pasien
+                            Logout
                         </a>
                     </li>
                 </ul>
@@ -86,6 +64,14 @@
                                 <use xlink:href="#speedometer2"></use>
                             </svg>
                             Cek Reservasi
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/riwayat" class="nav-link text-white">
+                            <svg class="bi pe-none me-2" width="16" height="16">
+                                <use xlink:href="#speedometer2"></use>
+                            </svg>
+                            Riwayat
                         </a>
                     </li>
                     <li>
@@ -122,9 +108,8 @@
                                 @csrf
                                 <div class="mb-3">
                                     <label for="tglReservasi" class="form-label">Tanggal Reservasi</label>
-                                    <input type="date" class="form-control" id="tglReservasi"
-                                        placeholder="dd/mm/yyyy" name="tgl_reservasi" value="{{ $tgl }}"
-                                        readonly>
+                                    <input type="date" class="form-control" id="tglReservasi" placeholder="dd/mm/yyyy"
+                                        name="tgl_reservasi" value="{{ $tgl }}" readonly>
                                 </div>
                                 <div class="mb-3">
                                     <label for="Sesi" class="form-label">Sesi Ke-</label>
@@ -154,23 +139,7 @@
                                 <button class="btn btn-success" type="submit">Reservasi</button>
                             </form>
                         </div>
-                        <div class="col-md-3 small ms-lg-5 mt-lg-5">
-                            Keterangan :
-                            <p>Sesi 1 | Pukul 06.00-06.30</p>
-                            <p>Sesi 2 | Pukul 06.30-07.00</p>
-                            <p>Sesi 3 | Pukul 07.00-07.30</p>
-                            <p>Sesi 4 | Pukul 07.30-08.00</p>
-                            <p>Sesi 5 | Pukul 08.00-08.30</p>
-                            <p>Sesi 6 | Pukul 08.30-09.00</p>
-                            <p>Sesi 7 | Pukul 16.00-16.30</p>
-                            <p>Sesi 8 | Pukul 16.30-17.00</p>
-                            <p>Sesi 9 | Pukul 17.00-17.30</p>
-                            <p>Sesi 10 | Pukul 17.30-18.00</p>
-                            <p>Sesi 11 | Pukul 18.00-18.30</p>
-                            <p>Sesi 12 | Pukul 18.30-19.00</p>
-                            <p>Sesi 13 | Pukul 19.00-19.30</p>
-                            <p>Sesi 14 | Pukul 19.30-20.00</p>
-                        </div>
+
 
                     </div>
 
