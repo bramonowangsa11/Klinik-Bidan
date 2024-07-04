@@ -12,57 +12,35 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="nav flex-column">
                     <li class="nav-item">
-                        <a href="/admin" class="nav-link text-white" aria-current="page">
+                        <a href="/pasien" class="nav-link text-white" aria-current="page">
                             <svg class="bi pe-none me-2" width="16" height="16">
                                 <use xlink:href="#home"></use>
                             </svg>
-                            Imunisasi
+                            Reservasi
                         </a>
                     </li>
                     <li>
-                        <a href="/ibu-hamil" class="nav-link text-white">
+                        <a href="/lihat-reservasi-user" class="nav-link text-white">
                             <svg class="bi pe-none me-2" width="16" height="16">
                                 <use xlink:href="#speedometer2"></use>
                             </svg>
-                            Ibu Hamil
+                            Cek Reservasi
                         </a>
                     </li>
                     <li>
-                        <a href="/data-kb" class="nav-link text-white">
+                        <a href="/riwayat" class="nav-link text-white">
                             <svg class="bi pe-none me-2" width="16" height="16">
                                 <use xlink:href="#speedometer2"></use>
                             </svg>
-                            KB
+                            Riwayat
                         </a>
                     </li>
                     <li>
-                        <a href="/input-table" class="nav-link text-white dropdown-toggle active" id="navbarDropdown"
-                            data-bs-toggle="dropdown">
+                        <a href="/logout" class="nav-link text-primary">
                             <svg class="bi pe-none me-2" width="16" height="16">
-                                <use xlink:href="#table"></use>
+                                <use xlink:href="#speedometer2"></use>
                             </svg>
-                            input Data
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="/input-table">Imunisasi</a>
-                            <a class="dropdown-item" href="/input-bumil">Ibu Hamil</a>
-                            <a class="dropdown-item" href="/input-kb">KB</a>
-                        </div>
-                    </li>
-                    <li>
-                        <a href="/daftar-reservasi" class="nav-link text-white">
-                            <svg class="bi pe-none me-2" width="16" height="16">
-                                <use xlink:href="#grid"></use>
-                            </svg>
-                            Daftar Reservasi
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/daftar-pasien" class="nav-link text-white">
-                            <svg class="bi pe-none me-2" width="16" height="16">
-                                <use xlink:href="#grid"></use>
-                            </svg>
-                            Tambah Pasien
+                            Logout
                         </a>
                     </li>
                 </ul>
@@ -73,68 +51,38 @@
         <div class="d-flex">
             {{-- dashboard --}}
             <div class="sidebar p-3 flex-shrink-0 d-none d-md-block bg-dark m-0 vh-100">
-                <h4 class="text-white">Dashboard</h4>
+                <a href="/dashboard-user" class="text-white fw-bold fs-5 text-decoration-none">Dashboard</a>
                 <ul class="nav flex-column">
                     <li class="nav-item">
-                        <a href="/admin" class="nav-link text-white" aria-current="page">
+                        <a href="/pasien" class="nav-link text-white" aria-current="page">
                             <svg class="bi pe-none me-2" width="16" height="16">
                                 <use xlink:href="#home"></use>
                             </svg>
-                            Imunisasi
+                            Reservasi
                         </a>
                     </li>
                     <li>
-                        <a href="/ibu-hamil" class="nav-link text-white">
+                        <a href="/lihat-reservasi-user" class="nav-link text-white">
                             <svg class="bi pe-none me-2" width="16" height="16">
                                 <use xlink:href="#speedometer2"></use>
                             </svg>
-                            Ibu Hamil
+                            Cek Reservasi
                         </a>
                     </li>
                     <li>
-                        <a href="/data-kb" class="nav-link text-white">
+                        <a href="/riwayat" class="nav-link text-white">
                             <svg class="bi pe-none me-2" width="16" height="16">
                                 <use xlink:href="#speedometer2"></use>
                             </svg>
-                            KB
+                            Riwayat
                         </a>
                     </li>
                     <li>
-                        <a href="/data-pasien" class="nav-link text-white">
+                        <a href="/logout" class="nav-link text-primary">
                             <svg class="bi pe-none me-2" width="16" height="16">
                                 <use xlink:href="#speedometer2"></use>
                             </svg>
-                            Daftar Pasien
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/input-table" class="nav-link text-white dropdown-toggle active" id="navbarDropdown"
-                            data-bs-toggle="dropdown">
-                            <svg class="bi pe-none me-2" width="16" height="16">
-                                <use xlink:href="#table"></use>
-                            </svg>
-                            input Data
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="/input-table">Imunisasi</a>
-                            <a class="dropdown-item" href="/input-bumil">Ibu Hamil</a>
-                            <a class="dropdown-item" href="/input-kb">KB</a>
-                        </div>
-                    </li>
-                    <li>
-                        <a href="/daftar-reservasi" class="nav-link text-white">
-                            <svg class="bi pe-none me-2" width="16" height="16">
-                                <use xlink:href="#grid"></use>
-                            </svg>
-                            Daftar Reservasi
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/daftar-pasien" class="nav-link text-white">
-                            <svg class="bi pe-none me-2" width="16" height="16">
-                                <use xlink:href="#grid"></use>
-                            </svg>
-                            Tambah Pasien
+                            Logout
                         </a>
                     </li>
                 </ul>
@@ -160,20 +108,7 @@
                     </div>
                     {{-- end alert --}}
                     {{-- search --}}
-                    <div class=" col-md-4">
-                        <form class="form-inline my-2 my-lg-0" action="{{ route('imunisasi.search') }}" method="POST">
-                            @csrf
-                            <div class="row mt-2">
-                                <div class="col-md-9 col-7">
-                                    <input class="form-control mr-sm-2" type="search" placeholder="Search"
-                                        aria-label="Search" name="keyword">
-                                </div>
-                                <div class="col-md-3">
-                                    <button class="btn btn-dark my-2 my-sm-0" type="submit">Search</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
+                    
                     {{-- end search --}}
                     {{-- tambah --}}
                     <div class="col-md-2 col-2">

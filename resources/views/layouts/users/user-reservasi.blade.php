@@ -35,7 +35,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="/logout" class="nav-link text-white">
+                        <a href="/logout" class="nav-link text-primary">
                             <svg class="bi pe-none me-2" width="16" height="16">
                                 <use xlink:href="#speedometer2"></use>
                             </svg>
@@ -48,7 +48,7 @@
         </nav>
         <div class="d-flex">
             <div class="sidebar p-3 flex-shrink-0 d-none d-md-block bg-dark m-0 vh-100">
-                <h4 class="text-white">Dashboard</h4>
+                <a href="/dashboard-user" class="text-white fw-bold fs-5 text-decoration-none">Dashboard</a>
                 <ul class="nav flex-column">
                     <li class="nav-item">
                         <a href="/pasien" class="nav-link text-white" aria-current="page">
@@ -75,7 +75,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="/logout" class="nav-link text-white">
+                        <a href="/logout" class="nav-link text-primary">
                             <svg class="bi pe-none me-2" width="16" height="16">
                                 <use xlink:href="#speedometer2"></use>
                             </svg>
@@ -105,8 +105,8 @@
                                 @csrf
                                 <div class="mb-3">
                                     <label for="tglReservasi" class="form-label">Tanggal Reservasi</label>
-                                    <input type="date" class="form-control" id="tglReservasi"
-                                        placeholder="dd/mm/yyyy" name='tgl_reservasi'>
+                                    <input type="date" class="form-control" id="tglReservasi" placeholder="dd/mm/yyyy"
+                                        name='tgl_reservasi'>
                                 </div>
                                 <button class="btn btn-primary" type="submit">Submit</button>
                             </form>
