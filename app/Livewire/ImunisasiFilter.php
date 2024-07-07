@@ -60,7 +60,7 @@ class ImunisasiFilter extends Component
                 $query->where('name', 'like', '%' . $this->name . '%');
             });
         }
-        $imunisasi = $query->paginate(5);
+        $imunisasi = $query->orderBy('tanggal', 'desc')->paginate(5);
         
         return view('livewire.imunisasi-filter', [
             'imunisasi' => $imunisasi,

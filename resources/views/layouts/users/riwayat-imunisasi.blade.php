@@ -104,7 +104,7 @@
                     
 
                     {{-- filter nya  --}}
-                    <div id="filterContainer" class="mt-2 d-none d-flex justify-content-end col-md-11">
+                    {{-- <div id="filterContainer" class="mt-2 d-none d-flex justify-content-end col-md-11">
                         <!-- Tambahkan elemen filter di sini -->
                         <div class="col-md-11 justify-content-end d-flex me-1">
                             <form action="" method="POST">
@@ -128,15 +128,15 @@
                                 </div>
                             </form>
                         </div>
-                    </div>
+                    </div> --}}
                     {{-- end filter --}}
 
-                    <div class="col-md-10 mb-3 mt-2">
+                    {{-- <div class="col-md-10 mb-3 mt-2">
                         <a href="/daftar-imunisasi">
                             <button type="button" class="btn btn-success btn-sm">Tambah</button>
                         </a>
-                    </div>
-                    <div class=" justify-end col-auto mt-2">
+                    </div> --}}
+                    {{-- <div class=" justify-end col-auto mt-2">
                         <button id="filterButton" class="btn btn-outline-secondary btn-sm">
                             <svg class="w-[20px] h-[20px] text-gray-800 dark:text-white" aria-hidden="true"
                                 xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none"
@@ -146,7 +146,7 @@
                             </svg>
                             Show Filter
                         </button>
-                    </div>
+                    </div> --}}
 
                 </div>
                 {{-- bagian tabel --}}
@@ -166,7 +166,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                {{-- @foreach ($imunisasis as $key => $imunisasi)
+                                @foreach ($imunisasis as $key => $imunisasi)
                                     <tr>
                                         <td>{{ $key + 1 }}</td>
                                         <td>{{ $imunisasi->tanggal }}</td>
@@ -181,12 +181,12 @@
                                             </a>
                                         </td>
                                     </tr>
-                                @endforeach --}}
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
 
-                    {{-- {{ $imunisasis->links() }} --}}
+                    {{ $imunisasis->links() }}
 
                 </div>
             </div>
@@ -195,7 +195,7 @@
     </div>
     {{-- end --}}
     {{-- script --}}
-    <script>
+    {{-- <script>
         document.getElementById('filterButton').addEventListener('click', function() {
             var filterContainer = document.getElementById('filterContainer');
             if (filterContainer.classList.contains('d-none')) {
@@ -206,4 +206,4 @@
                 filterContainer.classList.add('d-none');
             }
         });
-    </script>
+    </script> --}}

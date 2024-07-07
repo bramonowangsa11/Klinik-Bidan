@@ -89,7 +89,7 @@
                 {{-- bagian kb dan search --}}
                 <div class="row col-md-12 col-12 ms-0">
                     <div class=" col-md-7 mt-2">
-                        <h1 class=" fw-bold">Riwayat Imunisasi</h1>
+                        <h1 class=" fw-bold">Riwayat Bumil</h1>
                         @if (Session::has('success'))
                             <div class="alert alert-success">
                                 {{ Session::get('success') }}
@@ -131,12 +131,12 @@
                     </div>
                     {{-- end filter --}}
 
-                    <div class="col-md-10 mb-3 mt-2">
+                    {{-- <div class="col-md-10 mb-3 mt-2">
                         <a href="/daftar-imunisasi">
                             <button type="button" class="btn btn-success btn-sm">Tambah</button>
                         </a>
-                    </div>
-                    <div class=" justify-end col-auto mt-2">
+                    </div> --}}
+                    {{-- <div class=" justify-end col-auto mt-2">
                         <button id="filterButton" class="btn btn-outline-secondary btn-sm">
                             <svg class="w-[20px] h-[20px] text-gray-800 dark:text-white" aria-hidden="true"
                                 xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none"
@@ -146,7 +146,7 @@
                             </svg>
                             Show Filter
                         </button>
-                    </div>
+                    </div> --}}
 
                 </div>
                 {{-- bagian tabel --}}
@@ -167,7 +167,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                {{-- @foreach ($ancs as $key => $anc)
+                                @foreach ($ancs as $key => $anc)
                                     <tr>
                                         <td>{{ $key + 1 }}</td>
                                         <td>{{ $anc->tgl_pemeriksaan }}</td>
@@ -181,8 +181,8 @@
                                                 {{ $anc->suami->nik }}
                                             </div>
                                         </td>
-                                        {{-- <td>{{ $anc->nik_suami }}</td> --}}
-                                {{-- <td>{{ $anc->no_kk }}</td>
+                            
+                                        <td>{{ $anc->no_kk}}</td>
 
                                         <td>{{ $anc->Suami->alamat }}</td>
 
@@ -192,7 +192,7 @@
                                             </a>
                                         </td>
                                     </tr>
-                                @endforeach --}}
+                                @endforeach
 
                             </tbody>
                         </table>

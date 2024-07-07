@@ -59,7 +59,7 @@ class AncFilter extends Component
                 $query->where('name', 'like', '%' . $this->name . '%');
             });
         }
-        $ancs = $query->paginate(5);
+        $ancs = $query->orderBy('tgl_pemeriksaan', 'desc')->paginate(5);
         
         return view('livewire.anc-filter', [
             'ancs' => $ancs,

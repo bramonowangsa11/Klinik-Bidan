@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\anc;
+use App\Models\Pasien;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
 class AncController extends Controller

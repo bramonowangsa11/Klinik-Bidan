@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Kb;
+use App\Models\anc;
 use App\Models\User;
 use App\Models\Pasien;
 use App\Models\CobaAnc;
@@ -172,11 +173,11 @@ class PasienController extends Controller
             return redirect('/pasien')->with('error', 'Tidak terdapat riwayat pemeriksaan');
         }
         $id = $pasien->id;
-        $imunisasis = Imunisasi::with(['Ortu','Anak'])->where('id_anak',$id)->orWhere('id_ortu',$id)->paginate(5);
+        $imunisasis = Imunisasi::with(['Ortu','Anak'])->where('id_anak',$id)->orWhere('id_ortu',$id)->orderBy('tanggal', 'desc')->paginate(5);
         if($imunisasis->isEmpty()){
             return view('')->with('error','tidak terdapat riwayat pemeriksaan');
         }
-        return view('layouts.admin.dashboard-admin',compact('imunisasis'));
+        return view('layouts.users.riwayat-imunisasi',compact('imunisasis'));
     }
 
     public function riwayatBumil(){
@@ -186,15 +187,15 @@ class PasienController extends Controller
             return redirect('/pasien')->with('error', 'Tidak terdapat riwayat pemeriksaan');
         }
         $id = $pasien->id;
-        $ancs = CobaAnc::with(['Suami','Istri'])->where('id_suami',$id)->orWhere('id_istri',$id)->paginate(5);
+        $ancs = anc::with(['Suami','Istri'])->where('id_suami',$id)->orWhere('id_istri',$id)->orderBy('tgl_pemeriksaan', 'desc')->paginate(5);
         if($ancs->isEmpty()){
-            return view('layouts.admin.bumil-table-data')->with('error','tidak terdapat riwayat pemeriksaan');
+            return view('layouts.users.riwayat-bumil')->with('error','tidak terdapat riwayat pemeriksaan');
         }
-        return view('layouts.admin.bumil-table-data',compact('ancs'));
+        return view('layouts.users.riwayat-bumil',compact('ancs'));
     }
 
     public function riwayatByid($id){
-        $ancs = CobaAnc::with(['Suami','Istri'])->where('id_suami',$id)->orWhere('id_istri',$id)->get();
+        $ancs = anc::with(['Suami','Istri'])->where('id_suami',$id)->orWhere('id_istri',$id)->get();
         $imunisasis = Imunisasi::with(['Ortu','Anak'])->where('id_anak',$id)->orWhere('id_ortu',$id)->get();
         $kbs = Kb::with(['Suami','Ibu'])->where('id_ibu',$id)->orWhere('id_suami',$id)->get(); 
         return view('layouts.admin.riwayat-pasien',compact('ancs','kbs','imunisasis'));

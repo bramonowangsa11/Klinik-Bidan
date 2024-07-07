@@ -111,11 +111,11 @@
                     
                     {{-- end search --}}
                     {{-- tambah --}}
-                    <div class="col-md-2 col-2">
+                    {{-- <div class="col-md-2 col-2">
                         <a href="/input-kb">
                             <button type="button" class="btn btn-success btn-sm">tambah</button>
                         </a>
-                    </div>
+                    </div> --}}
                     {{-- end tambah --}}
                 </div>
                 {{-- end --}}
@@ -195,7 +195,7 @@
                         </div>
                     </div>
                     {{-- end bawah --}}
-                    <div class=" mb-3 mt-3 col-md-6">
+                    {{-- <div class=" mb-3 mt-3 col-md-6">
                         <div class="row">
                             <div class="col-md-2 col-2">
                                 <button type="button" class="btn btn-primary" data-bs-toggle="modal"
@@ -210,7 +210,7 @@
                                 </form>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                     {{-- end konten --}}
                     <!-- Modal ubah-->
                     <div class="modal fade" id="ubahModal" tabindex="-1" aria-labelledby="ubahModalLabel"

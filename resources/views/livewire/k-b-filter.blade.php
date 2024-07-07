@@ -222,7 +222,7 @@
                     </div>
                     {{-- end filter --}}
                     <div class="col-md-9 mb-3 mt-2">
-                        <a href="/daftar-bumil">
+                        <a href="/input-kb">
                             <button type="button" class="btn btn-success btn-sm">Tambah</button>
                         </a>
                     </div>

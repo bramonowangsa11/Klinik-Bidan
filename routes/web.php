@@ -100,7 +100,12 @@ Route::middleware(['auth'])->group(function () {
     Route::get('tes1',ReservasiFilter::class)->name('tes1')->middleware('userAkses:admin');
     //USER KB
    
-
+    Route::get('/daftar-imunisasi', function () {
+        return view('layouts.admin.daftar-imunisasi');
+    });
+    Route::get('/daftar-bumil', function () {
+        return view('layouts.admin.daftar-bumil');
+    });
 
     Route::get('/dashboard',[AdminController::class,'dashboard'])->name('home');
     Route::get('/logout',[SessionController::class,'logout']);
@@ -171,25 +176,20 @@ Route::get('/tespasien',PasienFilter::class)->name('pasien');
 // Route::get('/input-kb', function () {
 //     return view('layouts.admin.kb');
 // });
-Route::get('/ceknik', function () {
-    return view('layouts.admin.testajax');
-});
-Route::get('/detail-kb', function () {
-    return view('layouts.admin.detail-kb');
-});
-Route::get('/daftar-pasien', function () {
-    return view('layouts.admin.daftar-pasien');
-});
-Route::get('/testing', function () {
-    return view('layouts.testing');
-});
+// Route::get('/ceknik', function () {
+//     return view('layouts.admin.testajax');
+// });
+// Route::get('/detail-kb', function () {
+//     return view('layouts.admin.detail-kb');
+// });
+// Route::get('/daftar-pasien', function () {
+//     return view('layouts.admin.daftar-pasien');
+// });
+// Route::get('/testing', function () {
+//     return view('layouts.testing');
+// });
 
-Route::get('/daftar-imunisasi', function () {
-    return view('layouts.admin.daftar-imunisasi');
-});
-Route::get('/daftar-bumil', function () {
-    return view('layouts.admin.daftar-bumil');
-});
+
 
 // Route::get('/dashboard', function () {
 //     return view('layouts.admin.admin-dashboard');
@@ -232,15 +232,15 @@ Route::get('/daftar-bumil', function () {
 Route::get('/riwayat', function () {
     return view('layouts.users.riwayat-periksa');
 });
-Route::get('/riwayat-imunisasi', function () {
-    return view('layouts.users.riwayat-imunisasi');
-});
-Route::get('/riwayat-kb', function () {
-    return view('layouts.users.riwayat-kb');
-});
-Route::get('/riwayat-ibu-hamil', function () {
-    return view('layouts.users.riwayat-bumil');
-});
+// Route::get('/riwayat-imunisasi', function () {
+//     return view('layouts.users.riwayat-imunisasi');
+// });
+// Route::get('/riwayat-kb', function () {
+//     return view('layouts.users.riwayat-kb');
+// });
+// Route::get('/riwayat-ibu-hamil', function () {
+//     return view('layouts.users.riwayat-bumil');
+// });
 // Route::get('/riwayat-pasien', function () {
 //     return view('layouts.admin.riwayat-pasien');
 // });
@@ -250,6 +250,6 @@ Route::get('/riwayat-ibu-hamil', function () {
 // Route::get('/riwayat-bumil-admin', function () {
 //     return view('layouts.admin.riwayat-bumil-admin');
 // });
-Route::get('/tes2', function () {
-    return view('layouts.login-lagi');
-});
+// Route::get('/tes2', function () {
+//     return view('layouts.login-lagi');
+// });

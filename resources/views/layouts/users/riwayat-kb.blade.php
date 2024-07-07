@@ -102,11 +102,11 @@
                         @endif
                     </div>
                     
-                    <div class="col-md-2">
+                    {{-- <div class="col-md-2">
                         <a href="/input-kb">
                             <button type="button" class="btn btn-success btn-sm">tambah</button>
                         </a>
-                    </div>
+                    </div> --}}
                 </div>
                 {{-- bagian tabel --}}
                 <div class="row col-md-12 col-12 mt-2 ms-0">
@@ -125,7 +125,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                {{-- @foreach ($kbs as $key => $kb)
+                                @foreach ($kbs as $key => $kb)
                                     <tr>
                                         <td>{{ $key + 1 }}</td>
                                         <td>{{ $kb->tgl_kb }}</td>
@@ -140,18 +140,18 @@
                                         </td>
                                         <td>{{ $kb->Suami->name }}</td>
                                         {{-- <td>{{ $kb->Suami->nik }}</td> --}}
-                                {{-- <td>{{ $kb->Suami->alamat }}</td>
+                                <td>{{ $kb->Suami->alamat }}</td>
                                         <td>
                                             <a href="{{ route('kb.showByid', ['id' => $kb->id]) }}">
                                                 <button type="button" class="btn btn-info btn-sm">Detail</button>
                                             </a>
                                         </td>
-                                    </tr> --}}
-                                {{-- @endforeach --}}
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
-                    {{-- {{ $kbs->links() }} --}}
+                    {{ $kbs->links() }}
                 </div>
             </div>
             {{-- end konten --}}
