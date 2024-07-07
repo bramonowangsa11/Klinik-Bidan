@@ -64,6 +64,14 @@
                             Tambah Pasien
                         </a>
                     </li>
+                    <li>
+                        <a href="/logout" class="nav-link text-primary">
+                            <svg class="bi pe-none me-2" width="16" height="16">
+                                <use xlink:href="#grid"></use>
+                            </svg>
+                            Logout
+                        </a>
+                    </li>
                 </ul>
             </div>
 
@@ -71,7 +79,7 @@
         <div class="d-flex">
             <div class="sidebar p-3 flex-shrink-0 d-none d-md-block bg-dark m-0 vh-100">
                 {{-- <h4 class="text-white">Dashboard</h4> --}}
-                <a href="/dashboard" class="text-white navbar-brand fw-bold fs-4">Dashboard</a>
+                <a href="/dashboard" class="text-white navbar-brand fw-bold fs-5">Dashboard</a>
                 <ul class="nav flex-column">
                     <li class="nav-item">
                         <a href="/admin" class="nav-link text-white active" aria-current="page">
@@ -206,7 +214,7 @@
                         </div>
                     </div>
                     {{-- end filter --}}
-                    
+
                     <div class="col-md-10 mb-3 mt-2">
                         <a href="/daftar-imunisasi">
                             <button type="button" class="btn btn-success btn-sm">Tambah</button>

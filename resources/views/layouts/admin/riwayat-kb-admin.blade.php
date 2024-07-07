@@ -65,6 +65,14 @@
                             Tambah Pasien
                         </a>
                     </li>
+                    <li>
+                        <a href="/logout" class="nav-link text-primary">
+                            <svg class="bi pe-none me-2" width="16" height="16">
+                                <use xlink:href="#grid"></use>
+                            </svg>
+                            Logout
+                        </a>
+                    </li>
                 </ul>
             </div>
 
@@ -135,6 +143,14 @@
                                 <use xlink:href="#grid"></use>
                             </svg>
                             Tambah Pasien
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/logout" class="nav-link text-primary">
+                            <svg class="bi pe-none me-2" width="16" height="16">
+                                <use xlink:href="#grid"></use>
+                            </svg>
+                            Logout
                         </a>
                     </li>
                 </ul>
