@@ -7,6 +7,9 @@ use Illuminate\Support\Facades\Auth;
 
 class SessionController extends Controller
 {
+    public function index(){
+        return view('layouts.login');
+    }
     public function login(Request $request){
         $validated_data = $request->validate([
             'email'=> 'required',
@@ -36,6 +39,10 @@ class SessionController extends Controller
 
     public function logout(){
         Auth::logout();
-        return redirect('/');
+        return redirect(route('login'));
+    }
+
+    public function sudahLogin(){
+        return view('layouts.login-lagi');
     }
 }

@@ -20,11 +20,11 @@
                         </div>
                         <div class="card-body p-md-1 ">
                             <h1 class=" fw-bold">Konfirmasi</h1>
-                            <h5>Anda sudah masuk sebagai ..., Anda harus keluar sebelum masuk sebagai pengguna yang berbeda.
+                            <h5>Anda sudah masuk sebagai {{Auth::user()->role}}, Anda harus Logout sebelum masuk sebagai pengguna yang berbeda.
                             </h5>
                             <div class=" d-flex justify-content-end">
-                                <a href="" class="btn btn-primary me-2 fw-bold">Keluar</a>
-                                <a href="" class="btn btn-secondary fw-bold">Batal</a>
+                                <a href="/logout" class="btn btn-primary me-2 fw-bold">Keluar</a>
+                                <a href="{{Auth::user()->role=='admin' ? route('home') : route('dashboard.user')}}" class="btn btn-secondary fw-bold">Batal</a>
                             </div>
 
                         </div>

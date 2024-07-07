@@ -3,9 +3,9 @@
 namespace App\Livewire;
 
 use Carbon\Carbon;
-use App\Models\Anc;
 use Livewire\Component;
 use Livewire\WithPagination;
+use App\Models\anc;
 
 class AncFilter extends Component
 {
@@ -41,7 +41,7 @@ class AncFilter extends Component
     }
     public function render()
     {
-        $query = Anc::with(['Suami', 'Istri']);
+        $query = anc::with(['Suami', 'Istri']);
 
         if ($this->tanggal) {
             $query->whereDate('tgl_pemeriksaan', $this->tanggal);

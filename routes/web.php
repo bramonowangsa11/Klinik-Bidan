@@ -35,9 +35,7 @@ use App\Http\Controllers\CobaReservasiController;
 // });
 
 Route::middleware(['guest'])->group(function(){
-    Route::get('/', function () {
-        return view('layouts.login');
-    });
+    Route::get('/',[SessionController::class,'index'])->name('login');
     // routes tes dashboar admin
     // Route::get('/dashboard-admin', function () {
     //     return view('layouts.admin.dashboard-admin');
@@ -49,7 +47,7 @@ Route::middleware(['guest'])->group(function(){
     Route::post('/login',[SessionController::class,'login']);
 });
 Route::middleware(['auth'])->group(function () {
-
+    Route::get('/sudah-login',[SessionController::class,'sudahLogin'])->name('sudah.login');
     // ADMIN IMUNISASI
     Route::get('/admin',ImunisasiFilter::class)->middleware('userAkses:admin');
     Route::get('/input-table',[ImunisasiController::class,'inputImunisasi'])->middleware('userAkses:admin');
@@ -217,9 +215,9 @@ Route::get('/daftar-bumil', function () {
 // Route::get('/riwayat-pasien', function () {
 //     return view('layouts.admin.riwayat-pasien');
 // });
-Route::get('/dashboard-user', function () {
-    return view('layouts.users.dashboard-user');
-});
+// Route::get('/dashboard-user', function () {
+//     return view('layouts.users.dashboard-user');
+// });
 // Route::get('/data-kb', function () {
 //     return view('layouts.admin.data-kb');
 // });

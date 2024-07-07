@@ -130,8 +130,8 @@
                                                 <h4 class="card-title fw-bold text-center">{{ Auth::user()->name }}</h4>
                                                 <h6 class=" fw-semibold">{{ Auth::user()->name }}</h6>
                                                 <h6 class=" fw-semibold">{{ Auth::user()->email }}</h6>
-                                                {{-- <h6 class=" fw-semibold">{{$user_data->ttl}}</h6>
-                                                <h6 class=" fw-semibold">{{$user_data->no_telp}}</h6> --}}
+                                                <h6 class=" fw-semibold">{{$user_data->ttl}}</h6>
+                                                <h6 class=" fw-semibold">{{$user_data->no_telp}}</h6>
                                             </div>
                                         </div>
 
