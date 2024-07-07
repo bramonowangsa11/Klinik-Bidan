@@ -163,14 +163,14 @@
                                 <div class="card card-custom mb-4 bg-primary rounded-4">
                                     <div class="card-body row">
 
-                                        <div class=" col-md-8 text-white">
+                                        <div class=" col-md-auto text-white">
                                             <h5 class="card-title fw-bold">Reservasi</h5>
                                             <p class="card-text">Jumlah Reservasi Hari Ini</p>
                                             <h2>{{ $today_reservation }}</h2>
                                             <a href="/today-reservation" class="text-white text-decoration-none">Data
                                                 Reservasi ></a>
                                         </div>
-                                        <div class=" icon col-md-4 text-white">
+                                        <div class=" icon col-md-auto text-white">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"
                                                 fill="currentColor" class="bi bi-calendar-check bg-primary"
                                                 viewBox="0 0 16 16">
@@ -190,14 +190,14 @@
                             <div class="col-md-4">
                                 <div class="card card-custom mb-4 rounded-4" style="background-color: #44C95C">
                                     <div class="card-body text-white row">
-                                        <div class="col-md-8 ">
+                                        <div class="col-md-auto ">
                                             <h5 class="card-title fw-bold">Pasien</h5>
                                             <p class="card-text">Jumlah Pasien Terdaftar</p>
                                             <h2>{{ $count_pasien }}</h2>
                                             <a href="/data-pasien" class="text-white text-decoration-none">Data
                                                 Pasien></a>
                                         </div>
-                                        <div class="col-md-4">
+                                        <div class="col-md-auto">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"
                                                 fill="currentColor" class="bi bi-person-arms-up" viewBox="0 0 16 16">
                                                 <path d="M8 3a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3" />
@@ -212,14 +212,14 @@
                             <div class="col-md-4">
                                 <div class="card card-custom mb-4 rounded-4" style="background-color: #FFAC1C">
                                     <div class="card-body text-white row">
-                                        <div class="col-md-8">
+                                        <div class="col-md-auto">
                                             <h5 class="card-title fw-bold">Pengguna</h5>
                                             <p class="card-text">Jumah Pengguna Terdaftar</p>
                                             <h2>{{ $count_user }}</h2>
                                             <a href="/pengguna-terdaftar" class="text-white text-decoration-none">Data
                                                 Pengguna ></a>
                                         </div>
-                                        <div class="col-md-4">
+                                        <div class="col-md-auto">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"
                                                 fill="currentColor" class="bi bi-person-vcard-fill" viewBox="0 0 16 16">
                                                 <path
@@ -232,7 +232,7 @@
                             <div class="col-md-4">
                                 <div class="card card-custom mb-4 rounded-4" style="background-color: #949d16">
                                     <div class="card-body text-white row">
-                                        <div class="col-md-8">
+                                        <div class="col-md-auto">
                                             <h5 class="card-title fw-bold">Imunisasi</h5>
                                             <p class="card-text">Jumah Data Imunisasi Bulan Ini</p>
                                             <h2 class=" fw-bold">{{ $imunisasi_thismonth }}</h2>
@@ -240,7 +240,7 @@
                                                 Imunisasi ></a>
                                         </div>
 
-                                        <div class="col-md-4">
+                                        <div class="col-md-auto">
                                             <?xml version="1.0" ?><svg xmlns="http://www.w3.org/2000/svg"
                                                 xmlns:xlink="http://www.w3.org/1999/xlink" width="100" height="100" version="1.1"
                                                 viewBox="0 0 512 512" fill="currentColor"
@@ -263,7 +263,7 @@
                             <div class="col-md-4">
                                 <div class="card card-custom mb-4 rounded-4" style="background-color: #c51a23">
                                     <div class="card-body text-white row">
-                                        <div class="col-md-8">
+                                        <div class="col-md-auto">
                                             <h5 class="card-title fw-bold">Ibu Hamil</h5>
                                             <p class="card-text">Jumah Data Ibu Hamil Bulan Ini</p>
                                             <h2 class=" fw-bold">{{ $bumil_thismonth }}</h2>
@@ -272,7 +272,7 @@
                                                 ></a>
                                         </div>
 
-                                        <div class="col-md-4">
+                                        <div class="col-md-auto">
                                             <?xml version="1.0" ?><svg id="Icons" width="100" height="100" viewBox="0 0 48 48"
                                                 xmlns="http://www.w3.org/2000/svg">
                                                 <defs>
@@ -378,14 +378,14 @@
                             <div class="col-md-4">
                                 <div class="card card-custom mb-4 rounded-4" style="background-color: #0eb59c">
                                     <div class="card-body text-white row">
-                                        <div class="col-md-8">
+                                        <div class="col-md-auto">
                                             <h5 class="card-title fw-bold">KB</h5>
                                             <p class="card-text">Jumah Data KB Bulan Ini</p>
                                             <h2 class=" fw-bold">{{ $kb_thismonth }}</h2>
                                             <a href="/cetak-kb" class="text-white text-decoration-none">Laporan KB ></a>
                                         </div>
 
-                                        <div class=" col-md-4">
+                                        <div class=" col-md-auto">
                                             <?xml version="1.0" ?><svg id="Icons_FamilyWithTwoChildren"
                                                 overflow="hidden" fill="currentColor" version="1.1" width="100" height="100" viewBox="0 0 96 96"
                                                 xmlns="http://www.w3.org/2000/svg"

@@ -137,6 +137,7 @@
                         </a>
                     </div> --}}
                     {{-- <div class=" justify-end col-auto mt-2">
+                    <div class=" justify-end col-auto mt-2">
                         <button id="filterButton" class="btn btn-outline-secondary btn-sm">
                             <svg class="w-[20px] h-[20px] text-gray-800 dark:text-white" aria-hidden="true"
                                 xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none"

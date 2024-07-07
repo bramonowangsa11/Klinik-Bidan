@@ -101,13 +101,14 @@
                             </div>
                         @endif
                     </div>
+
                     
-                    <div class="col-md-2">
+                </div>
+                <div class="col-md-2">
                         <a href="/pasien">
                             <button type="button" class="btn btn-success btn-sm">tambah</button>
                         </a>
                     </div>
-                </div>
                 <div class="container">
                     <table class="table">
                         <thead>
