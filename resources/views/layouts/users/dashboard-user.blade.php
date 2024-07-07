@@ -110,7 +110,7 @@
                     <div class="container mt-5">
                         <h1>Dashboard</h1>
                         <div class="row">
-                            <div class="col-md-3">
+                            <div class="col-md-auto">
 
                                 <div class="card card-custom mb-4 rounded-4 background-card-user">
 
@@ -120,14 +120,14 @@
                                         <div class="justify-content-center">
                                             <div class="col-md-auto justify-content-center d-flex ">
                                                 <svg class="w-[20px] h-[20px] text-gray-800 dark:text-white"
-                                                    aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="50"
-                                                    height="50" fill="none" viewBox="0 0 24 24">
+                                                    aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="60"
+                                                    height="60" fill="none" viewBox="0 0 24 24">
                                                     <path stroke="currentColor" stroke-width="2"
                                                         d="M7 17v1a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-1a3 3 0 0 0-3-3h-4a3 3 0 0 0-3 3Zm8-9a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
                                                 </svg>
                                             </div>
                                             <div class="col-md-auto d-block">
-                                                <h4 class="card-title fw-bold text-center">{{ Auth::user()->name }}</h4>
+                                                <h5 class="card-title fw-bold text-center">{{ Auth::user()->name }}</h5>
                                                 <h6 class=" fw-semibold">{{ Auth::user()->name }}</h6>
                                                 <h6 class=" fw-semibold">{{ Auth::user()->email }}</h6>
                                                 <h6 class=" fw-semibold">{{$user_data->ttl}}</h6>
@@ -143,7 +143,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-auto">
                                 <div class="card card-custom mb-4 rounded-4"
                                     style="background:url({{ asset('images/mountain.jpg') }}); background-size:cover; filter:blur(0px)">
                                     <div class="card-body text-white rounded-4"
@@ -170,7 +170,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-auto">
                                 <div class="card card-custom mb-4 rounded-4"
                                     style="background:url({{ asset('images/mountain.jpg') }}); background-size:cover; filter:blur(0px)">
                                     <div class="card-body text-white rounded-4"
@@ -282,7 +282,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-auto">
                                 <div class="card card-custom mb-4 rounded-4"
                                     style="background:url({{ asset('images/mountain.jpg') }}); background-size:cover; filter:blur(0px)">
                                     <div class="card-body text-white rounded-4"

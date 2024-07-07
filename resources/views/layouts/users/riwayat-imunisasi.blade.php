@@ -131,11 +131,11 @@
                     </div>
                     {{-- end filter --}}
 
-                    <div class="col-md-10 mb-3 mt-2">
+                    {{-- <div class="col-md-10 mb-3 mt-2">
                         <a href="/daftar-imunisasi">
                             <button type="button" class="btn btn-success btn-sm">Tambah</button>
                         </a>
-                    </div>
+                    </div> --}}
                     <div class=" justify-end col-auto mt-2">
                         <button id="filterButton" class="btn btn-outline-secondary btn-sm">
                             <svg class="w-[20px] h-[20px] text-gray-800 dark:text-white" aria-hidden="true"

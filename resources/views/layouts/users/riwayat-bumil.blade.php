@@ -89,7 +89,7 @@
                 {{-- bagian kb dan search --}}
                 <div class="row col-md-12 col-12 ms-0">
                     <div class=" col-md-7 mt-2">
-                        <h1 class=" fw-bold">Riwayat Imunisasi</h1>
+                        <h1 class=" fw-bold">Riwayat Ibu Hamil</h1>
                         @if (Session::has('success'))
                             <div class="alert alert-success">
                                 {{ Session::get('success') }}
@@ -101,7 +101,7 @@
                             </div>
                         @endif
                     </div>
-                    
+
 
                     {{-- filter nya  --}}
                     <div id="filterContainer" class="mt-2 d-none d-flex justify-content-end col-md-11">
@@ -112,8 +112,7 @@
                                 <div class="row g-3 align-items-center ">
                                     <div class="col-auto">
                                         <label for="day">Tanggal</label>
-                                        <input type="date" class="form-select" id="day" name="day"
-                                            required>
+                                        <input type="date" class="form-select" id="day" name="day" required>
                                         </input>
                                     </div>
                                     <div class="col-auto">
@@ -131,11 +130,11 @@
                     </div>
                     {{-- end filter --}}
 
-                    <div class="col-md-10 mb-3 mt-2">
+                    {{-- <div class="col-md-10 mb-3 mt-2">
                         <a href="/daftar-imunisasi">
                             <button type="button" class="btn btn-success btn-sm">Tambah</button>
                         </a>
-                    </div>
+                    </div> --}}
                     <div class=" justify-end col-auto mt-2">
                         <button id="filterButton" class="btn btn-outline-secondary btn-sm">
                             <svg class="w-[20px] h-[20px] text-gray-800 dark:text-white" aria-hidden="true"
@@ -167,8 +166,8 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                {{-- @foreach ($ancs as $key => $anc)
-                                    <tr>
+                                {{-- @foreach ($ancs as $key => $anc) --}}
+                                    {{-- <tr>
                                         <td>{{ $key + 1 }}</td>
                                         <td>{{ $anc->tgl_pemeriksaan }}</td>
                                         <td>{{ $anc->istri->name }}</td>
@@ -181,8 +180,8 @@
                                                 {{ $anc->suami->nik }}
                                             </div>
                                         </td>
-                                        {{-- <td>{{ $anc->nik_suami }}</td> --}}
-                                {{-- <td>{{ $anc->no_kk }}</td>
+                                        <td>{{ $anc->nik_suami }}</td>
+                                        <td>{{ $anc->no_kk }}</td>
 
                                         <td>{{ $anc->Suami->alamat }}</td>
 
@@ -191,8 +190,8 @@
                                                 <button type="button" class="btn btn-info btn-sm">Detail</button>
                                             </a>
                                         </td>
-                                    </tr>
-                                @endforeach --}}
+                                    </tr> --}}
+                                {{-- @endforeach --}}
 
                             </tbody>
                         </table>

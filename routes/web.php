@@ -250,6 +250,6 @@ Route::get('/riwayat-ibu-hamil', function () {
 // Route::get('/riwayat-bumil-admin', function () {
 //     return view('layouts.admin.riwayat-bumil-admin');
 // });
-Route::get('/tes2', function () {
-    return view('layouts.login-lagi');
-});
+// Route::get('/tes2', function () {
+//     return view('layouts.login-lagi');
+// });
