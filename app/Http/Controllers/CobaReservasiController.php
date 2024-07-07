@@ -3,13 +3,13 @@
 namespace App\Http\Controllers;
 
 use Carbon\Carbon;
-use App\Models\Reservasi;
 use Illuminate\Http\Request;
+use App\Models\CobaReservasi;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
-class ReservasiController extends Controller
-{   
+class CobaReservasiController extends Controller
+{
     public function sesibyDate(Request $request){
         $tgl = $request['tgl_reservasi'];
         $tgl_reservasi = Carbon::parse($tgl);
@@ -19,7 +19,7 @@ class ReservasiController extends Controller
         if($today->lt($hSebelumReservasi)){
             $allSessions = ['06:00', '06:30', '07:00', '07:30', '08:00', '08:30', '16:00', 
                             '16:30', '17:00', '17:30', '18:00', '18:30', '19:00', '19:30'];
-            $selectedSessions = Reservasi::where('tgl_reservasi', $tgl_reservasi)
+            $selectedSessions = CobaReservasi::where('tgl_reservasi', $tgl_reservasi)
                 ->pluck('sesi')->toArray();
             $availableSessions = array_diff($allSessions, $selectedSessions);
             return view('layouts.users.user-reservasi2',compact('tgl','availableSessions'));
@@ -31,12 +31,12 @@ class ReservasiController extends Controller
     }
     public function index(){
         if(Auth::user()->role == "admin"){
-            $reservasis = Reservasi::with('user')->paginate(5);
+            $reservasis = CobaReservasi::with('user')->paginate(5);
             return view('layouts.admin.lihat-reservasi',compact('reservasis'));
         }
         else{
             $id_user = Auth::user()->id;
-            $reservasis = Reservasi::with('user')->where('user_id',$id_user)->paginate(5);
+            $reservasis = CobaReservasi::with('user')->where('user_id',$id_user)->paginate(5);
             return view('layouts.users.lihat-reservasi-user',compact('reservasis'));
         }
         
@@ -61,7 +61,7 @@ class ReservasiController extends Controller
         ]);
         $tgl = $validated_data['tgl_reservasi'];
         $sesi = $validated_data['sesi'];
-        $reservasiSama = Reservasi::where('tgl_reservasi',$tgl)
+        $reservasiSama = CobaReservasi::where('tgl_reservasi',$tgl)
             ->where('sesi',$sesi)
             ->exists(); 
         if($reservasiSama){
@@ -69,7 +69,7 @@ class ReservasiController extends Controller
         }
         else{
             $validated_data['user_id'] = Auth::user()->id;
-            $reservasis = Reservasi::create($validated_data);
+            $reservasis = CobaReservasi::create($validated_data);
             Session::flash('success', 'reservasi berhasil didaftarkan');
             if(Auth::user()->role=='pasien'){
                 return redirect('/pasien');
@@ -83,7 +83,7 @@ class ReservasiController extends Controller
 
     public function destroy($id){
         if(Auth::user()->role == "pasien"){
-            $reservasis = Reservasi::findOrfail($id);
+            $reservasis = CobaReservasi::findOrfail($id);
             $tgl = $reservasis["tgl_reservasi"];
             $sesi = $reservasis["sesi"];
             $tgl_jam = $tgl.' '.$jam;
@@ -100,7 +100,7 @@ class ReservasiController extends Controller
             }
         }
         else{
-            $reservasi = Reservasi::findOrfail($id);
+            $reservasi = CobaReservasi::findOrfail($id);
             $reservasi->delete();
             Session::flash('success','data berhasil dihapus');
             return redirect()->back();
@@ -110,11 +110,8 @@ class ReservasiController extends Controller
     }
     public function todayReservation(){
         $now = Carbon::now('Asia/Jakarta');
-        $reservasis = Reservasi::with(['user'])
+        $reservasis = CobaReservasi::with(['user'])
             ->whereDate('tgl_reservasi',$now)->paginate(12);
         return view('layouts.admin.lihat-reservasi',compact('reservasis'));
     }
-
-    
-
 }

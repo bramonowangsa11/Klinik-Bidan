@@ -2,17 +2,17 @@
 
 namespace Database\Seeders;
 
-use App\Models\Reservasi;
+use App\Models\CobaReservasi;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-class ReservasiSeeder extends Seeder
+class CobaReservasiSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        Reservasi::factory(5)->create();
+        CobaReservasi::factory(5)->create();
     }
 }
