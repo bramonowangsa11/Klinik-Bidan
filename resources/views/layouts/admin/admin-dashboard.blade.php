@@ -3,7 +3,7 @@
     {{-- start --}}
     <div class="container min-vh-100 p-0 m-0 min-vw-100">
         <nav class="navbar navbar-expand-lg navbar-dark p-2 d-md-none m-0 min-vw-100 bg-dark" style="width: 47vh">
-            <a class="navbar-brand" href="#">Dashboard</a>
+            <a class="navbar-brand" href="/dashboard">Dashboard</a>
             <button class="navbar-toggler mr-2" type="button" data-toggle="collapse" data-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -64,13 +64,21 @@
                             Tambah Pasien
                         </a>
                     </li>
+                    <li>
+                        <a href="/logout" class="nav-link text-primary">
+                            <svg class="bi pe-none me-2" width="16" height="16">
+                                <use xlink:href="#grid"></use>
+                            </svg>
+                            Logout
+                        </a>
+                    </li>
                 </ul>
             </div>
 
         </nav>
         <div class="d-flex">
             <div class="sidebar p-3 flex-shrink-0 d-none d-md-block bg-dark m-0 vh-100">
-                <h4 class="text-white">Dashboard</h4>
+                <a href="/dashboard" class="text-white navbar-brand fw-bold fs-5">Dashboard</a>
                 <ul class="nav flex-column">
                     <li class="nav-item">
                         <a href="/admin" class="nav-link text-white" aria-current="page">
@@ -135,7 +143,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="/logout" class="nav-link text-white">
+                        <a href="/logout" class="nav-link text-primary">
                             <svg class="bi pe-none me-2" width="16" height="16">
                                 <use xlink:href="#grid"></use>
                             </svg>
@@ -234,7 +242,7 @@
 
                                         <div class="col-md-4">
                                             <?xml version="1.0" ?><svg xmlns="http://www.w3.org/2000/svg"
-                                                xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
+                                                xmlns:xlink="http://www.w3.org/1999/xlink" width="100" height="100" version="1.1"
                                                 viewBox="0 0 512 512" fill="currentColor"
                                                 style="enable-background:new 0 0 512 512;" xml:space="preserve">
                                                 <g
@@ -265,7 +273,7 @@
                                         </div>
 
                                         <div class="col-md-4">
-                                            <?xml version="1.0" ?><svg id="Icons" viewBox="0 0 48 48"
+                                            <?xml version="1.0" ?><svg id="Icons" width="100" height="100" viewBox="0 0 48 48"
                                                 xmlns="http://www.w3.org/2000/svg">
                                                 <defs>
                                                     <style>
@@ -379,7 +387,7 @@
 
                                         <div class=" col-md-4">
                                             <?xml version="1.0" ?><svg id="Icons_FamilyWithTwoChildren"
-                                                overflow="hidden" fill="currentColor" version="1.1" viewBox="0 0 96 96"
+                                                overflow="hidden" fill="currentColor" version="1.1" width="100" height="100" viewBox="0 0 96 96"
                                                 xmlns="http://www.w3.org/2000/svg"
                                                 xmlns:xlink="http://www.w3.org/1999/xlink">
                                                 <g>
