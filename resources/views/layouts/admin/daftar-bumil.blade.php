@@ -1,5 +1,6 @@
-@extends('layouts.admin.navbar')
+@extends('layouts.admin.navbar-daftar')
 @section('main-content')
+
     <div class="col-md-12">
         <div class="row d-flex justify-content-center align-items-center">
             <div class=" mt-3 d-flex justify-content-center align-items-center">
