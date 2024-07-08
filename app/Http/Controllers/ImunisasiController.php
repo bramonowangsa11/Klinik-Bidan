@@ -28,7 +28,8 @@ class ImunisasiController extends Controller
         })
             ->with(['Ortu', 'Anak'])
             ->orderByDesc('tanggal')
-            ->paginate(5);
+            ->paginate(5)
+            ->onEachSide(1);
         if ($imunisasis->isEmpty()) {
             return view('layouts.admin.dashboard-admin', compact('imunisasis'))->with('errors', 'Data tidak ditemukan');
         } else {
@@ -39,7 +40,8 @@ class ImunisasiController extends Controller
     {
         $imunisasis = Imunisasi::with(['Ortu', 'Anak'])
             ->orderBy('tanggal', 'desc')
-            ->paginate(5);
+            ->paginate(5)
+            ->onEachSide(1);
         if ($imunisasis->isEmpty()) {
             return view('layouts/admin/dashboard-admin', compact('imunisasis'))->with('errors', 'data kosong');
         } else {
@@ -246,7 +248,7 @@ class ImunisasiController extends Controller
     }
 
     public function riwayat($id){
-        $imunisasis = Imunisasi::with(['Ortu','Anak'])->where('id_anak',$id)->orWhere('id_ortu',$id)->paginate(5);
+        $imunisasis = Imunisasi::with(['Ortu','Anak'])->where('id_anak',$id)->orWhere('id_ortu',$id)->paginate(5)->onEachSide(1);
         if($imunisasis->isEmpty()){
             return view('')->with('error','tidak terdapat riwayat pemeriksaan');
         }

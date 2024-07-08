@@ -12,14 +12,14 @@ use Illuminate\Support\Facades\Session;
 class KbController extends Controller
 {
     public function riwayat($id){
-        $kbs = Kb::with(['Suami','Ibu'])->where('id_ibu',$id)->orWhere('id_suami',$id)->paginate(5);
+        $kbs = Kb::with(['Suami','Ibu'])->where('id_ibu',$id)->orWhere('id_suami',$id)->paginate(5)->onEachSide(1);
         if($kbs->isEmpty()){
             return view('')->with('error','tidak terdapat riwayat pemeriksaan');
         }
         return view('layouts.admin.data-kb',compact('kbs'));
     }
     public function index(){
-        $kbs = Kb::with(['Ibu','Suami'])->paginate(5);
+        $kbs = Kb::with(['Ibu','Suami'])->paginate(5)->onEachSide(1);
         return view('layouts.admin.data-kb',compact('kbs'));    
     }
     public function store(Request $request){

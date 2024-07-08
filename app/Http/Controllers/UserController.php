@@ -115,7 +115,7 @@ class UserController extends Controller
         ]);
     }
     public function GetUser(){
-        $users = User::paginate(5);
+        $users = User::paginate(5)->onEachSide(1);
         if($users->isEmpty()){
             return view('layouts.admin.data-pengguna')->with('error','data user kosong');
         }

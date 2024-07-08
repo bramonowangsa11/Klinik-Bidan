@@ -74,7 +74,7 @@ class PasienController extends Controller
         return view('layouts.users.user-reservasi',compact('user'));
     }
     public function listPasien(){
-        $pasiens = Pasien::paginate(5);
+        $pasiens = Pasien::paginate(5)->onEachSide(1);
         return view('layouts.admin.data-pasien',compact('pasiens'));
     }
     
@@ -159,7 +159,7 @@ class PasienController extends Controller
             return redirect('/pasien')->with('error', 'Tidak terdapat riwayat pemeriksaan');
         }
         $id = $pasien->id;
-        $kbs = Kb::with(['Suami','Ibu'])->where('id_ibu',$id)->orWhere('id_suami',$id)->paginate(5);
+        $kbs = Kb::with(['Suami','Ibu'])->where('id_ibu',$id)->orWhere('id_suami',$id)->paginate(5)->onEachSide(1);
         if($kbs->isEmpty()){
             return view('')->with('error','tidak terdapat riwayat pemeriksaan');
         }
@@ -173,7 +173,7 @@ class PasienController extends Controller
             return redirect('/pasien')->with('error', 'Tidak terdapat riwayat pemeriksaan');
         }
         $id = $pasien->id;
-        $imunisasis = Imunisasi::with(['Ortu','Anak'])->where('id_anak',$id)->orWhere('id_ortu',$id)->orderBy('tanggal', 'desc')->paginate(5);
+        $imunisasis = Imunisasi::with(['Ortu','Anak'])->where('id_anak',$id)->orWhere('id_ortu',$id)->orderBy('tanggal', 'desc')->paginate(5)->onEachSide(1);
         if($imunisasis->isEmpty()){
             return view('')->with('error','tidak terdapat riwayat pemeriksaan');
         }
@@ -187,7 +187,7 @@ class PasienController extends Controller
             return redirect('/pasien')->with('error', 'Tidak terdapat riwayat pemeriksaan');
         }
         $id = $pasien->id;
-        $ancs = anc::with(['Suami','Istri'])->where('id_suami',$id)->orWhere('id_istri',$id)->orderBy('tgl_pemeriksaan', 'desc')->paginate(5);
+        $ancs = anc::with(['Suami','Istri'])->where('id_suami',$id)->orWhere('id_istri',$id)->orderBy('tgl_pemeriksaan', 'desc')->paginate(5)->onEachSide(1);
         if($ancs->isEmpty()){
             return view('layouts.users.riwayat-bumil')->with('error','tidak terdapat riwayat pemeriksaan');
         }

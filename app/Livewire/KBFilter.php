@@ -56,7 +56,7 @@ class KBFilter extends Component
                 $query->where('name', 'like', '%' . $this->name . '%');
             });
         }
-        $kbs = $query->orderBy('tgl_kb', 'desc')->paginate(5);
+        $kbs = $query->orderBy('tgl_kb', 'desc')->paginate(5)->onEachSide(1);
         
         return view('livewire.k-b-filter', [
             'kbs' => $kbs,

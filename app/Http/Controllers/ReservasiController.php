@@ -31,12 +31,12 @@ class ReservasiController extends Controller
     }
     public function index(){
         if(Auth::user()->role == "admin"){
-            $reservasis = Reservasi::with('user')->orderBy('tgl_reservasi', 'desc')->paginate(5);
+            $reservasis = Reservasi::with('user')->orderBy('tgl_reservasi', 'desc')->paginate(5)->onEachSide(1);
             return view('layouts.admin.lihat-reservasi',compact('reservasis'));
         }
         else{
             $id_user = Auth::user()->id;
-            $reservasis = Reservasi::with('user')->where('user_id',$id_user)->orderBy('tgl_reservasi', 'desc')->paginate(5);
+            $reservasis = Reservasi::with('user')->where('user_id',$id_user)->orderBy('tgl_reservasi', 'desc')->paginate(5)->onEachSide(1);
             return view('layouts.users.lihat-reservasi-user',compact('reservasis'));
         }
         
@@ -111,7 +111,7 @@ class ReservasiController extends Controller
     public function todayReservation(){
         $now = Carbon::now('Asia/Jakarta');
         $reservasis = Reservasi::with(['user'])
-            ->whereDate('tgl_reservasi',$now)->paginate(12);
+            ->whereDate('tgl_reservasi',$now)->paginate(5)->onEachSide(1);
         return view('layouts.admin.lihat-reservasi',compact('reservasis'));
     }
 

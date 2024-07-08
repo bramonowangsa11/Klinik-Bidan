@@ -13,7 +13,7 @@ class AncController extends Controller
     public function search(Request $request){
         $ancs = anc::where('nama_ibu','like','%'.$request->input('keyword').'%')
                 ->orWhere('nama_suami','like','%'.$request->input('keyword').'%')
-                ->paginate(10);
+                ->paginate(10)->onEachSide(1);
         if($ancs->isEmpty()){
             return redirect('/ibu-hamil')->with('errors',"data tidak  ditemukan");
         }
@@ -31,7 +31,7 @@ class AncController extends Controller
     public function index(){
         $ancs = anc::with(['Suami','Istri'])
         ->orderByDesc('tgl_pemeriksaan')
-        ->paginate(5);
+        ->paginate(5)->onEachSide(1);
         return view('layouts.admin.bumil-table-data',compact('ancs'));
     }
     public function inputnik(Request $request){
@@ -216,7 +216,7 @@ class AncController extends Controller
     }
 
     public function riwayat($id){
-        $ancs = anc::with(['Suami','Istri'])->where('id_suami',$id)->orWhere('id_istri',$id)->paginate(5);
+        $ancs = anc::with(['Suami','Istri'])->where('id_suami',$id)->orWhere('id_istri',$id)->paginate(5)->onEachSide(1);
         if($ancs->isEmpty()){
             return view('layouts.admin.bumil-table-data')->with('error','tidak terdapat riwayat pemeriksaan');
         }

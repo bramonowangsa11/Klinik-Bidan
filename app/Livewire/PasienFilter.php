@@ -43,7 +43,7 @@ class PasienFilter extends Component
             $query->where('name','like','%'. $this->name. '%')
             ->orWhere('nik','like','%'. $this->name. '%');
         }
-        $pasiens = $query->paginate(5);
+        $pasiens = $query->paginate(5)->onEachSide(1);
         
         return view('livewire.pasien-filter', [
             'pasiens' => $pasiens,

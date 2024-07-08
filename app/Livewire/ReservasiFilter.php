@@ -54,7 +54,7 @@ class ReservasiFilter extends Component
             ->whereYear('tgl_reservasi', Carbon::parse($this->bulan)->year);
         }
 
-        $reservasis = $query->paginate(5);
+        $reservasis = $query->paginate(5)->onEachSide(1);
         
         return view('livewire.reservasi-filter', [
             'reservasis' => $reservasis,

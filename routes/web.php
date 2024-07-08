@@ -182,9 +182,9 @@ Route::get('/tespasien',PasienFilter::class)->name('pasien');
 // Route::get('/detail-kb', function () {
 //     return view('layouts.admin.detail-kb');
 // });
-// Route::get('/daftar-pasien', function () {
-//     return view('layouts.admin.daftar-pasien');
-// });
+Route::get('/daftar-pasien', function () {
+    return view('layouts.admin.daftar-pasien');
+});
 // Route::get('/testing', function () {
 //     return view('layouts.testing');
 // });
